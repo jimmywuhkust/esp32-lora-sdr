@@ -1,6 +1,6 @@
 # Hardware test report — 7 October 2026
 
-Updated through approximately 04:39 Hong Kong time. This is a measured engineering report, not a
+Updated through approximately 04:48 Hong Kong time. This is a measured engineering report, not a
 claim of universal compatibility or a peer-reviewed paper. Subsequent research
 results must be appended with their own firmware hashes and denominators.
 
@@ -306,7 +306,7 @@ SF7 profile. The library now rejects windows at least as long as the symbol
 before keying. Down-chirp and quarter-SFD windows use the actual symbol duration.
 The 203.125 kHz/SF7 waveform values remain 15,000/6,000/1,000 samples.
 After merging these changes, each of the three bandwidths passed another
-3/3 fresh 32-byte CRC4/8 packets on the actual library image. Its SHA256 is
+3/3 fresh 32-byte CR4/8 packets on the actual library image. Its SHA256 is
 `c19ddca83d71cf379804294d57f9124b98d0a94c7e6c85c2eb9a09d2582ede0d`.
 The corresponding `merged-bandwidth-*-smoke.json` logs are included. Hardware
 command/airtime/window guards also passed **14/14**; these are rejection tests,
@@ -352,3 +352,12 @@ window and amplitude before sending, so a prior research setting cannot silently
 carry into the default UI. The private AeroLink HF receiver application was
 restored from its verified backup for this web demonstration; the public
 RadioLib companion is the separately tested reproduction path.
+
+## Clean cloud compilation
+
+[GitHub Actions run 37528675081](https://github.com/jimmywuhkust/esp32-lora-sdr/actions/runs/37528675081)
+completed successfully for source commit `1b36aed3ed86b10edd5e96a9d44851019868eb01`
+on a fresh Ubuntu runner. It built SerialBench, SendOnce and the public LR2021
+companion using pinned PlatformIO dependencies. Total duration was 1 minute
+57 seconds. This is additional clean-build evidence; the runner has no radio
+hardware and its success is not an RF test.
