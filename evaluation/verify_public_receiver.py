@@ -84,6 +84,7 @@ def main():
         if a.sender=='bench':
             commands=[('INFO','LoRaSDR native S3 0.1'),(a.transport,a.transport+' selected'),('AMP 150','AMP 150')]
             commands.extend((cmd,cmd) for cmd in ['FREQ 2440125','CFO 15000','PRE 16',f'WIN {a.window}'])
+            if source==ROOT/'src':commands.extend((cmd,cmd) for cmd in ['SYNC 18','INV 1'])
             if a.transport!='STREAM':commands.append((f'BW {a.bandwidth}',f'BW {a.bandwidth}'))
             if a.analog_gain is not None:commands.append((f'PA {a.analog_gain}',f'PA {a.analog_gain}'))
             if a.update_rate is not None:commands.append((f'RATE {a.update_rate}',f'RATE {a.update_rate}'))
@@ -96,6 +97,11 @@ def main():
         if reply!=f'SF {a.sf} status=0':raise RuntimeError(reply)
         rx.write(f'BW {a.bandwidth}\n'.encode());reply=line(rx,5)
         if reply!=f'BW {a.bandwidth} status=0':raise RuntimeError(reply)
+        # The published current receiver supports these commands. Explicit
+        # reset prevents a previous polarity/channel/sync test poisoning RX.
+        for command in ['FREQ 2440125','PRE 16','SYNC 18','INV 0']:
+            rx.write((command+'\n').encode());reply=line(rx,5)
+            if reply!=command+' status=0':raise RuntimeError(reply)
         for block in range(a.repeats):
             order=configs.copy();rng.shuffle(order)
             if a.sender=='sendonce':order=[(4,16,None)]

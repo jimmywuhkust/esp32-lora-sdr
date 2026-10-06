@@ -1,0 +1,165 @@
+{
+  "cases": [
+    {
+      "command": "AMP 0",
+      "expected": "ERR setting",
+      "reply": "ERR setting",
+      "passed": true
+    },
+    {
+      "command": "AMP 201",
+      "expected": "ERR setting",
+      "reply": "ERR setting",
+      "passed": true
+    },
+    {
+      "command": "WIN 999",
+      "expected": "ERR setting",
+      "reply": "ERR setting",
+      "passed": true
+    },
+    {
+      "command": "PRE 11",
+      "expected": "ERR setting",
+      "reply": "ERR setting",
+      "passed": true
+    },
+    {
+      "command": "BW 125000",
+      "expected": "ERR BW",
+      "reply": "ERR BW",
+      "passed": true
+    },
+    {
+      "command": "FREQ 2399000",
+      "expected": "ERR setting",
+      "reply": "ERR setting",
+      "passed": true
+    },
+    {
+      "command": "CFO 50001",
+      "expected": "ERR setting",
+      "reply": "ERR setting",
+      "passed": true
+    },
+    {
+      "command": "TX 7 4 ff trailing",
+      "expected": "ERR arguments",
+      "reply": "ERR arguments",
+      "passed": true
+    },
+    {
+      "command": "TX 7 4 f",
+      "expected": "ERR length",
+      "reply": "ERR length",
+      "passed": true
+    },
+    {
+      "command": "TX 7 4 gg",
+      "expected": "ERR hex",
+      "reply": "ERR hex",
+      "passed": true
+    },
+    {
+      "command": "TX 13 4 ff",
+      "expected": "ERR arguments",
+      "reply": "ERR arguments",
+      "passed": true
+    },
+    {
+      "command": "TX 7 5 ff",
+      "expected": "ERR arguments",
+      "reply": "ERR arguments",
+      "passed": true
+    },
+    {
+      "command": "PA 64",
+      "expected": "ERR PA",
+      "reply": "ERR PA",
+      "passed": true
+    },
+    {
+      "command": "PA -1",
+      "expected": "ERR PA",
+      "reply": "ERR PA",
+      "passed": true
+    },
+    {
+      "command": "PA 1 trailing",
+      "expected": "ERR PA",
+      "reply": "ERR PA",
+      "passed": true
+    },
+    {
+      "command": "SYNC 256",
+      "expected": "ERR setting",
+      "reply": "ERR setting",
+      "passed": true
+    },
+    {
+      "command": "SYNC -1",
+      "expected": "ERR setting",
+      "reply": "ERR setting",
+      "passed": true
+    },
+    {
+      "command": "SYNC 18 trailing",
+      "expected": "ERR setting",
+      "reply": "ERR setting",
+      "passed": true
+    },
+    {
+      "command": "INV 2",
+      "expected": "ERR setting",
+      "reply": "ERR setting",
+      "passed": true
+    },
+    {
+      "command": "INV -1",
+      "expected": "ERR setting",
+      "reply": "ERR setting",
+      "passed": true
+    },
+    {
+      "command": "INV 1 trailing",
+      "expected": "ERR setting",
+      "reply": "ERR setting",
+      "passed": true
+    },
+    {
+      "command": "TX 9 4 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfe",
+      "name": "PLL airtime cap",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE unsupported 0 0 1220.608 buffer=00000000 copy=0",
+      "passed": true
+    },
+    {
+      "name": "Analog gain rejected on PLL before keying",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE unsupported 0 0 0.000 a=0,0 b=0,0",
+      "passed": true
+    },
+    {
+      "name": "Window longer than symbol",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE unsupported 0 0 11.422 buffer=00000000 copy=0",
+      "passed": true
+    }
+  ],
+  "method": "Invalid inputs and overlong PLL packet; no requested RF transmission",
+  "firmwareSha256": "f34e6cc5ee868b03ee6c6abd4407d57c2c4c4228f2a7c095f555f1f5d8545735",
+  "identity": "LoRaSDR native S3 0.1",
+  "analogDefault": "PA 0",
+  "pllSelect": "PLL selected",
+  "analogSelect": "PA 1",
+  "analogRestore": "PA 0",
+  "dacSelect": "DAC selected",
+  "bwSelect": "BW 406250",
+  "windowSelect": "WIN 15000",
+  "restore": [
+    "BW 203125",
+    "WIN 15000",
+    "LoRaSDR native S3 0.1"
+  ],
+  "passed": true
+}

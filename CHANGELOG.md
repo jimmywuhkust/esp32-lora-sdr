@@ -12,6 +12,12 @@
   retained failures and credited prior work.
 - Optional, experimental analog PBUS gain control with readback, restoration
   and non-raising guards; default 0 leaves the measured RF defaults intact.
+- Channel/preamble/sync/IQ-polarity selection with a 142/144 hardware settings
+  matrix and 24/24 guards. All failed payloads remain in the data.
+- PC decoder companion and real reverse-link IQ fixture, with CRC/gap/EOF
+  regressions; native Arduino packet RX remains unsupported.
+- Prior-art review including Wi-Lo/WiRa/Wi-Lo++ and reproduced playing-bank
+  SRAM corruption; the failed fast streamer remains isolated research.
 
 This is not a complete SX1262/SX1280 replacement. Reliable SF8/SF9 transmission,
 gap-free continuous waveforms, calibrated power, weak-signal SF recovery and

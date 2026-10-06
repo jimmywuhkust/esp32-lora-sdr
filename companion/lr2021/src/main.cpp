@@ -30,6 +30,24 @@ void loop() {
     if(Serial.available()) {
         String command=Serial.readStringUntil('\n');command.trim();
         if(command=="INFO")Serial.printf("LR2021_PUBLIC status=%d ready=%d irq=%08lx gpio=%d\n",startupStatus,ready,radio.getIrqFlags(),digitalRead(14));
+        else if(command.startsWith("FREQ ")||command.startsWith("PRE ")||command.startsWith("SYNC ")||command.startsWith("INV ")) {
+            char key[5],extra;unsigned value;
+            if(sscanf(command.c_str(),"%4s %u %c",key,&value,&extra)!=2||
+                (!strcmp(key,"FREQ")&&(value<2400200||value>2483300))||
+                (!strcmp(key,"PRE")&&(value<12||value>64))||
+                (!strcmp(key,"SYNC")&&value>255)||(!strcmp(key,"INV")&&value>1)) {
+                Serial.println("ERR setting");return;
+            }
+            int16_t status=radio.standby();
+            if(status==0) {
+                if(!strcmp(key,"FREQ"))status=radio.setFrequency(value/1000.0f);
+                else if(!strcmp(key,"PRE"))status=radio.setPreambleLength(value);
+                else if(!strcmp(key,"SYNC"))status=radio.setSyncWord(value);
+                else status=radio.invertIQ(value);
+            }
+            packetPending=false;if(status==0)status=radio.startReceive();
+            ready=status==0;Serial.printf("%s %u status=%d\n",key,value,status);
+        }
         else if(command.startsWith("BW ")) {
             unsigned bw;char extra;
             if(sscanf(command.c_str(),"BW %u %c",&bw,&extra)!=1||(bw!=203125&&bw!=406250&&bw!=812500)){Serial.println("ERR BW");return;}

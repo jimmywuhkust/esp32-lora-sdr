@@ -1,0 +1,42 @@
+{
+  "recording": "esp32-lora-sdr\\host\\samples\\lr2021-sf7-window.iqs",
+  "iqSha256": "3324771073227a1a641d9123fe6570e0e82b66b16dbad634ffc310a1781e0001",
+  "source": "Recorded XIAO I/Q; packet decoding executes on the PC",
+  "frequencyMHz": 2440.125,
+  "sf": 7,
+  "bandwidthHz": 203125,
+  "sampleRate": 250000,
+  "frames": 86,
+  "contiguousRuns": 1,
+  "samples": 87606,
+  "packets": [
+    {
+      "text": "XIAO decodes full LoRa!",
+      "hex": "5849414f206465636f6465732066756c6c204c6f526121",
+      "bytes": 23,
+      "crcOk": true,
+      "crcHex": "fc8a",
+      "sf": 7,
+      "codingRate": "4/5",
+      "frequency": 2440.125,
+      "cfoHz": 14440.92,
+      "syncBins": [
+        8,
+        16
+      ],
+      "sampleIndex": 73611,
+      "segmentSampleIndex": 0,
+      "segmentSamples": 87606,
+      "hypothesis": "magnitude/0",
+      "source": "XIAO I/Q → PC LoRa decoder"
+    }
+  ],
+  "stats": {
+    "segments": 1,
+    "headerCandidates": 5,
+    "crcValid": 1,
+    "crcRejectedCandidates": 0,
+    "crcAbsent": 0,
+    "syncRejected": 0
+  }
+}

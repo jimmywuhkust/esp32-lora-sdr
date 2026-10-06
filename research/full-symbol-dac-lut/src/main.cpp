@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <LoRaSDR.h>
 #include <ESP32S3Radio.h>
+#include "DacStreamer.h"
 #include <ctype.h>
 using namespace lora_sdr;
 ESP32S3Radio radio;
@@ -14,24 +15,22 @@ void loop() {
     if(!Serial.available()){delay(1);return;}
     String line=Serial.readStringUntil('\n');line.trim();
     if(line=="INFO"){Serial.println("LoRaSDR native S3 0.1");return;}
-    if(line.startsWith("SYNC ")||line.startsWith("INV ")) {
-        char key[5],extra;unsigned value;
-        if(sscanf(line.c_str(),"%4s %u %c",key,&value,&extra)!=2||
-           (!strcmp(key,"SYNC")?value>255:value>1)){Serial.println("ERR setting");return;}
-        if(!strcmp(key,"SYNC"))config.syncWord=value;else config.inverted=value;
-        Serial.printf("%s %u\n",key,value);return;
+    if(line=="LUTTEST") {
+        unsigned cycles;bool ok=dacLutSelfTest(cycles);
+        Serial.printf("LUTTEST passed=%u max=%u budget=1536\n",ok,cycles);Serial.flush();return;
     }
-    if(line.startsWith("PA ")) {
-        unsigned value;char extra;
-        if(sscanf(line.c_str(),"PA %u %c",&value,&extra)!=1||value>63){Serial.println("ERR PA");return;}
-        config.analogGainCode=value;Serial.printf("PA %u\n",value);return;
-    }
-    if(line.startsWith("BW ")) {
-        unsigned value;char extra;
-        if(sscanf(line.c_str(),"BW %u %c",&value,&extra)!=1||(value!=203125&&value!=406250&&value!=812500)){Serial.println("ERR BW");return;}
-        config.bandwidthHz=value;Serial.printf("BW %u\n",value);return;
+    if(line=="BANKIDLE"||line=="BANKPLAY") {
+        unsigned bad,first,cycles;bool ok=dacBankSelfTest(line=="BANKPLAY",bad,first,cycles);
+        Serial.printf("BANK ok=%u bad=%u first=%u c=%u\n",ok,bad,first,cycles);
+        Serial.flush();return;
     }
     if(line=="DAC"){config.transport=Transport::DacWindows;Serial.println("DAC selected");return;}
+    if(line=="STREAM"){config.transport=Transport::DacStream;Serial.println("STREAM selected");return;}
+    if(line.startsWith("GAP ")) {
+        unsigned value;char extra;
+        if(sscanf(line.c_str(),"GAP %u %c",&value,&extra)!=1||value>256){Serial.println("ERR gap");return;}
+        config.streamGapSamples=value;Serial.printf("GAP %u\n",value);return;
+    }
     if(line=="PLL"){config.transport=Transport::Pll;Serial.println("PLL selected");return;}
     if(line.startsWith("AMP ")||line.startsWith("WIN ")||line.startsWith("PRE ")||line.startsWith("FREQ ")||line.startsWith("CFO ")) {
         char key[5],extra;long value;
@@ -70,11 +69,8 @@ void loop() {
     } else {
         TxResult result;Serial.println("TXSTART NATIVE");Serial.flush();
         Error error=radio.transmit(payload,length,config,result);
-        delay(2); // let the native USB interrupt/tick service recover after RF
-        if(config.analogGainCode)
-            Serial.printf("TXEND NATIVE %s %u %u %.3f a=%u,%u b=%u,%u\n",errorName(error),result.updates,result.lateUpdates,result.packet.airtimeMs,result.analogBefore1,result.analogBefore3,result.analogAfter1,result.analogAfter3);
-        else
-            Serial.printf("TXEND NATIVE %s %u %u %.3f buffer=%08x copy=%u\n",errorName(error),result.updates,result.lateUpdates,result.packet.airtimeMs,result.sourceAddress,result.maxCopyCycles);
+        delay(2);
+        Serial.printf("TXEND NATIVE %s %u %u %.3f c=%u g=%u\n",errorName(error),result.updates,result.lateUpdates,result.packet.airtimeMs,result.maxCopyCycles,result.maxGapCycles);
         Serial.flush();
     }
 }

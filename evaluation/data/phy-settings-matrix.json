@@ -1,0 +1,3772 @@
+{
+  "startedUtc": "2026-10-06T21:30:27.523852+00:00",
+  "completed": true,
+  "seed": 2026100706,
+  "profile": {
+    "sf": 7,
+    "bandwidthHz": 203125,
+    "cr": 4,
+    "length": 32,
+    "cfoHz": 15000,
+    "amp": 150,
+    "analogGainCode": 0
+  },
+  "rule": "fresh LR2021 status=0 header=0 CRC present+valid and exact full payload; no RF retry",
+  "imageSha256": {
+    ".pio\\build\\xiao-s3\\firmware.bin": "f34e6cc5ee868b03ee6c6abd4407d57c2c4c4228f2a7c095f555f1f5d8545735",
+    "companion\\lr2021\\.pio\\build\\aerolink-hf\\firmware.bin": "7614e6b60f9b14425f335b1103035ba0a1f82910a0e1df7ee3eec0773e03c1e4"
+  },
+  "sourceSha256": {
+    "examples\\SerialBench\\main.cpp": "09e5da07501669edd350527e11cdb3f9e432e6cd08ba045b2875eba674eb1a7e",
+    "companion\\lr2021\\src\\main.cpp": "25c38517a280240c5d08dfb1c75a370af45084537fe5bd619e6751b3a6f8f337",
+    "src\\ESP32S3Radio.cpp": "a43ae60050964290c1e90c5a583e61a831ede4e4da971a7c686f815e8432d583"
+  },
+  "cases": [
+    {
+      "block": 0,
+      "frequencyHz": 2476125000,
+      "preamble": 32,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "2d3ab7e59209dbbe2589b5a6fb52ed19d77779244b4a10dc404c48e4c0714f6c",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=5.2 hex=2d3ab7e59209dbbe2589b5a6fb52ed19d77779244b4a10dc404c48e4c0714f6c",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 5.2,
+          "hex": "2d3ab7e59209dbbe2589b5a6fb52ed19d77779244b4a10dc404c48e4c0714f6c"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2403125000,
+      "preamble": 16,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "0a8e2d87909a9ea318a0f44ef0b5be3668ee85b3520a9bdad2a89bf8e19688cc",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=5.5 hex=0a8e2d87909a9ea318a0f44ef0b5be3668ee85b3520a9bdad2a89bf8e19688cc",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 5.5,
+          "hex": "0a8e2d87909a9ea318a0f44ef0b5be3668ee85b3520a9bdad2a89bf8e19688cc"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2476125000,
+      "preamble": 12,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "852417c3f593c76db16449d77a90dcf2ae36701a325e9c904c7bd9d2ea0ed1b6",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-73.5 snr=2.8 hex=852417c3f593c76db16449d77a90dcf2ae36701a325e9c904c7bd9d2ea0ed1b6",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -73.5,
+          "snr": 2.8,
+          "hex": "852417c3f593c76db16449d77a90dcf2ae36701a325e9c904c7bd9d2ea0ed1b6"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2440125000,
+      "preamble": 32,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "892076c9439a3c45b89693e357ec9deb67bd1ce55c0105bc951ed38dfdc40cad",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=-0.5 hex=892076c9439a3c45b89693e357ec9deb67bd1ce55c0105bc951ed38dfdc40cad",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": -0.5,
+          "hex": "892076c9439a3c45b89693e357ec9deb67bd1ce55c0105bc951ed38dfdc40cad"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2440125000,
+      "preamble": 64,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "ee65e656c11c797be4f35564f9c629e91dddee9f8a6fd40900644fdee05040ec",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-61.5 snr=5.0 hex=ee65e656c11c797be4f35564f9c629e91dddee9f8a6fd40900644fdee05040ec",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -61.5,
+          "snr": 5.0,
+          "hex": "ee65e656c11c797be4f35564f9c629e91dddee9f8a6fd40900644fdee05040ec"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2440125000,
+      "preamble": 16,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "aaaa782f5e460b5928c86b627df06df0fe10bdf8156c96697e7a4c6f029648cf",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-61.5 snr=5.0 hex=aaaa782f5e460b5928c86b627df06df0fe10bdf8156c96697e7a4c6f029648cf",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -61.5,
+          "snr": 5.0,
+          "hex": "aaaa782f5e460b5928c86b627df06df0fe10bdf8156c96697e7a4c6f029648cf"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2476125000,
+      "preamble": 64,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "8fad9562f71942b028d701384e33b06d1c4ca9639103a61f15524c3ef5e2fe80",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=4.5 hex=8fad9562f71942b028d701384e33b06d1c4ca9639103a61f15524c3ef5e2fe80",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 4.5,
+          "hex": "8fad9562f71942b028d701384e33b06d1c4ca9639103a61f15524c3ef5e2fe80"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2440125000,
+      "preamble": 16,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "af98ce079887925054c449a494dfe569c5aac05d5e7819f94fd0309a0ed3206c",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=6.8 hex=af98ce079887925054c449a494dfe569c5aac05d5e7819f94fd0309a0ed3206c",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 6.8,
+          "hex": "af98ce079887925054c449a494dfe569c5aac05d5e7819f94fd0309a0ed3206c"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2440125000,
+      "preamble": 64,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "223010ac358c51121d45447d4a8c8d5e9c416cfba2841ed73797eec8f4f1ab92",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=0.8 hex=223010ac358c51121d45447d4a8c8d5e9c416cfba2841ed73797eec8f4f1ab92",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 0.8,
+          "hex": "223010ac358c51121d45447d4a8c8d5e9c416cfba2841ed73797eec8f4f1ab92"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2403125000,
+      "preamble": 12,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "968138ba376e16e94e61c91055b7dbe21b768d902e1036bfe91e805a4afc9d0f",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=5.5 hex=968138ba376e16e94e61c91055b7dbe21b768d902e1036bfe91e805a4afc9d0f",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 5.5,
+          "hex": "968138ba376e16e94e61c91055b7dbe21b768d902e1036bfe91e805a4afc9d0f"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2476125000,
+      "preamble": 64,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "0e7c4db4cb253c8c3d2f69aca3778d185db4f3df674626ee31659e75e63bf417",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=5.2 hex=0e7c4db4cb253c8c3d2f69aca3778d185db4f3df674626ee31659e75e63bf417",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 5.2,
+          "hex": "0e7c4db4cb253c8c3d2f69aca3778d185db4f3df674626ee31659e75e63bf417"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2440125000,
+      "preamble": 12,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "627eadd0800c76723e919d6ebc91a237ca3dcbebbf5301a646f4188891842702",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=3.5 hex=627eadd0800c76723e919d6ebc91a237ca3dcbebbf5301a646f4188891842702",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 3.5,
+          "hex": "627eadd0800c76723e919d6ebc91a237ca3dcbebbf5301a646f4188891842702"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2440125000,
+      "preamble": 32,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "937ebc4aa97ebb6cfce95e2212130d4b087921442601583d2c174d9dd9d2ced3",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=6.0 hex=937ebc4aa97ebb6cfce95e2212130d4b087921442601583d2c174d9dd9d2ced3",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 6.0,
+          "hex": "937ebc4aa97ebb6cfce95e2212130d4b087921442601583d2c174d9dd9d2ced3"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2403125000,
+      "preamble": 12,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "e428f9e748138a35029183a45ec70220993d9c28cd67939953fa54d3df0359a0",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=4.5 hex=e428f9e748138a35029183a45ec70220993d9c28cd67939953fa54d3df0359a0",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -65.5,
+          "snr": 4.5,
+          "hex": "e428f9e748138a35029183a45ec70220993d9c28cd67939953fa54d3df0359a0"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2440125000,
+      "preamble": 12,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "baad5178fc5e40f69de05946768029be5a0e93d721c2b683eae894e53cea84ae",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-61.5 snr=0.2 hex=baad5178fc5e40f69de05946768029be5a0e93d721c2b683eae894e53cea84ae",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -61.5,
+          "snr": 0.2,
+          "hex": "baad5178fc5e40f69de05946768029be5a0e93d721c2b683eae894e53cea84ae"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2476125000,
+      "preamble": 16,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "63296f06df386eb7eb50d01fa299ddc9230f7761555433332aa77e3663615f2d",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-75.5 snr=3.2 hex=63296f06df386eb7eb50d01fa299ddc9230f7761555433332aa77e3663615f2d",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -75.5,
+          "snr": 3.2,
+          "hex": "63296f06df386eb7eb50d01fa299ddc9230f7761555433332aa77e3663615f2d"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2403125000,
+      "preamble": 16,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "621779d30e707acaa0f0a0e8a64ac79c5020c46d4dec5eaf096a6b0b2809b9d2",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=6.5 hex=621779d30e707acaa0f0a0e8a64ac79c5020c46d4dec5eaf096a6b0b2809b9d2",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -65.5,
+          "snr": 6.5,
+          "hex": "621779d30e707acaa0f0a0e8a64ac79c5020c46d4dec5eaf096a6b0b2809b9d2"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2476125000,
+      "preamble": 16,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "04a9dd841c2052b80fa5c49d9add1a1ef34a9f8242e452784b4efd087911870a",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=7.0 hex=04a9dd841c2052b80fa5c49d9add1a1ef34a9f8242e452784b4efd087911870a",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 7.0,
+          "hex": "04a9dd841c2052b80fa5c49d9add1a1ef34a9f8242e452784b4efd087911870a"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2440125000,
+      "preamble": 64,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "fca66abb4da76d7e181c63ae8b0729cf47313f56f029a6a5901008b612506610",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=4.2 hex=fca66abb4da76d7e181c63ae8b0729cf47313f56f029a6a5901008b612506610",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 4.2,
+          "hex": "fca66abb4da76d7e181c63ae8b0729cf47313f56f029a6a5901008b612506610"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2476125000,
+      "preamble": 12,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "d81027f6228accf572804313399bd807958dffdbe30b4c83861ec3f7103b21d4",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=5.5 hex=d81027f6228accf572804313399bd807958dffdbe30b4c83861ec3f7103b21d4",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 5.5,
+          "hex": "d81027f6228accf572804313399bd807958dffdbe30b4c83861ec3f7103b21d4"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2403125000,
+      "preamble": 16,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "dbe51e43d68dcb18ccbd2e63d3299a5c6a84f6df52a09bb57a2d9b800792a2c8",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=4.0 hex=dbe51e43d68dcb18ccbd2e63d3299a5c6a84f6df52a09bb57a2d9b800792a2c8",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 4.0,
+          "hex": "dbe51e43d68dcb18ccbd2e63d3299a5c6a84f6df52a09bb57a2d9b800792a2c8"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2403125000,
+      "preamble": 16,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "c28bc0c2d06ef0a8c587554a19a92d221f26d16ccb670d53fdc8e0542e1968a7",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=3.5 hex=c28bc0c2d06ef0a8c587554a19a92d221f26d16ccb670d53fdc8e0542e1968a7",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 3.5,
+          "hex": "c28bc0c2d06ef0a8c587554a19a92d221f26d16ccb670d53fdc8e0542e1968a7"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2440125000,
+      "preamble": 64,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "4ae5c59ca113b1a65b48b026a7c967672629948f48c1ca7f447aa9d194a555e8",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=6.0 hex=4ae5c59ca113b1a65b48b026a7c967672629948f48c1ca7f447aa9d194a555e8",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 6.0,
+          "hex": "4ae5c59ca113b1a65b48b026a7c967672629948f48c1ca7f447aa9d194a555e8"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2476125000,
+      "preamble": 64,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "5da2bda15488a08b94ee00df4fc0216f5f2b2e941cec64319245bfc0bb04784a",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=6.2 hex=5da2bda15488a08b94ee00df4fc0216f5f2b2e941cec64319245bfc0bb04784a",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 6.2,
+          "hex": "5da2bda15488a08b94ee00df4fc0216f5f2b2e941cec64319245bfc0bb04784a"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2440125000,
+      "preamble": 16,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "bbbc05d0d7567d924ef5253cd20e38c9ebff48098aed7dc29109f5314c3111f6",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-61.5 snr=4.5 hex=bbbc05d0d7567d924ef5253cd20e38c9ebff48098aed7dc29109f5314c3111f6",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -61.5,
+          "snr": 4.5,
+          "hex": "bbbc05d0d7567d924ef5253cd20e38c9ebff48098aed7dc29109f5314c3111f6"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2403125000,
+      "preamble": 32,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "8a694887bfb17fd2e60df3e3505b6f1d543170ed7a0bddf6cd1e5a83ce006f1c",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=4.2 hex=8a694887bfb17fd2e60df3e3505b6f1d543170ed7a0bddf6cd1e5a83ce006f1c",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 4.2,
+          "hex": "8a694887bfb17fd2e60df3e3505b6f1d543170ed7a0bddf6cd1e5a83ce006f1c"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2403125000,
+      "preamble": 12,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "eb46b2d5c29721182c366367329bd4fe9755d4767f0ef0fa912ae1e732991ee7",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=3.8 hex=eb46b2d5c29721182c366367329bd4fe9755d4767f0ef0fa912ae1e732991ee7",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 3.8,
+          "hex": "eb46b2d5c29721182c366367329bd4fe9755d4767f0ef0fa912ae1e732991ee7"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2403125000,
+      "preamble": 64,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "60362365219637598c555ba2dc059437e6054eaa39f505e4069286d96bdea9d8",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=4.5 hex=60362365219637598c555ba2dc059437e6054eaa39f505e4069286d96bdea9d8",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 4.5,
+          "hex": "60362365219637598c555ba2dc059437e6054eaa39f505e4069286d96bdea9d8"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2440125000,
+      "preamble": 32,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "2fc21b42691f96a0d722186d5436f58b005718fa3630c4dfbd64b2ddabe7a1e0",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=1.5 hex=2fc21b42691f96a0d722186d5436f58b005718fa3630c4dfbd64b2ddabe7a1e0",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 1.5,
+          "hex": "2fc21b42691f96a0d722186d5436f58b005718fa3630c4dfbd64b2ddabe7a1e0"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2476125000,
+      "preamble": 32,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "4fe2ec1a40f61793e658d3452fb8b65af3cfd57b5032e42cb82a10e654f695c0",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=6.2 hex=4fe2ec1a40f61793e658d3452fb8b65af3cfd57b5032e42cb82a10e654f695c0",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 6.2,
+          "hex": "4fe2ec1a40f61793e658d3452fb8b65af3cfd57b5032e42cb82a10e654f695c0"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2476125000,
+      "preamble": 16,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "00c7022ade2dcfc2b8b5948935a20e66c4713d4a55e022ee7b1dde62f41c530d",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=5.8 hex=00c7022ade2dcfc2b8b5948935a20e66c4713d4a55e022ee7b1dde62f41c530d",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 5.8,
+          "hex": "00c7022ade2dcfc2b8b5948935a20e66c4713d4a55e022ee7b1dde62f41c530d"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2403125000,
+      "preamble": 32,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "56b56f29aafeccc71d316603b5ace50ef1fc5d439974bb9ffe9f377794ed5349",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=6.2 hex=56b56f29aafeccc71d316603b5ace50ef1fc5d439974bb9ffe9f377794ed5349",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 6.2,
+          "hex": "56b56f29aafeccc71d316603b5ace50ef1fc5d439974bb9ffe9f377794ed5349"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2440125000,
+      "preamble": 12,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "f7fd4264f7f2a93d180d1d1917d43eb36c56b69e3de0b309cc0ad54d797c092f",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=4.5 hex=f7fd4264f7f2a93d180d1d1917d43eb36c56b69e3de0b309cc0ad54d797c092f",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 4.5,
+          "hex": "f7fd4264f7f2a93d180d1d1917d43eb36c56b69e3de0b309cc0ad54d797c092f"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2476125000,
+      "preamble": 16,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "55f17745cbb0f3422896bc1905e4a813ed2d2ade702698050d58359030bd79d1",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=5.8 hex=55f17745cbb0f3422896bc1905e4a813ed2d2ade702698050d58359030bd79d1",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 5.8,
+          "hex": "55f17745cbb0f3422896bc1905e4a813ed2d2ade702698050d58359030bd79d1"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2403125000,
+      "preamble": 32,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "bc34f7014aa87df84f38a60f17de9c9123a1bb48a1898a269861c6a802d700c7",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=6.0 hex=bc34f7014aa87df84f38a60f17de9c9123a1bb48a1898a269861c6a802d700c7",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -65.5,
+          "snr": 6.0,
+          "hex": "bc34f7014aa87df84f38a60f17de9c9123a1bb48a1898a269861c6a802d700c7"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2440125000,
+      "preamble": 32,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "2b8a4d287bf5bd1eb2c0b2958b58582f60fc8798546ba6a9faa1c0f675c25d6e",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=5.2 hex=2b8a4d287bf5bd1eb2c0b2958b58582f60fc8798546ba6a9faa1c0f675c25d6e",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 5.2,
+          "hex": "2b8a4d287bf5bd1eb2c0b2958b58582f60fc8798546ba6a9faa1c0f675c25d6e"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2403125000,
+      "preamble": 64,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "9ae76568b778039cb02572ecfcc945679f5e439c3bf7d9567703a4d25829ec60",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=5.5 hex=9ae76568b778039cb02572ecfcc945679f5e439c3bf7d9567703a4d25829ec60",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -65.5,
+          "snr": 5.5,
+          "hex": "9ae76568b778039cb02572ecfcc945679f5e439c3bf7d9567703a4d25829ec60"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2476125000,
+      "preamble": 32,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "4aaffa50ff2d50cd325aada04217aba4ba5038950f2c8629f90d98c9e836c1c4",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=5.2 hex=4aaffa50ff2d50cd325aada04217aba4ba5038950f2c8629f90d98c9e836c1c4",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 5.2,
+          "hex": "4aaffa50ff2d50cd325aada04217aba4ba5038950f2c8629f90d98c9e836c1c4"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2476125000,
+      "preamble": 12,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "4a6227d5230da860aa561e1444e3875a232f1db39e139c6a78c3c65bef12da6e",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=5.5 hex=4a6227d5230da860aa561e1444e3875a232f1db39e139c6a78c3c65bef12da6e",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 5.5,
+          "hex": "4a6227d5230da860aa561e1444e3875a232f1db39e139c6a78c3c65bef12da6e"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2403125000,
+      "preamble": 64,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "7b61ab516c653e3ed980da0a89d290b745d9e5cbee2268622c277802b37883a6",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=5.0 hex=7b61ab516c653e3ed980da0a89d290b745d9e5cbee2268622c277802b37883a6",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 5.0,
+          "hex": "7b61ab516c653e3ed980da0a89d290b745d9e5cbee2268622c277802b37883a6"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2403125000,
+      "preamble": 32,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "2110c2f57d7e68777ba6e14ee7809c1bf8f1afba4a96ec269cdd764b62255539",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=2.2 hex=2110c2f57d7e68777ba6e14ee7809c1bf8f1afba4a96ec269cdd764b62255539",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 2.2,
+          "hex": "2110c2f57d7e68777ba6e14ee7809c1bf8f1afba4a96ec269cdd764b62255539"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2440125000,
+      "preamble": 12,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "0377506c61837cca5be378b62f2c71c139a27924621e62acd0362b3af65ddcc5",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-61.5 snr=5.0 hex=0377506c61837cca5be378b62f2c71c139a27924621e62acd0362b3af65ddcc5",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -61.5,
+          "snr": 5.0,
+          "hex": "0377506c61837cca5be378b62f2c71c139a27924621e62acd0362b3af65ddcc5"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2403125000,
+      "preamble": 64,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "c28d6d8838500c96c1b8d8d9199354876c5df66d939878dc62e67a0c127e6128",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=4.2 hex=c28d6d8838500c96c1b8d8d9199354876c5df66d939878dc62e67a0c127e6128",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 4.2,
+          "hex": "c28d6d8838500c96c1b8d8d9199354876c5df66d939878dc62e67a0c127e6128"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2403125000,
+      "preamble": 12,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "b6440e26ffb18c778b3c09d0e7a3652976e1f1bf117c50263681db8081d07626",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=5.5 hex=b6440e26ffb18c778b3c09d0e7a3652976e1f1bf117c50263681db8081d07626",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -65.5,
+          "snr": 5.5,
+          "hex": "b6440e26ffb18c778b3c09d0e7a3652976e1f1bf117c50263681db8081d07626"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2476125000,
+      "preamble": 12,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "217334b351c7ad4ba5707fcaec0885351f8f095215ff048d0484b0216f435a05",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-75.5 snr=4.5 hex=217334b351c7ad4ba5707fcaec0885351f8f095215ff048d0484b0216f435a05",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -75.5,
+          "snr": 4.5,
+          "hex": "217334b351c7ad4ba5707fcaec0885351f8f095215ff048d0484b0216f435a05"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2440125000,
+      "preamble": 16,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "1677e1a1f781147eccdf4606b3cb8a06c5533310907c9a8c562ba02786c93e05",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=0.8 hex=1677e1a1f781147eccdf4606b3cb8a06c5533310907c9a8c562ba02786c93e05",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 0.8,
+          "hex": "1677e1a1f781147eccdf4606b3cb8a06c5533310907c9a8c562ba02786c93e05"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2476125000,
+      "preamble": 64,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "eddaa9b69fac403a017419b562db69a4bda1a61e9ffa3b8b93ba6aba6b814abc",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=5.2 hex=eddaa9b69fac403a017419b562db69a4bda1a61e9ffa3b8b93ba6aba6b814abc",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 5.2,
+          "hex": "eddaa9b69fac403a017419b562db69a4bda1a61e9ffa3b8b93ba6aba6b814abc"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 0,
+      "frequencyHz": 2476125000,
+      "preamble": 32,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "535cb7c559620d37bad424dbc0eaafdcc91996fc288ecd2e8a33c78e987d5211",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=6.2 hex=535cb7c559620d37bad424dbc0eaafdcc91996fc288ecd2e8a33c78e987d5211",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 6.2,
+          "hex": "535cb7c559620d37bad424dbc0eaafdcc91996fc288ecd2e8a33c78e987d5211"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2440125000,
+      "preamble": 32,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "feb95bf444933d43323c847cfaa3c877986284440783233454f57cef6e61a41a",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=5.2 hex=feb95bf444933d43323c847cfaa3c877986284440783233454f57cef6e61a41a",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 5.2,
+          "hex": "feb95bf444933d43323c847cfaa3c877986284440783233454f57cef6e61a41a"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2476125000,
+      "preamble": 12,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "e530f5d42fa275253f8f620daa7e2c494d8d3dbcbc1973ee5245883f4763db3e",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-75.5 snr=2.8 hex=e530f5d42fa275253f8f620daa7e2c494d8d3dbcbc1973ee5245883f4763db3e",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -75.5,
+          "snr": 2.8,
+          "hex": "e530f5d42fa275253f8f620daa7e2c494d8d3dbcbc1973ee5245883f4763db3e"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2476125000,
+      "preamble": 64,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "f15175e4daf4c680f9ea10f3522b89f570ba222d41a976df39eb955920f9db98",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=4.5 hex=f15175e4daf4c680f9ea10f3522b89f570ba222d41a976df39eb955920f9db98",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 4.5,
+          "hex": "f15175e4daf4c680f9ea10f3522b89f570ba222d41a976df39eb955920f9db98"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2440125000,
+      "preamble": 64,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "7c01f90d137a1e74e6c7f9fa51e3f098295bf05d09f63a5d15379e4d36f8182f",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=5.5 hex=7c01f90d137a1e74e6c7f9fa51e3f098295bf05d09f63a5d15379e4d36f8182f",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 5.5,
+          "hex": "7c01f90d137a1e74e6c7f9fa51e3f098295bf05d09f63a5d15379e4d36f8182f"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2403125000,
+      "preamble": 12,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "f3f1a23447e29f783fd20a91287d9b2541a0ddca84010bdc3d91f6dbb45287fd",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=3.0 hex=f3f1a23447e29f783fd20a91287d9b2541a0ddca84010bdc3d91f6dbb45287fd",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -65.5,
+          "snr": 3.0,
+          "hex": "f3f1a23447e29f783fd20a91287d9b2541a0ddca84010bdc3d91f6dbb45287fd"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2440125000,
+      "preamble": 16,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "b584dec58bd6e2e1c9a40a6183378e8ccd4937b606233431e7ea250e52a728ca",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=0.8 hex=b584dec58bd6e2e1c9a40a6183378e8ccd4937b606233431e7ea250e52a728ca",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 0.8,
+          "hex": "b584dec58bd6e2e1c9a40a6183378e8ccd4937b606233431e7ea250e52a728ca"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2440125000,
+      "preamble": 16,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "e330dc5382b9a45dfb6e749b631c7198ca3f70f72d68c95ac9473ce11d8900c8",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=5.0 hex=e330dc5382b9a45dfb6e749b631c7198ca3f70f72d68c95ac9473ce11d8900c8",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 5.0,
+          "hex": "e330dc5382b9a45dfb6e749b631c7198ca3f70f72d68c95ac9473ce11d8900c8"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2476125000,
+      "preamble": 32,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "63f68ad73961f4cdf66a7e01b6800d9ac6c82b6817b4406c7ffa53264f2ef3df",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=5.2 hex=63f68ad73961f4cdf66a7e01b6800d9ac6c82b6817b4406c7ffa53264f2ef3df",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 5.2,
+          "hex": "63f68ad73961f4cdf66a7e01b6800d9ac6c82b6817b4406c7ffa53264f2ef3df"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2440125000,
+      "preamble": 64,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "d3ea0463793ea94536bedb2707a967144fe9d676a7ac286b5dd7fdbf9a162ba4",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-61.5 snr=0.0 hex=d3ea0463793ea94536bedb2707a967144fe9d676a7ac286b5dd7fdbf9a162ba4",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -61.5,
+          "snr": 0.0,
+          "hex": "d3ea0463793ea94536bedb2707a967144fe9d676a7ac286b5dd7fdbf9a162ba4"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2476125000,
+      "preamble": 64,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "d84d7ac259359531673bd088090984e7934dca90921d75cc4a40775e2beafdbd",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=5.5 hex=d84d7ac259359531673bd088090984e7934dca90921d75cc4a40775e2beafdbd",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 5.5,
+          "hex": "d84d7ac259359531673bd088090984e7934dca90921d75cc4a40775e2beafdbd"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2476125000,
+      "preamble": 12,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "2c29e28324feb30862e055cf97c50de53a004e668f71c16c53d0718d49b49eca",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=4.2 hex=2c29e28324feb30862e055cf97c50de53a004e668f71c16c53d0718d49b49eca",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 4.2,
+          "hex": "2c29e28324feb30862e055cf97c50de53a004e668f71c16c53d0718d49b49eca"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2476125000,
+      "preamble": 64,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "4e790b04459c35e315e8d9c252e8251bd799e6e559175a4b5235a0500ce7d33e",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-75.5 snr=4.8 hex=4e790b04459c35e315e8d9c252e8251bd799e6e559175a4b5235a0500ce7d33e",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -75.5,
+          "snr": 4.8,
+          "hex": "4e790b04459c35e315e8d9c252e8251bd799e6e559175a4b5235a0500ce7d33e"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2440125000,
+      "preamble": 32,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "cb7232aaebc96f05cc74dfe0b18c315eadd07d9730f7518e8964cb0149ad6568",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=5.8 hex=cb7232aaebc96f05cc74dfe0b18c315eadd07d9730f7518e8964cb0149ad6568",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 5.8,
+          "hex": "cb7232aaebc96f05cc74dfe0b18c315eadd07d9730f7518e8964cb0149ad6568"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2440125000,
+      "preamble": 16,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "21f1834487c5e00cb33a428f0ddfd778b903856a8671000310bc3952e92ac809",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=5.5 hex=21f1834487c5e00cb33a428f0ddfd778b903856a8671000310bc3952e92ac809",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 5.5,
+          "hex": "21f1834487c5e00cb33a428f0ddfd778b903856a8671000310bc3952e92ac809"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2476125000,
+      "preamble": 16,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "86cca1870ef22ec64546d0d4e183acb578ec88896f77355391edc0faa719802c",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=4.0 hex=86cca1870ef22ec64546d0d4e183acb578ec88896f77355391edc0faa719802c",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 4.0,
+          "hex": "86cca1870ef22ec64546d0d4e183acb578ec88896f77355391edc0faa719802c"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2403125000,
+      "preamble": 64,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "391aa3754c8760c7af280d2ec1c61f00805acff93705c45481c88fd63fb8517a",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=2.8 hex=391aa3754c8760c7af280d2ec1c61f00805acff93705c45481c88fd63fb8517a",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 2.8,
+          "hex": "391aa3754c8760c7af280d2ec1c61f00805acff93705c45481c88fd63fb8517a"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2403125000,
+      "preamble": 32,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "e82f466bf62c055edcdbc94dba4db340c766ed2b20f2b5ed3d72db3ae28a5205",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=3.2 hex=e82f466bf62c055edcdbc94dba4db340c766ed2b20f2b5ed3d72db3ae28a5205",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -65.5,
+          "snr": 3.2,
+          "hex": "e82f466bf62c055edcdbc94dba4db340c766ed2b20f2b5ed3d72db3ae28a5205"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2476125000,
+      "preamble": 16,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "83cc7ebb504b356aab2fb77f9827c25207eac745885eddde8692dc5d38f4494a",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=6.2 hex=83cc7ebb504b356aab2fb77f9827c25207eac745885eddde8692dc5d38f4494a",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 6.2,
+          "hex": "83cc7ebb504b356aab2fb77f9827c25207eac745885eddde8692dc5d38f4494a"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2476125000,
+      "preamble": 32,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "25d3aaf956de6a6dd3df8208124bded20cd5262e13d5493eda6cb79672a35cc4",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=5.8 hex=25d3aaf956de6a6dd3df8208124bded20cd5262e13d5493eda6cb79672a35cc4",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 5.8,
+          "hex": "25d3aaf956de6a6dd3df8208124bded20cd5262e13d5493eda6cb79672a35cc4"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2476125000,
+      "preamble": 16,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "80e06070807d7d603215763056214000d4d2d1df755bd45de9dd2ccf94f2d6a7",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=4.2 hex=80e06070807d7d603215763056214000d4d2d1df755bd45de9dd2ccf94f2d6a7",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 4.2,
+          "hex": "80e06070807d7d603215763056214000d4d2d1df755bd45de9dd2ccf94f2d6a7"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2440125000,
+      "preamble": 64,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "71500de06fa205be4fc69e1332eafab76a103bad4344116c610d0ac69d3b3f06",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-61.5 snr=4.2 hex=71500de06fa205be4fc69e1332eafab76a103bad4344116c610d0ac69d3b3f06",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -61.5,
+          "snr": 4.2,
+          "hex": "71500de06fa205be4fc69e1332eafab76a103bad4344116c610d0ac69d3b3f06"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2440125000,
+      "preamble": 12,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "9cd2815298e54d8475bcda8d35b7fe1340d018a21a37f653ac8d0aaaae724ee6",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=4.5 hex=9cd2815298e54d8475bcda8d35b7fe1340d018a21a37f653ac8d0aaaae724ee6",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 4.5,
+          "hex": "9cd2815298e54d8475bcda8d35b7fe1340d018a21a37f653ac8d0aaaae724ee6"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2476125000,
+      "preamble": 12,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "ec36ed804749093d3c0f01f925e01da2f00e13d52ccef0aff53a716b639aac79",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=4.5 hex=ec36ed804749093d3c0f01f925e01da2f00e13d52ccef0aff53a716b639aac79",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 4.5,
+          "hex": "ec36ed804749093d3c0f01f925e01da2f00e13d52ccef0aff53a716b639aac79"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2476125000,
+      "preamble": 12,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "1d7779f3d081d1bb6ddfd5367b4052aece0c701ce7af1ff531fe9daead692953",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=0.2 hex=1d7779f3d081d1bb6ddfd5367b4052aece0c701ce7af1ff531fe9daead692953",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 0.2,
+          "hex": "1d7779f3d081d1bb6ddfd5367b4052aece0c701ce7af1ff531fe9daead692953"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2403125000,
+      "preamble": 12,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "fa7ee9cfa943af1c903aadf6ec2a9519aad67a86ef2a0fcb9b0cd54399e72eb1",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=3.5 hex=fa7ee9cfa943af1c903aadf6ec2a9519aad67a86ef2a0fcb9b0cd54399e72eb1",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -65.5,
+          "snr": 3.5,
+          "hex": "fa7ee9cfa943af1c903aadf6ec2a9519aad67a86ef2a0fcb9b0cd54399e72eb1"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2440125000,
+      "preamble": 12,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "cce80707c9710578a7f4ab35d767dc0f8a7639cdd38fa4a34d7f6bedf7879028",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-61.5 snr=5.0 hex=cce80707c9710578a7f4ab35d767dc0f8a7639cdd38fa4a34d7f6bedf7879028",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -61.5,
+          "snr": 5.0,
+          "hex": "cce80707c9710578a7f4ab35d767dc0f8a7639cdd38fa4a34d7f6bedf7879028"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2403125000,
+      "preamble": 64,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "79c06cffb6efc9a1808e713a903300745d641264974ca96d4835563c7195d2a8",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=4.8 hex=79c06cffb6efc9a1808e713a903300745d641264974ca96d4835563c7195d2a8",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 4.8,
+          "hex": "79c06cffb6efc9a1808e713a903300745d641264974ca96d4835563c7195d2a8"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2403125000,
+      "preamble": 32,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "b02aa3d98344f4e2433d905c1d73f57f220627d98696f5e5439e9264130369f4",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=5.0 hex=b02aa3d98344f4e2433d905c1d73f57f220627d98696f5e5439e9264130369f4",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 5.0,
+          "hex": "b02aa3d98344f4e2433d905c1d73f57f220627d98696f5e5439e9264130369f4"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2403125000,
+      "preamble": 12,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "15300c1e5adfa7826c1b9535d32b87f9de7c17cd783d3589b1f9131d68e1ee27",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=6.0 hex=15300c1e5adfa7826c1b9535d32b87f9de7c17cd783d3589b1f9131d68e1ee27",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 6.0,
+          "hex": "15300c1e5adfa7826c1b9535d32b87f9de7c17cd783d3589b1f9131d68e1ee27"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2403125000,
+      "preamble": 16,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "146b82468b2a3d8bebd30c2cc9c4501f439f220ab18084d8b0d68395473e67e4",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=4.8 hex=146b82468b2a3d8bebd30c2cc9c4501f439f220ab18084d8b0d68395473e67e4",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 4.8,
+          "hex": "146b82468b2a3d8bebd30c2cc9c4501f439f220ab18084d8b0d68395473e67e4"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2403125000,
+      "preamble": 16,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "bf8f9dff6258da9a0805992835a35e181f3b7e23b34175f12510702e52dbccda",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=4.0 hex=bf8f9dff6258da9a0805992835a35e181f3b7e23b34175f12510702e52dbccda",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -65.5,
+          "snr": 4.0,
+          "hex": "bf8f9dff6258da9a0805992835a35e181f3b7e23b34175f12510702e52dbccda"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2476125000,
+      "preamble": 32,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "88fa8e8d7a3212cfaa3de030cf89a57a346cb89994d526e208571970c15e0621",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=4.2 hex=88fa8e8d7a3212cfaa3de030cf89a57a346cb89994d526e208571970c15e0621",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 4.2,
+          "hex": "88fa8e8d7a3212cfaa3de030cf89a57a346cb89994d526e208571970c15e0621"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40224",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2403125000,
+      "preamble": 64,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "87647d543a6ba2d1d70eafec930f7c746d363be43bc7cde4aa8f31bd6de1484b",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=3.5 hex=87647d543a6ba2d1d70eafec930f7c746d363be43bc7cde4aa8f31bd6de1484b",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -65.5,
+          "snr": 3.5,
+          "hex": "87647d543a6ba2d1d70eafec930f7c746d363be43bc7cde4aa8f31bd6de1484b"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2403125000,
+      "preamble": 32,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "d42ba9197c020d018aea0fa67893f9fff32c72435ebd3600fdd5ef9870ce9b24",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=2.8 hex=d42ba9197c020d018aea0fa67893f9fff32c72435ebd3600fdd5ef9870ce9b24",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 2.8,
+          "hex": "d42ba9197c020d018aea0fa67893f9fff32c72435ebd3600fdd5ef9870ce9b24"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2440125000,
+      "preamble": 12,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "4cf14ddab2685b49757f26bce8a4adc2d62c0aff2fd43011dd9d7235d8fa4622",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=3.5 hex=4cf14ddab2685b49757f26bce8a4adc2d62c0aff2fd43011dd9d7235d8fa4622",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 3.5,
+          "hex": "4cf14ddab2685b49757f26bce8a4adc2d62c0aff2fd43011dd9d7235d8fa4622"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2403125000,
+      "preamble": 16,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "f1e30421e85aa731c4b05fb9d1a5946ddaca5519100edbab2421ec1e8ad7c218",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=5.5 hex=f1e30421e85aa731c4b05fb9d1a5946ddaca5519100edbab2421ec1e8ad7c218",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -65.5,
+          "snr": 5.5,
+          "hex": "f1e30421e85aa731c4b05fb9d1a5946ddaca5519100edbab2421ec1e8ad7c218"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2476125000,
+      "preamble": 32,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "bcf0f88b0997e3f35990c3c7ad1785655726303064e781572b67fbe0cd74b982",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=4.5 hex=bcf0f88b0997e3f35990c3c7ad1785655726303064e781572b67fbe0cd74b982",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 4.5,
+          "hex": "bcf0f88b0997e3f35990c3c7ad1785655726303064e781572b67fbe0cd74b982"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2440125000,
+      "preamble": 16,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "308243cce463beefd0cd0c34e94bfd2c7530363997b8c8a087ada18021238dff",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=4.8 hex=308243cce463beefd0cd0c34e94bfd2c7530363997b8c8a087ada18021238dff",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 4.8,
+          "hex": "308243cce463beefd0cd0c34e94bfd2c7530363997b8c8a087ada18021238dff"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2440125000,
+      "preamble": 32,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "4c6aa3b1e8f8165054e3953aa857bc4f79e24d8bc024dc32fa9d1e78d9677625",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=3.8 hex=4c6aa3b1e8f8165054e3953aa857bc4f79e24d8bc024dc32fa9d1e78d9677625",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 3.8,
+          "hex": "4c6aa3b1e8f8165054e3953aa857bc4f79e24d8bc024dc32fa9d1e78d9677625"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2440125000,
+      "preamble": 64,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "9c54bee8a47cac0330ac6d80c5bd869ddb81ef2a1821a84d1ea68a50671af3ff",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-63.5 snr=5.0 hex=9c54bee8a47cac0330ac6d80c5bd869ddb81ef2a1821a84d1ea68a50671af3ff",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -63.5,
+          "snr": 5.0,
+          "hex": "9c54bee8a47cac0330ac6d80c5bd869ddb81ef2a1821a84d1ea68a50671af3ff"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2403125000,
+      "preamble": 64,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "2b71f2b44c311325ebb55a2c895b00f18a9606defaaa2e009f5a445bc717dcaf",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=5.0 hex=2b71f2b44c311325ebb55a2c895b00f18a9606defaaa2e009f5a445bc717dcaf",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 5.0,
+          "hex": "2b71f2b44c311325ebb55a2c895b00f18a9606defaaa2e009f5a445bc717dcaf"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2403125000,
+      "preamble": 12,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "1cb9accdfb769e539a3552b999c4859627dcb907f658d329baab0a2e8c3d201e",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=5.2 hex=1cb9accdfb769e539a3552b999c4859627dcb907f658d329baab0a2e8c3d201e",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 5.2,
+          "hex": "1cb9accdfb769e539a3552b999c4859627dcb907f658d329baab0a2e8c3d201e"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2403125000,
+      "preamble": 16,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "65ac9e92ea975a03711a415efa11a7851a4965dbb735f5efe1b275f2dd35bfec",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=5.5 hex=65ac9e92ea975a03711a415efa11a7851a4965dbb735f5efe1b275f2dd35bfec",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 5.5,
+          "hex": "65ac9e92ea975a03711a415efa11a7851a4965dbb735f5efe1b275f2dd35bfec"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2476125000,
+      "preamble": 16,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "96e48146cba6d038adb3a8bae03d849961f9afde46ff25c21c8443eee282c885",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-75.5 snr=4.5 hex=96e48146cba6d038adb3a8bae03d849961f9afde46ff25c21c8443eee282c885",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -75.5,
+          "snr": 4.5,
+          "hex": "96e48146cba6d038adb3a8bae03d849961f9afde46ff25c21c8443eee282c885"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2440125000,
+      "preamble": 32,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "33625fcd270c6d1aa6b67cc960d81216755cbc6d2134b0c15c69103e756a57d3",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=4.5 hex=33625fcd270c6d1aa6b67cc960d81216755cbc6d2134b0c15c69103e756a57d3",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 4.5,
+          "hex": "33625fcd270c6d1aa6b67cc960d81216755cbc6d2134b0c15c69103e756a57d3"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2440125000,
+      "preamble": 12,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "c0b33b907984100c4a35602243decc30091d354c45381d0d6e5128e7adf67d23",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=5.0 hex=c0b33b907984100c4a35602243decc30091d354c45381d0d6e5128e7adf67d23",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 5.0,
+          "hex": "c0b33b907984100c4a35602243decc30091d354c45381d0d6e5128e7adf67d23"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2476125000,
+      "preamble": 64,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "9111059f7b6538389af14c532caa82fd0f81bda446da1be0f7ce62ded3d61e93",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=5.8 hex=9111059f7b6538389af14c532caa82fd0f81bda446da1be0f7ce62ded3d61e93",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 5.8,
+          "hex": "9111059f7b6538389af14c532caa82fd0f81bda446da1be0f7ce62ded3d61e93"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 1,
+      "frequencyHz": 2403125000,
+      "preamble": 32,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "9819c67b94bf5f1c48c75e60fec2ecd238bc4702c1d08dcfbd3e9cde2e4bf646",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=4.5 hex=9819c67b94bf5f1c48c75e60fec2ecd238bc4702c1d08dcfbd3e9cde2e4bf646",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 4.5,
+          "hex": "9819c67b94bf5f1c48c75e60fec2ecd238bc4702c1d08dcfbd3e9cde2e4bf646"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2476125000,
+      "preamble": 32,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "dda6c1d824ad10f1fb380cde86bf860efb61b775fcfa3b2946a8591819ed01b1",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=4.5 hex=dda6c1d824ad10f1fb380cde86bf860efb61b775fcfa3b2946a8591819ed01b1",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 4.5,
+          "hex": "dda6c1d824ad10f1fb380cde86bf860efb61b775fcfa3b2946a8591819ed01b1"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40224",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2403125000,
+      "preamble": 64,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "b36f2f00b10284102e2056f9fb1c252791f7944fae43a82f3aca4061dce2686e",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=3.8 hex=b36f2f00b10284102e2056f9fb1c252791f7944fae43a82f3aca4061dce2686e",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -65.5,
+          "snr": 3.8,
+          "hex": "b36f2f00b10284102e2056f9fb1c252791f7944fae43a82f3aca4061dce2686e"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2403125000,
+      "preamble": 64,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "786274acc3b54e913b09da3ba2cd15828322515b857014fcdcfe95e336e8f868",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=3.8 hex=786274acc3b54e913b09da3ba2cd15828322515b857014fcdcfe95e336e8f868",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 3.8,
+          "hex": "786274acc3b54e913b09da3ba2cd15828322515b857014fcdcfe95e336e8f868"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2403125000,
+      "preamble": 16,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "546f00172a5e9a3ee8948a035ddab5dfe041bf8ee5da2211a8dc51de59366644",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=5.0 hex=546f00172a5e9a3ee8948a035ddab5dfe041bf8ee5da2211a8dc51de59366644",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 5.0,
+          "hex": "546f00172a5e9a3ee8948a035ddab5dfe041bf8ee5da2211a8dc51de59366644"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2440125000,
+      "preamble": 16,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "a1bd282296e480be9d51a212f208549b4aa0a33945d64f9cac4a7d3b7107212e",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=6.0 hex=a1bd282296e480be9d51a212f208549b4aa0a33945d64f9cac4a7d3b7107212e",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 6.0,
+          "hex": "a1bd282296e480be9d51a212f208549b4aa0a33945d64f9cac4a7d3b7107212e"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2440125000,
+      "preamble": 16,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "062e85d3e2cc1ec3c3277dcea4d30755ed616d2e699cb10749b08c40b0cfd97d",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-61.5 snr=4.5 hex=062e85d3e2cc1ec3c3277dcea4d30755ed616d2e699cb10749b08c40b0cfd97d",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -61.5,
+          "snr": 4.5,
+          "hex": "062e85d3e2cc1ec3c3277dcea4d30755ed616d2e699cb10749b08c40b0cfd97d"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2476125000,
+      "preamble": 16,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "a5c0ee3d1bc9e66e1fe570ec38b455f8f975be5aa5c346ee648b413fdcebe64c",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=3.8 hex=a5c0ee3d1bc9e66e1fe570ec38b455f8f975be5aa5c346ee648b413fdcebe64c",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 3.8,
+          "hex": "a5c0ee3d1bc9e66e1fe570ec38b455f8f975be5aa5c346ee648b413fdcebe64c"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2403125000,
+      "preamble": 32,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "d2cfbf5a91cf6e0bf542a4d50f61a3f74de496c0db4890472f7be0f0eac64560",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=5.2 hex=d2cfbf5a91cf6e0bf542a4d50f61a3f74de496c0db4890472f7be0f0eac64560",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 5.2,
+          "hex": "d2cfbf5a91cf6e0bf542a4d50f61a3f74de496c0db4890472f7be0f0eac64560"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2440125000,
+      "preamble": 32,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "f36f1f801b1f167a39d2975e24c36a471d799374a88e1fcc0c3009a439894f54",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-61.5 snr=5.8 hex=f36f1f801b1f167a39d2975e24c36a471d799374a88e1fcc0c3009a439894f54",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -61.5,
+          "snr": 5.8,
+          "hex": "f36f1f801b1f167a39d2975e24c36a471d799374a88e1fcc0c3009a439894f54"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2476125000,
+      "preamble": 12,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "c4065ad9b84c2be24ca5b3cf24faef289fd49bf46de572d7ae622d8953a34431",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-75.5 snr=4.0 hex=c4065ad9b84c2be24ca5b3cf24faef289fd49bf46de572d7ae622d8953a34431",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -75.5,
+          "snr": 4.0,
+          "hex": "c4065ad9b84c2be24ca5b3cf24faef289fd49bf46de572d7ae622d8953a34431"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2440125000,
+      "preamble": 64,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "1a3504867de194627f7a8238335115c0ae063d41eda3667b69295a437b932ddc",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=6.0 hex=1a3504867de194627f7a8238335115c0ae063d41eda3667b69295a437b932ddc",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 6.0,
+          "hex": "1a3504867de194627f7a8238335115c0ae063d41eda3667b69295a437b932ddc"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2403125000,
+      "preamble": 64,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "27e4db67fc27fa036b6d7cd03c2cb6bc629ba8d4f442edf440040ad76c5d2dce",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=6.2 hex=27e4db67fc27fa036b6d7cd03c2cb6bc629ba8d4f442edf440040ad76c5d2dce",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -65.5,
+          "snr": 6.2,
+          "hex": "27e4db67fc27fa036b6d7cd03c2cb6bc629ba8d4f442edf440040ad76c5d2dce"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2476125000,
+      "preamble": 64,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "8b78634ab3af4668c440ec3c5344ba44f294be65588411e2e23befd00e5a5aa0",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=5.0 hex=8b78634ab3af4668c440ec3c5344ba44f294be65588411e2e23befd00e5a5aa0",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 5.0,
+          "hex": "8b78634ab3af4668c440ec3c5344ba44f294be65588411e2e23befd00e5a5aa0"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2440125000,
+      "preamble": 16,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "c3a379717385d4080ec1739a701127cf73d7459ca29de7c4f6b971d6fc0556fa",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=5.0 hex=c3a379717385d4080ec1739a701127cf73d7459ca29de7c4f6b971d6fc0556fa",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 5.0,
+          "hex": "c3a379717385d4080ec1739a701127cf73d7459ca29de7c4f6b971d6fc0556fa"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2476125000,
+      "preamble": 64,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "46284d7cc61780d7b73bd7a7bc94b04d87c56da27836984b7fa8dcbfc961c50b",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=4.8 hex=46284d7cc61780d7b73bd7a7bc94b04d87c56da27836984b7fa8dcbfc961c50b",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 4.8,
+          "hex": "46284d7cc61780d7b73bd7a7bc94b04d87c56da27836984b7fa8dcbfc961c50b"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2403125000,
+      "preamble": 16,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "c06ce1a70144e8563fe1b86741b22dac7fbd357796aaf10d328b3abfce9111e2",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=4.2 hex=c06ce1a70144e8563fe1b86741b22dac7fbd357796aaf10d328b3abfce9111e2",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 4.2,
+          "hex": "c06ce1a70144e8563fe1b86741b22dac7fbd357796aaf10d328b3abfce9111e2"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2440125000,
+      "preamble": 16,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "19a96d301fae75af6ddb6075d7dba057eef6008f7fb04af9df7acab30a369943",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=5.5 hex=19a96d301fae75af6ddb6075d7dba057eef6008f7fb04af9df7acab30a369943",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 5.5,
+          "hex": "19a96d301fae75af6ddb6075d7dba057eef6008f7fb04af9df7acab30a369943"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2440125000,
+      "preamble": 12,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "dc2c4409f3f1062c4cd016cb7428453b3cf9aff083fe16e1d270ac8e6f548490",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=3.8 hex=dc2c4409f3f1062c4cd016cb7428453b3cf9aff083fe16e1d270ac8e6f548490",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 3.8,
+          "hex": "dc2c4409f3f1062c4cd016cb7428453b3cf9aff083fe16e1d270ac8e6f548490"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2403125000,
+      "preamble": 32,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "e1f5ebbaba3a158a132bc677ad815eaa8c201aca8e31591b9860dac3db5fc6dc",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=3.2 hex=e1f5ebbaba3a158a132bc677ad815eaa8c201aca8e31591b9860dac3db5fc6dc",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 3.2,
+          "hex": "e1f5ebbaba3a158a132bc677ad815eaa8c201aca8e31591b9860dac3db5fc6dc"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2476125000,
+      "preamble": 32,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "39578ad87c7f6dad3c024cb9314a98626a8f5cbe6d873eb2c16cb3ce16ec6653",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=4.5 hex=39578ad87c7f6dad3c024cb9314a98626a8f5cbe6d873eb2c16cb3ce16ec6653",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 4.5,
+          "hex": "39578ad87c7f6dad3c024cb9314a98626a8f5cbe6d873eb2c16cb3ce16ec6653"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2476125000,
+      "preamble": 64,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "3268228eaabf118087c8ea79630694357476fe49fec3da615bd777c24e0ce524",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-75.5 snr=4.8 hex=3268228eaabf118087c8ea79630694357476fe49fec3da615bd777c24e0ce524",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -75.5,
+          "snr": 4.8,
+          "hex": "3268228eaabf118087c8ea79630694357476fe49fec3da615bd777c24e0ce524"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2403125000,
+      "preamble": 64,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "dd07538527554d9c1d942c192f8f12a7c551180e59fde1a673fd97d3763781a3",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=4.8 hex=dd07538527554d9c1d942c192f8f12a7c551180e59fde1a673fd97d3763781a3",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 4.8,
+          "hex": "dd07538527554d9c1d942c192f8f12a7c551180e59fde1a673fd97d3763781a3"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2440125000,
+      "preamble": 32,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "f9a0c27c7a81392cbc3508107a00f372727e31408060654f6786a505b46cd6fa",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-61.5 snr=6.0 hex=f9a0c27c7a81392cbc3508107a00f372727e31408060654f6786a505b46cd6fa",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -61.5,
+          "snr": 6.0,
+          "hex": "f9a0c27c7a81392cbc3508107a00f372727e31408060654f6786a505b46cd6fa"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2476125000,
+      "preamble": 16,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "565fff1976571c3ab960d078e5a4ee9478ebc69c10b7c8cd0fc08538e431f2e4",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=5.2 hex=565fff1976571c3ab960d078e5a4ee9478ebc69c10b7c8cd0fc08538e431f2e4",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 5.2,
+          "hex": "565fff1976571c3ab960d078e5a4ee9478ebc69c10b7c8cd0fc08538e431f2e4"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2476125000,
+      "preamble": 16,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "c318d5aa501b841eb336912da250f1da9987e66428e0e3ea8f3c16e5b1629789",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-75.5 snr=4.2 hex=c318d5aa501b841eb336912da250f1da9987e66428e0e3ea8f3c16e5b1629789",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -75.5,
+          "snr": 4.2,
+          "hex": "c318d5aa501b841eb336912da250f1da9987e66428e0e3ea8f3c16e5b1629789"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2440125000,
+      "preamble": 32,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "0d3e2434388e4360b023fdc1e9a77ee00000b744cdf8097c575208483f384f22",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-63.5 snr=4.8 hex=0d3e2434388e4360b023fdc1e9a77ee00000b744cdf8097c575208483f384f22",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -63.5,
+          "snr": 4.8,
+          "hex": "0d3e2434388e4360b023fdc1e9a77ee00000b744cdf8097c575208483f384f22"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2440125000,
+      "preamble": 32,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "4f7f73bb42dea9c1cda14c1ab8601408b00fb5487092362bb9dd5eecef4f8bb2",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-63.5 snr=4.0 hex=4f7f73bb42dea9c1cda14c1ab8601408b00fb5487092362bb9dd5eecef4f8bb2",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -63.5,
+          "snr": 4.0,
+          "hex": "4f7f73bb42dea9c1cda14c1ab8601408b00fb5487092362bb9dd5eecef4f8bb2"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2403125000,
+      "preamble": 12,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "a9166fdf4db7531807cf9b98c213fc6e30ed0113d7b861856217dc80009467cb",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=6.5 hex=a9166fdf4db7531807cf9b98c213fc6e30ed0113d7b861856217dc80009467cb",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -65.5,
+          "snr": 6.5,
+          "hex": "a9166fdf4db7531807cf9b98c213fc6e30ed0113d7b861856217dc80009467cb"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2476125000,
+      "preamble": 12,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "b7c2a6f8c4ae4f531a4209c1746643171b2b6d4601ded80b12c221e3cad58d79",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=5.8 hex=b7c2a6f8c4ae4f531a4209c1746643171b2b6d4601ded80b12c221e3cad58d79",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 5.8,
+          "hex": "b7c2a6f8c4ae4f531a4209c1746643171b2b6d4601ded80b12c221e3cad58d79"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2440125000,
+      "preamble": 64,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "ace41856e658fa350183efb530797d497b8f2d934ad233e41c4dfa92c27ac520",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=6.0 hex=ace41856e658fa350183efb530797d497b8f2d934ad233e41c4dfa92c27ac520",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 6.0,
+          "hex": "ace41856e658fa350183efb530797d497b8f2d934ad233e41c4dfa92c27ac520"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2476125000,
+      "preamble": 32,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "da42f1878e8a1ce84b53b93a2861000c09ee2e3b71cf5b0f158d98929bb04ef1",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-75.5 snr=4.8 hex=da42f1878e8a1ce84b53b93a2861000c09ee2e3b71cf5b0f158d98929bb04ef1",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -75.5,
+          "snr": 4.8,
+          "hex": "da42f1878e8a1ce84b53b93a2861000c09ee2e3b71cf5b0f158d98929bb04ef1"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40224",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2476125000,
+      "preamble": 32,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "b6c3c551a271946059baf9c09c7d15c03696ac8c389dd9bf82bd97a79ae86c72",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=5.8 hex=b6c3c551a271946059baf9c09c7d15c03696ac8c389dd9bf82bd97a79ae86c72",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 5.8,
+          "hex": "b6c3c551a271946059baf9c09c7d15c03696ac8c389dd9bf82bd97a79ae86c72"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40224",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2403125000,
+      "preamble": 16,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "9d843658e1fe21630e09b4ce19ba8e48cd55199108f38d1b974f014bd2478aaa",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=5.0 hex=9d843658e1fe21630e09b4ce19ba8e48cd55199108f38d1b974f014bd2478aaa",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -65.5,
+          "snr": 5.0,
+          "hex": "9d843658e1fe21630e09b4ce19ba8e48cd55199108f38d1b974f014bd2478aaa"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2403125000,
+      "preamble": 12,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "d297c175ad0ffc4467035f2abcae373ee15df20386463dacd7c5dc7b3a15bc59",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=7.2 hex=d297c175ad0ffc4467035f2abcae373ee15df20386463dacd7c5dc7b3a15bc59",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 7.2,
+          "hex": "d297c175ad0ffc4467035f2abcae373ee15df20386463dacd7c5dc7b3a15bc59"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2440125000,
+      "preamble": 64,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "f671f276e4a20e4803a6ed3206c068bdfa8f8262bbb3f469750870d2f867db22",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=3.2 hex=f671f276e4a20e4803a6ed3206c068bdfa8f8262bbb3f469750870d2f867db22",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 3.2,
+          "hex": "f671f276e4a20e4803a6ed3206c068bdfa8f8262bbb3f469750870d2f867db22"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2403125000,
+      "preamble": 32,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "27f50e33efa260bbc9e234e2739b12f1c60869740b59f5a49c3f2f6268282a83",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=5.8 hex=27f50e33efa260bbc9e234e2739b12f1c60869740b59f5a49c3f2f6268282a83",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -65.5,
+          "snr": 5.8,
+          "hex": "27f50e33efa260bbc9e234e2739b12f1c60869740b59f5a49c3f2f6268282a83"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2440125000,
+      "preamble": 64,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "4931ba2ccc471f38f9927aebdd9c4acd891426361d3929df805e83dd07ce62ff",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=6.8 hex=4931ba2ccc471f38f9927aebdd9c4acd891426361d3929df805e83dd07ce62ff",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 6.8,
+          "hex": "4931ba2ccc471f38f9927aebdd9c4acd891426361d3929df805e83dd07ce62ff"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2403125000,
+      "preamble": 12,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "4801880964fbe07db921d23323fd7dc01ffa391e0e1bcd251a4afb6824e72d0a",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-66.5 snr=4.0 hex=4801880964fbe07db921d23323fd7dc01ffa391e0e1bcd251a4afb6824e72d0a",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 4.0,
+          "hex": "4801880964fbe07db921d23323fd7dc01ffa391e0e1bcd251a4afb6824e72d0a"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2403125000,
+      "preamble": 12,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "43210fe862b649b5bb877abf33d89fe94d2394f71a185e6bbfd10a2f21c903cb",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=5.5 hex=43210fe862b649b5bb877abf33d89fe94d2394f71a185e6bbfd10a2f21c903cb",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -65.5,
+          "snr": 5.5,
+          "hex": "43210fe862b649b5bb877abf33d89fe94d2394f71a185e6bbfd10a2f21c903cb"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2476125000,
+      "preamble": 12,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "7147fa8c5e774dfad61a8cc6d4eb0fd13da385d0bceb8a9a347cf143dc86503a",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=3.8 hex=7147fa8c5e774dfad61a8cc6d4eb0fd13da385d0bceb8a9a347cf143dc86503a",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 3.8,
+          "hex": "7147fa8c5e774dfad61a8cc6d4eb0fd13da385d0bceb8a9a347cf143dc86503a"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2403125000,
+      "preamble": 32,
+      "syncWord": 52,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "72c996718ce5dc52af06e256eafe3aae581f9edb3d4a905c6a753387c158fd2c",
+      "received": [
+        {
+          "raw": "RX status=-7 header=0 crc_present=1 crc_ok=0 bytes=32 rssi=-66.5 snr=0.0 hex=72c996618ce5dc62af06625ceafe32ae581f99db3d4a901c6a753387c158fd2c",
+          "status": -7,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": false,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 0.0,
+          "hex": "72c996618ce5dc62af06625ceafe32ae581f99db3d4a901c6a753387c158fd2c"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": false
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2440125000,
+      "preamble": 12,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "3c5461ecf15ba1630d9b2f1cb58e901b194d5cc120e35cb78049689b2856c0ec",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-61.5 snr=6.2 hex=3c5461ecf15ba1630d9b2f1cb58e901b194d5cc120e35cb78049689b2856c0ec",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -61.5,
+          "snr": 6.2,
+          "hex": "3c5461ecf15ba1630d9b2f1cb58e901b194d5cc120e35cb78049689b2856c0ec"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2403125000,
+      "preamble": 16,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "8e890bfcec3e46bc7f63d24fc9535fce9be40d0c35c29b722b71861812ca9987",
+      "received": [
+        {
+          "raw": "RX status=-7 header=0 crc_present=1 crc_ok=0 bytes=32 rssi=-66.5 snr=5.5 hex=8e890bfcec3346bcbf63d24fc9535fc89be47d0c35c296723b71861812cad987",
+          "status": -7,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": false,
+          "bytes": 32,
+          "rssi": -66.5,
+          "snr": 5.5,
+          "hex": "8e890bfcec3346bcbf63d24fc9535fc89be47d0c35c296723b71861812cad987"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": false
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2476125000,
+      "preamble": 64,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "84b438a1c4c4220559b5038de0cb2a41b4b88ed17ca56ac69521fc73849dbd24",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=4.2 hex=84b438a1c4c4220559b5038de0cb2a41b4b88ed17ca56ac69521fc73849dbd24",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 4.2,
+          "hex": "84b438a1c4c4220559b5038de0cb2a41b4b88ed17ca56ac69521fc73849dbd24"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 157 0 98.462 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2440125000,
+      "preamble": 12,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "33e26d47f66be5217776f7e65bc345c7ecbde808ff831f1a410cb78697a09b97",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-61.5 snr=4.5 hex=33e26d47f66be5217776f7e65bc345c7ecbde808ff831f1a410cb78697a09b97",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -61.5,
+          "snr": 4.5,
+          "hex": "33e26d47f66be5217776f7e65bc345c7ecbde808ff831f1a410cb78697a09b97"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2476125000,
+      "preamble": 12,
+      "syncWord": 18,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "e208e345a0569347469db1b972dc6cd42aa8dfa80f037f3b571367cd4ce819c9",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=5.5 hex=e208e345a0569347469db1b972dc6cd42aa8dfa80f037f3b571367cd4ce819c9",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 5.5,
+          "hex": "e208e345a0569347469db1b972dc6cd42aa8dfa80f037f3b571367cd4ce819c9"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2476125000,
+      "preamble": 16,
+      "syncWord": 52,
+      "xiaoInverted": 0,
+      "lr2021InvertIQ": 1,
+      "expected": "d4546657d6b23d9bafa8e76bba6d0e90dd17977e1631f0d2e0dbd9e8c8d1f3d5",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-74.5 snr=5.8 hex=d4546657d6b23d9bafa8e76bba6d0e90dd17977e1631f0d2e0dbd9e8c8d1f3d5",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -74.5,
+          "snr": 5.8,
+          "hex": "d4546657d6b23d9bafa8e76bba6d0e90dd17977e1631f0d2e0dbd9e8c8d1f3d5"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    },
+    {
+      "block": 2,
+      "frequencyHz": 2440125000,
+      "preamble": 12,
+      "syncWord": 18,
+      "xiaoInverted": 1,
+      "lr2021InvertIQ": 0,
+      "expected": "e3f172ee609c97deaef8a1a82f4baf66cb797e04d47c0b2e3a3a4474ba31e869",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=5.8 hex=e3f172ee609c97deaef8a1a82f4baf66cb797e04d47c0b2e3a3a4474ba31e869",
+          "status": 0,
+          "header": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 5.8,
+          "hex": "e3f172ee609c97deaef8a1a82f4baf66cb797e04d47c0b2e3a3a4474ba31e869"
+        }
+      ],
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 105 0 65.694 buffer=3fc9f680 copy=40223",
+      "transportOk": true,
+      "passed": true
+    }
+  ],
+  "receiverIdentity": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1",
+  "finishedUtc": "2026-10-06T21:34:01.001158+00:00"
+}

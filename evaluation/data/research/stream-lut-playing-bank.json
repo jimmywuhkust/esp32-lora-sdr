@@ -1,0 +1,65 @@
+{
+  "startedUtc": "2026-10-06T21:24:19.813820+00:00",
+  "port": "COM3",
+  "imageSha256": "33a60a34db837392e6ea476b5bd937eaefc8d0da206c4cf9380b50c0500eb15d",
+  "rfKeyed": false,
+  "completed": true,
+  "cases": [
+    {
+      "block": 0,
+      "command": "BANKIDLE",
+      "line": "BANK ok=1 bad=0 first=16384 c=1187",
+      "engineCompleted": 1,
+      "wrongWords": 0,
+      "firstWrong": 16384,
+      "maxCopyCycles": 1187
+    },
+    {
+      "block": 0,
+      "command": "BANKPLAY",
+      "line": "BANK ok=1 bad=16201 first=0 c=1187",
+      "engineCompleted": 1,
+      "wrongWords": 16201,
+      "firstWrong": 0,
+      "maxCopyCycles": 1187
+    },
+    {
+      "block": 1,
+      "command": "BANKIDLE",
+      "line": "BANK ok=1 bad=0 first=16384 c=1187",
+      "engineCompleted": 1,
+      "wrongWords": 0,
+      "firstWrong": 16384,
+      "maxCopyCycles": 1187
+    },
+    {
+      "block": 1,
+      "command": "BANKPLAY",
+      "line": "BANK ok=1 bad=16201 first=0 c=1187",
+      "engineCompleted": 1,
+      "wrongWords": 16201,
+      "firstWrong": 0,
+      "maxCopyCycles": 1187
+    },
+    {
+      "block": 2,
+      "command": "BANKIDLE",
+      "line": "BANK ok=1 bad=0 first=16384 c=1188",
+      "engineCompleted": 1,
+      "wrongWords": 0,
+      "firstWrong": 16384,
+      "maxCopyCycles": 1188
+    },
+    {
+      "block": 2,
+      "command": "BANKPLAY",
+      "line": "BANK ok=1 bad=16201 first=0 c=1187",
+      "engineCompleted": 1,
+      "wrongWords": 16201,
+      "firstWrong": 0,
+      "maxCopyCycles": 1187
+    }
+  ],
+  "identity": "LoRaSDR native S3 0.1",
+  "writerSelfTest": "LUTTEST passed=1 max=1189 budget=1536"
+}

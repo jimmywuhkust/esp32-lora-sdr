@@ -35,6 +35,10 @@ pio device monitor --port YOUR_RECEIVER_PORT --baud 115200
 `SF 7`, `SF 8`, `SF 9` and `BW 203125`, `BW 406250`, `BW 812500` change
 receiver settings explicitly. These commands acknowledge the chip result;
 an accepted SF setting does not establish that the XIAO waveform interoperates.
+`FREQ 2440125` selects kHz, `PRE 16` the preamble, `SYNC 18` the decimal sync
+word (0x12), and `INV 0` standard IQ (`INV 1` inverted). Match both sides;
+XIAO `INV 1` matches LR2021 `INV 0` because of the measured S3 convention.
+Every setting enters standby, checks the chip result and restarts reception.
 
 ```text
 RX status=0 header=0 crc_present=1 crc_ok=1 bytes=... rssi=... snr=... hex=...

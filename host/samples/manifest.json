@@ -1,0 +1,23 @@
+{
+  "file": "lr2021-sf7-window.iqs",
+  "sha256": "3324771073227a1a641d9123fe6570e0e82b66b16dbad634ffc310a1781e0001",
+  "bytes": 90014,
+  "source": "Real LR2021 HF over-air TX captured by XIAO ESP32-S3; PC decoded",
+  "originalSession": "packets-1791304890457516600",
+  "originalFile": "window-0011.iqs",
+  "frequencyMHz": 2440.125,
+  "bandwidthHz": 203125,
+  "spreadingFactor": 7,
+  "codingRate": "4/5",
+  "sampleRate": 250000,
+  "bitsPerComponent": 4,
+  "shift": 9,
+  "hardwareAGC": true,
+  "windowMs": 350,
+  "expectedPayloadHex": "5849414f206465636f6465732066756c6c204c6f526121",
+  "expectedPayloadCRC": "fc8a",
+  "payloadExpectationUsedDuringDecoding": false,
+  "originalSessionElapsedSeconds": 60.07,
+  "originalSessionRFDutyPercent": 58.91719123369026,
+  "interpretation": "One real recorded packet, not a delivery-rate or continuous-capture trial"
+}

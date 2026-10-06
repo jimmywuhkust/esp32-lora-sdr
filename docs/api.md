@@ -46,10 +46,10 @@ backend. Separate ESP-SDR I/Q capture and PC decoding are a different workflow.
 | `bandwidthHz` | LoRa bandwidth | 203125, 406250, 812500; verified with SF7 and matching window lengths |
 | `spreadingFactor` | PHY SF | Encoder SF7–12; native RF SF7–9 experimental; only SF7 has demonstrated DAC interop |
 | `codingRate` | 1, 2, 3, 4 | 4/5, 4/6, 4/7, 4/8 |
-| `syncWord` | Two sync nibbles | Default `0x12`; other words unverified |
+| `syncWord` | Two sync nibbles | Default `0x12`; `0x12` and `0x34` covered by the settings matrix |
 | `preambleSymbols` | Preamble chirps | RF 12–64, default 16 |
 | `explicitHeader` / `payloadCrc` | Packet modes | RF requires both true |
-| `inverted` | S3 physical chirp convention | Measured default true |
+| `inverted` | S3 physical chirp convention | true matches LR2021 standard IQ; false matches LR2021 inverted IQ |
 | `frequencyCorrectionHz` | LO correction | ±50 kHz; +15 kHz measured for one board pair |
 | `transport` | `Pll` or `DacWindows` | DAC is the default and the measured profile |
 | `dacAmplitude` | Signed 10-bit I/Q peak | 1–200, default 150; uncalibrated |
@@ -94,9 +94,20 @@ PA 0                 preserve keyed analog defaults; experimental PA 1–63 for 
 BW 203125            203125 / 406250 / 812500 Hz; choose matching window
 WIN 15000            DAC window, 1000–16380 samples
 PRE 16               preamble, 12–64 symbols
+SYNC 18              sync word, decimal 0–255; 18=0x12, 52=0x34
+INV 1                S3 waveform polarity; 0/1, match receiver convention
 FREQ 2440125         channel in kHz
 CFO 15000            correction in Hz
 ```
 
 Invalid hex, odd-length hex, trailing arguments and out-of-range parameters
 are rejected. Settings do not emit RF. There is no automatic retransmission.
+
+The settings matrix tests three channels (2403.125,2440.125,2476.125 MHz),
+four preambles (12,16,32,64), two sync words and both matched IQ polarities.
+It does not validate every allowed frequency/sync value or their Cartesian
+product with every bandwidth, length, CR and gain. Read its actual failures
+and denominator in the report rather than assuming 100% interoperability.
+
+The [PC decoder companion](../host/README.md) reproduces one real reverse-link
+IQ recording. It is not an implementation of `ESP32S3Radio::receive()`.

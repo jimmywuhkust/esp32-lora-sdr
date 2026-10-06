@@ -13,6 +13,8 @@ checks=[('AMP 0','ERR setting'),('AMP 201','ERR setting'),('WIN 999','ERR settin
  ('TX 7 4 f','ERR length'),('TX 7 4 gg','ERR hex'),('TX 13 4 ff','ERR arguments'),
  ('TX 7 5 ff','ERR arguments')]
 checks.extend([('PA 64','ERR PA'),('PA -1','ERR PA'),('PA 1 trailing','ERR PA')])
+checks.extend([('SYNC 256','ERR setting'),('SYNC -1','ERR setting'),('SYNC 18 trailing','ERR setting'),
+ ('INV 2','ERR setting'),('INV -1','ERR setting'),('INV 1 trailing','ERR setting')])
 result={'cases':[],'method':'Invalid inputs and overlong PLL packet; no requested RF transmission',
  'firmwareSha256':hashlib.sha256((ROOT/'.pio/build/xiao-s3/firmware.bin').read_bytes()).hexdigest()}
 with open_port(a.port) as port:

@@ -1,0 +1,195 @@
+{
+  "transmitter": {
+    "state": "ready",
+    "port": "COM3",
+    "message": "LR2021 received exact bytes · CRC OK",
+    "txPackets": 2,
+    "verifiedPackets": 2,
+    "profile": {
+      "frequency": 2440.125,
+      "bandwidth": 203.125,
+      "sf": 7,
+      "power": -12,
+      "preamble": 16,
+      "sync": 18
+    },
+    "correctionHz": 15000,
+    "events": [
+      {
+        "id": "1791322696981761800",
+        "time": 1791322696.2109828,
+        "text": "Hello from XIAO!",
+        "hex": "48656c6c6f2066726f6d205849414f21",
+        "bytes": 16,
+        "waveform": {
+          "hex": "48656c6c6f2066726f6d205849414f21",
+          "bytes": 16,
+          "crcHex": "ffde",
+          "sf": 7,
+          "bandwidth": 203125,
+          "sync": 18,
+          "codingRate": "4/8",
+          "explicitHeader": true,
+          "payloadCrc": true,
+          "preamble": 16,
+          "symbols": null,
+          "sampleRate": 1000000,
+          "samples": 48049,
+          "durationMs": 48.049,
+          "transport": "native Arduino DAC windows",
+          "frequency": 2440.125,
+          "cfo": 15000,
+          "invert": true,
+          "dacAmplitude": 150,
+          "windowSamples": 15000,
+          "analogGainCode": 0,
+          "hostIqUploaded": false
+        },
+        "tx": {
+          "command": "TX 7 4 48656c6c6f2066726f6d205849414f21",
+          "start": "TXSTART NATIVE",
+          "end": "TXEND NATIVE ok 77 0 48.049 buffer=3fc9f680 copy=40260",
+          "encoding": "on-device",
+          "firmware": "LoRaSDR native S3 0.1"
+        },
+        "received": {
+          "direction": "RX",
+          "text": "Hello from XIAO!",
+          "hex": "48656c6c6f2066726f6d205849414f21",
+          "bytes": 16,
+          "crcOk": true,
+          "rssi": -62.0,
+          "snr": 6.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791322696.9795768
+        },
+        "matched": true,
+        "source": "XIAO SDR RF TX → independent LR2021 HF RX",
+        "download": "/api/tx/download/1791322696981761800.json"
+      },
+      {
+        "id": "1791322720963780700",
+        "time": 1791322720.1626675,
+        "text": "你好，XIAO 原生 LoRa 完整包！",
+        "hex": "e4bda0e5a5bdefbc8c5849414f20e58e9fe7949f204c6f526120e5ae8ce695b4e58c85efbc81",
+        "bytes": 38,
+        "waveform": {
+          "hex": "e4bda0e5a5bdefbc8c5849414f20e58e9fe7949f204c6f526120e5ae8ce695b4e58c85efbc81",
+          "bytes": 38,
+          "crcHex": "fcaa",
+          "sf": 7,
+          "bandwidth": 203125,
+          "sync": 18,
+          "codingRate": "4/8",
+          "explicitHeader": true,
+          "payloadCrc": true,
+          "preamble": 16,
+          "symbols": null,
+          "sampleRate": 1000000,
+          "samples": 78297,
+          "durationMs": 78.297,
+          "transport": "native Arduino DAC windows",
+          "frequency": 2440.125,
+          "cfo": 15000,
+          "invert": true,
+          "dacAmplitude": 150,
+          "windowSamples": 15000,
+          "analogGainCode": 0,
+          "hostIqUploaded": false
+        },
+        "tx": {
+          "command": "TX 7 4 e4bda0e5a5bdefbc8c5849414f20e58e9fe7949f204c6f526120e5ae8ce695b4e58c85efbc81",
+          "start": "TXSTART NATIVE",
+          "end": "TXEND NATIVE ok 125 0 78.297 buffer=3fc9f680 copy=40260",
+          "encoding": "on-device",
+          "firmware": "LoRaSDR native S3 0.1"
+        },
+        "received": {
+          "direction": "RX",
+          "text": "你好，XIAO 原生 LoRa 完整包！",
+          "hex": "e4bda0e5a5bdefbc8c5849414f20e58e9fe7949f204c6f526120e5ae8ce695b4e58c85efbc81",
+          "bytes": 38,
+          "crcOk": true,
+          "rssi": -62.0,
+          "snr": 4.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791322720.9623048
+        },
+        "matched": true,
+        "source": "XIAO SDR RF TX → independent LR2021 HF RX",
+        "download": "/api/tx/download/1791322720963780700.json"
+      }
+    ],
+    "identity": "LoRaSDR native S3 0.1"
+  },
+  "receiver": {
+    "state": "receiving",
+    "port": "COM4",
+    "settings": {
+      "frequency": 2440.125,
+      "bandwidth": 203.125,
+      "sf": 7,
+      "power": -12,
+      "preamble": 16,
+      "sync": 18
+    },
+    "rxPackets": 3,
+    "rxCrcErrors": 0,
+    "rxRejected": 0,
+    "txPackets": 0,
+    "events": [
+      {
+        "direction": "RX",
+        "text": "Hello from XIAO!",
+        "hex": "48656c6c6f2066726f6d205849414f21",
+        "bytes": 16,
+        "crcOk": true,
+        "rssi": -62.0,
+        "snr": 6.0,
+        "sf": 7,
+        "detector": 1,
+        "time": 1791322696.9795768
+      },
+      {
+        "direction": "RX",
+        "text": "你好，XIAO 原生 LoRa 完整包！",
+        "hex": "e4bda0e5a5bdefbc8c5849414f20e58e9fe7949f204c6f526120e5ae8ce695b4e58c85efbc81",
+        "bytes": 38,
+        "crcOk": true,
+        "rssi": -62.0,
+        "snr": 4.0,
+        "sf": 7,
+        "detector": 1,
+        "time": 1791322720.9623048
+      },
+      {
+        "direction": "RX",
+        "text": "��������������������������������������",
+        "hex": "e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5",
+        "bytes": 38,
+        "crcOk": true,
+        "rssi": -113.0,
+        "snr": -12.0,
+        "sf": 7,
+        "detector": 1,
+        "time": 1791322785.8352072
+      }
+    ],
+    "message": "HF LoRa RX · no automatic transmission",
+    "nodeId": "c4:3c:34:04:a7:ac",
+    "firmware": "2.9.18-hf2",
+    "model": "RFUnit 2.4G HF",
+    "crcPolicy": "required",
+    "diagnostics": {
+      "validated": 3,
+      "crcErrors": 0,
+      "noCrc": 0,
+      "invalidMetadata": 0,
+      "hostDrops": 0
+    },
+    "protocolErrors": 0,
+    "rssi": -112.0
+  }
+}

@@ -1,6 +1,6 @@
 # Hardware test report — 7 October 2026
 
-Updated through approximately 05:12 Hong Kong time. This is a measured engineering report, not a
+Updated through approximately 05:48 Hong Kong time. This is a measured engineering report, not a
 claim of universal compatibility or a peer-reviewed paper. Subsequent research
 results must be appended with their own firmware hashes and denominators.
 
@@ -15,6 +15,11 @@ After the optional analog-control merge, its separate lowest-code regression
 passed **72/72**, guards **18/18**, and default-gain bandwidth smoke tests
 **3/3 each**. The newly rebuilt SendOnce example delivered **2/3**, with one
 miss retained; the earlier 3/3 applies to the earlier image.
+The later frequency/preamble/sync/polarity matrix delivered **142/144**;
+both CRC failures are retained. Its rebuilt SerialBench default smoke was
+**3/3**, with **24/24** configuration guards. A real reverse-link IQ recording
+and PC decoder are now included for reproducibility; native Arduino RX remains
+unimplemented. [中文测试摘要](test-report.zh-CN.md).
 
 最新结论：公开接收器 239/240，覆盖 1–255 字节；两个更宽带宽批次各 72/72。
 较早入门示例刷机后 3/3；最新重编译版本本轮 2/3，一次漏收保留。
@@ -451,3 +456,123 @@ image SHA256 is
 `38c6c1ba8721006241883f852e7665c6ee629cd831dd8f01fa2c90c361b3acf5`.
 Raw file: `evaluation/data/analog-sendonce-smoke.json`. The earlier 3/3 test
 used another image; it does not make this missed packet disappear.
+
+## Continuous playback: copying speed was insufficient evidence
+
+An isolated internal-RAM phase/LUT assembly writer passed 1,024 offset/length
+and canary checks. Its worst 256-sample copy was 1,186 CPU cycles against a
+1,536-cycle reader budget. Actual SF7 RF runs still delivered **0/3** at each
+of four seam settings (0,13,14,27 samples). These diagnostic runs reused the
+same three payloads per variant; they are not twelve independent randomized
+trials. They did not validate continuous LoRa transmission.
+
+The upstream E1/E2 failure report then motivated paired SRAM readbacks.
+With no RF keying, identical paced writes gave **0/16,384 wrong words while
+idle**, versus **16,201/16,384 while playing**, in each of three alternating
+pairs. Maximum copying cost was 1,187–1,188 cycles, still below budget.
+The idle check recovered after each playing test. Engine completion was
+verified independently and did not count as matching data or packet success.
+
+This establishes a playing-bank data-integrity failure for this writer on this
+XIAO. It explains why timing checks alone cannot qualify this stream, without
+claiming a universal silicon diagnosis or measured RF waveform. The research
+remains separate; the working library writes only between RF playback windows.
+Source and image hashes and all zero-reception trials are retained in
+`research/full-symbol-dac-lut/` and `evaluation/data/research/stream-lut-*.json`.
+
+![Digital SRAM integrity and copy speed](assets/playing-bank-results.svg)
+
+The private GitHub clean-build workflow for commit `098c03b` completed
+[successfully](https://github.com/jimmywuhkust/esp32-lora-sdr/actions/runs/37532158630)
+in 2m22s, building both beginner examples and the public receiver. CI success
+is build evidence, separate from the RF measurements in this report.
+
+## Frequency, preamble, synchronization and IQ polarity
+
+A new shuffled matrix exercised **48 settings × 3 fresh-payload blocks**:
+2403.125/2440.125/2476.125 MHz, 12/16/32/64-symbol preambles, sync words
+0x12/0x34, and both matched IQ polarities. Fixed settings were SF7,
+BW203.125 kHz, CR4/8, 32 random bytes, DAC150, analog defaults and +15 kHz LO
+correction. XIAO `inverted=true` matches LR2021 standard IQ; false matches
+LR2021 inverted IQ. Each setting was acknowledged on both chips before TX.
+
+Result: **142/144 (98.61%)**, descriptive Wilson 95% interval **95.08–99.62%**.
+Both failures were hardware CRC errors at 2403.125 MHz with standard LR2021
+IQ: preamble32/sync0x34 and preamble16/sync0x12, in block3. Corrupt full
+received bytes are retained. Both had local TX completion and zero late
+updates; their precise RF failure mechanism is unproven. No retransmission
+was substituted. Each exact parameter tuple has only three trials; an aggregate
+interval is not proof that every tuple or every allowed setting is reliable.
+
+The first attempted matrix stopped after **50/50** successes because OneDrive
+interfered with repeated logging-file writes. This is an incomplete run, not
+a complete matrix. Its error is retained as
+`evaluation/data/research/phy-settings-before-checkpoint-fix.json`. The harness
+was changed to unique per-case checkpoints, then restarted with a **different
+seed** (`2026100706`). The completed 144-trial result is separate, not pooled
+with the interrupted run. Both radio profiles were restored without RF retries.
+
+Latest settings-capable SerialBench input image SHA256:
+`f34e6cc5ee868b03ee6c6abd4407d57c2c4c4228f2a7c095f555f1f5d8545735`.
+Public receiver image SHA256:
+`7614e6b60f9b14425f335b1103035ba0a1f82910a0e1df7ee3eec0773e03c1e4`.
+Both writes were verified by esptool. All **24/24** invalid-command and
+airtime/window/transport guards passed; the subsequent current-image default
+32-byte smoke test delivered **3/3** exact hardware-CRC packets.
+
+![Complete settings matrix](assets/phy-settings-results.svg)
+
+[Raw matrix](../evaluation/data/phy-settings-matrix.json) ·
+[RF verifier](../evaluation/verify_phy_settings.py) ·
+[Plot source](../evaluation/plot_settings.py) ·
+[PDF figure](assets/phy-settings-results.pdf).
+These checks do not validate every allowed sync/frequency value or the full
+Cartesian product with all bandwidths, lengths, coding rates and gain codes.
+
+## Reproducible reverse-link recorded IQ
+
+The [host companion](../host/README.md) includes a real 90,014-byte IQ recording
+from LR2021 TX to XIAO reception. It independently re-decodes the complete
+23-byte `XIAO decodes full LoRa!` packet and CRC `fc8a`, with no expected-payload
+hint supplied to the decoder. Recording SHA256:
+`3324771073227a1a641d9123fe6570e0e82b66b16dbad634ffc310a1781e0001`.
+It contains 86 IQS1 frames, one contiguous 87,606-sample segment at 250 ksps.
+
+The six local host regression tests passed: real RF recording, synthetic
+SF7–9/offset decoding, missing/bad payload CRC rejection, noise/truncation
+rejection, transport corruption rejection and sample-gap/index handling.
+Synthetic checks and replay of a stored capture are not new live RF trials.
+The reverse direction still uses PC header/FEC/CRC processing, not a native
+Arduino receiver. Decoder limits are BW203.125 kHz, sync0x12 and 250 bytes.
+
+The original 60.07-second session had **58.9% elapsed RF coverage** in separate
+350 ms windows. Its reported 100% sample retention within captured windows
+must not be described as continuous full-time capture or 4 MS/s USB delivery.
+The bundled file is one selected real packet, not a receive-rate estimate.
+
+## Simple web UI with the public receiver
+
+The local web bridge now supports the public companion's explicit ASCII
+header/CRC metadata. It delivered **2/2** newly requested packets: 16-byte
+English and 38-byte Chinese UTF-8, exact bytes and hardware CRC, using the
+settings-capable images above. The UI screenshot is from this public receiver;
+raw proof is `evaluation/data/public-web-proof.json`. It displays only this
+XIAO's matched TX/RX transactions. Unrelated receiver reports are not labelled
+as the user's message. Optional signal history records new measurements once;
+on the public companion these are packet RSSI values, not a continuous FFT.
+
+During restoration of the older private HF2 application, an idle all-FF
+38-byte report was labelled CRC-valid despite no new XIAO transmission. Its
+origin and underlying CRC/FIFO behavior are unproven; the full state was
+retained as `evaluation/data/research/legacy-hf2-unmatched-idle-event.json`.
+It did not match any requested payload, so it was **never a passed TX proof**.
+The simple UI previously displayed all receiver events as messages; that
+misleading behavior was corrected. There is no arbitrary all-FF blacklist:
+valid data is judged by metadata and the independent requested-byte match.
+
+The bridge's public-line parser and the retained private protocol passed
+**11/11** local tests, including CRC absence/failure, invalid header, length
+mismatch, fragmented USB lines and rejecting unintended TX on the receive-only
+public companion. These are software checks, separate from the 2/2 live proof.
+The local viewer remains a personal bench tool; library users can reproduce
+RF via the public serial companion and matrix scripts without this website.

@@ -40,6 +40,9 @@ with a production binary hash.
 | `public-receiver-usb-desync.json` | Retained broken transport run; not an RF sensitivity estimate |
 | `analog-gain-sf7-sweep.json` | 70/70 at seven shuffled PBUS codes, constant DAC amplitude, verified readbacks |
 | `analog-gain1-matrix.json` | Separate lowest-code research matrix: 71/72 across four CRs and 1–255 bytes |
+| `phy-settings-matrix.json` | 142/144 across channel, preamble, sync and IQ polarity; two corrupt CRC frames retained |
+| `phy-config-guards.json` | 24/24 guard checks on the latest settings-capable bench image |
+| `research/stream-lut-playing-bank.json` | Digital SRAM paired idle/playing readbacks; no RF keying |
 
 The older private-application datasets are retained as historical evidence;
 the public receiver is the reproducible path. Different builds, payload sets
@@ -50,6 +53,7 @@ and receiver implementations must not be pooled into a controlled comparison.
 ```sh
 python -m pip install numpy==2.5.3 matplotlib==3.11.2
 python plot_results.py
+python plot_settings.py
 ```
 
 The script reads raw JSON and exports SVG, PNG and PDF to `docs/assets/`.
@@ -57,3 +61,16 @@ Wilson 95% intervals describe these finite bench samples. Raw DAC amplitude
 is not dBm, successful-packet RSSI is conditional on reception, and theoretical
 airtime is not a measured RF trace. See the [report](../docs/test-report.md)
 for confounders, failures and the exact firmware hashes.
+
+The additional 144-trial settings matrix uses both sides' explicit setting
+commands and restores the defaults afterward:
+
+```sh
+python verify_phy_settings.py --tx-port YOUR_XIAO_PORT --rx-port YOUR_LR2021_PORT --repeats 3 --output data/my-settings.json
+```
+
+It tests 48 combinations at fixed SF7/BW203.125/CR4/8 and 32 bytes, not every
+cross-product of every field. The interrupted pre-checkpoint-fix dataset is
+retained separately; do not silently combine it with the completed matrix.
+The [host decoder tests](../host/README.md) replay saved RF and synthetic
+signals; their pass count is not a live packet-delivery measurement.
