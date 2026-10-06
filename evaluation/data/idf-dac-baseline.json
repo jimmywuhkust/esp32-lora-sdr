@@ -1,0 +1,863 @@
+{
+  "profile": {
+    "frequency": 2440.125,
+    "bandwidth": 203.125,
+    "sf": 7,
+    "power": -12,
+    "preamble": 16,
+    "sync": 18
+  },
+  "method": "DAC truncated chirp windows",
+  "invert": true,
+  "window": 15000,
+  "cfo": 15000,
+  "amplitude": 150,
+  "cr": 4,
+  "cases": [
+    {
+      "expected": "26",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "&",
+          "hex": "26",
+          "bytes": 1,
+          "crcOk": true,
+          "rssi": -62.0,
+          "snr": 7.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312542.6515772
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 51,
+        "irq": 262160,
+        "crcPresent": 1,
+        "reportedLength": 1,
+        "crcOk": true,
+        "rssi": -62.0,
+        "snr": 7.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "26"
+      },
+      "passed": true
+    },
+    {
+      "expected": "55",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "U",
+          "hex": "55",
+          "bytes": 1,
+          "crcOk": true,
+          "rssi": -62.0,
+          "snr": 8.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312544.0924609
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 52,
+        "irq": 262160,
+        "crcPresent": 1,
+        "reportedLength": 1,
+        "crcOk": true,
+        "rssi": -62.0,
+        "snr": 8.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "55"
+      },
+      "passed": true
+    },
+    {
+      "expected": "b2",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "\ufffd",
+          "hex": "b2",
+          "bytes": 1,
+          "crcOk": true,
+          "rssi": -62.0,
+          "snr": 8.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312545.5234563
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 53,
+        "irq": 262160,
+        "crcPresent": 1,
+        "reportedLength": 1,
+        "crcOk": true,
+        "rssi": -62.0,
+        "snr": 8.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "b2"
+      },
+      "passed": true
+    },
+    {
+      "expected": "f881",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "\ufffd\ufffd",
+          "hex": "f881",
+          "bytes": 2,
+          "crcOk": true,
+          "rssi": -62.0,
+          "snr": 7.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312546.96544
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 54,
+        "irq": 262144,
+        "crcPresent": 1,
+        "reportedLength": 2,
+        "crcOk": true,
+        "rssi": -62.0,
+        "snr": 7.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "f881"
+      },
+      "passed": true
+    },
+    {
+      "expected": "7491",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "t\ufffd",
+          "hex": "7491",
+          "bytes": 2,
+          "crcOk": true,
+          "rssi": -62.0,
+          "snr": 7.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312548.408473
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 55,
+        "irq": 262144,
+        "crcPresent": 1,
+        "reportedLength": 2,
+        "crcOk": true,
+        "rssi": -62.0,
+        "snr": 7.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "7491"
+      },
+      "passed": true
+    },
+    {
+      "expected": "b369",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "\ufffdi",
+          "hex": "b369",
+          "bytes": 2,
+          "crcOk": true,
+          "rssi": -62.0,
+          "snr": 7.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312549.8566613
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 56,
+        "irq": 262160,
+        "crcPresent": 1,
+        "reportedLength": 2,
+        "crcOk": true,
+        "rssi": -62.0,
+        "snr": 7.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "b369"
+      },
+      "passed": true
+    },
+    {
+      "expected": "844557",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "\ufffdEW",
+          "hex": "844557",
+          "bytes": 3,
+          "crcOk": true,
+          "rssi": -62.0,
+          "snr": 7.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312551.302292
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 57,
+        "irq": 262160,
+        "crcPresent": 1,
+        "reportedLength": 3,
+        "crcOk": true,
+        "rssi": -62.0,
+        "snr": 7.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "844557"
+      },
+      "passed": true
+    },
+    {
+      "expected": "cfa23d",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "\u03e2=",
+          "hex": "cfa23d",
+          "bytes": 3,
+          "crcOk": true,
+          "rssi": -62.0,
+          "snr": 7.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312552.744394
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 58,
+        "irq": 262144,
+        "crcPresent": 1,
+        "reportedLength": 3,
+        "crcOk": true,
+        "rssi": -62.0,
+        "snr": 7.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "cfa23d"
+      },
+      "passed": true
+    },
+    {
+      "expected": "a6fd07",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "\ufffd\ufffd\u0007",
+          "hex": "a6fd07",
+          "bytes": 3,
+          "crcOk": true,
+          "rssi": -62.0,
+          "snr": 7.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312554.1935208
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 59,
+        "irq": 262144,
+        "crcPresent": 1,
+        "reportedLength": 3,
+        "crcOk": true,
+        "rssi": -62.0,
+        "snr": 7.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "a6fd07"
+      },
+      "passed": true
+    },
+    {
+      "expected": "cf3977a56378ff7e",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "\ufffd9w\ufffdcx\ufffd~",
+          "hex": "cf3977a56378ff7e",
+          "bytes": 8,
+          "crcOk": true,
+          "rssi": -61.0,
+          "snr": 7.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312555.6393282
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 60,
+        "irq": 262160,
+        "crcPresent": 1,
+        "reportedLength": 8,
+        "crcOk": true,
+        "rssi": -61.0,
+        "snr": 7.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "cf3977a56378ff7e"
+      },
+      "passed": true
+    },
+    {
+      "expected": "e435df5af98c6ea4",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "\ufffd5\ufffdZ\ufffd\ufffdn\ufffd",
+          "hex": "e435df5af98c6ea4",
+          "bytes": 8,
+          "crcOk": true,
+          "rssi": -61.0,
+          "snr": 7.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312557.102371
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 61,
+        "irq": 262160,
+        "crcPresent": 1,
+        "reportedLength": 8,
+        "crcOk": true,
+        "rssi": -61.0,
+        "snr": 7.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "e435df5af98c6ea4"
+      },
+      "passed": true
+    },
+    {
+      "expected": "450e9e93741109ee",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "E\u000e\ufffd\ufffdt\u0011\t\ufffd",
+          "hex": "450e9e93741109ee",
+          "bytes": 8,
+          "crcOk": true,
+          "rssi": -61.0,
+          "snr": 7.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312558.5442417
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 62,
+        "irq": 262144,
+        "crcPresent": 1,
+        "reportedLength": 8,
+        "crcOk": true,
+        "rssi": -61.0,
+        "snr": 7.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "450e9e93741109ee"
+      },
+      "passed": true
+    },
+    {
+      "expected": "a7c1ca211cc7ad76c982ae162f217d70a0",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "\ufffd\ufffd\ufffd!\u001c\u01edv\u0242\ufffd\u0016/!}p\ufffd",
+          "hex": "a7c1ca211cc7ad76c982ae162f217d70a0",
+          "bytes": 17,
+          "crcOk": true,
+          "rssi": -62.0,
+          "snr": 7.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312560.003247
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 63,
+        "irq": 262160,
+        "crcPresent": 1,
+        "reportedLength": 17,
+        "crcOk": true,
+        "rssi": -62.0,
+        "snr": 7.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "a7c1ca211cc7ad76c982ae162f217d70a0"
+      },
+      "passed": true
+    },
+    {
+      "expected": "b19d3806716b668a6c24b90bda1e5756c7",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "\ufffd\ufffd8\u0006qkf\ufffdl$\ufffd\u000b\ufffd\u001eWV\ufffd",
+          "hex": "b19d3806716b668a6c24b90bda1e5756c7",
+          "bytes": 17,
+          "crcOk": true,
+          "rssi": -62.0,
+          "snr": 7.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312561.4662387
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 64,
+        "irq": 262160,
+        "crcPresent": 1,
+        "reportedLength": 17,
+        "crcOk": true,
+        "rssi": -62.0,
+        "snr": 7.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "b19d3806716b668a6c24b90bda1e5756c7"
+      },
+      "passed": true
+    },
+    {
+      "expected": "5d36f69a31deb8a9e0d92d3d20290d0270",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "]6\ufffd\ufffd1\u07b8\ufffd\ufffd\ufffd-= )\r\u0002p",
+          "hex": "5d36f69a31deb8a9e0d92d3d20290d0270",
+          "bytes": 17,
+          "crcOk": true,
+          "rssi": -61.0,
+          "snr": 7.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312562.9301913
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 65,
+        "irq": 262160,
+        "crcPresent": 1,
+        "reportedLength": 17,
+        "crcOk": true,
+        "rssi": -61.0,
+        "snr": 7.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "5d36f69a31deb8a9e0d92d3d20290d0270"
+      },
+      "passed": true
+    },
+    {
+      "expected": "af35a9333c3a4044ea7f8fff80311077891a1700096ef66b054b05f72888dab7",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "\ufffd5\ufffd3<:@D\ufffd\u007f\ufffd\ufffd\ufffd1\u0010w\ufffd\u001a\u0017\u0000\tn\ufffdk\u0005K\u0005\ufffd(\ufffd\u06b7",
+          "hex": "af35a9333c3a4044ea7f8fff80311077891a1700096ef66b054b05f72888dab7",
+          "bytes": 32,
+          "crcOk": true,
+          "rssi": -61.0,
+          "snr": 5.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312564.4122732
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 66,
+        "irq": 262160,
+        "crcPresent": 1,
+        "reportedLength": 32,
+        "crcOk": true,
+        "rssi": -61.0,
+        "snr": 5.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "af35a9333c3a4044ea7f8fff80311077891a1700096ef66b054b05f72888dab7"
+      },
+      "passed": true
+    },
+    {
+      "expected": "cb90c6a84de18709677797ad2636bda863af9ab39901fedd257d30d230aea7c8",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "\u02d0\u01a8M\ufffd\tgw\ufffd\ufffd&6\ufffd\ufffdc\ufffd\ufffd\ufffd\ufffd\u0001\ufffd\ufffd%}0\ufffd0\ufffd\ufffd\ufffd",
+          "hex": "cb90c6a84de18709677797ad2636bda863af9ab39901fedd257d30d230aea7c8",
+          "bytes": 32,
+          "crcOk": true,
+          "rssi": -61.0,
+          "snr": 5.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312565.9041717
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 67,
+        "irq": 262160,
+        "crcPresent": 1,
+        "reportedLength": 32,
+        "crcOk": true,
+        "rssi": -61.0,
+        "snr": 5.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "cb90c6a84de18709677797ad2636bda863af9ab39901fedd257d30d230aea7c8"
+      },
+      "passed": true
+    },
+    {
+      "expected": "73ced9b682da8af4a188871252b587b599d42b6d99fcc3e6de1573673296ab26",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "s\ufffd\u0676\ufffd\u068a\ufffd\ufffd\ufffd\ufffd\u0012R\ufffd\ufffd\ufffd\ufffd\ufffd+m\ufffd\ufffd\ufffd\ufffd\ufffd\u0015sg2\ufffd\ufffd&",
+          "hex": "73ced9b682da8af4a188871252b587b599d42b6d99fcc3e6de1573673296ab26",
+          "bytes": 32,
+          "crcOk": true,
+          "rssi": -61.0,
+          "snr": 8.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312567.3962083
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 68,
+        "irq": 262160,
+        "crcPresent": 1,
+        "reportedLength": 32,
+        "crcOk": true,
+        "rssi": -61.0,
+        "snr": 8.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "73ced9b682da8af4a188871252b587b599d42b6d99fcc3e6de1573673296ab26"
+      },
+      "passed": true
+    },
+    {
+      "expected": "52962e243eafa8dad07db914ca4bac057014ca6c4abe51f991d6cc4383473b25d7a448751ffbb542f84a369576c5f5d5b24e36e9870471525caa78ba6b424c11",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "R\ufffd.$>\ufffd\ufffd\ufffd\ufffd}\ufffd\u0014\ufffdK\ufffd\u0005p\u0014\ufffdlJ\ufffdQ\ufffd\ufffd\ufffd\ufffdC\ufffdG;%\u05e4Hu\u001f\ufffd\ufffdB\ufffdJ6\ufffdv\ufffd\ufffd\u0572N6\ufffd\u0004qR\\\ufffdx\ufffdkBL\u0011",
+          "hex": "52962e243eafa8dad07db914ca4bac057014ca6c4abe51f991d6cc4383473b25d7a448751ffbb542f84a369576c5f5d5b24e36e9870471525caa78ba6b424c11",
+          "bytes": 64,
+          "crcOk": true,
+          "rssi": -61.0,
+          "snr": 6.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312568.9362028
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 69,
+        "irq": 262160,
+        "crcPresent": 1,
+        "reportedLength": 64,
+        "crcOk": true,
+        "rssi": -61.0,
+        "snr": 6.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "52962e243eafa8dad07db914ca4bac057014ca6c4abe51f991d6cc4383473b25d7a448751ffbb542f84a369576c5f5d5b24e36e9870471525caa78ba6b424c11"
+      },
+      "passed": true
+    },
+    {
+      "expected": "ca5bbf89ec5c3aebce8cc1caf621feec6b33431dcb9cd55c45f2156c419e5c216c6f1d9502a9afb2b4d7642bc4f91bf5f5851f83cab36916de0076030efb19d3",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "\ufffd[\ufffd\ufffd\ufffd\\:\ufffd\u038c\ufffd\ufffd\ufffd!\ufffd\ufffdk3C\u001d\u02dc\ufffd\\E\ufffd\u0015lA\ufffd\\!lo\u001d\ufffd\u0002\ufffd\ufffd\ufffd\ufffd\ufffdd+\ufffd\ufffd\u001b\ufffd\ufffd\ufffd\u001f\ufffd\u02b3i\u0016\ufffd\u0000v\u0003\u000e\ufffd\u0019\ufffd",
+          "hex": "ca5bbf89ec5c3aebce8cc1caf621feec6b33431dcb9cd55c45f2156c419e5c216c6f1d9502a9afb2b4d7642bc4f91bf5f5851f83cab36916de0076030efb19d3",
+          "bytes": 64,
+          "crcOk": true,
+          "rssi": -61.0,
+          "snr": 6.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312570.4841444
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 70,
+        "irq": 262160,
+        "crcPresent": 1,
+        "reportedLength": 64,
+        "crcOk": true,
+        "rssi": -61.0,
+        "snr": 6.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "ca5bbf89ec5c3aebce8cc1caf621feec6b33431dcb9cd55c45f2156c419e5c216c6f1d9502a9afb2b4d7642bc4f91bf5f5851f83cab36916de0076030efb19d3"
+      },
+      "passed": true
+    },
+    {
+      "expected": "04ee158f8d1368742f19a8beec72e5a6ffe240959087bedb80ca7838552fa3383f5e20aed39676c2030c818738e8fd83b6493efc5f9d64134fd36d6f2789a8be",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "\u0004\ufffd\u0015\ufffd\ufffd\u0013ht/\u0019\ufffd\ufffd\ufffdr\ufffd\ufffd\ufffd@\ufffd\ufffd\ufffd\ufffd\u06c0\ufffdx8U/\ufffd8?^ \ufffd\u04d6v\ufffd\u0003\f\ufffd\ufffd8\ufffd\ufffd\ufffd\ufffdI>\ufffd_\ufffdd\u0013O\ufffdmo'\ufffd\ufffd\ufffd",
+          "hex": "04ee158f8d1368742f19a8beec72e5a6ffe240959087bedb80ca7838552fa3383f5e20aed39676c2030c818738e8fd83b6493efc5f9d64134fd36d6f2789a8be",
+          "bytes": 64,
+          "crcOk": true,
+          "rssi": -62.0,
+          "snr": 6.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312572.0371876
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 71,
+        "irq": 262144,
+        "crcPresent": 1,
+        "reportedLength": 64,
+        "crcOk": true,
+        "rssi": -62.0,
+        "snr": 6.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "04ee158f8d1368742f19a8beec72e5a6ffe240959087bedb80ca7838552fa3383f5e20aed39676c2030c818738e8fd83b6493efc5f9d64134fd36d6f2789a8be"
+      },
+      "passed": true
+    },
+    {
+      "expected": "8ec5b399e1c8d7eb1adc4a15128d1fe0b36826c6a97c80e8d1ad3cf1a6761e973e1e877d4a5eee031d63d5f84f9ce8fa53ab8acbe75456d1e6b1e5487e48c069c71a858524a161396b30722364a859e6",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "\ufffd\u0173\ufffd\ufffd\ufffd\ufffd\ufffd\u001a\ufffdJ\u0015\u0012\ufffd\u001f\ufffdh&\u01a9|\ufffd\ufffd\u046d<\ufffdv\u001e\ufffd>\u001e\ufffd}J^\ufffd\u0003\u001dc\ufffd\ufffdO\ufffd\ufffd\ufffdS\ufffd\ufffd\ufffd\ufffdTV\ufffd\ufffd\ufffdH~H\ufffdi\ufffd\u001a\ufffd\ufffd$\ufffda9k0r#d\ufffdY\ufffd",
+          "hex": "8ec5b399e1c8d7eb1adc4a15128d1fe0b36826c6a97c80e8d1ad3cf1a6761e973e1e877d4a5eee031d63d5f84f9ce8fa53ab8acbe75456d1e6b1e5487e48c069c71a858524a161396b30722364a859e6",
+          "bytes": 80,
+          "crcOk": true,
+          "rssi": -62.0,
+          "snr": 7.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312573.6234403
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 72,
+        "irq": 262160,
+        "crcPresent": 1,
+        "reportedLength": 80,
+        "crcOk": true,
+        "rssi": -62.0,
+        "snr": 7.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "8ec5b399e1c8d7eb1adc4a15128d1fe0b36826c6a97c80e8d1ad3cf1a6761e973e1e877d4a5eee031d63d5f84f9ce8fa53ab8acbe75456d1e6b1e5487e48c069c71a858524a161396b30722364a859e6"
+      },
+      "passed": true
+    },
+    {
+      "expected": "e7072f73da66b1893b01896740ab1cd26c661fca690323133fa7ca01aa8cb302447f9768b9e4a994d563ec707534c77ed6fe6068bf042cc5d6133ee3796be5f1dce1a2db4a7eecd183adb6b6a5fb059b",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "\ufffd\u0007/s\ufffdf\ufffd\ufffd;\u0001\ufffdg@\ufffd\u001c\ufffdlf\u001f\ufffdi\u0003#\u0013?\ufffd\ufffd\u0001\ufffd\ufffd\ufffd\u0002D\u007f\ufffdh\ufffd\u4a54\ufffdc\ufffdpu4\ufffd~\ufffd\ufffd`h\ufffd\u0004,\ufffd\ufffd\u0013>\ufffdyk\ufffd\ufffd\ufffd\ufffd\ufffdJ~\ufffd\u0443\ufffd\ufffd\ufffd\ufffd\ufffd\u0005\ufffd",
+          "hex": "e7072f73da66b1893b01896740ab1cd26c661fca690323133fa7ca01aa8cb302447f9768b9e4a994d563ec707534c77ed6fe6068bf042cc5d6133ee3796be5f1dce1a2db4a7eecd183adb6b6a5fb059b",
+          "bytes": 80,
+          "crcOk": true,
+          "rssi": -62.0,
+          "snr": 0.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312575.2131827
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 73,
+        "irq": 262160,
+        "crcPresent": 1,
+        "reportedLength": 80,
+        "crcOk": true,
+        "rssi": -62.0,
+        "snr": 0.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "e7072f73da66b1893b01896740ab1cd26c661fca690323133fa7ca01aa8cb302447f9768b9e4a994d563ec707534c77ed6fe6068bf042cc5d6133ee3796be5f1dce1a2db4a7eecd183adb6b6a5fb059b"
+      },
+      "passed": true
+    },
+    {
+      "expected": "a4225606c2503d8638320fbcfcf2ada515d53ce2135d94215252388972764f1dea191df5abd6160ceb2efbaad238e6f2f9c9163463b7e7fcded9aadcbda34355e927ae27539f4a7bd715577ee872901a",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "\ufffd\"V\u0006\ufffdP=\ufffd82\u000f\ufffd\ufffd\ufffd\u0015\ufffd<\ufffd\u0013]\ufffd!RR8\ufffdrvO\u001d\ufffd\u0019\u001d\ufffd\ufffd\ufffd\u0016\f\ufffd.\ufffd\ufffd\ufffd8\ufffd\ufffd\ufffd\ufffd\u00164c\ufffd\ufffd\ufffd\ufffd\u066a\u073d\ufffdCU\ufffd'\ufffd'S\ufffdJ{\ufffd\u0015W~\ufffdr\ufffd\u001a",
+          "hex": "a4225606c2503d8638320fbcfcf2ada515d53ce2135d94215252388972764f1dea191df5abd6160ceb2efbaad238e6f2f9c9163463b7e7fcded9aadcbda34355e927ae27539f4a7bd715577ee872901a",
+          "bytes": 80,
+          "crcOk": true,
+          "rssi": -62.0,
+          "snr": 7.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312576.8072577
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 74,
+        "irq": 262144,
+        "crcPresent": 1,
+        "reportedLength": 80,
+        "crcOk": true,
+        "rssi": -62.0,
+        "snr": 7.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "a4225606c2503d8638320fbcfcf2ada515d53ce2135d94215252388972764f1dea191df5abd6160ceb2efbaad238e6f2f9c9163463b7e7fcded9aadcbda34355e927ae27539f4a7bd715577ee872901a"
+      },
+      "passed": true
+    },
+    {
+      "expected": "48656c6c6f2066726f6d205849414f21",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "Hello from XIAO!",
+          "hex": "48656c6c6f2066726f6d205849414f21",
+          "bytes": 16,
+          "crcOk": true,
+          "rssi": -62.0,
+          "snr": 7.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312578.2724912
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 75,
+        "irq": 262160,
+        "crcPresent": 1,
+        "reportedLength": 16,
+        "crcOk": true,
+        "rssi": -62.0,
+        "snr": 7.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "48656c6c6f2066726f6d205849414f21"
+      },
+      "passed": true
+    },
+    {
+      "expected": "5849414f20e58f91e5b084efbc8c4c523230323120e694b6e588b0efbc81",
+      "start": "TXSTART DAC",
+      "end": "TXEND DAC 1",
+      "received": [
+        {
+          "direction": "RX",
+          "text": "XIAO \u53d1\u5c04\uff0cLR2021 \u6536\u5230\uff01",
+          "hex": "5849414f20e58f91e5b084efbc8c4c523230323120e694b6e588b0efbc81",
+          "bytes": 30,
+          "crcOk": true,
+          "rssi": -62.0,
+          "snr": 7.0,
+          "sf": 7,
+          "detector": 1,
+          "time": 1791312579.7759454
+        }
+      ],
+      "rawDiagnostic": {
+        "sequence": 76,
+        "irq": 262144,
+        "crcPresent": 1,
+        "reportedLength": 30,
+        "crcOk": true,
+        "rssi": -62.0,
+        "snr": 7.0,
+        "sf": 7,
+        "detector": 1,
+        "hex": "5849414f20e58f91e5b084efbc8c4c523230323120e694b6e588b0efbc81"
+      },
+      "passed": true
+    }
+  ],
+  "radio": {
+    "nodeId": "c4:3c:34:04:a7:ac",
+    "firmware": "2.9.18-hf2",
+    "model": "RFUnit 2.4G HF",
+    "crcPolicy": "required",
+    "diagnostics": {
+      "validated": 26,
+      "crcErrors": 24,
+      "noCrc": 0,
+      "invalidMetadata": 0,
+      "hostDrops": 0
+    }
+  }
+}

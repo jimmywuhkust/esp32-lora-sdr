@@ -1,0 +1,9 @@
+{
+  "name": "ESP32 LoRa SDR",
+  "version": "0.1.0",
+  "description": "Experimental LoRa PHY and ESP32-S3 SDR interoperability research",
+  "license": "GPL-3.0-only",
+  "frameworks": ["arduino"],
+  "platforms": ["espressif32"],
+  "build": {"srcDir": "src"}
+}
