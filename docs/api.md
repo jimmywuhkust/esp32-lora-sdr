@@ -109,5 +109,6 @@ It does not validate every allowed frequency/sync value or their Cartesian
 product with every bandwidth, length, CR and gain. Read its actual failures
 and denominator in the report rather than assuming 100% interoperability.
 
-The [PC decoder companion](../host/README.md) reproduces one real reverse-link
-IQ recording. It is not an implementation of `ESP32S3Radio::receive()`.
+The [PC decoder companion](../host/README.md) decodes new live packets and
+reproduces real SF7/8/9 recordings from the separate public capture image.
+It is not an implementation of `ESP32S3Radio::receive()`.

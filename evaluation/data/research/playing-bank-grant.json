@@ -1,0 +1,101 @@
+{
+  "startedUtc": "2026-10-06T21:52:53.831168+00:00",
+  "port": "COM3",
+  "imageSha256": "367829a037ca8b05b10842dd8653593acec30d37d3de4f97e611d39390fdd40d",
+  "rfKeyed": false,
+  "completed": true,
+  "cases": [
+    {
+      "block": 0,
+      "command": "BANKIDLE",
+      "line": "BANK ok=1 bad=0 first=16384 c=1199 t=78152",
+      "engineCompleted": 1,
+      "wrongWords": 0,
+      "firstWrong": 16384,
+      "maxCopyCycles": 1199,
+      "elapsedCycles": 78152
+    },
+    {
+      "block": 0,
+      "command": "BANKPLAY",
+      "line": "BANK ok=1 bad=16252 first=0 c=1199 t=99955",
+      "engineCompleted": 1,
+      "wrongWords": 16252,
+      "firstWrong": 0,
+      "maxCopyCycles": 1199,
+      "elapsedCycles": 99955
+    },
+    {
+      "block": 0,
+      "command": "BANKGRANT",
+      "line": "BANK ok=1 bad=0 first=16384 c=1204 t=99958",
+      "engineCompleted": 1,
+      "wrongWords": 0,
+      "firstWrong": 16384,
+      "maxCopyCycles": 1204,
+      "elapsedCycles": 99958
+    },
+    {
+      "block": 1,
+      "command": "BANKIDLE",
+      "line": "BANK ok=1 bad=0 first=16384 c=1199 t=78152",
+      "engineCompleted": 1,
+      "wrongWords": 0,
+      "firstWrong": 16384,
+      "maxCopyCycles": 1199,
+      "elapsedCycles": 78152
+    },
+    {
+      "block": 1,
+      "command": "BANKPLAY",
+      "line": "BANK ok=1 bad=16252 first=0 c=1199 t=99955",
+      "engineCompleted": 1,
+      "wrongWords": 16252,
+      "firstWrong": 0,
+      "maxCopyCycles": 1199,
+      "elapsedCycles": 99955
+    },
+    {
+      "block": 1,
+      "command": "BANKGRANT",
+      "line": "BANK ok=1 bad=0 first=16384 c=1204 t=99958",
+      "engineCompleted": 1,
+      "wrongWords": 0,
+      "firstWrong": 16384,
+      "maxCopyCycles": 1204,
+      "elapsedCycles": 99958
+    },
+    {
+      "block": 2,
+      "command": "BANKIDLE",
+      "line": "BANK ok=1 bad=0 first=16384 c=1199 t=78152",
+      "engineCompleted": 1,
+      "wrongWords": 0,
+      "firstWrong": 16384,
+      "maxCopyCycles": 1199,
+      "elapsedCycles": 78152
+    },
+    {
+      "block": 2,
+      "command": "BANKPLAY",
+      "line": "BANK ok=1 bad=16252 first=0 c=1199 t=99955",
+      "engineCompleted": 1,
+      "wrongWords": 16252,
+      "firstWrong": 0,
+      "maxCopyCycles": 1199,
+      "elapsedCycles": 99955
+    },
+    {
+      "block": 2,
+      "command": "BANKGRANT",
+      "line": "BANK ok=1 bad=0 first=16384 c=1204 t=99958",
+      "engineCompleted": 1,
+      "wrongWords": 0,
+      "firstWrong": 16384,
+      "maxCopyCycles": 1204,
+      "elapsedCycles": 99958
+    }
+  ],
+  "identity": "LoRaSDR native S3 0.1",
+  "writerSelfTest": "LUTTEST passed=1 max=1186 budget=1536"
+}

@@ -1,0 +1,803 @@
+{
+  "startedUtc": "2026-10-06T23:12:54.238995+00:00",
+  "completed": true,
+  "direction": "LR2021 HF TX -> XIAO I/Q -> PC",
+  "nativeArduinoRx": false,
+  "seed": 2026100738,
+  "windowMs": 500,
+  "frequencyHz": 2440125000,
+  "bandwidthHz": 203125,
+  "syncWord": 18,
+  "preamble": 16,
+  "requestedChipPowerDbm": -12,
+  "calibratedRadiatedPower": false,
+  "imageSha256": {
+    "C:\\Users\\magic\\tools\\lora-iq-capture-build\\build\\lora_iq_capture.bin": "25685b7a67f4b9b69095a11cea6558ecdac92a801d696fefb3f4606334876289",
+    "esp32-lora-sdr\\companion\\lr2021\\.pio\\build\\aerolink-hf-tx\\firmware.bin": "8e8b8a45a9db007e67556e86d3f85900f6c8a84ca40658117f39420a2c5a7dfb"
+  },
+  "cases": [
+    {
+      "sf": 7,
+      "cr": 4,
+      "length": 32,
+      "block": 0,
+      "expected": "8d7d9fbf69b0e8675f824a2c5c6bfebbe9e020826931ee2ff419bc1224209448",
+      "startedUtc": "2026-10-06T23:12:54.862552+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 122,
+        "samples": 124237,
+        "gapSamples": 1024,
+        "rfSamples": 125261,
+        "coverage": 99.18250692553947,
+        "outputDrops": 1,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016764,
+          501053,
+          7,
+          0,
+          122,
+          1,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-final-default-smoke\\window-001.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=7 cr=4 bytes=32 hex=8d7d9fbf69b0e8675f824a2c5c6bfebbe9e020826931ee2ff419bc1224209448"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.1198197000194341
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=72457 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "69bd8954440658f429859d15cc13cf75f4b229bd871669dd7599b98e2fb7e147",
+      "packets": [
+        {
+          "text": "\ufffd}\ufffd\ufffdi\ufffd\ufffdg_\ufffdJ,\\k\ufffd\ufffd\ufffd\ufffd \ufffdi1\ufffd/\ufffd\u0019\ufffd\u0012$ \ufffdH",
+          "hex": "8d7d9fbf69b0e8675f824a2c5c6bfebbe9e020826931ee2ff419bc1224209448",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "9651",
+          "sf": 7,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 14916.99,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 22994,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 122880,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 2,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 2,
+      "passed": true
+    },
+    {
+      "sf": 9,
+      "cr": 4,
+      "length": 32,
+      "block": 0,
+      "expected": "05f8ad6af60839ec4f26a9ff2d58eae9c6073431de3011b93893b3a6692278e8",
+      "startedUtc": "2026-10-06T23:12:55.770683+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 122,
+        "samples": 124239,
+        "gapSamples": 1024,
+        "rfSamples": 125263,
+        "coverage": 99.18251997796636,
+        "outputDrops": 1,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016852,
+          501058,
+          7,
+          0,
+          122,
+          1,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-final-default-smoke\\window-002.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=9 cr=4 bytes=32 hex=05f8ad6af60839ec4f26a9ff2d58eae9c6073431de3011b93893b3a6692278e8"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.12110880017280579
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=236401 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "3f62a878f776517849df172cc9dea2d5b578e519f0a476c1e08d7c6126d44bbd",
+      "packets": [
+        {
+          "text": "\u0005\ufffd\ufffdj\ufffd\b9\ufffdO&\ufffd\ufffd-X\ufffd\ufffd\ufffd\u000741\ufffd0\u0011\ufffd8\ufffd\ufffd\ufffdi\"x\ufffd",
+          "hex": "05f8ad6af60839ec4f26a9ff2d58eae9c6073431de3011b93893b3a6692278e8",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "ff85",
+          "sf": 9,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 14321.9,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 32345,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 121856,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 2,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 2,
+      "passed": true
+    },
+    {
+      "sf": 8,
+      "cr": 4,
+      "length": 32,
+      "block": 0,
+      "expected": "b25b886888bf42ffbb4d80adcf7a5d0cfefc07eb267bf418597d78629533d5b3",
+      "startedUtc": "2026-10-06T23:12:56.615676+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 122,
+        "samples": 124928,
+        "gapSamples": 335,
+        "rfSamples": 125263,
+        "coverage": 99.73256268810422,
+        "outputDrops": 1,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016880,
+          501060,
+          7,
+          0,
+          122,
+          1,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-final-default-smoke\\window-003.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=8 cr=4 bytes=32 hex=b25b886888bf42ffbb4d80adcf7a5d0cfefc07eb267bf418597d78629533d5b3"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.09932620008476079
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=130406 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "cd58658c70d3033928d8b70c907f285ecefc7e5fefc9c979a7e948870a5aa35c",
+      "packets": [
+        {
+          "text": "\ufffd[\ufffdh\ufffd\ufffdB\ufffd\ufffdM\ufffd\ufffd\ufffdz]\f\ufffd\ufffd\u0007\ufffd&{\ufffd\u0018Y}xb\ufffd3\u0573",
+          "hex": "b25b886888bf42ffbb4d80adcf7a5d0cfefc07eb267bf418597d78629533d5b3",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "9785",
+          "sf": 8,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 14123.54,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 25959,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 124928,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 9,
+      "cr": 4,
+      "length": 32,
+      "block": 1,
+      "expected": "06c5e653d8e6666304b3467810690f3f6792cf9dfdd168b6495cc15097c7ba43",
+      "startedUtc": "2026-10-06T23:12:57.523927+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 122,
+        "samples": 124237,
+        "gapSamples": 1024,
+        "rfSamples": 125261,
+        "coverage": 99.18250692553947,
+        "outputDrops": 1,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016763,
+          501053,
+          7,
+          0,
+          122,
+          1,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-final-default-smoke\\window-004.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=9 cr=4 bytes=32 hex=06c5e653d8e6666304b3467810690f3f6792cf9dfdd168b6495cc15097c7ba43"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.08446459984406829
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=236411 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "e035e295711c5483ea8aaf948c91ac3d2a0ee667061d1130ec9b5af6f04b165c",
+      "packets": [
+        {
+          "text": "\u0006\ufffd\ufffdS\ufffd\ufffdfc\u0004\ufffdFx\u0010i\u000f?g\ufffd\u03dd\ufffd\ufffdh\ufffdI\\\ufffdP\ufffd\u01faC",
+          "hex": "06c5e653d8e6666304b3467810690f3f6792cf9dfdd168b6495cc15097c7ba43",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "7f7c",
+          "sf": 9,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 14282.23,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 28840,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 120832,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 2,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 2,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "cr": 4,
+      "length": 32,
+      "block": 1,
+      "expected": "6e741e8670c541f2058c4ee15e9674367a448824c90db1776bd64d670468263a",
+      "startedUtc": "2026-10-06T23:12:58.353865+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 122,
+        "samples": 124239,
+        "gapSamples": 1024,
+        "rfSamples": 125263,
+        "coverage": 99.18251997796636,
+        "outputDrops": 1,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016889,
+          501060,
+          7,
+          0,
+          122,
+          1,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-final-default-smoke\\window-005.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=7 cr=4 bytes=32 hex=6e741e8670c541f2058c4ee15e9674367a448824c90db1776bd64d670468263a"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.09855429991148412
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=72388 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "98ed2541e73c50c9d787109464f113ee217b4e5e7e9a7c91a8aa78b1f04f20cc",
+      "packets": [
+        {
+          "text": "nt\u001e\ufffdp\ufffdA\ufffd\u0005\ufffdN\ufffd^\ufffdt6zD\ufffd$\ufffd\r\ufffdwk\ufffdMg\u0004h&:",
+          "hex": "6e741e8670c541f2058c4ee15e9674367a448824c90db1776bd64d670468263a",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "a314",
+          "sf": 7,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 14440.92,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 22524,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 123904,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 2,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 2,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 2,
+      "passed": true
+    },
+    {
+      "sf": 8,
+      "cr": 4,
+      "length": 32,
+      "block": 1,
+      "expected": "e8b1ea82269aa72c3ffb56178b440f0a48af3db75ca98696a7c54606262ded81",
+      "startedUtc": "2026-10-06T23:12:59.173247+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 122,
+        "samples": 124239,
+        "gapSamples": 1024,
+        "rfSamples": 125263,
+        "coverage": 99.18251997796636,
+        "outputDrops": 1,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016853,
+          501058,
+          7,
+          0,
+          122,
+          1,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-final-default-smoke\\window-006.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=8 cr=4 bytes=32 hex=e8b1ea82269aa72c3ffb56178b440f0a48af3db75ca98696a7c54606262ded81"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.09889370016753674
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=130408 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "277abfd3ca0739efce2de0bfcc45d19383fcb6fa4a87395acf804e623bd34005",
+      "packets": [
+        {
+          "text": "\ufffd\ufffd&\ufffd\ufffd,?\ufffdV\u0017\ufffdD\u000f\nH\ufffd=\ufffd\\\ufffd\ufffd\ufffd\ufffd\ufffdF\u0006&-\ufffd",
+          "hex": "e8b1ea82269aa72c3ffb56178b440f0a48af3db75ca98696a7c54606262ded81",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "0ec4",
+          "sf": 8,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 14202.88,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 25972,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 120832,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 2,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 2,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "cr": 4,
+      "length": 32,
+      "block": 2,
+      "expected": "229d914680ace4ec1c61ec6b026cf55eeabb5c8b93bfd1573d0dbb675d9b1963",
+      "startedUtc": "2026-10-06T23:13:00.048335+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 122,
+        "samples": 124239,
+        "gapSamples": 1024,
+        "rfSamples": 125263,
+        "coverage": 99.18251997796636,
+        "outputDrops": 1,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016858,
+          501058,
+          7,
+          0,
+          122,
+          1,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-final-default-smoke\\window-007.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=7 cr=4 bytes=32 hex=229d914680ace4ec1c61ec6b026cf55eeabb5c8b93bfd1573d0dbb675d9b1963"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.11531250015832484
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=72427 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "7413535e7d5e4f90e0f466382ae8dacb05feb5c626f7e01ff946f3dfe47efa35",
+      "packets": [
+        {
+          "text": "\"\ufffd\ufffdF\ufffd\ufffd\ufffd\ufffd\u001ca\ufffdk\u0002l\ufffd^\ufffd\\\ufffd\ufffd\ufffd\ufffdW=\r\ufffdg]\ufffd\u0019c",
+          "hex": "229d914680ace4ec1c61ec6b026cf55eeabb5c8b93bfd1573d0dbb675d9b1963",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "f425",
+          "sf": 7,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 13964.84,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 22761,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 121856,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 2,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 2,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 2,
+      "passed": true
+    },
+    {
+      "sf": 9,
+      "cr": 4,
+      "length": 32,
+      "block": 2,
+      "expected": "da34d7271c5bb7109ff78836cd20cde3e2496c3b4d72d0cb2e8afff6d14ec105",
+      "startedUtc": "2026-10-06T23:13:00.897834+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 122,
+        "samples": 124240,
+        "gapSamples": 1024,
+        "rfSamples": 125264,
+        "coverage": 99.1825265040235,
+        "outputDrops": 1,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016899,
+          501061,
+          7,
+          0,
+          122,
+          1,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-final-default-smoke\\window-008.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=9 cr=4 bytes=32 hex=da34d7271c5bb7109ff78836cd20cde3e2496c3b4d72d0cb2e8afff6d14ec105"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.10614189994521439
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=236402 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "197ede8941fe4160a4859ef7d788284c61083e1bca0e652a4c21f0a3969b8774",
+      "packets": [
+        {
+          "text": "\ufffd4\ufffd'\u001c[\ufffd\u0010\ufffd\ufffd\ufffd6\ufffd \ufffd\ufffd\ufffdIl;Mr\ufffd\ufffd.\ufffd\ufffd\ufffd\ufffdN\ufffd\u0005",
+          "hex": "da34d7271c5bb7109ff78836cd20cde3e2496c3b4d72d0cb2e8afff6d14ec105",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "ca63",
+          "sf": 9,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 14083.86,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 33084,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 122880,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 2,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 2,
+      "passed": true
+    },
+    {
+      "sf": 8,
+      "cr": 4,
+      "length": 32,
+      "block": 2,
+      "expected": "8d421371623054f17387c4f6b5dbf12e356052aec72ab16a2a66be6365eb8b50",
+      "startedUtc": "2026-10-06T23:13:01.723268+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 122,
+        "samples": 124239,
+        "gapSamples": 1024,
+        "rfSamples": 125263,
+        "coverage": 99.18251997796636,
+        "outputDrops": 1,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016851,
+          501058,
+          7,
+          0,
+          122,
+          1,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-final-default-smoke\\window-009.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=8 cr=4 bytes=32 hex=8d421371623054f17387c4f6b5dbf12e356052aec72ab16a2a66be6365eb8b50"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.10098430002108216
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=130418 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "209f9ef9b0f22d4a14011c81e126904debc7b07ea6a9b77fe239063d8740ca06",
+      "packets": [
+        {
+          "text": "\ufffdB\u0013qb0T\ufffds\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd.5`R\ufffd\ufffd*\ufffdj*f\ufffdce\ufffdP",
+          "hex": "8d421371623054f17387c4f6b5dbf12e356052aec72ab16a2a66be6365eb8b50",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "828f",
+          "sf": 8,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 13964.84,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 25949,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 122880,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 2,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 2,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 2,
+      "passed": true
+    }
+  ],
+  "configuration": {
+    "sfs": [
+      7,
+      8,
+      9
+    ],
+    "crs": [
+      4
+    ],
+    "lengths": [
+      32
+    ],
+    "repeats": 3,
+    "xiaoPort": "COM3",
+    "radioPort": "COM4",
+    "rfRetries": 0
+  },
+  "sourceSha256": {
+    "xiao": {
+      "CMakeLists.txt": "cb0850012fb07bbfcc236474cc20e7acef6765cccc753de79b74634b4fbb05b5",
+      "sdkconfig.defaults": "10f7be0a288b01261f72e712f94353a1853466ab1e56d540d2b11b9266459ede",
+      "sdkconfig.psram": "a1025f92afa878761f5c0de49f1e434e029149abadd9aca9863ffbdfcffd2841",
+      "main/CMakeLists.txt": "22f6b09197b132aa3ba3fb4e39cdb37157a1ac9424c09a8bee003bf6f9ded4f7",
+      "main/Kconfig.projbuild": "6079890dd472ac1cae0d3c072690b5aef51be34af70e05cc82d6538b88e729d3",
+      "main/common/burst_gain.h": "728fb1d66ec875b28ad1082671fec90d906f1096cb61fbad53a7bcc2fd674c81",
+      "main/common/burst_gain_table.h": "790432303eb383f4d4ba73224021217518b1978fd12667b325e9472bdbc431e8",
+      "main/common/burst_limits.h": "b67a0adc8dcf3bdb0aa4cc863d84c4c7b023e95ab6a3ca3637cbcc2d4f97443d",
+      "main/common/burst_serial.c": "45603fd23a6fa1d2be5acf88bcc94c4a77f3877caf36dc8ac8f1af1b7ae607cb",
+      "main/common/burst_serial.h": "1120520248f8f7d1f6f240ce95b527f50f32bdb40d6ddb31fe67a18e469f9c8b",
+      "main/common/lora_chirp.c": "3cf3974e36d8ff71c885819488ddb391627183dcf53b2ee863e398c0b61d276c",
+      "main/common/lora_chirp.h": "33d49b4605ea51d8f94cd1c7be512178b9db2bf6491fae6952f70199c4b01508",
+      "main/common/ring_capture.c": "44befd743bd945527d1c5d0d32dc0630c902caf3faf8c22a3899f98ee8e5a4df",
+      "main/common/ring_capture.h": "a22bd9cb0d44146d7a3c9ed73f036bd30327a0ffc3de6a152ece7b251cccfd7a",
+      "main/common/ring_io.h": "19bf80f05c597fdd89cbff4707248a844077b38a31cf09eefecbd63a6f71ced5",
+      "main/common/ring_scalar.h": "6268ba906c4094013999dc14283457cc69c3bd6465d59035a10492a74eb1bf55",
+      "main/common/rx_bandwidth.h": "d93c7c525f618532707cc771e7fbda16fe8dff5b490d7cc0f3e3e41ee8effa06",
+      "main/common/rx_lo.h": "93a286c7f8432aef9cdf6795f3067c7a30381ab7da43aab2a1507616e3dfbddd",
+      "main/common/rx_pll_cal.h": "a5528cf32466e3a3d7f5f0920046b6b0db96034d993bbafe501844020fbf450a",
+      "main/common/rx_recalibration.c": "de7b162d988347465122599480845092a8556fcaa81c6c6b09d3f8790bb7aa23",
+      "main/common/rx_recalibration.h": "8a4a5fae62361b4b8808edf0eddea4f2883b0b3057f6f4270134068501a46df0",
+      "main/common/rx_tuning.h": "d251c194bcd455383e6fc42e1d43185caca88fd32109918e1de49c2042e80c29",
+      "main/common/spectrum.h": "c28edea88c9a4958c97ce4656e7b22a1fa6bb05a2dfb2e97c81d5f8e8e8d1a6a",
+      "main/common/spectrum_dc.h": "0bb86dd093d104cf4c8d19ef67a00725748b311d674816b9d1d156651ff00ae8",
+      "main/common/spectrum_fft.h": "1634022a6958b08f4c430bb6f353ad774457a37634b2dd9f94feeeb8c618cad2",
+      "main/common/spectrum_math.h": "d9eab1073d806201437415177f87034feec9ba2b3b14057724062fb2ba530342",
+      "main/common/spectrum_stats.c": "f71c908b40428d5a37ab7b19f1fd697ad1f08612fbe294b3a6d401b82e196b77",
+      "main/common/spectrum_stats.h": "89fb38d0c36fcdeceec884aa2a5a7ec2b648ddf0e15c7ecd4bd90158216fe22b",
+      "main/targets/esp32s3/linker.lf": "c6ee553ba34c0b9017057461114a1132654f1baf98e5a518af59fdcb275b402c",
+      "main/targets/esp32s3/receiver.c": "270e9650ba23746d3b28bea147243fcfc4d580d94c109af2da9186d6d8554edf",
+      "main/targets/esp32s3/s3_core1.S": "406276930233376416d87132f0e2d7aaa6ee4517cc13909c2e54d7fe129fd50e",
+      "main/targets/esp32s3/s3_fft_rnd.S": "36e912ff07ca893a4c57cb8828a7e1cdaaa363a9b3aad775e3f6493e620c36c4",
+      "main/targets/esp32s3/s3_firdot.S": "40a5e1923b2b2287d8b008deb81aa373459de538c99f7abe39afc9a63c6348d4",
+      "main/targets/esp32s3/s3_unpack.S": "1bd29c448efbb27d50a13a73114d6fbbd7c10b3924d00d9f1a24bde3a75da2e0",
+      "main/targets/esp32s3/sram_guard.ld": "5e8247b0e406fa9fb195b03f32a12b19f91227427864d505a2190270a92e1470"
+    },
+    "radio": {
+      "platformio.ini": "7a1ffba9c8d6d2a4ec7d4eabd818eb63a16c0febab8df131e6b1992ad87dc99d",
+      "src/main.cpp": "a6fcb3553c8ea9125ebbb2eda2c87a1d34e3d367d044858f04440cbf9e4eee67"
+    }
+  },
+  "xiaoInfo": "I (151) esp_image: segment 4: paddr=000a5a7c vaddr=4037a078 sizeS3SDR 9 iq-capture 16380",
+  "radioInfo": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1",
+  "finishedUtc": "2026-10-06T23:13:02.583161+00:00"
+}

@@ -1,5 +1,5 @@
 """Offline complete LoRa packets from CRC-checked contiguous XIAO IQS1 data."""
-import argparse, hashlib, json
+import argparse, hashlib, json, sys
 from pathlib import Path
 from lora_packet_iq import frames_from_file, contiguous_runs
 from lora_packet_decoder import Decoder
@@ -24,6 +24,7 @@ def decode(path,frequency=2440.125,sf=7,invert=False):
         packets=packets,stats=receiver.stats)
 
 def main():
+    if hasattr(sys.stdout,'reconfigure'):sys.stdout.reconfigure(encoding='utf-8')
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('recording',type=Path)
     p.add_argument('--frequency',type=float,default=2440.125)

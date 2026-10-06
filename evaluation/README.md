@@ -74,3 +74,5 @@ cross-product of every field. The interrupted pre-checkpoint-fix dataset is
 retained separately; do not silently combine it with the completed matrix.
 The [host decoder tests](../host/README.md) replay saved RF and synthetic
 signals; their pass count is not a live packet-delivery measurement.
+
+Reverse live tests: [host workflow](../host/README.md). The optional capture queue studies and all aborted batches have [raw reports](data/research/capture-retention-summary.json) and an [actual IQ archive](data/captured-iq.zip). Regenerate the new figures with `python plot_reverse.py`, `python plot_grant.py`, and `python plot_capture_retention.py`.

@@ -1,0 +1,154 @@
+{
+  "startedUtc": "2026-10-06T22:08:58.707856+00:00",
+  "seed": 2026100717,
+  "txPort": "COM3",
+  "rxPort": "COM4",
+  "sender": "bench",
+  "completed": true,
+  "cases": [
+    {
+      "block": 0,
+      "cr": 3,
+      "length": 1,
+      "expected": "36",
+      "received": [],
+      "startedUtc": "2026-10-06T22:08:58.825026+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 44.426 c=74095 g=90 s=1",
+      "transportOk": true,
+      "passed": false,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 2,
+      "length": 8,
+      "expected": "9e33590666dfc772",
+      "received": [],
+      "startedUtc": "2026-10-06T22:09:00.038781+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 143 0 58.289 c=74125 g=90 s=1",
+      "transportOk": true,
+      "passed": false,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 1,
+      "length": 8,
+      "expected": "97b5788bd6b85c71",
+      "received": [],
+      "startedUtc": "2026-10-06T22:09:01.255099+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 133 0 54.508 c=74228 g=90 s=1",
+      "transportOk": true,
+      "passed": false,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 3,
+      "length": 8,
+      "expected": "b1b0809a9cfd5de3",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-104.5 snr=-15.0 hex=8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -104.5,
+          "snr": -15.0,
+          "hex": "8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:09:02.471911+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 152 0 62.070 c=74095 g=90 s=1",
+      "transportOk": true,
+      "passed": false,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 4,
+      "length": 8,
+      "expected": "0a0197743e36eda8",
+      "received": [],
+      "startedUtc": "2026-10-06T22:09:03.714101+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 161 0 65.851 c=74125 g=94 s=1",
+      "transportOk": true,
+      "passed": false,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 4,
+      "length": 1,
+      "expected": "6e",
+      "received": [],
+      "startedUtc": "2026-10-06T22:09:04.944727+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 112 0 45.686 c=74187 g=102 s=1",
+      "transportOk": true,
+      "passed": false,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 1,
+      "length": 1,
+      "expected": "9e",
+      "received": [],
+      "startedUtc": "2026-10-06T22:09:06.153123+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 103 0 41.905 c=74228 g=90 s=1",
+      "transportOk": true,
+      "passed": false,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 2,
+      "length": 1,
+      "expected": "a6",
+      "received": [],
+      "startedUtc": "2026-10-06T22:09:07.352012+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 106 0 43.166 c=74136 g=90 s=1",
+      "transportOk": true,
+      "passed": false,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1"
+    }
+  ],
+  "transport": "STREAM",
+  "gapSamples": 15,
+  "profile": {
+    "frequencyHz": 2440125000,
+    "bandwidthHz": 203125,
+    "sf": 8,
+    "sync": 18,
+    "preamble": 16,
+    "windowSamples": 15000,
+    "frequencyCorrectionHz": 15000
+  },
+  "rule": "fresh RX status=0, header=0, CRC present=1 and CRC ok=1; exact full payload bytes",
+  "sha256": {
+    "companion/lr2021/.pio/build/aerolink-hf/firmware.bin": "7614e6b60f9b14425f335b1103035ba0a1f82910a0e1df7ee3eec0773e03c1e4",
+    "esp32-lora-sdr/research/ping-pong-dac/.pio/build/xiao-stream-research/firmware.bin": "b31a8f9408941ad8c47128bc6a7c9f5dc8e011bef806a239bdae6a2fd61fe335"
+  },
+  "firmwareHashMethod": "SHA256 of last-flashed input images; esptool write verification is separate",
+  "sourceSha256": {
+    "DacStreamer.cpp": "4570c4e9e882634093e132b5c3c6a0b4217205e687b716f7a927be203ef619c8",
+    "DacStreamer.h": "0aa34c512105c9f25fb3b198afbee01e5c9fd726ba803a364469daae54b8aac1",
+    "ESP32S3Radio.cpp": "1e4e5fe2bff8754fdda7a860727ecf61d21cf7eb13075a9719225f78418551ea",
+    "ESP32S3Radio.h": "0e36c237e46d0be7bd2a2dfd65df4a9e6cfd76974fb8a9f16a863768ca1bca6f",
+    "LoRaSDR.cpp": "d2008c0d36d4d65d7b68fae09c06357d78a80c8bc1e171b6a73113450decfbce",
+    "LoRaSDR.h": "2dc691ecd4e70addf9d9df178c24ae08f92efcbd43e500fcfb69077611bc3c02",
+    "main.cpp": "4fd99d55c8f1b45a155d35013867dcb6f4282cc1fe67ee0d902d2794ada63fd4"
+  },
+  "receiverIdentity": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1",
+  "finishedUtc": "2026-10-06T22:09:08.560079+00:00"
+}

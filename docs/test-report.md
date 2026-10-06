@@ -1,12 +1,19 @@
 # Hardware test report — 7 October 2026
 
-Updated through approximately 05:48 Hong Kong time. This is a measured engineering report, not a
+Updated through the final receiver IRQ audit on 7 October, Hong Kong time. This is a measured engineering report, not a
 claim of universal compatibility or a peer-reviewed paper. Subsequent research
 results must be appended with their own firmware hashes and denominators.
 
+![Final strict IRQ matrix](assets/final-irq-results.svg)
+
 ## Main result
 
-Latest public-receiver matrix: **239/240**, SF7, four coding rates and lengths
+Final stricter receiver audit: **224/240** accepted, **240/240** exact full
+payloads. Sixteen mixed header-valid/header-error IRQ states are conservatively
+rejected. [Read the final audit](#final-receiver-irq-audit-stricter-hardware-evidence)
+before interpreting earlier API-based counts.
+
+Earlier API-based public-receiver matrix: **239/240**, SF7, four coding rates and lengths
 1–255 bytes; all forty 255-byte packets passed. Separate wider-band SF7
 matrices passed **72/72 at 406.25 kHz** and **72/72 at 812.5 kHz**. The beginner
 sketch passed **3/3** after a normal full PlatformIO upload. Later sections
@@ -21,7 +28,13 @@ both CRC failures are retained. Its rebuilt SerialBench default smoke was
 and PC decoder are now included for reproducibility; native Arduino RX remains
 unimplemented. [中文测试摘要](test-report.zh-CN.md).
 
-最新结论：公开接收器 239/240，覆盖 1–255 字节；两个更宽带宽批次各 72/72。
+New reverse-direction result: the public LR2021 sends into the XIAO's internal
+RF; the **PC** fully decodes104/108 fresh packets across SF7–9, four coding rates
+and lengths1/8/32. The standalone public capture firmware and live fixture are
+included. Per-SF counts33/36,35/36,36/36; four misses and74 windows with IQ
+output drops remain visible. These are separate from XIAO transmission results.
+
+早期 API 验收结论：公开接收器 239/240，覆盖 1–255 字节；两个更宽带宽批次各 72/72。
 较早入门示例刷机后 3/3；最新重编译版本本轮 2/3，一次漏收保留。
 模拟增益七档研究 70/70，最低档合入后回归 72/72；仍没有校准成 dBm。
 SF8/SF9 的 PLL 路径有完整 CRC 包，但很不可靠；稳定高 SF、弱信号提高 SF
@@ -155,8 +168,9 @@ quarter-SFD windows are shorter. There are deliberate silent gaps. Raising SF
 lengthens symbols while the playback window is bounded, reducing transmitted
 energy fraction; a higher-SF range benefit cannot simply be assumed.
 
-SF5/SF6 RF, other bandwidths, frequency sweeps, implicit headers, CRC-off RF,
-SF10–12 RF and 251–255-byte reception remain unverified. Native Arduino packet
+SF5/SF6 RF, implicit headers, CRC-off RF and SF10–12 RF remain unverified.
+Later SF7 datasets in this report cover three bandwidths, three channels and
+1–255-byte payloads; these additions do not establish untested combinations. Native Arduino packet
 RX returns `Unsupported`. The earlier reverse link uses separate XIAO I/Q
 capture firmware and a PC decoder, with gaps between capture windows.
 
@@ -576,3 +590,246 @@ mismatch, fragmented USB lines and rejecting unintended TX on the receive-only
 public companion. These are software checks, separate from the 2/2 live proof.
 The local viewer remains a personal bench tool; library users can reproduce
 RF via the public serial companion and matrix scripts without this website.
+
+
+## Grant-release follow-up: digital recovery and actual SF7 RF success
+
+The pinned upstream DESIGN-IQ-TX open question suggested temporarily removing
+SRAM ownership while writing. We tested it rather than assuming it would work.
+Three alternating no-RF triplets gave idle0/16,384 wrong words, playing16,252,
+and playing-with-grant-release0. Maximum copy costs were1,199/1,199/1,204 CPU
+cycles; playing elapsed times99,955/99,958 cycles. Readback recovery and almost
+unchanged completion time do not establish uninterrupted analog RF output.
+The readback image was `367829a037ca8b05b10842dd8653593acec30d37d3de4f97e611d39390fdd40d`;
+its exact unchanged deterministic checks are not independent statistical trials.
+
+Grant release was then added around the RF stream fills. At256-word blocks,
+64-sample margin and14 skipped seam samples, SF7/BW203.125/CR4/8 delivered3/3
+fresh32-byte smoke packets. A separate fresh randomized matrix, seed2026100708,
+then delivered **48/48**, four coding rates × lengths1/8/32/80 × three shuffled
+blocks. Exact full payload, explicit header, CRC presence and independent
+hardware CRC all had to pass. Descriptive aggregate Wilson95% interval:
+**92.59–100.00%**. Each tuple has only three trials, on the same stationary pair.
+
+The RF image is `83be4fff6085b33a7cbbeea2e642cc0911d630c6dcfe4f8fc72dad60723af255`.
+Approximately one first-block deadline per buffer was still missed; maximum
+RF copying was roughly1,440 cycles/256 and retrigger seams around78 cycles.
+We have not independently measured the emitted waveform, coverage or spectrum,
+so this is successful bounded SF7 refill-based transmission, **not a gapless RF
+claim**. The production library's verified window path remains the default.
+
+SF8 gave0/3 at each gap14/13/0/27, plus a separate CFO0 diagnostic0/3. The latter
+three gap variants share a diagnostic payload sequence; do not pool them as
+independent randomized trials. An SF8 line reported CRCok for32 bytes ofA5 that
+did not match the requested random payload. It failed the exact-byte rule;
+CRC-labelled output alone is insufficient. No pattern blacklist was introduced.
+Block512/margin128 SF8 gave0/3; block512/margin64 gave0/3 atSF7 and0/3 atSF8,
+despite reducing late-block counts to one per packet. Larger blocks are not a
+validated improvement. All failed logs and source/image hashes are retained.
+
+![Grant readback recovery and bounded SF7 RF validation](assets/grant-results.svg)
+
+[Research source and commands](../research/playing-bank-grant/README.md),
+[Readback raw data](../evaluation/data/research/playing-bank-grant.json),
+[RF matrix](../evaluation/data/research/grant-stream-sf7-matrix.json),
+[Figure PDF](assets/grant-results.pdf).
+
+The clean cloud workflow for commit784d15f also completed
+[successfully](https://github.com/jimmywuhkust/esp32-lora-sdr/actions/runs/37536431334)
+in2m19s: Arduino build2m14s, recorded-IQ regression24s. It validates builds and
+host tests, not the above live RF measurements.
+
+## Ping-pong DAC: a second bounded SF7 implementation
+
+The isolated two-bank implementation delivered a fresh48/48 SF7 matrix,
+seed2026100719, four coding rates × lengths1/8/32/80 × three shuffled blocks.
+Each trial required full exact bytes and independent header/CRC verification.
+Descriptive Wilson95% interval92.59–100%; each tuple only has three trials.
+No local late buffers were reported. Maximum16,384-word fill74,228 cycles
+was below its98,304-cycle play budget; software seams were90–102 cycles.
+The compact source's before/after FNV hash matched, which is not a bytewise or
+cryptographic proof. RF continuity, spectrum and output power were not measured.
+
+SF8 still gave0/3 at each gap13–18 and at the five tested CFO settings;
+several diagnostics deliberately reuse payloads and must not be pooled.
+Short SF8 across four CRs gave0/8, a fresh SF8 receiver gave0/3, and
+SF8/BW406.25 and SF9/BW812.5 gave0/3 each. Firmware/source hashes and failures
+are preserved. [Source and reproduction](../research/ping-pong-dac/README.md).
+The production library retains its proven windowed implementation.
+
+An additional software oracle used the actual XIAO ENC command to reconstruct
+ideal40MS/s phase rings, then resampled and decoded SF7/8/9 with valid CRC.
+This validates the ideal phase/coding construction, **not actual emitted RF**.
+The raw audit is `evaluation/data/research/phase-ring-native-encoder-oracle.json`.
+
+## Reverse live RF: public transmitter and reproducible XIAO capture
+
+The first public RadioLib7.7.0 blocking-TX fixture delivered0/9 complete
+packets in both its initial and first-IQ-frame-triggered batches. It reported
+local TX success, yet the XIAO recordings did not contain a usable packet.
+GPIO14 also read high when chip IRQ was zero. The library's blocking TX waits
+on that GPIO and then calls finishTransmit; chip IRQ polling was needed on this
+specimen. We do not attribute the unusual GPIO level to a proven wiring or
+silicon defect, and do not claim a general RadioLib bug from one board.
+
+A combined FIFO-clear + actual-IRQ completion variant delivered9/9 at
+SF7/8/9, three fresh32-byte CR4/8 packets perSF. A separate actual-IRQ-only
+variant, retaining the original FIFO behavior, also delivered9/9 with a new
+seed2026100728. Thus FIFO clear was not necessary in that bounded batch.
+TX diagnostics showed actual chip completion around72/131/237ms respectively,
+with no chip-error bits in the diagnostic variant. All results still required
+independent XIAO IQ, blind PC decoding, exact bytes and payload CRC.
+
+One earlier combined batch stopped after3/3 SF7 due to the host worker deadline;
+it is incomplete and not pooled. Another IRQ-only batch decoded9/9 RF payloads
+but met the full fixture criterion8/9 because its serial acknowledgement was
+truncated. The reader now retains partial bytes until newline. The original
+failed acknowledgement and its genuine decoded packet remain in the raw log.
+An offline wider-timing audit later recovered one old private SF7 capture;
+this replay was not a new RF trial and was not added to any live numerator.
+
+The opt-in public companion was then implemented using only public APIs,
+without GODMODE, alongside the default receive-only build. Its separate
+350ms fixture gave8/9, with an SF9 miss; a new500ms fixture gave9/9.
+Changing a capture window is not a controlled sensitivity comparison, and
+we have not established why the missed packet failed.
+
+The new standalone GPL capture project was built from the included source,
+flashed with generated IDF bootloader/partition/app images and verified by
+esptool. INFO reports `S3SDR 9 iq-capture 16380`. Its first350ms smoke gave8/9,
+with an SF7 miss retained. A separate fresh shuffled matrix then delivered
+**104/108**: SF7 **33/36**, SF8 **35/36**, SF9 **36/36**; four CRs × lengths1/8/32
+× three blocks, seed2026100732,500ms windows. Four misses stayed failures;
+no RF retry was used. Descriptive aggregate Wilson95% interval90.86–98.55%.
+There are only three trials per tuple, from the same stationary indoor pair.
+
+Capture imageSHA256: `5e26d8ca3b283320d0ad127104539ce698df57da5596e9338aca099f2f1ab1c6`.
+Public TX imageSHA256: `8e8b8a45a9db007e67556e86d3f85900f6c8a84ca40658117f39420a2c5a7dfb`.
+The default capture image uses no PSRAM. Its500ms matrix retained99.18–100%
+of decimated IQ inside each window:34/108 windows had no output loss;74 had
+one reported output drop, sometimes a partial frame. The decoder splits actual
+sample gaps; it never invents padding to claim continuity. No abandoned RF units
+were reported in this matrix. **104 CRC packets is not100% sample retention.**
+
+Two selected real SF8/SF9 IQ windows and manifests are now bundled, alongside
+the earlier real SF7 recording. Seven host regression tests passed, including
+both new blind higher-SF replays and the negative/transport checks. Replaying
+stored data and synthetic tests are separate from new RF measurements.
+
+![Actual reverse-direction packets, completion time and measured IQ spectrum](assets/reverse-results.svg)
+
+The figure's spectra use actual recorded IQ,4-bit components,250ksps and
+hardware AGC. Panels are separately normalized and cannot be compared as
+calibrated received power. Selected windows are not independent new trials.
+[Figure source](../evaluation/plot_reverse.py) · [PDF](assets/reverse-results.pdf) ·
+[Live matrix raw data](../evaluation/data/research/live-reverse-packaged-matrix.json) ·
+[Capture source](../firmware/iq-capture/README.md) · [Beginner workflow](../host/README.md).
+
+This establishes **LR2021 → XIAO RF → PC complete decoding**, including real
+higherSF. It does not establish native Arduino packet RX, stable XIAO SF8/SF9
+TX, calibrated power, weak-signal SF recovery or continuous4MS/s USB capture.
+
+## Final finite-window capture validation
+
+The optional 256 KiB PSRAM output queue was built and flashed on this verified
+8 MB OPI-PSRAM XIAO. A fresh 9/9 smoke retained all output IQ. Two longer
+batches aborted at ring boundaries: 21/22 completed packets then an unrecorded
+23rd failed acquisition; 10/10 completed packets then a retained 11th partial
+acquisition. The first harness did not checkpoint that aborted input/partial
+IQ; this evidence gap is explicit, not reconstructed later.
+
+The next image permits trimming only 1–4 packed RF words whose values match
+bit-for-bit in both neighboring banks. It still rejects missing or unmatched
+edges. Its planned 108-case batch completed 106 windows, decoded **103/106**,
+then aborted on the 107th window. SF7 was 35/36, SF8 33/35, SF9 35/35 among
+completed windows. All 106 completed windows had 100% reported output retention
+and zero output drops. No verified trimming occurred in these windows. The
+abort's partial IQ and original expected bytes are retained; its TX diagnostics
+were not checkpointed by that harness version. The harness now preserves them
+when a future acquisition aborts.
+
+A separate new seed, single shuffled 36-case block completed: **34/36**, with
+SF7 10/12, SF8 12/12, SF9 12/12; all 36 windows reported 100% output retention,
+zero output drops and no trimming. These batches are not pooled, are not RF
+retries, and do not prove continuous capture, sensitivity or faster USB.
+The PSRAM image SHA256 is
+`b9de5d5a716d1b697ee5b9d35a4adc3f3f4eb91f4b0b27d3d8f55506b4f84169`.
+
+![Measured finite-window IQ retention and full-packet results](assets/capture-retention.svg)
+
+The default non-PSRAM image was rebuilt after the guarded boundary change,
+flashed with its generated bootloader/partition table, and passed a separate
+fresh SF7/8/9 **9/9** live smoke. Each of its nine 500 ms windows still reported
+an output drop. Image SHA256:
+`25685b7a67f4b9b69095a11cea6558ecdac92a801d696fefb3f4606334876289`.
+The earlier 104/108 matrix belongs to the older default image, not this image.
+
+Both generated capture builds are bundled with a checksum-verifying flasher
+and pinned source/toolchain manifests. These contain no NVS or device readback.
+The public-fixture raw IQ archive includes successful, missed and retained
+partial captures from all six capture-retention batches, plus JSON and a
+per-file SHA256 manifest. [Download actual IQ](../evaluation/data/captured-iq.zip)
+· [Archive checksum manifest](../evaluation/data/captured-iq-manifest.json)
+· [All batch counters](../evaluation/data/research/capture-retention-summary.json)
+· [Figure source](../evaluation/plot_capture_retention.py).
+
+This is 250 kcomplex samples/s after decimation. Reported 100% retention means
+all firmware-counted decimated output samples arrived in each completed bounded
+window. It is not independent verification of every physical ADC conversion,
+continuous all-time RF coverage, or 4 MS/s lossless USB streaming.
+
+## Final receiver IRQ audit: stricter hardware evidence
+
+After restoring the production XIAO image and uploading the new default
+receive-only companion, a fresh randomized **240-case** SF7/BW203.125 kHz
+matrix tested four CRs × lengths 1/8/32/80/128/255 × ten blocks, seed2026100739.
+It produced **240/240 exact payloads**, but **224/240** passed the new stricter
+criterion: actual RX_DONE + HEADER_VALID, no payload/header CRC-error IRQ,
+CRC present, read/header status0, matching length and every byte.
+Descriptive Wilson95% interval **89.45–95.86%** for this conservative criterion.
+No RF retry was made. All 16 rejected cases remain rejected.
+
+Those 16 still had correct full bytes and read status0. Fourteen IRQ snapshots
+were `00040370`, two `00040371`. They contain HEADER_VALID and RX_DONE plus
+the **header CRC error** bit9, not the payload CRC error bit22. The earlier
+companion used RadioLib read/header status and CRC presence; it did not retain
+this full pre-drain IRQ snapshot. RadioLib7.7.0 readData checks payload CRC and
+HEADER_VALID, but does not independently reject the simultaneous bit9 event.
+[IRQ definitions](https://github.com/jgromes/RadioLib/blob/7.7.0/src/modules/LR2021/LR2021_commands.h#L149-L174)
+· [readData source](https://github.com/jgromes/RadioLib/blob/7.7.0/src/modules/LR2021/LR2021.cpp#L566-L612).
+
+These IRQs are latched over a reception interval; a header-error event could
+precede a later valid packet. We have not established that the received exact
+payload's own header was corrupt. The new receiver rejects the ambiguous state
+conservatively. **224/240 is not equivalent to 16 missing or payload-corrupt
+packets.** Older API-based 239/240 and other research counts retain their original
+criterion and data, and cannot be retroactively rescored without IRQ evidence.
+Different payload batches and criteria cannot be used as a controlled causal
+comparison of transmitter reliability.
+
+Production XIAO image: `f34e6cc5ee868b03ee6c6abd4407d57c2c4c4228f2a7c095f555f1f5d8545735`.
+Strict receive-only LR2021 image: `7a739e21c7ed10d51bcf8d5d5795306e5b5995d11a07ca55c58435f5ef3a563c`.
+[Raw complete matrix](../evaluation/data/public-receiver-final-irq.json)
+· [Counters and rejected case numbers](../evaluation/data/public-receiver-final-irq-summary.json).
+
+## Final simple UI and restored hardware
+
+Three fresh distinct UI messages yielded **2/3** strict acceptances: English44
+bytes and Chinese49 bytes, exact full payloads and CRC accepted by the new
+receiver. The Chinese56-byte message was conservatively rejected despite exact
+bytes; it remains a failed UI trial. It was not retried to repair the score.
+The earlier UI2/2 belongs to the earlier receiver image and different payloads.
+The web records RX/rejection lines, not the separate RX_IRQ snapshots; the
+240-case serial matrix contains full IRQ evidence.
+[Actual UI cases and rejection](../evaluation/data/final-web-proof.json).
+
+![Final live page: three fresh sends, two strict CRC acceptances](assets/final-live-proof.png)
+
+COM3 is restored to the production native Arduino XIAO transmitter; COM4 runs
+the new public receive-only companion. The local9173 page remains connected,
+with no autonomous RF beacon. Arduino/PlatformIO examples, public companion,
+capture source/prebuilt flasher, bilingual guides, genuine IQ and raw failures
+are included. Native Arduino full RX, stable higher-SF TX, calibrated power and
+weak-signal SF recovery remain unachieved; this is not a complete LoRa-chip API
+replacement. Local capture builds, cloud example builds and actual RF tests
+are separate evidence.

@@ -9,6 +9,7 @@ def main():
     p.add_argument('--port',default='COM3')
     p.add_argument('--image',type=Path,required=True)
     p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--grant',action='store_true',help='isolated playing-bank-grant firmware, no RF keying')
     a=p.parse_args()
     result=dict(startedUtc=datetime.now(timezone.utc).isoformat(),port=a.port,
         imageSha256=hashlib.sha256(a.image.read_bytes()).hexdigest(),
@@ -27,12 +28,13 @@ def main():
         if result['identity']!='LoRaSDR native S3 0.1':raise RuntimeError(result['identity'])
         port.write(b'LUTTEST\n');result['writerSelfTest']=line()
         for block in range(3):
-            for command in ['BANKIDLE','BANKPLAY']:
+            for command in (['BANKIDLE','BANKPLAY','BANKGRANT'] if a.grant else ['BANKIDLE','BANKPLAY']):
                 port.write((command+'\n').encode());reply=line()
-                match=re.fullmatch(r'BANK ok=(\d+) bad=(\d+) first=(\d+) c=(\d+)',reply)
+                match=re.fullmatch(r'BANK ok=(\d+) bad=(\d+) first=(\d+) c=(\d+)(?: t=(\d+))?',reply)
                 case=dict(block=block,command=command,line=reply)
                 if not match:raise RuntimeError(reply)
-                case.update(zip(['engineCompleted','wrongWords','firstWrong','maxCopyCycles'],map(int,match.groups())))
+                case.update(zip(['engineCompleted','wrongWords','firstWrong','maxCopyCycles'],map(int,match.groups()[:4])))
+                if match[5] is not None:case['elapsedCycles']=int(match[5])
                 result['cases'].append(case);print(case,flush=True);time.sleep(.05)
         result['completed']=True
     finally:

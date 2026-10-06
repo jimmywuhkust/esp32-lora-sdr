@@ -1,0 +1,509 @@
+{
+  "startedUtc": "2026-10-06T22:22:35.619860+00:00",
+  "completed": true,
+  "direction": "LR2021 HF TX -> XIAO I/Q -> PC",
+  "nativeArduinoRx": false,
+  "seed": 2026100722,
+  "windowMs": 350,
+  "frequencyHz": 2440125000,
+  "bandwidthHz": 203125,
+  "syncWord": 18,
+  "preamble": 16,
+  "requestedChipPowerDbm": -12,
+  "calibratedRadiatedPower": false,
+  "imageSha256": {
+    "firmware\\esp32s3\\experimental-lora.bin": "b52e794af826deaf4f70945f202ca56b15cb51ac9ada4680a8ed1e4417b7e92a",
+    "esp32-lora-sdr\\research\\lr2021-start-sf8\\.pio\\build\\aerolink-hf\\firmware.bin": "60a75c8b01fbf226322b2cb63d108daaf0f69f36a8ab05d899e1069bd330d428"
+  },
+  "cases": [
+    {
+      "sf": 7,
+      "cr": 4,
+      "block": 0,
+      "expected": "aae96f28067dc290dac93bf4654afafe30407e398170f1f6431ae3dec586ef5c",
+      "startedUtc": "2026-10-06T22:22:35.722541+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 86,
+        "samples": 87605,
+        "gapSamples": 0,
+        "rfSamples": 87605,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "end": [
+          0,
+          0,
+          456,
+          5606750,
+          350426,
+          7,
+          0,
+          86,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-first-frame-sf7-9\\window-001.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=7 cr=4 bytes=32 hex=aae96f28067dc290dac93bf4654afafe30407e398170f1f6431ae3dec586ef5c"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.10308060003444552
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "2966d1cf3a1af38344f8367f16b8244827387324574db9eb5c9392dc8e0a0ae2",
+      "packets": [],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 0,
+        "crcValid": 0,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": false
+    },
+    {
+      "sf": 7,
+      "cr": 4,
+      "block": 1,
+      "expected": "9e204ab49493676cfab7fc361960a950929f1a8a103ec5b2aa88a4260f7de902",
+      "startedUtc": "2026-10-06T22:22:36.336010+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 86,
+        "samples": 87605,
+        "gapSamples": 0,
+        "rfSamples": 87605,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "end": [
+          0,
+          0,
+          456,
+          5606782,
+          350429,
+          7,
+          0,
+          86,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-first-frame-sf7-9\\window-002.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=7 cr=4 bytes=32 hex=9e204ab49493676cfab7fc361960a950929f1a8a103ec5b2aa88a4260f7de902"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.10031839995644987
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "7eee5dd90371ed70e495842ad11a9fcae91b0c4dcb202c7def33480776769689",
+      "packets": [],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 0,
+        "crcValid": 0,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": false
+    },
+    {
+      "sf": 7,
+      "cr": 4,
+      "block": 2,
+      "expected": "1c6d3d6f36cd195ef5c1a5beb9d2fcac350cf293f7c2a41bffb5ca8280057eb7",
+      "startedUtc": "2026-10-06T22:22:36.955824+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 86,
+        "samples": 87604,
+        "gapSamples": 0,
+        "rfSamples": 87604,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "end": [
+          0,
+          0,
+          456,
+          5606664,
+          350421,
+          7,
+          0,
+          86,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-first-frame-sf7-9\\window-003.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=7 cr=4 bytes=32 hex=1c6d3d6f36cd195ef5c1a5beb9d2fcac350cf293f7c2a41bffb5ca8280057eb7"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.09832060011103749
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "7fd9faf99e77f3677aa24cc6615b4de8e057df07b8ce9ecfc80bc660a5357997",
+      "packets": [],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 0,
+        "crcValid": 0,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": false
+    },
+    {
+      "sf": 8,
+      "cr": 4,
+      "block": 0,
+      "expected": "d9437457745636126dede8739737c711b3cafafc815814f99e7a0ab4175cd9b3",
+      "startedUtc": "2026-10-06T22:22:37.590724+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 86,
+        "samples": 87605,
+        "gapSamples": 0,
+        "rfSamples": 87605,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "end": [
+          0,
+          0,
+          456,
+          5606762,
+          350427,
+          7,
+          0,
+          86,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-first-frame-sf7-9\\window-004.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=8 cr=4 bytes=32 hex=d9437457745636126dede8739737c711b3cafafc815814f99e7a0ab4175cd9b3"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.08731300011277199
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "01858bae08a47302f82d149edb386481ab8de20d6c63fab2ea94ed263ba011a1",
+      "packets": [],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 0,
+        "crcValid": 0,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": false
+    },
+    {
+      "sf": 8,
+      "cr": 4,
+      "block": 1,
+      "expected": "c039b0aa7b72cbba26422e30cf578a30f182f9e06dfb948a6f602b435a7d37bb",
+      "startedUtc": "2026-10-06T22:22:38.148249+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 86,
+        "samples": 87605,
+        "gapSamples": 0,
+        "rfSamples": 87605,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "end": [
+          0,
+          0,
+          456,
+          5606746,
+          350426,
+          7,
+          0,
+          86,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-first-frame-sf7-9\\window-005.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=8 cr=4 bytes=32 hex=c039b0aa7b72cbba26422e30cf578a30f182f9e06dfb948a6f602b435a7d37bb"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.09916810016147792
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "f19fad3a2e57d62b1241f8e0143c961ac39e1ea103090b6a42f79b4f55c39fcd",
+      "packets": [],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 0,
+        "crcValid": 0,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": false
+    },
+    {
+      "sf": 8,
+      "cr": 4,
+      "block": 2,
+      "expected": "5a87fc9d0073e59275d7e261a0b0c226cf5784a26074aa201f474dbf3c212c13",
+      "startedUtc": "2026-10-06T22:22:38.721729+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 86,
+        "samples": 87605,
+        "gapSamples": 0,
+        "rfSamples": 87605,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "end": [
+          0,
+          0,
+          456,
+          5606737,
+          350426,
+          7,
+          0,
+          86,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-first-frame-sf7-9\\window-006.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=8 cr=4 bytes=32 hex=5a87fc9d0073e59275d7e261a0b0c226cf5784a26074aa201f474dbf3c212c13"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.09901880007237196
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "c72cda77da7c0d1dd8e39a1396c52a339347db733941e2acb2dea9104e40361f",
+      "packets": [],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 0,
+        "crcValid": 0,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": false
+    },
+    {
+      "sf": 9,
+      "cr": 4,
+      "block": 0,
+      "expected": "113f6a80fd506d67bc41398b99d05846830edc855711f51de0f05eb6b11f0524",
+      "startedUtc": "2026-10-06T22:22:39.294502+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 86,
+        "samples": 87606,
+        "gapSamples": 0,
+        "rfSamples": 87606,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "end": [
+          0,
+          0,
+          456,
+          5606844,
+          350432,
+          7,
+          0,
+          86,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-first-frame-sf7-9\\window-007.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=9 cr=4 bytes=32 hex=113f6a80fd506d67bc41398b99d05846830edc855711f51de0f05eb6b11f0524"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.10001060017384589
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "959741a370fa6280cf531accbb540aa1e8ca3ae1f0c41c6627efe50ca9e208ec",
+      "packets": [],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 0,
+        "crcValid": 0,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": false
+    },
+    {
+      "sf": 9,
+      "cr": 4,
+      "block": 1,
+      "expected": "407c5971ed7bd88b7264565a026b00b3f1f0857626efe365b5e29963aee410ae",
+      "startedUtc": "2026-10-06T22:22:39.848509+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 86,
+        "samples": 87606,
+        "gapSamples": 0,
+        "rfSamples": 87606,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "end": [
+          0,
+          0,
+          456,
+          5606818,
+          350431,
+          7,
+          0,
+          86,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-first-frame-sf7-9\\window-008.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=9 cr=4 bytes=32 hex=407c5971ed7bd88b7264565a026b00b3f1f0857626efe365b5e29963aee410ae"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.0988144997972995
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "832c8ae515e23686c8318d31123b58d7628f56d3712cda646f90edbdf19e8dc6",
+      "packets": [],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 0,
+        "crcValid": 0,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": false
+    },
+    {
+      "sf": 9,
+      "cr": 4,
+      "block": 2,
+      "expected": "8694392015fceda055b55d5a9e8a94d934745127e287732ed5c518261434bef2",
+      "startedUtc": "2026-10-06T22:22:40.433658+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 86,
+        "samples": 87604,
+        "gapSamples": 0,
+        "rfSamples": 87604,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "end": [
+          0,
+          0,
+          456,
+          5606719,
+          350425,
+          7,
+          0,
+          86,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-first-frame-sf7-9\\window-009.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=9 cr=4 bytes=32 hex=8694392015fceda055b55d5a9e8a94d934745127e287732ed5c518261434bef2"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.1003082999959588
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "c73bbba4d4910068ad8fbba7c9a749c39715cc5ad0a7801ad0c357b01d494b93",
+      "packets": [],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 0,
+        "crcValid": 0,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": false
+    }
+  ],
+  "xiaoInfo": "S3SDR 6 burst 16380",
+  "radioInfo": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1",
+  "finishedUtc": "2026-10-06T22:22:40.999370+00:00"
+}

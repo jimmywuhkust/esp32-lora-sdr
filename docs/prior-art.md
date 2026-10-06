@@ -60,7 +60,12 @@ XIAO then gave zero wrong words while idle and 16,201/16,384 while playing,
 in each of three pairs. This reproduces a failure of playing-bank data integrity
 for our writer; it is not proof of the exact RF distortion or silicon cause.
 The corruption fraction differs from the upstream's different pattern/writer.
-Research stays excluded from the working windowed-DAC library.
+Research stays excluded from the working windowed-DAC library. The upstream
+open question about revoking the playing-bank grant subsequently motivated
+our grant-release experiment: zero readback errors in three deterministic
+triplets and a separate48/48 bounded SF7 RF matrix. SF8 still failed. These
+new measurements are ours, not an upstream result; see the
+[grant experiment](../research/playing-bank-grant/README.md).
 
 LoRa SDR receiver research also predates this work: Tapparel et al.,
 [An Open-Source LoRa Physical Layer Prototype on GNU Radio (2020)](https://arxiv.org/abs/2002.08208),
@@ -73,3 +78,11 @@ from encoder agreement; we have not reproduced their numerical results.
 This focused review is not a systematic exhaustive search or evidence that no
 other ESP32-S3-to-commercial-chip demonstration exists. The repository credits
 known prior work and makes no first-of-its-kind claim.
+
+
+For the higher-SF follow-up we also checked the original
+[GNU Radio modulator](https://github.com/tapparelj/gr-lora_sdr/blob/master/lib/modulate_impl.cc)
+and [LoRaPHY source](https://github.com/jkadbear/LoRaPHY/blob/master/LoRaPHY.m).
+The sync-word nibble-to-symbol shift is fixed at three bits rather than being
+scaled with SF. These are algorithm references, not evidence that our emitted
+RF waveform matches them.

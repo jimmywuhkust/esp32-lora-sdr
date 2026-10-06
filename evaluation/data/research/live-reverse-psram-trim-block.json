@@ -1,0 +1,2926 @@
+{
+  "startedUtc": "2026-10-06T23:10:40.061020+00:00",
+  "completed": true,
+  "direction": "LR2021 HF TX -> XIAO I/Q -> PC",
+  "nativeArduinoRx": false,
+  "seed": 2026100737,
+  "windowMs": 500,
+  "frequencyHz": 2440125000,
+  "bandwidthHz": 203125,
+  "syncWord": 18,
+  "preamble": 16,
+  "requestedChipPowerDbm": -12,
+  "calibratedRadiatedPower": false,
+  "imageSha256": {
+    "C:\\Users\\magic\\tools\\lora-iq-capture-build\\build-psram\\lora_iq_capture.bin": "b9de5d5a716d1b697ee5b9d35a4adc3f3f4eb91f4b0b27d3d8f55506b4f84169",
+    "esp32-lora-sdr\\companion\\lr2021\\.pio\\build\\aerolink-hf-tx\\firmware.bin": "8e8b8a45a9db007e67556e86d3f85900f6c8a84ca40658117f39420a2c5a7dfb"
+  },
+  "cases": [
+    {
+      "sf": 7,
+      "cr": 3,
+      "length": 1,
+      "block": 0,
+      "expected": "1d",
+      "startedUtc": "2026-10-06T23:10:40.676543+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125264,
+        "gapSamples": 0,
+        "rfSamples": 125264,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016905,
+          501061,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-001.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=7 cr=3 bytes=1 hex=1d"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.09822140005417168
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=25276 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "cfbc8d17fa4053fb50d9f714f4780e2b5a67fad83835a92086139394de9fed8c",
+      "packets": [
+        {
+          "text": "\u001d",
+          "hex": "1d",
+          "bytes": 1,
+          "crcOk": true,
+          "crcHex": "1d00",
+          "sf": 7,
+          "codingRate": "4/7",
+          "frequency": 2440.125,
+          "cfoHz": 14758.3,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 22474,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125264,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 8,
+      "cr": 1,
+      "length": 8,
+      "block": 0,
+      "expected": "54986ee833ca83c2",
+      "startedUtc": "2026-10-06T23:10:41.519997+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125263,
+        "gapSamples": 0,
+        "rfSamples": 125263,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016875,
+          501059,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-002.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=8 cr=1 bytes=8 hex=54986ee833ca83c2"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.10044980002567172
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=57278 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "8cff6e0aa0395cdf89843bf1e396049207a2edce7ab45dc1ef8f5a4f1bbd5d5a",
+      "packets": [
+        {
+          "text": "T\ufffdn\ufffd3\u0283\ufffd",
+          "hex": "54986ee833ca83c2",
+          "bytes": 8,
+          "crcOk": true,
+          "crcHex": "880b",
+          "sf": 8,
+          "codingRate": "4/5",
+          "frequency": 2440.125,
+          "cfoHz": 14123.54,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 25714,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125263,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 9,
+      "cr": 1,
+      "length": 8,
+      "block": 0,
+      "expected": "23777901861eb018",
+      "startedUtc": "2026-10-06T23:10:42.343293+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125262,
+        "gapSamples": 0,
+        "rfSamples": 125262,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016816,
+          501056,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-003.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=9 cr=1 bytes=8 hex=23777901861eb018"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.09961369982920587
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=99283 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "64b32651b3dfc35961a67342555a573761e67d415aa48f77ed8c0ee5c93b74c3",
+      "packets": [
+        {
+          "text": "#wy\u0001\ufffd\u001e\ufffd\u0018",
+          "hex": "23777901861eb018",
+          "bytes": 8,
+          "crcOk": true,
+          "crcHex": "51f5",
+          "sf": 9,
+          "codingRate": "4/5",
+          "frequency": 2440.125,
+          "cfoHz": 14282.23,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 32335,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125262,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "cr": 2,
+      "length": 32,
+      "block": 0,
+      "expected": "9f29928536265fe46a0b46283f7d5ff74ef46055a8ffb98d6dbcb977d1c57a44",
+      "startedUtc": "2026-10-06T23:10:43.183139+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125264,
+        "gapSamples": 0,
+        "rfSamples": 125264,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016933,
+          501063,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-004.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=7 cr=2 bytes=32 hex=9f29928536265fe46a0b46283f7d5ff74ef46055a8ffb98d6dbcb977d1c57a44"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.0858090000692755
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=59414 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "113e010647ca2baf501d17ce019ea6556ccd2c6d5d0381186eff83b759cb9757",
+      "packets": [],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 0,
+        "crcRejectedCandidates": 5,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": false
+    },
+    {
+      "sf": 9,
+      "cr": 1,
+      "length": 1,
+      "block": 0,
+      "expected": "fa",
+      "startedUtc": "2026-10-06T23:10:44.035499+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125264,
+        "gapSamples": 0,
+        "rfSamples": 125264,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016933,
+          501063,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-005.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=9 cr=1 bytes=1 hex=fa"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.10328630008734763
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=87246 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "aaa9e5fac2f8ffe065564738ed6930999927ef3938a10f2bf050529fac5f87f3",
+      "packets": [
+        {
+          "text": "\ufffd",
+          "hex": "fa",
+          "bytes": 1,
+          "crcOk": true,
+          "crcHex": "fa00",
+          "sf": 9,
+          "codingRate": "4/5",
+          "frequency": 2440.125,
+          "cfoHz": 14282.23,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 32303,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125264,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 8,
+      "cr": 1,
+      "length": 1,
+      "block": 0,
+      "expected": "e6",
+      "startedUtc": "2026-10-06T23:10:44.889979+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125263,
+        "gapSamples": 0,
+        "rfSamples": 125263,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016858,
+          501058,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-006.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=8 cr=1 bytes=1 hex=e6"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.10146789997816086
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=45248 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "99aae818320ed12294a83e0f271a78c835be6754f94f10633024bbf36e72f973",
+      "packets": [
+        {
+          "text": "\ufffd",
+          "hex": "e6",
+          "bytes": 1,
+          "crcOk": true,
+          "crcHex": "e600",
+          "sf": 8,
+          "codingRate": "4/5",
+          "frequency": 2440.125,
+          "cfoHz": 14123.54,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 26196,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125263,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 9,
+      "cr": 3,
+      "length": 1,
+      "block": 0,
+      "expected": "99",
+      "startedUtc": "2026-10-06T23:10:45.676630+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125264,
+        "gapSamples": 0,
+        "rfSamples": 125264,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016913,
+          501062,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-007.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=9 cr=3 bytes=1 hex=99"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.09963149996474385
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=92250 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "f16d9e8d797c583326dc378a42654623d12f11009dfe72d53a4c65f7dbe64c15",
+      "packets": [
+        {
+          "text": "\ufffd",
+          "hex": "99",
+          "bytes": 1,
+          "crcOk": true,
+          "crcHex": "9900",
+          "sf": 9,
+          "codingRate": "4/7",
+          "frequency": 2440.125,
+          "cfoHz": 14202.88,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 32300,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125264,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 8,
+      "cr": 1,
+      "length": 32,
+      "block": 0,
+      "expected": "7da1b0ca54bd37bad8e08f56e4e75fd039d3658e3d743120f183f4db97e23486",
+      "startedUtc": "2026-10-06T23:10:46.495017+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125263,
+        "gapSamples": 0,
+        "rfSamples": 125263,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016836,
+          501057,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-008.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=8 cr=1 bytes=32 hex=7da1b0ca54bd37bad8e08f56e4e75fd039d3658e3d743120f183f4db97e23486"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.09768610005266964
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=96407 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "8ebd37765e1cf795ab93603b5e3a6d254c58d1776a6ac730e02de353e7f9b92b",
+      "packets": [
+        {
+          "text": "}\ufffd\ufffd\ufffdT\ufffd7\ufffd\ufffd\ufffd\ufffdV\ufffd\ufffd_\ufffd9\ufffde\ufffd=t1 \ufffd\ufffd\u06d7\ufffd4\ufffd",
+          "hex": "7da1b0ca54bd37bad8e08f56e4e75fd039d3658e3d743120f183f4db97e23486",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "3a71",
+          "sf": 8,
+          "codingRate": "4/5",
+          "frequency": 2440.125,
+          "cfoHz": 14123.54,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 25807,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125263,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 2,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 8,
+      "cr": 3,
+      "length": 1,
+      "block": 0,
+      "expected": "61",
+      "startedUtc": "2026-10-06T23:10:47.322527+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125264,
+        "gapSamples": 0,
+        "rfSamples": 125264,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016915,
+          501062,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-009.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=8 cr=3 bytes=1 hex=61"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.0988680999726057
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=47244 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "e3f8176f352d717d4d0277b3f1a0e2507009394f6256632b40d0d213376707c2",
+      "packets": [
+        {
+          "text": "a",
+          "hex": "61",
+          "bytes": 1,
+          "crcOk": true,
+          "crcHex": "6100",
+          "sf": 8,
+          "codingRate": "4/7",
+          "frequency": 2440.125,
+          "cfoHz": 14123.54,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 25668,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125264,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "cr": 4,
+      "length": 1,
+      "block": 0,
+      "expected": "ae",
+      "startedUtc": "2026-10-06T23:10:48.158353+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125264,
+        "gapSamples": 0,
+        "rfSamples": 125264,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016934,
+          501063,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-010.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=7 cr=4 bytes=1 hex=ae"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.09997379989363253
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=26249 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "3572fe4e5c55c22a2b3074c04c104a0666cec0bfe948a617bf79b3c6e9d092fd",
+      "packets": [
+        {
+          "text": "\ufffd",
+          "hex": "ae",
+          "bytes": 1,
+          "crcOk": true,
+          "crcHex": "ae00",
+          "sf": 7,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 14440.92,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 22476,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125264,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 8,
+      "cr": 2,
+      "length": 1,
+      "block": 0,
+      "expected": "61",
+      "startedUtc": "2026-10-06T23:10:49.206437+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125263,
+        "gapSamples": 0,
+        "rfSamples": 125263,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016834,
+          501057,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-011.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=8 cr=2 bytes=1 hex=61"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.08901360002346337
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=46245 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "a1c3298afe8092d5728de6d60744e94bef45f0591bae91e833e2dd8e44995cb8",
+      "packets": [
+        {
+          "text": "a",
+          "hex": "61",
+          "bytes": 1,
+          "crcOk": true,
+          "crcHex": "6100",
+          "sf": 8,
+          "codingRate": "4/6",
+          "frequency": 2440.125,
+          "cfoHz": 14123.54,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 22413,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125263,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 2,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 9,
+      "cr": 2,
+      "length": 8,
+      "block": 0,
+      "expected": "c84a0f1e18429ca0",
+      "startedUtc": "2026-10-06T23:10:50.120701+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125263,
+        "gapSamples": 0,
+        "rfSamples": 125263,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016846,
+          501058,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-012.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=9 cr=2 bytes=8 hex=c84a0f1e18429ca0"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.1116630001924932
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=104281 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "a1769b6781bfe7789d5b85c8f6fa59e45b7aa580a46aaee814ab51cfeb7d09d5",
+      "packets": [
+        {
+          "text": "\ufffdJ\u000f\u001e\u0018B\ufffd\ufffd",
+          "hex": "c84a0f1e18429ca0",
+          "bytes": 8,
+          "crcOk": true,
+          "crcHex": "c416",
+          "sf": 9,
+          "codingRate": "4/6",
+          "frequency": 2440.125,
+          "cfoHz": 14242.55,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 32071,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125263,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 8,
+      "cr": 3,
+      "length": 32,
+      "block": 0,
+      "expected": "3e799daed2123640fdc5d5bebf379099fd57c3e9e78416a18b7727059d7b32e3",
+      "startedUtc": "2026-10-06T23:10:51.029198+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125263,
+        "gapSamples": 0,
+        "rfSamples": 125263,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016848,
+          501058,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-013.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=8 cr=3 bytes=32 hex=3e799daed2123640fdc5d5bebf379099fd57c3e9e78416a18b7727059d7b32e3"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.11929309996776283
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=118418 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "a3329f1b369a2c3ce205d86ad0c01a145a4a73e011a778404cdae66e7f181674",
+      "packets": [
+        {
+          "text": ">y\ufffd\ufffd\ufffd\u00126@\ufffd\ufffd\u057e\ufffd7\ufffd\ufffd\ufffdW\ufffd\ufffd\ufffd\u0016\ufffd\ufffdw'\u0005\ufffd{2\ufffd",
+          "hex": "3e799daed2123640fdc5d5bebf379099fd57c3e9e78416a18b7727059d7b32e3",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "ec84",
+          "sf": 8,
+          "codingRate": "4/7",
+          "frequency": 2440.125,
+          "cfoHz": 14123.54,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 26043,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125263,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 9,
+      "cr": 3,
+      "length": 32,
+      "block": 0,
+      "expected": "996d8daae2d607aab4c48c9c2e882316c5495f17109d8089ba1ba17f69aeea72",
+      "startedUtc": "2026-10-06T23:10:51.913788+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125264,
+        "gapSamples": 0,
+        "rfSamples": 125264,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016907,
+          501061,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-014.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=9 cr=3 bytes=32 hex=996d8daae2d607aab4c48c9c2e882316c5495f17109d8089ba1ba17f69aeea72"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.11417090008035302
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=216408 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "8ba2833c0e55f32488a15750544167fd0d7b1419b76867141e151bdf652d809a",
+      "packets": [
+        {
+          "text": "\ufffdm\ufffd\ufffd\ufffd\ufffd\u0007\ufffd\ufffd\u010c\ufffd.\ufffd#\u0016\ufffdI_\u0017\u0010\ufffd\ufffd\ufffd\ufffd\u001b\ufffd\u007fi\ufffd\ufffdr",
+          "hex": "996d8daae2d607aab4c48c9c2e882316c5495f17109d8089ba1ba17f69aeea72",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "25d1",
+          "sf": 9,
+          "codingRate": "4/7",
+          "frequency": 2440.125,
+          "cfoHz": 14163.21,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 32950,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125264,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 2,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 9,
+      "cr": 2,
+      "length": 32,
+      "block": 0,
+      "expected": "e8567d7e6647448b351db7f46ad39c6a49b930e7b267329bef4189c1224629a2",
+      "startedUtc": "2026-10-06T23:10:52.848537+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125265,
+        "gapSamples": 0,
+        "rfSamples": 125265,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8017007,
+          501068,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-015.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=9 cr=2 bytes=32 hex=e8567d7e6647448b351db7f46ad39c6a49b930e7b267329bef4189c1224629a2"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.14107859996147454
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=196403 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "995c9e8f7e6e36c357db1423154adc17c885e317a2e4f00dbbd9bc159cecb1a9",
+      "packets": [
+        {
+          "text": "\ufffdV}~fGD\ufffd5\u001d\ufffd\ufffdj\u04dcjI\ufffd0\ufffdg2\ufffd\ufffdA\ufffd\ufffd\"F)\ufffd",
+          "hex": "e8567d7e6647448b351db7f46ad39c6a49b930e7b267329bef4189c1224629a2",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "f49c",
+          "sf": 9,
+          "codingRate": "4/6",
+          "frequency": 2440.125,
+          "cfoHz": 13964.84,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 32420,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125265,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 2,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "cr": 1,
+      "length": 32,
+      "block": 0,
+      "expected": "dc8c259edde9df0390ea4ff1cb53b033ac8c04daed8407ced36293c9f22155bb",
+      "startedUtc": "2026-10-06T23:10:53.810561+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125264,
+        "gapSamples": 0,
+        "rfSamples": 125264,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016943,
+          501063,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-016.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=7 cr=1 bytes=32 hex=dc8c259edde9df0390ea4ff1cb53b033ac8c04daed8407ced36293c9f22155bb"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.098927800077945
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=53410 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "29301df62d868fd4611807a47775e36bc948a8c93983204ab1b05be1a363eb36",
+      "packets": [],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 0,
+        "crcRejectedCandidates": 5,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": false
+    },
+    {
+      "sf": 7,
+      "cr": 4,
+      "length": 32,
+      "block": 0,
+      "expected": "59554ae08d54bea5f88e487cae338575d20ae8346cea8048d1aaf4aa200d925c",
+      "startedUtc": "2026-10-06T23:10:54.659283+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125263,
+        "gapSamples": 0,
+        "rfSamples": 125263,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016846,
+          501058,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-017.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=7 cr=4 bytes=32 hex=59554ae08d54bea5f88e487cae338575d20ae8346cea8048d1aaf4aa200d925c"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.1435074000619352
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=72416 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "3aebc73497e9625f5c42d550a1baab65ecb321727fb3464f15e72214b6d54c2f",
+      "packets": [
+        {
+          "text": "YUJ\ufffd\ufffdT\ufffd\ufffd\ufffd\ufffdH|\ufffd3\ufffdu\ufffd\n\ufffd4l\ufffdH\u046a\ufffd\ufffd \r\ufffd\\",
+          "hex": "59554ae08d54bea5f88e487cae338575d20ae8346cea8048d1aaf4aa200d925c",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "fce0",
+          "sf": 7,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 14440.92,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 22846,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125263,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 8,
+      "cr": 2,
+      "length": 32,
+      "block": 0,
+      "expected": "c8b419670033560c366ac9cc2c71316e8832fc1c636f9a90d21543d243ead44e",
+      "startedUtc": "2026-10-06T23:10:55.603217+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125264,
+        "gapSamples": 0,
+        "rfSamples": 125264,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016958,
+          501065,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-018.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=8 cr=2 bytes=32 hex=c8b419670033560c366ac9cc2c71316e8832fc1c636f9a90d21543d243ead44e"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.10253110015764832
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=107408 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "2ce6ad4c76b44213694bf5d3950f290ad7b66fce1c36e73c9ddcf4daa5e8737c",
+      "packets": [
+        {
+          "text": "\u0234\u0019g\u00003V\f6j\ufffd\ufffd,q1n\ufffd2\ufffd\u001cco\ufffd\ufffd\ufffd\u0015C\ufffdC\ufffd\ufffdN",
+          "hex": "c8b419670033560c366ac9cc2c71316e8832fc1c636f9a90d21543d243ead44e",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "214e",
+          "sf": 8,
+          "codingRate": "4/6",
+          "frequency": 2440.125,
+          "cfoHz": 14044.19,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 26793,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125264,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 8,
+      "cr": 2,
+      "length": 8,
+      "block": 0,
+      "expected": "9fa2627b8249d2d2",
+      "startedUtc": "2026-10-06T23:10:56.498457+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125263,
+        "gapSamples": 0,
+        "rfSamples": 125263,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016893,
+          501060,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-019.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=8 cr=2 bytes=8 hex=9fa2627b8249d2d2"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.09934299997985363
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=61277 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "4afbf150621aceda4cb71c03204bda347adb640c87e0b56f6d0932b1564d1db0",
+      "packets": [
+        {
+          "text": "\ufffd\ufffdb{\ufffdI\ufffd\ufffd",
+          "hex": "9fa2627b8249d2d2",
+          "bytes": 8,
+          "crcOk": true,
+          "crcHex": "c68f",
+          "sf": 8,
+          "codingRate": "4/6",
+          "frequency": 2440.125,
+          "cfoHz": 13964.84,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 25679,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125263,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 9,
+      "cr": 4,
+      "length": 8,
+      "block": 0,
+      "expected": "f67ea7f150d2f5cb",
+      "startedUtc": "2026-10-06T23:10:57.389410+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125265,
+        "gapSamples": 0,
+        "rfSamples": 125265,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8017005,
+          501067,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-020.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=9 cr=4 bytes=8 hex=f67ea7f150d2f5cb"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.09959619981236756
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=114282 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "6b1b8f5dde62647eba0e566295aca9b7d977b4afe1987472a4fc036bca9a8cad",
+      "packets": [
+        {
+          "text": "\ufffd~\ufffd\ufffdP\ufffd\ufffd\ufffd",
+          "hex": "f67ea7f150d2f5cb",
+          "bytes": 8,
+          "crcOk": true,
+          "crcHex": "01b1",
+          "sf": 9,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 13885.5,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 32313,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125265,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 8,
+      "cr": 4,
+      "length": 1,
+      "block": 0,
+      "expected": "7c",
+      "startedUtc": "2026-10-06T23:10:58.284535+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125263,
+        "gapSamples": 0,
+        "rfSamples": 125263,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016858,
+          501058,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-021.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=8 cr=4 bytes=1 hex=7c"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.11753489985130727
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=49244 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "8e83b26a2c08782d44427961f7d68a32195d7e88a40ed8b3bea9a841674f1f63",
+      "packets": [
+        {
+          "text": "|",
+          "hex": "7c",
+          "bytes": 1,
+          "crcOk": true,
+          "crcHex": "7c00",
+          "sf": 8,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 13806.15,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 25896,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125263,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 8,
+      "cr": 3,
+      "length": 8,
+      "block": 0,
+      "expected": "c2a5e22b5949b331",
+      "startedUtc": "2026-10-06T23:10:59.241011+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125262,
+        "gapSamples": 0,
+        "rfSamples": 125262,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016778,
+          501053,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-022.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=8 cr=3 bytes=8 hex=c2a5e22b5949b331"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.10097740008495748
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=65293 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "6756c615855d375510f4c2857e749a24edd70c13f6e0a33b41b99f7d4aff230c",
+      "packets": [
+        {
+          "text": "\u00a5\ufffd+YI\ufffd1",
+          "hex": "c2a5e22b5949b331",
+          "bytes": 8,
+          "crcOk": true,
+          "crcHex": "0dfd",
+          "sf": 8,
+          "codingRate": "4/7",
+          "frequency": 2440.125,
+          "cfoHz": 13885.5,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 25924,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125262,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "cr": 3,
+      "length": 8,
+      "block": 0,
+      "expected": "7c529d838f60097e",
+      "startedUtc": "2026-10-06T23:11:00.083121+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125262,
+        "gapSamples": 0,
+        "rfSamples": 125262,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016811,
+          501055,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-023.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=7 cr=3 bytes=8 hex=7c529d838f60097e"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.11514719994738698
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=34273 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "1340a634cf97d28769b27db73ea98835cfa27a02c5c5e5596684089f695edb1d",
+      "packets": [
+        {
+          "text": "|R\ufffd\ufffd\ufffd`\t~",
+          "hex": "7c529d838f60097e",
+          "bytes": 8,
+          "crcOk": true,
+          "crcHex": "a3ec",
+          "sf": 7,
+          "codingRate": "4/7",
+          "frequency": 2440.125,
+          "cfoHz": 14282.23,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 22972,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125262,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 8,
+      "cr": 4,
+      "length": 32,
+      "block": 0,
+      "expected": "d8e1be3ceebd32af2a0dfe2bde495e2a61d7f2ca99a2d4ee48e5cb0e5716fd13",
+      "startedUtc": "2026-10-06T23:11:01.026704+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125264,
+        "gapSamples": 0,
+        "rfSamples": 125264,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016916,
+          501061,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-024.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=8 cr=4 bytes=32 hex=d8e1be3ceebd32af2a0dfe2bde495e2a61d7f2ca99a2d4ee48e5cb0e5716fd13"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.19125050003640354
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=130410 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "6a6dc60060fe35331911ba065e8c48cf383085e4bc6a1aa1f822d9a5b745d791",
+      "packets": [
+        {
+          "text": "\ufffd\ufffd<\ufffd2\ufffd*\r\ufffd+\ufffdI^*a\ufffd\ufffd\u0299\ufffd\ufffd\ufffdH\ufffd\ufffd\u000eW\u0016\ufffd\u0013",
+          "hex": "d8e1be3ceebd32af2a0dfe2bde495e2a61d7f2ca99a2d4ee48e5cb0e5716fd13",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "4216",
+          "sf": 8,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 13885.5,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 28278,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125264,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 2,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "cr": 2,
+      "length": 8,
+      "block": 0,
+      "expected": "ec141f6f839203a3",
+      "startedUtc": "2026-10-06T23:11:02.046806+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125262,
+        "gapSamples": 0,
+        "rfSamples": 125262,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016818,
+          501056,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-025.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=7 cr=2 bytes=8 hex=ec141f6f839203a3"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.12162949983030558
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=32286 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "489a7d58ba1e4c93094e65f927878bcd6e44ef5991ed38110f60454c251f4d37",
+      "packets": [
+        {
+          "text": "\ufffd\u0014\u001fo\ufffd\ufffd\u0003\ufffd",
+          "hex": "ec141f6f839203a3",
+          "bytes": 8,
+          "crcOk": true,
+          "crcHex": "079b",
+          "sf": 7,
+          "codingRate": "4/6",
+          "frequency": 2440.125,
+          "cfoHz": 13806.15,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 22729,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125262,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 2,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "cr": 1,
+      "length": 1,
+      "block": 0,
+      "expected": "c2",
+      "startedUtc": "2026-10-06T23:11:03.274038+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125261,
+        "gapSamples": 0,
+        "rfSamples": 125261,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016757,
+          501052,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-026.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=7 cr=1 bytes=1 hex=c2"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.2968780999071896
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=24243 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "2b4df6cd3b244bf4be3375af26a4ef61c9fb1b8de58cc4624eebf080cf47acf6",
+      "packets": [
+        {
+          "text": "\ufffd",
+          "hex": "c2",
+          "bytes": 1,
+          "crcOk": true,
+          "crcHex": "c200",
+          "sf": 7,
+          "codingRate": "4/5",
+          "frequency": 2440.125,
+          "cfoHz": 13647.46,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 23449,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125261,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 2,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "cr": 4,
+      "length": 8,
+      "block": 0,
+      "expected": "c18837aa3258c076",
+      "startedUtc": "2026-10-06T23:11:04.425287+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125262,
+        "gapSamples": 0,
+        "rfSamples": 125262,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016806,
+          501055,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-027.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=7 cr=4 bytes=8 hex=c18837aa3258c076"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.09989490010775626
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=36280 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "5177c4b17d7f7a9f9d9bc284d146ea7839357027fdb15c1cf85722120c96d07f",
+      "packets": [
+        {
+          "text": "\ufffd\ufffd7\ufffd2X\ufffdv",
+          "hex": "c18837aa3258c076",
+          "bytes": 8,
+          "crcOk": true,
+          "crcHex": "88a4",
+          "sf": 7,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 13488.77,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 22736,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125262,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 9,
+      "cr": 3,
+      "length": 8,
+      "block": 0,
+      "expected": "007595c2947194ee",
+      "startedUtc": "2026-10-06T23:11:05.432579+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125262,
+        "gapSamples": 0,
+        "rfSamples": 125262,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016831,
+          501056,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-028.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=9 cr=3 bytes=8 hex=007595c2947194ee"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.12423110008239746
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=109293 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "546719fb089266aadf6448554576ba89deaa48affa86744b504b1df9b51d8140",
+      "packets": [
+        {
+          "text": "\u0000u\ufffd\u0094q\ufffd\ufffd",
+          "hex": "007595c2947194ee",
+          "bytes": 8,
+          "crcOk": true,
+          "crcHex": "eb22",
+          "sf": 9,
+          "codingRate": "4/7",
+          "frequency": 2440.125,
+          "cfoHz": 13885.5,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 32044,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125262,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "cr": 3,
+      "length": 32,
+      "block": 0,
+      "expected": "74a31ba91108736dfd06dac57d036886aefb556471dc261901d91e25e0296033",
+      "startedUtc": "2026-10-06T23:11:06.346301+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125262,
+        "gapSamples": 0,
+        "rfSamples": 125262,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016820,
+          501055,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-029.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=7 cr=3 bytes=32 hex=74a31ba91108736dfd06dac57d036886aefb556471dc261901d91e25e0296033"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.10271280002780259
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=65412 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "86567b773974039c3a0d170f3db2f8da7dadcbaeba6d1e6284c84178e1acbe45",
+      "packets": [
+        {
+          "text": "t\ufffd\u001b\ufffd\u0011\bsm\ufffd\u0006\ufffd\ufffd}\u0003h\ufffd\ufffd\ufffdUdq\ufffd&\u0019\u0001\ufffd\u001e%\ufffd)`3",
+          "hex": "74a31ba91108736dfd06dac57d036886aefb556471dc261901d91e25e0296033",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "3a44",
+          "sf": 7,
+          "codingRate": "4/7",
+          "frequency": 2440.125,
+          "cfoHz": 14282.23,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 20585,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125262,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 1,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "cr": 1,
+      "length": 8,
+      "block": 0,
+      "expected": "67703935560226d8",
+      "startedUtc": "2026-10-06T23:11:07.255388+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125262,
+        "gapSamples": 0,
+        "rfSamples": 125262,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016795,
+          501054,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-030.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=7 cr=1 bytes=8 hex=67703935560226d8"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.10487010003998876
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=30269 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "1c25e234332d4b1e9d1014aacfc13a502886d29e722b9c29219d2be32bd1df06",
+      "packets": [
+        {
+          "text": "gp95V\u0002&\ufffd",
+          "hex": "67703935560226d8",
+          "bytes": 8,
+          "crcOk": true,
+          "crcHex": "97d9",
+          "sf": 7,
+          "codingRate": "4/5",
+          "frequency": 2440.125,
+          "cfoHz": 13488.77,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 22721,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125262,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 2,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "cr": 2,
+      "length": 1,
+      "block": 0,
+      "expected": "34",
+      "startedUtc": "2026-10-06T23:11:08.259256+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125263,
+        "gapSamples": 0,
+        "rfSamples": 125263,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016835,
+          501057,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-031.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=7 cr=2 bytes=1 hex=34"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.11766079999506474
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=24251 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "c191a0c168ad44c2b6bd159e289eb46dd083d099cc922d918aecd2473e0afaaf",
+      "packets": [
+        {
+          "text": "4",
+          "hex": "34",
+          "bytes": 1,
+          "crcOk": true,
+          "crcHex": "3400",
+          "sf": 7,
+          "codingRate": "4/6",
+          "frequency": 2440.125,
+          "cfoHz": 13964.84,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 22689,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125263,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 2,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 9,
+      "cr": 4,
+      "length": 32,
+      "block": 0,
+      "expected": "d21adbc759edcadf8723d680f893e621fac44c3c172b26420325b68e3bb170e8",
+      "startedUtc": "2026-10-06T23:11:09.134851+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125264,
+        "gapSamples": 0,
+        "rfSamples": 125264,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016919,
+          501062,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-032.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=9 cr=4 bytes=32 hex=d21adbc759edcadf8723d680f893e621fac44c3c172b26420325b68e3bb170e8"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.10938249994069338
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=236406 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "6f20cbfc0a6e809e60cfd9e709032a47ecfb2b29c8f9404b08a555d3ab91e76c",
+      "packets": [
+        {
+          "text": "\ufffd\u001a\ufffd\ufffdY\ufffd\ufffd\u07c7#\u0580\ufffd\ufffd\ufffd!\ufffd\ufffdL<\u0017+&B\u0003%\ufffd\ufffd;\ufffdp\ufffd",
+          "hex": "d21adbc759edcadf8723d680f893e621fac44c3c172b26420325b68e3bb170e8",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "286e",
+          "sf": 9,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 13726.81,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 32642,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125264,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 9,
+      "cr": 4,
+      "length": 1,
+      "block": 0,
+      "expected": "08",
+      "startedUtc": "2026-10-06T23:11:09.980010+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125263,
+        "gapSamples": 0,
+        "rfSamples": 125263,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016892,
+          501060,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-033.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=9 cr=4 bytes=1 hex=08"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.10276510007679462
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=94246 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "58e7799a7e58a55722cba6a4e8a9364b33aa78f897b3bfe392784c3d80ee76cd",
+      "packets": [
+        {
+          "text": "\b",
+          "hex": "08",
+          "bytes": 1,
+          "crcOk": true,
+          "crcHex": "0800",
+          "sf": 9,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 13806.15,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 32007,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125263,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 9,
+      "cr": 1,
+      "length": 32,
+      "block": 0,
+      "expected": "aba887d7038109ec9e4a0b0fa6857c3f226aa4ea659418e7f589f0b6964ea816",
+      "startedUtc": "2026-10-06T23:11:10.790420+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125263,
+        "gapSamples": 0,
+        "rfSamples": 125263,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016884,
+          501060,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-034.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=9 cr=1 bytes=32 hex=aba887d7038109ec9e4a0b0fa6857c3f226aa4ea659418e7f589f0b6964ea816"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.1016673999838531
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=175413 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "1b39fb58f0693da515e319979fe356be374f63debca58ba37e220fbf1f78c21d",
+      "packets": [
+        {
+          "text": "\ufffd\ufffd\ufffd\ufffd\u0003\ufffd\t\ufffdJ\u000b\u000f\ufffd\ufffd|?\"j\ufffd\ufffde\ufffd\u0018\ufffd\ufffd\ufffd\ufffdN\ufffd\u0016",
+          "hex": "aba887d7038109ec9e4a0b0fa6857c3f226aa4ea659418e7f589f0b6964ea816",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "a651",
+          "sf": 9,
+          "codingRate": "4/5",
+          "frequency": 2440.125,
+          "cfoHz": 13806.15,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 32414,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125263,
+          "hypothesis": "coherent/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 3,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 9,
+      "cr": 2,
+      "length": 1,
+      "block": 0,
+      "expected": "9f",
+      "startedUtc": "2026-10-06T23:11:11.688280+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125264,
+        "gapSamples": 0,
+        "rfSamples": 125264,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016923,
+          501062,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-035.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=9 cr=2 bytes=1 hex=9f"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.09986539999954402
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=89244 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "9230b04f6ab6fef2c5e431a7f232441c545de3cb21f87f6673c836067e127f50",
+      "packets": [
+        {
+          "text": "\ufffd",
+          "hex": "9f",
+          "bytes": 1,
+          "crcOk": true,
+          "crcHex": "9f00",
+          "sf": 9,
+          "codingRate": "4/6",
+          "frequency": 2440.125,
+          "cfoHz": 13687.13,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 32254,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125264,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    },
+    {
+      "sf": 8,
+      "cr": 4,
+      "length": 8,
+      "block": 0,
+      "expected": "dc9fb2e65bad0a7a",
+      "startedUtc": "2026-10-06T23:11:12.611012+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 123,
+        "samples": 125262,
+        "gapSamples": 0,
+        "rfSamples": 125262,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "verifiedDuplicateRfPairsTrimmed": 0,
+        "end": [
+          0,
+          0,
+          652,
+          8016828,
+          501056,
+          7,
+          0,
+          123,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-psram-trim-block\\window-036.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=8 cr=4 bytes=8 hex=dc9fb2e65bad0a7a"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.10724189993925393
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a elapsed_us=69286 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "3a8fce74b33296b7d5aa7c153fb26354f13b0521cf3c2a576f3a7584e9c4a17c",
+      "packets": [
+        {
+          "text": "\u071f\ufffd\ufffd[\ufffd\nz",
+          "hex": "dc9fb2e65bad0a7a",
+          "bytes": 8,
+          "crcOk": true,
+          "crcHex": "745e",
+          "sf": 8,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 13568.12,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 25909,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 125262,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    }
+  ],
+  "configuration": {
+    "sfs": [
+      7,
+      8,
+      9
+    ],
+    "crs": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "lengths": [
+      1,
+      8,
+      32
+    ],
+    "repeats": 1,
+    "xiaoPort": "COM3",
+    "radioPort": "COM4",
+    "rfRetries": 0
+  },
+  "sourceSha256": {
+    "xiao": {
+      "CMakeLists.txt": "cb0850012fb07bbfcc236474cc20e7acef6765cccc753de79b74634b4fbb05b5",
+      "sdkconfig.defaults": "10f7be0a288b01261f72e712f94353a1853466ab1e56d540d2b11b9266459ede",
+      "sdkconfig.psram": "a1025f92afa878761f5c0de49f1e434e029149abadd9aca9863ffbdfcffd2841",
+      "main/CMakeLists.txt": "22f6b09197b132aa3ba3fb4e39cdb37157a1ac9424c09a8bee003bf6f9ded4f7",
+      "main/Kconfig.projbuild": "6079890dd472ac1cae0d3c072690b5aef51be34af70e05cc82d6538b88e729d3",
+      "main/common/burst_gain.h": "728fb1d66ec875b28ad1082671fec90d906f1096cb61fbad53a7bcc2fd674c81",
+      "main/common/burst_gain_table.h": "790432303eb383f4d4ba73224021217518b1978fd12667b325e9472bdbc431e8",
+      "main/common/burst_limits.h": "b67a0adc8dcf3bdb0aa4cc863d84c4c7b023e95ab6a3ca3637cbcc2d4f97443d",
+      "main/common/burst_serial.c": "45603fd23a6fa1d2be5acf88bcc94c4a77f3877caf36dc8ac8f1af1b7ae607cb",
+      "main/common/burst_serial.h": "1120520248f8f7d1f6f240ce95b527f50f32bdb40d6ddb31fe67a18e469f9c8b",
+      "main/common/lora_chirp.c": "3cf3974e36d8ff71c885819488ddb391627183dcf53b2ee863e398c0b61d276c",
+      "main/common/lora_chirp.h": "33d49b4605ea51d8f94cd1c7be512178b9db2bf6491fae6952f70199c4b01508",
+      "main/common/ring_capture.c": "44befd743bd945527d1c5d0d32dc0630c902caf3faf8c22a3899f98ee8e5a4df",
+      "main/common/ring_capture.h": "a22bd9cb0d44146d7a3c9ed73f036bd30327a0ffc3de6a152ece7b251cccfd7a",
+      "main/common/ring_io.h": "19bf80f05c597fdd89cbff4707248a844077b38a31cf09eefecbd63a6f71ced5",
+      "main/common/ring_scalar.h": "6268ba906c4094013999dc14283457cc69c3bd6465d59035a10492a74eb1bf55",
+      "main/common/rx_bandwidth.h": "d93c7c525f618532707cc771e7fbda16fe8dff5b490d7cc0f3e3e41ee8effa06",
+      "main/common/rx_lo.h": "93a286c7f8432aef9cdf6795f3067c7a30381ab7da43aab2a1507616e3dfbddd",
+      "main/common/rx_pll_cal.h": "a5528cf32466e3a3d7f5f0920046b6b0db96034d993bbafe501844020fbf450a",
+      "main/common/rx_recalibration.c": "de7b162d988347465122599480845092a8556fcaa81c6c6b09d3f8790bb7aa23",
+      "main/common/rx_recalibration.h": "8a4a5fae62361b4b8808edf0eddea4f2883b0b3057f6f4270134068501a46df0",
+      "main/common/rx_tuning.h": "d251c194bcd455383e6fc42e1d43185caca88fd32109918e1de49c2042e80c29",
+      "main/common/spectrum.h": "c28edea88c9a4958c97ce4656e7b22a1fa6bb05a2dfb2e97c81d5f8e8e8d1a6a",
+      "main/common/spectrum_dc.h": "0bb86dd093d104cf4c8d19ef67a00725748b311d674816b9d1d156651ff00ae8",
+      "main/common/spectrum_fft.h": "1634022a6958b08f4c430bb6f353ad774457a37634b2dd9f94feeeb8c618cad2",
+      "main/common/spectrum_math.h": "d9eab1073d806201437415177f87034feec9ba2b3b14057724062fb2ba530342",
+      "main/common/spectrum_stats.c": "f71c908b40428d5a37ab7b19f1fd697ad1f08612fbe294b3a6d401b82e196b77",
+      "main/common/spectrum_stats.h": "89fb38d0c36fcdeceec884aa2a5a7ec2b648ddf0e15c7ecd4bd90158216fe22b",
+      "main/targets/esp32s3/linker.lf": "c6ee553ba34c0b9017057461114a1132654f1baf98e5a518af59fdcb275b402c",
+      "main/targets/esp32s3/receiver.c": "270e9650ba23746d3b28bea147243fcfc4d580d94c109af2da9186d6d8554edf",
+      "main/targets/esp32s3/s3_core1.S": "406276930233376416d87132f0e2d7aaa6ee4517cc13909c2e54d7fe129fd50e",
+      "main/targets/esp32s3/s3_fft_rnd.S": "36e912ff07ca893a4c57cb8828a7e1cdaaa363a9b3aad775e3f6493e620c36c4",
+      "main/targets/esp32s3/s3_firdot.S": "40a5e1923b2b2287d8b008deb81aa373459de538c99f7abe39afc9a63c6348d4",
+      "main/targets/esp32s3/s3_unpack.S": "1bd29c448efbb27d50a13a73114d6fbbd7c10b3924d00d9f1a24bde3a75da2e0",
+      "main/targets/esp32s3/sram_guard.ld": "5e8247b0e406fa9fb195b03f32a12b19f91227427864d505a2190270a92e1470"
+    },
+    "radio": {
+      "platformio.ini": "7a1ffba9c8d6d2a4ec7d4eabd818eb63a16c0febab8df131e6b1992ad87dc99d",
+      "src/main.cpp": "a6fcb3553c8ea9125ebbb2eda2c87a1d34e3d367d044858f04440cbf9e4eee67"
+    }
+  },
+  "xiaoInfo": "S3SDR 9 iq-capture 16380",
+  "radioInfo": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1",
+  "finishedUtc": "2026-10-06T23:11:13.497827+00:00"
+}

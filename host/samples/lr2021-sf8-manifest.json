@@ -1,0 +1,20 @@
+{
+  "file": "lr2021-sf8-window.iqs",
+  "sha256": "a6f1040716756ea5237b0cbf4272bd77c0f22843c76a4d389ea68e99a9c0e953",
+  "source": "Public RadioLib LR2021 HF over-air TX -> XIAO IQ -> PC",
+  "sourceReport": "evaluation/data/research/live-reverse-public-irq-only-complete.json",
+  "caseNumber": 4,
+  "spreadingFactor": 8,
+  "sampleRate": 250000,
+  "bandwidthHz": 203125,
+  "windowMs": 350,
+  "bitsPerComponent": 4,
+  "expectedPayloadHex": "50c3099398b5e382f425e0da8d61a297a8390ef036dbe414d9f059d09e8118c0",
+  "expectedPayloadCRC": "b746",
+  "payloadExpectationUsedDuringDecoding": false,
+  "imageSha256": {
+    "firmware\\esp32s3\\experimental-lora.bin": "b52e794af826deaf4f70945f202ca56b15cb51ac9ada4680a8ed1e4417b7e92a",
+    "esp32-lora-sdr\\research\\lr2021-start-sf8\\.pio\\build\\aerolink-hf\\firmware.bin": "02c16a143c625f274a10eaa9ba8f903c03d18ed3a7ef2a7f87f78cf175dc2303"
+  },
+  "interpretation": "One selected real capture, not an independent delivery-rate experiment"
+}

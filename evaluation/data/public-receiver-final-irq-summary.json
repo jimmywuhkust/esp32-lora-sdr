@@ -1,0 +1,33 @@
+{
+  "completed": true,
+  "trials": 240,
+  "strictPassed": 224,
+  "exactPayload": 240,
+  "wilson95": [
+    0.8944621699310614,
+    0.958551099452921
+  ],
+  "strictFailedCases": [
+    50,
+    55,
+    65,
+    67,
+    87,
+    98,
+    124,
+    133,
+    135,
+    152,
+    167,
+    174,
+    192,
+    202,
+    213,
+    219
+  ],
+  "rejectedIrq": {
+    "RX_IRQ 00040370": 14,
+    "RX_IRQ 00040371": 2
+  },
+  "criterion": "RX_DONE + HEADER_VALID, no payload/header CRC error IRQ, CRC present, API status/header=0, exact complete bytes"
+}

@@ -1,0 +1,92 @@
+{
+  "kind": "software-only phase ring using actual ENC output; no RF TX requested",
+  "cases": [
+    {
+      "sf": 7,
+      "rawEncoderLine": "SYMBOLS 88 c1ca 33 125 29 113 73 25 93 13 88 3 34 42 83 63 61 100 121 33 113 84 33 104 70 34 89 22 123 65 58 18 18 73 69 3 72 62 22 41 90 75 127 109 42 55 16 50 41 108 87 99 59 25 41 73 91 127 67 18 64 50 7 70 37 49 13 78 75 33 28 54 42 37 23 75 86 116 78 99 56 37 15 127 7 68 95 8 48 14",
+      "referenceLength": 88,
+      "expected": "53696d756c61746564206e61746976652070686173652072696e67206f6e6c79",
+      "packets": [
+        {
+          "text": "Simulated native phase ring only",
+          "hex": "53696d756c61746564206e61746976652070686173652072696e67206f6e6c79",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "cac1",
+          "sf": 7,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 38244.63,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 4421,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 20254,
+          "hypothesis": "coherent/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "sf": 8,
+      "rawEncoderLine": "SYMBOLS 80 c1ca 33 253 33 237 149 49 185 29 44 255 208 213 175 196 62 157 226 73 36 212 17 53 93 18 76 222 137 25 195 198 197 174 12 104 77 52 161 253 150 183 165 140 151 161 130 78 222 9 134 36 0 228 20 230 152 196 244 179 182 65 53 110 82 73 117 166 139 103 178 158 56 219 4 1 127 193 96 1 24 8",
+      "referenceLength": 80,
+      "expected": "53696d756c61746564206e61746976652070686173652072696e67206f6e6c79",
+      "packets": [
+        {
+          "text": "Simulated native phase ring only",
+          "hex": "53696d756c61746564206e61746976652070686173652072696e67206f6e6c79",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "cac1",
+          "sf": 8,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": -158.69,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 7582,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 34787,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "sf": 9,
+      "rawEncoderLine": "SYMBOLS 72 c1ca 33 257 33 465 297 97 369 449 235 0 232 235 329 199 450 160 313 174 472 389 13 495 466 268 375 252 399 508 172 321 307 426 448 183 405 396 24 412 83 297 43 228 264 488 481 472 341 63 51 309 43 258 401 170 378 442 234 331 278 461 291 390 224 147 4 1 255 385 192 1 48 16",
+      "referenceLength": 72,
+      "expected": "53696d756c61746564206e61746976652070686173652072696e67206f6e6c79",
+      "packets": [
+        {
+          "text": "Simulated native phase ring only",
+          "hex": "53696d756c61746564206e61746976652070686173652072696e67206f6e6c79",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "cac1",
+          "sf": 9,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": -119.02,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 13962,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 61332,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "passed": true
+    }
+  ]
+}

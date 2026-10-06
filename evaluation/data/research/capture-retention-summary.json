@@ -1,0 +1,158 @@
+[
+  {
+    "batch": "live-reverse-packaged-matrix",
+    "completed": true,
+    "completedWindows": 108,
+    "passed": 104,
+    "fullRetentionWindows": 34,
+    "outputDrops": 74,
+    "verifiedDuplicateRfPairsTrimmed": 0,
+    "error": null,
+    "bySF": {
+      "7": {
+        "passed": 33,
+        "windows": 36
+      },
+      "8": {
+        "passed": 35,
+        "windows": 36
+      },
+      "9": {
+        "passed": 36,
+        "windows": 36
+      }
+    },
+    "recordedCases": 108,
+    "abortedCaseCheckpointMissing": false
+  },
+  {
+    "batch": "live-reverse-psram-smoke",
+    "completed": true,
+    "completedWindows": 9,
+    "passed": 9,
+    "fullRetentionWindows": 9,
+    "outputDrops": 0,
+    "verifiedDuplicateRfPairsTrimmed": 0,
+    "error": null,
+    "bySF": {
+      "7": {
+        "passed": 3,
+        "windows": 3
+      },
+      "8": {
+        "passed": 3,
+        "windows": 3
+      },
+      "9": {
+        "passed": 3,
+        "windows": 3
+      }
+    },
+    "recordedCases": 9,
+    "abortedCaseCheckpointMissing": false
+  },
+  {
+    "batch": "live-reverse-psram-matrix",
+    "completed": false,
+    "completedWindows": 22,
+    "passed": 21,
+    "fullRetentionWindows": 22,
+    "outputDrops": 0,
+    "verifiedDuplicateRfPairsTrimmed": 0,
+    "error": "RuntimeError('Bad IQ completion: IQSEND 4 829698418 77 946548 59932 7 0 15 0 0 0 0')",
+    "bySF": {
+      "7": {
+        "passed": 7,
+        "windows": 8
+      },
+      "8": {
+        "passed": 5,
+        "windows": 5
+      },
+      "9": {
+        "passed": 9,
+        "windows": 9
+      }
+    },
+    "recordedCases": 22,
+    "abortedCaseCheckpointMissing": true
+  },
+  {
+    "batch": "live-reverse-psram-matrix-next",
+    "completed": false,
+    "completedWindows": 10,
+    "passed": 10,
+    "fullRetentionWindows": 10,
+    "outputDrops": 0,
+    "verifiedDuplicateRfPairsTrimmed": 0,
+    "error": "RuntimeError('Bad IQ completion: IQSEND 4 831795602 77 946580 59934 7 0 15 0 0 0 0')",
+    "bySF": {
+      "7": {
+        "passed": 3,
+        "windows": 3
+      },
+      "8": {
+        "passed": 3,
+        "windows": 3
+      },
+      "9": {
+        "passed": 4,
+        "windows": 4
+      }
+    },
+    "recordedCases": 11,
+    "abortedCaseCheckpointMissing": false
+  },
+  {
+    "batch": "live-reverse-psram-trim-matrix",
+    "completed": false,
+    "completedWindows": 106,
+    "passed": 103,
+    "fullRetentionWindows": 106,
+    "outputDrops": 0,
+    "verifiedDuplicateRfPairsTrimmed": 0,
+    "error": "RuntimeError('Bad IQ completion: IQSEND 4 808202283 530 6516780 408071 7 0 100 0 0 0 0')",
+    "bySF": {
+      "7": {
+        "passed": 35,
+        "windows": 36
+      },
+      "8": {
+        "passed": 33,
+        "windows": 35
+      },
+      "9": {
+        "passed": 35,
+        "windows": 35
+      }
+    },
+    "recordedCases": 107,
+    "abortedCaseCheckpointMissing": false
+  },
+  {
+    "batch": "live-reverse-psram-trim-block",
+    "completed": true,
+    "completedWindows": 36,
+    "passed": 34,
+    "fullRetentionWindows": 36,
+    "outputDrops": 0,
+    "verifiedDuplicateRfPairsTrimmed": 0,
+    "error": null,
+    "bySF": {
+      "7": {
+        "passed": 10,
+        "windows": 12
+      },
+      "8": {
+        "passed": 12,
+        "windows": 12
+      },
+      "9": {
+        "passed": 12,
+        "windows": 12
+      }
+    },
+    "recordedCases": 36,
+    "abortedCaseCheckpointMissing": false
+  }
+]

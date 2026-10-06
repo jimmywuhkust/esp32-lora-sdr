@@ -22,19 +22,24 @@ def main():
     p.add_argument('--repeats',type=int,default=1);p.add_argument('--seed',type=int,default=20261007)
     p.add_argument('--sender',choices=['bench','sendonce'],default='bench')
     p.add_argument('--smoke',action='store_true',help='one fresh 32-byte CR4/8 packet per block')
+    p.add_argument('--lengths',help='comma-separated distinct 1..255 byte lengths for a bounded research matrix')
     p.add_argument('--sf',type=int,choices=[7,8,9],default=7)
     p.add_argument('--bandwidth',type=int,choices=[203125,406250,812500],default=203125)
     p.add_argument('--window',type=int,default=15000)
+    p.add_argument('--cfo',type=int,default=15000,help='transmitter frequency correction in Hz, not receiver-side correction')
     p.add_argument('--analog-gain',type=int,help='isolated analog-gain research build only; not calibrated dBm')
     p.add_argument('--analog-gain-sweep',help='comma-separated PBUS codes; smoke research only, shuffled within each block')
     p.add_argument('--transport',choices=['DAC','PLL','STREAM'],default='DAC')
     p.add_argument('--gap',type=int,default=14)
     p.add_argument('--update-rate',type=int,help='isolated RATE-capable PLL research build only')
     p.add_argument('--tx-image',type=Path,help='override image hash for a separately built research transmitter')
+    p.add_argument('--rx-image',type=Path,help='override image hash for a separately built research receiver')
+    p.add_argument('--configure-stream-bandwidth',action='store_true',help='STREAM firmware implements the BW command; explicitly set/reset it')
     p.add_argument('--tx-source',type=Path,help='source directory of the separately built research transmitter')
     p.add_argument('--output',type=Path,default=ROOT/'evaluation/data/public-receiver.json')
     a=p.parse_args()
     if not 1<=a.repeats<=100:raise ValueError('repeats must be 1..100')
+    if not -50000<=a.cfo<=50000:raise ValueError('cfo must be -50000..50000 Hz')
     gains=[a.analog_gain]
     if a.analog_gain_sweep:
         if not a.smoke or a.sender!='bench' or a.analog_gain is not None:
@@ -43,12 +48,18 @@ def main():
         if not gains or len(set(gains))!=len(gains) or any(not 1<=v<=63 for v in gains):
             raise ValueError('gain sweep requires distinct measured non-raising codes 1..63')
     rng=random.Random(a.seed)
-    configs=[(cr,n) for cr in range(1,5) for n in [1,8,32,80,128,255]]
+    lengths=[1,8,32,80,128,255]
+    if a.lengths:
+        if a.smoke:raise ValueError('--lengths cannot be combined with --smoke')
+        lengths=[int(v) for v in a.lengths.split(',')]
+        if not lengths or len(set(lengths))!=len(lengths) or any(not 1<=n<=255 for n in lengths):
+            raise ValueError('lengths must be distinct 1..255 values')
+    configs=[(cr,n) for cr in range(1,5) for n in lengths]
     if a.smoke:configs=[(4,32)]
     configs=[(cr,n,gain) for cr,n in configs for gain in gains]
     result=dict(startedUtc=datetime.now(timezone.utc).isoformat(),seed=a.seed,
         txPort=a.tx_port,rxPort=a.rx_port,sender=a.sender,completed=False,cases=[],transport=a.transport,gapSamples=a.gap,
-        profile=dict(frequencyHz=2440125000,bandwidthHz=a.bandwidth,sf=a.sf,sync=18,preamble=16,windowSamples=a.window),
+        profile=dict(frequencyHz=2440125000,bandwidthHz=a.bandwidth,sf=a.sf,sync=18,preamble=16,windowSamples=a.window,frequencyCorrectionHz=a.cfo),
         rule='fresh RX status=0, header=0, CRC present=1 and CRC ok=1; exact full payload bytes',
         sha256={str(f.relative_to(ROOT)).replace('\\','/'):hashlib.sha256(f.read_bytes()).hexdigest()
             for f in [ROOT/f'.pio/build/{"xiao-s3" if a.sender=="bench" else "xiao-send-once"}/firmware.bin',
@@ -56,6 +67,9 @@ def main():
     if a.tx_image:
         result['sha256'].pop(f'.pio/build/{"xiao-s3" if a.sender=="bench" else "xiao-send-once"}/firmware.bin',None)
         result['sha256'][str(a.tx_image).replace('\\','/')]=hashlib.sha256(a.tx_image.read_bytes()).hexdigest()
+    if a.rx_image:
+        result['sha256'].pop('companion/lr2021/.pio/build/aerolink-hf/firmware.bin',None)
+        result['sha256'][str(a.rx_image).replace('\\','/')]=hashlib.sha256(a.rx_image.read_bytes()).hexdigest()
     if a.analog_gain is not None:result['profile']['analogGainCode']=a.analog_gain
     if a.analog_gain_sweep:result['profile']['analogGainCodes']=gains
     if a.update_rate is not None:result['profile']['updateRateHz']=a.update_rate
@@ -83,9 +97,9 @@ def main():
             raise RuntimeError('Independent receiver not ready: '+result['receiverIdentity'])
         if a.sender=='bench':
             commands=[('INFO','LoRaSDR native S3 0.1'),(a.transport,a.transport+' selected'),('AMP 150','AMP 150')]
-            commands.extend((cmd,cmd) for cmd in ['FREQ 2440125','CFO 15000','PRE 16',f'WIN {a.window}'])
+            commands.extend((cmd,cmd) for cmd in ['FREQ 2440125',f'CFO {a.cfo}','PRE 16',f'WIN {a.window}'])
             if source==ROOT/'src':commands.extend((cmd,cmd) for cmd in ['SYNC 18','INV 1'])
-            if a.transport!='STREAM':commands.append((f'BW {a.bandwidth}',f'BW {a.bandwidth}'))
+            if a.transport!='STREAM' or a.configure_stream_bandwidth:commands.append((f'BW {a.bandwidth}',f'BW {a.bandwidth}'))
             if a.analog_gain is not None:commands.append((f'PA {a.analog_gain}',f'PA {a.analog_gain}'))
             if a.update_rate is not None:commands.append((f'RATE {a.update_rate}',f'RATE {a.update_rate}'))
             if a.transport=='STREAM':commands.append((f'GAP {a.gap}',f'GAP {a.gap}'))

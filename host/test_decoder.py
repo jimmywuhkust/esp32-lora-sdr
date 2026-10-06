@@ -41,6 +41,16 @@ class DecoderTests(unittest.TestCase):
                     result=Decoder(sf=sf).decode(synthetic(payload,sf,cfo))
                     self.assertEqual([p['hex'] for p in result],[payload.hex()])
 
+    def test_real_sf8_and_sf9_without_expected_payload_hint(self):
+        for sf in (8,9):
+            with self.subTest(sf=sf):
+                manifest=json.loads((HERE/f'samples/lr2021-sf{sf}-manifest.json').read_text())
+                result=decode(HERE/f'samples/lr2021-sf{sf}-window.iqs',sf=sf)
+                self.assertEqual(result['iqSha256'],manifest['sha256'])
+                self.assertEqual([p['hex'] for p in result['packets']],[manifest['expectedPayloadHex']])
+                self.assertEqual(result['packets'][0]['crcHex'],manifest['expectedPayloadCRC'])
+                self.assertTrue(result['packets'][0]['crcOk'])
+
     def test_missing_or_bad_payload_crc_never_returns_packet(self):
         for options in (dict(crc=False),dict(bad_crc=True)):
             with self.subTest(options=options):

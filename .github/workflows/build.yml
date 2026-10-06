@@ -12,7 +12,7 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install platformio==6.1.19
       - run: pio run -e xiao-s3 -e xiao-send-once
-      - run: pio run -d companion/lr2021
+      - run: pio run -d companion/lr2021 -e aerolink-hf -e aerolink-hf-tx
       # Compilation is not a real RF/CRC test. Hardware results are separate.
   recorded-iq:
     runs-on: ubuntu-latest
@@ -23,4 +23,6 @@ jobs:
           python-version: '3.13'
       - run: python -m pip install -r host/requirements.txt
       - run: python -m unittest discover -s host -p 'test_*.py'
-      # One saved real-RF packet and synthetic regressions; no live RF CI.
+      - run: python firmware/iq-capture/flash_prebuilt.py --variant default --check-only
+      - run: python firmware/iq-capture/flash_prebuilt.py --variant psram --check-only
+      # Saved real RF at SF7/8/9 plus negative regressions; no live RF CI.

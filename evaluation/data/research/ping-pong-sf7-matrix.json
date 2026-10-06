@@ -1,0 +1,1238 @@
+{
+  "startedUtc": "2026-10-06T22:13:10.548561+00:00",
+  "seed": 2026100719,
+  "txPort": "COM3",
+  "rxPort": "COM4",
+  "sender": "bench",
+  "completed": true,
+  "cases": [
+    {
+      "block": 0,
+      "cr": 2,
+      "length": 32,
+      "expected": "7dd4be0feda557837a028c186959c99b403d9b56d8f67b01156db61bbc4a3ee4",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-58.5 snr=6.0 hex=7dd4be0feda557837a028c186959c99b403d9b56d8f67b01156db61bbc4a3ee4",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -58.5,
+          "snr": 6.0,
+          "hex": "7dd4be0feda557837a028c186959c99b403d9b56d8f67b01156db61bbc4a3ee4"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:10.668446+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 136 0 55.611 c=74228 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 3,
+      "length": 32,
+      "expected": "d537a616e141c01674ae6fcc384d54c503d52d4c8eac396b7d4f2042d0ca2042",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-58.5 snr=6.2 hex=d537a616e141c01674ae6fcc384d54c503d52d4c8eac396b7d4f2042d0ca2042",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -58.5,
+          "snr": 6.2,
+          "hex": "d537a616e141c01674ae6fcc384d54c503d52d4c8eac396b7d4f2042d0ca2042"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:11.633872+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 152 0 61.913 c=74228 g=91 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 2,
+      "length": 8,
+      "expected": "2c58d4f5259def58",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-58.5 snr=5.8 hex=2c58d4f5259def58",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -58.5,
+          "snr": 5.8,
+          "hex": "2c58d4f5259def58"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:12.622941+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 72 0 29.145 c=74228 g=94 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 4,
+      "length": 80,
+      "expected": "193287c95add530ab76e3095c1992e1f13a2e4ff759a1b86a9cb5b9a8a3a41d382f7b2599c38044ebdac5554d43f5813b839b55202b28413dcb7b5dda91c116a0b7859feb02ef18d96697671821dc96c",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-58.5 snr=5.5 hex=193287c95add530ab76e3095c1992e1f13a2e4ff759a1b86a9cb5b9a8a3a41d382f7b2599c38044ebdac5554d43f5813b839b55202b28413dcb7b5dda91c116a0b7859feb02ef18d96697671821dc96c",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -58.5,
+          "snr": 5.5,
+          "hex": "193287c95add530ab76e3095c1992e1f13a2e4ff759a1b86a9cb5b9a8a3a41d382f7b2599c38044ebdac5554d43f5813b839b55202b28413dcb7b5dda91c116a0b7859feb02ef18d96697671821dc96c"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:13.573704+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 339 0 138.791 c=74228 g=104 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 2,
+      "length": 80,
+      "expected": "2d1b2328da1183deb97d11d3603f39d84d1631a0297ed96c66fad365e6edab4e59b33f8d043efb5f24461d356c00c3e8b7b6b977cf0a8baf877d0743d0a9d972befe1e252f18e565d94338318d018e36",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-58.5 snr=6.5 hex=2d1b2328da1183deb97d11d3603f39d84d1631a0297ed96c66fad365e6edab4e59b33f8d043efb5f24461d356c00c3e8b7b6b977cf0a8baf877d0743d0a9d972befe1e252f18e565d94338318d018e36",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -58.5,
+          "snr": 6.5,
+          "hex": "2d1b2328da1183deb97d11d3603f39d84d1631a0297ed96c66fad365e6edab4e59b33f8d043efb5f24461d356c00c3e8b7b6b977cf0a8baf877d0743d0a9d972befe1e252f18e565d94338318d018e36"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:14.619890+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 265 0 108.544 c=74228 g=96 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 3,
+      "length": 1,
+      "expected": "84",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-58.5 snr=6.0 hex=84",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -58.5,
+          "snr": 6.0,
+          "hex": "84"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:15.654008+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 55 0 22.213 c=74228 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 1,
+      "length": 8,
+      "expected": "e86d64d8cdca377e",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-58.5 snr=6.2 hex=e86d64d8cdca377e",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -58.5,
+          "snr": 6.2,
+          "hex": "e86d64d8cdca377e"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:16.593331+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 67 0 27.254 c=74228 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 3,
+      "length": 80,
+      "expected": "51c0f2f216cbd03f14f67dd1978fc573b9c9e39df7da3c28238d17ebe6b9df8b53d7a3122d8f2b1532c07652e958d4446e9b455d693440ef547b07dac7897dee70640f17a5780b300751ef0b4da41e13",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-58.5 snr=5.2 hex=51c0f2f216cbd03f14f67dd1978fc573b9c9e39df7da3c28238d17ebe6b9df8b53d7a3122d8f2b1532c07652e958d4446e9b455d693440ef547b07dac7897dee70640f17a5780b300751ef0b4da41e13",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -58.5,
+          "snr": 5.2,
+          "hex": "51c0f2f216cbd03f14f67dd1978fc573b9c9e39df7da3c28238d17ebe6b9df8b53d7a3122d8f2b1532c07652e958d4446e9b455d693440ef547b07dac7897dee70640f17a5780b300751ef0b4da41e13"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:17.532947+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 302 0 123.668 c=74228 g=93 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 1,
+      "length": 80,
+      "expected": "7378b189057ed874c1ef275e508c4eb2bd3ff04cebe97601ed7edbfca22be398a67576d77aaa782e053154b54f911f39b659b53966a46b48657b1b852d8643fbe957a6467bf9721d9aa0462d121fc6e6",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-58.5 snr=5.5 hex=7378b189057ed874c1ef275e508c4eb2bd3ff04cebe97601ed7edbfca22be398a67576d77aaa782e053154b54f911f39b659b53966a46b48657b1b852d8643fbe957a6467bf9721d9aa0462d121fc6e6",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -58.5,
+          "snr": 5.5,
+          "hex": "7378b189057ed874c1ef275e508c4eb2bd3ff04cebe97601ed7edbfca22be398a67576d77aaa782e053154b54f911f39b659b53966a46b48657b1b852d8643fbe957a6467bf9721d9aa0462d121fc6e6"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:18.577587+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 228 0 93.420 c=74228 g=99 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 1,
+      "length": 32,
+      "expected": "911475a18ccf06753cd32e3e8f5aa58e8ffa797db61da242d593a6606fec66ba",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-58.5 snr=5.5 hex=911475a18ccf06753cd32e3e8f5aa58e8ffa797db61da242d593a6606fec66ba",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -58.5,
+          "snr": 5.5,
+          "hex": "911475a18ccf06753cd32e3e8f5aa58e8ffa797db61da242d593a6606fec66ba"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:19.589426+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 121 0 49.310 c=74228 g=102 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 4,
+      "length": 1,
+      "expected": "fa",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-58.5 snr=5.8 hex=fa",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -58.5,
+          "snr": 5.8,
+          "hex": "fa"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:20.558568+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 56 0 22.843 c=74187 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 4,
+      "length": 8,
+      "expected": "58fef067f9165827",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-58.5 snr=5.8 hex=58fef067f9165827",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -58.5,
+          "snr": 5.8,
+          "hex": "58fef067f9165827"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:21.500991+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 81 0 32.926 c=74228 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 2,
+      "length": 1,
+      "expected": "1b",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-58.5 snr=5.8 hex=1b",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -58.5,
+          "snr": 5.8,
+          "hex": "1b"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:22.451621+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 53 0 21.583 c=74176 g=84 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 3,
+      "length": 8,
+      "expected": "f0ed328629cc64fc",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-58.5 snr=6.0 hex=f0ed328629cc64fc",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -58.5,
+          "snr": 6.0,
+          "hex": "f0ed328629cc64fc"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:23.387832+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 76 0 31.035 c=74258 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 4,
+      "length": 32,
+      "expected": "18b014a6f0a13d46edee1d1e1ce1ce2dbfd6df5ab73e4b86bd162d5949a7b975",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-58.5 snr=6.2 hex=18b014a6f0a13d46edee1d1e1ce1ce2dbfd6df5ab73e4b86bd162d5949a7b975",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -58.5,
+          "snr": 6.2,
+          "hex": "18b014a6f0a13d46edee1d1e1ce1ce2dbfd6df5ab73e4b86bd162d5949a7b975"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:24.329529+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 167 0 68.214 c=74228 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 1,
+      "length": 1,
+      "expected": "26",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-58.5 snr=5.8 hex=26",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -58.5,
+          "snr": 5.8,
+          "hex": "26"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:25.371519+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 52 0 20.953 c=74187 g=87 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 2,
+      "length": 8,
+      "expected": "dc786d7d8b8f24e7",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-58.5 snr=6.0 hex=dc786d7d8b8f24e7",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -58.5,
+          "snr": 6.0,
+          "hex": "dc786d7d8b8f24e7"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:26.301522+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 72 0 29.145 c=74176 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 2,
+      "length": 80,
+      "expected": "9243534f5647f0f5b5ed870405fe6e06640922155be3e31699786ef1d640b40d69c176217e2d375461d5fe4dad9a5848c01b614a39dc300e251db70c6319c5ee22355e444eff8a6f6695d121c9a7e357",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-58.5 snr=6.5 hex=9243534f5647f0f5b5ed870405fe6e06640922155be3e31699786ef1d640b40d69c176217e2d375461d5fe4dad9a5848c01b614a39dc300e251db70c6319c5ee22355e444eff8a6f6695d121c9a7e357",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -58.5,
+          "snr": 6.5,
+          "hex": "9243534f5647f0f5b5ed870405fe6e06640922155be3e31699786ef1d640b40d69c176217e2d375461d5fe4dad9a5848c01b614a39dc300e251db70c6319c5ee22355e444eff8a6f6695d121c9a7e357"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:27.242508+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 265 0 108.544 c=74228 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 1,
+      "length": 8,
+      "expected": "582434a37086cc73",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-58.5 snr=6.0 hex=582434a37086cc73",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -58.5,
+          "snr": 6.0,
+          "hex": "582434a37086cc73"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:28.273956+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 67 0 27.254 c=74228 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 1,
+      "length": 80,
+      "expected": "13a0073a12f66b027b4059efb64c9862fe471b16a68da8f97495e5a0c13732229423fbfb565fc89c1fe80499e25b44ebdf34d2cd80faf2df8ccfb379d0088113b339803abded4b712e913544c950e6ec",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-58.5 snr=3.0 hex=13a0073a12f66b027b4059efb64c9862fe471b16a68da8f97495e5a0c13732229423fbfb565fc89c1fe80499e25b44ebdf34d2cd80faf2df8ccfb379d0088113b339803abded4b712e913544c950e6ec",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -58.5,
+          "snr": 3.0,
+          "hex": "13a0073a12f66b027b4059efb64c9862fe471b16a68da8f97495e5a0c13732229423fbfb565fc89c1fe80499e25b44ebdf34d2cd80faf2df8ccfb379d0088113b339803abded4b712e913544c950e6ec"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:29.214418+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 228 0 93.420 c=74228 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 3,
+      "length": 8,
+      "expected": "9c9e58c23487b795",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-58.5 snr=6.2 hex=9c9e58c23487b795",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -58.5,
+          "snr": 6.2,
+          "hex": "9c9e58c23487b795"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:30.240805+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 76 0 31.035 c=74228 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 3,
+      "length": 80,
+      "expected": "6c899828564943a0f2a7b29d8b43cc7664c1a13666b0cd2cb19e3cb5aa322ca52267232be3e0f3305ec4f0721f09921f39884df82e8f67614665ba01ab7b9538994139ec1c039356e1fdd129c584f007",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-58.5 snr=5.2 hex=6c899828564943a0f2a7b29d8b43cc7664c1a13666b0cd2cb19e3cb5aa322ca52267232be3e0f3305ec4f0721f09921f39884df82e8f67614665ba01ab7b9538994139ec1c039356e1fdd129c584f007",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -58.5,
+          "snr": 5.2,
+          "hex": "6c899828564943a0f2a7b29d8b43cc7664c1a13666b0cd2cb19e3cb5aa322ca52267232be3e0f3305ec4f0721f09921f39884df82e8f67614665ba01ab7b9538994139ec1c039356e1fdd129c584f007"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:31.184544+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 302 0 123.668 c=74245 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 4,
+      "length": 8,
+      "expected": "658f2b1c12602b9f",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-58.5 snr=5.8 hex=658f2b1c12602b9f",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -58.5,
+          "snr": 5.8,
+          "hex": "658f2b1c12602b9f"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:32.238744+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 81 0 32.926 c=74239 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 2,
+      "length": 1,
+      "expected": "71",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-58.5 snr=5.8 hex=71",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -58.5,
+          "snr": 5.8,
+          "hex": "71"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:33.186384+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 53 0 21.583 c=74176 g=84 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 4,
+      "length": 80,
+      "expected": "4eec76ffe8117502c0102cfe92ab548a7b997d5c6f108f3599c03f6e34304c53e5a77287acf659ea0cf9089725b7a395986fe52b7488672c87e4707c1b1a78dc49c60a10cd5f7f70e5ea978b2c1f7292",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-58.5 snr=5.5 hex=4eec76ffe8117502c0102cfe92ab548a7b997d5c6f108f3599c03f6e34304c53e5a77287acf659ea0cf9089725b7a395986fe52b7488672c87e4707c1b1a78dc49c60a10cd5f7f70e5ea978b2c1f7292",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -58.5,
+          "snr": 5.5,
+          "hex": "4eec76ffe8117502c0102cfe92ab548a7b997d5c6f108f3599c03f6e34304c53e5a77287acf659ea0cf9089725b7a395986fe52b7488672c87e4707c1b1a78dc49c60a10cd5f7f70e5ea978b2c1f7292"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:34.122304+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 339 0 138.791 c=74230 g=108 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 1,
+      "length": 32,
+      "expected": "5b66bb25641b3efdf692b0da33fff7d22a57d4b5d9fbb65a9ba65a9db1e43de4",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-58.5 snr=5.2 hex=5b66bb25641b3efdf692b0da33fff7d22a57d4b5d9fbb65a9ba65a9db1e43de4",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -58.5,
+          "snr": 5.2,
+          "hex": "5b66bb25641b3efdf692b0da33fff7d22a57d4b5d9fbb65a9ba65a9db1e43de4"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:35.171465+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 121 0 49.310 c=74228 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 2,
+      "length": 32,
+      "expected": "6bef9ce394b8c83711a8a0fcf4bee3881ba9ad7aea1390130a763e3a8d2485f0",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-58.5 snr=5.5 hex=6bef9ce394b8c83711a8a0fcf4bee3881ba9ad7aea1390130a763e3a8d2485f0",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -58.5,
+          "snr": 5.5,
+          "hex": "6bef9ce394b8c83711a8a0fcf4bee3881ba9ad7aea1390130a763e3a8d2485f0"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:36.140296+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 136 0 55.611 c=74230 g=102 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 3,
+      "length": 32,
+      "expected": "3cfc0b7e2a23b3f2d0ef8629e3da52faeebb23e1dbb1da5f6fa5a103fedcb22b",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-58.5 snr=6.0 hex=3cfc0b7e2a23b3f2d0ef8629e3da52faeebb23e1dbb1da5f6fa5a103fedcb22b",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -58.5,
+          "snr": 6.0,
+          "hex": "3cfc0b7e2a23b3f2d0ef8629e3da52faeebb23e1dbb1da5f6fa5a103fedcb22b"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:37.114452+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 152 0 61.913 c=74228 g=101 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 1,
+      "length": 1,
+      "expected": "5e",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-58.5 snr=5.8 hex=5e",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -58.5,
+          "snr": 5.8,
+          "hex": "5e"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:38.100706+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 52 0 20.953 c=74125 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 4,
+      "length": 32,
+      "expected": "f192431fe3c43bb5cce5b3bed990a2d6ecf400732d0c809e371f69df4fb37904",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-58.5 snr=6.5 hex=f192431fe3c43bb5cce5b3bed990a2d6ecf400732d0c809e371f69df4fb37904",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -58.5,
+          "snr": 6.5,
+          "hex": "f192431fe3c43bb5cce5b3bed990a2d6ecf400732d0c809e371f69df4fb37904"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:39.028314+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 167 0 68.214 c=74228 g=96 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 3,
+      "length": 1,
+      "expected": "34",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-58.5 snr=6.5 hex=34",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -58.5,
+          "snr": 6.5,
+          "hex": "34"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:40.016404+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 55 0 22.213 c=74228 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 4,
+      "length": 1,
+      "expected": "e4",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-58.5 snr=6.0 hex=e4",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -58.5,
+          "snr": 6.0,
+          "hex": "e4"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:40.958390+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 56 0 22.843 c=74187 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 3,
+      "length": 80,
+      "expected": "a657e58b546934edfcc05cf26c8552f69eb7fb6cac572294b70fdfa43d28c2de52e73f0614e7546cab122a7cf694c875006957e1d17049d5acf07ea796981ddca2d308f8893dc5e39c6221fb3d842c68",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-58.5 snr=5.2 hex=a657e58b546934edfcc05cf26c8552f69eb7fb6cac572294b70fdfa43d28c2de52e73f0614e7546cab122a7cf694c875006957e1d17049d5acf07ea796981ddca2d308f8893dc5e39c6221fb3d842c68",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -58.5,
+          "snr": 5.2,
+          "hex": "a657e58b546934edfcc05cf26c8552f69eb7fb6cac572294b70fdfa43d28c2de52e73f0614e7546cab122a7cf694c875006957e1d17049d5acf07ea796981ddca2d308f8893dc5e39c6221fb3d842c68"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:41.896128+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 302 0 123.668 c=74228 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 4,
+      "length": 8,
+      "expected": "410cc962e89195e6",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-58.5 snr=5.8 hex=410cc962e89195e6",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -58.5,
+          "snr": 5.8,
+          "hex": "410cc962e89195e6"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:42.944224+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 81 0 32.926 c=74228 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 2,
+      "length": 80,
+      "expected": "bd8445437587021763f57bb9607d88834092c816aa5efbe9948ccf85c3fa9082e464cd50285e77e3decca015a97dbfa9df3c5e754a5c80e24ca1fec4cc364e00f7155f0ca8d02e901b6b7a4f7d7fbfbc",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-58.5 snr=6.2 hex=bd8445437587021763f57bb9607d88834092c816aa5efbe9948ccf85c3fa9082e464cd50285e77e3decca015a97dbfa9df3c5e754a5c80e24ca1fec4cc364e00f7155f0ca8d02e901b6b7a4f7d7fbfbc",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -58.5,
+          "snr": 6.2,
+          "hex": "bd8445437587021763f57bb9607d88834092c816aa5efbe9948ccf85c3fa9082e464cd50285e77e3decca015a97dbfa9df3c5e754a5c80e24ca1fec4cc364e00f7155f0ca8d02e901b6b7a4f7d7fbfbc"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:43.901326+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 265 0 108.544 c=74237 g=102 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 1,
+      "length": 8,
+      "expected": "f25ba90c9e71f828",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-58.5 snr=6.0 hex=f25ba90c9e71f828",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -58.5,
+          "snr": 6.0,
+          "hex": "f25ba90c9e71f828"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:44.931445+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 67 0 27.254 c=74228 g=102 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 2,
+      "length": 32,
+      "expected": "b76ee21b2321946d5e529385184de8c0c68ec964554872815192b95b762ad5f5",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-58.5 snr=6.0 hex=b76ee21b2321946d5e529385184de8c0c68ec964554872815192b95b762ad5f5",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -58.5,
+          "snr": 6.0,
+          "hex": "b76ee21b2321946d5e529385184de8c0c68ec964554872815192b95b762ad5f5"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:45.871327+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 136 0 55.611 c=74228 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 4,
+      "length": 80,
+      "expected": "0a5e6065139648c70666695632bde3bd64c9c1050cf8f720ccbc19ddd54858dddf20dff5bde635de193b26ae1da9e754eaf086420e09908b553c6b411cf607e2a973790348b0f1d44a0b018beb91be68",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-58.5 snr=5.8 hex=0a5e6065139648c70666695632bde3bd64c9c1050cf8f720ccbc19ddd54858dddf20dff5bde635de193b26ae1da9e754eaf086420e09908b553c6b411cf607e2a973790348b0f1d44a0b018beb91be68",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -58.5,
+          "snr": 5.8,
+          "hex": "0a5e6065139648c70666695632bde3bd64c9c1050cf8f720ccbc19ddd54858dddf20dff5bde635de193b26ae1da9e754eaf086420e09908b553c6b411cf607e2a973790348b0f1d44a0b018beb91be68"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:46.841331+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 339 0 138.791 c=74228 g=93 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 2,
+      "length": 1,
+      "expected": "71",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-58.5 snr=5.8 hex=71",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -58.5,
+          "snr": 5.8,
+          "hex": "71"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:47.902244+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 53 0 21.583 c=74176 g=94 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 1,
+      "length": 1,
+      "expected": "a7",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-58.5 snr=5.8 hex=a7",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -58.5,
+          "snr": 5.8,
+          "hex": "a7"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:48.844402+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 52 0 20.953 c=74189 g=94 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 3,
+      "length": 1,
+      "expected": "9a",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-58.5 snr=6.2 hex=9a",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -58.5,
+          "snr": 6.2,
+          "hex": "9a"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:49.783453+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 55 0 22.213 c=74228 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 4,
+      "length": 32,
+      "expected": "706c70b14abcc8cbddc564af7232223df9374ad1528f7d21a901c9c806b80af3",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-58.5 snr=6.5 hex=706c70b14abcc8cbddc564af7232223df9374ad1528f7d21a901c9c806b80af3",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -58.5,
+          "snr": 6.5,
+          "hex": "706c70b14abcc8cbddc564af7232223df9374ad1528f7d21a901c9c806b80af3"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:50.728250+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 167 0 68.214 c=74258 g=102 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 2,
+      "length": 8,
+      "expected": "6ce1828bc69be475",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-58.5 snr=6.0 hex=6ce1828bc69be475",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -58.5,
+          "snr": 6.0,
+          "hex": "6ce1828bc69be475"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:51.704208+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 72 0 29.145 c=74187 g=91 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 1,
+      "length": 32,
+      "expected": "c454cc932dca9ee8ba5eb5dbefb06f559e53d99bb5aaecc7ed054e68ac70b528",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-58.5 snr=5.0 hex=c454cc932dca9ee8ba5eb5dbefb06f559e53d99bb5aaecc7ed054e68ac70b528",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -58.5,
+          "snr": 5.0,
+          "hex": "c454cc932dca9ee8ba5eb5dbefb06f559e53d99bb5aaecc7ed054e68ac70b528"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:52.641506+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 121 0 49.310 c=74228 g=102 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 3,
+      "length": 32,
+      "expected": "292b2a24bcf2b7569920e553aeedb83a36d1ba972c721bea966daa3583fc7147",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-58.5 snr=6.2 hex=292b2a24bcf2b7569920e553aeedb83a36d1ba972c721bea966daa3583fc7147",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -58.5,
+          "snr": 6.2,
+          "hex": "292b2a24bcf2b7569920e553aeedb83a36d1ba972c721bea966daa3583fc7147"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:53.605239+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 152 0 61.913 c=74228 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 4,
+      "length": 1,
+      "expected": "41",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-58.5 snr=6.0 hex=41",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -58.5,
+          "snr": 6.0,
+          "hex": "41"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:54.596067+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 56 0 22.843 c=74187 g=90 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 1,
+      "length": 80,
+      "expected": "08dfbefeb7909e3ee183d872f791d501882a98e001dd0b70a24ed8fdde228b2b48655a8da2f7b977e7497e54ada4e8064730708c5395dca8ed8ed33960bb2519d5b589e9ac3376111e9858d753afc757",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-58.5 snr=5.5 hex=08dfbefeb7909e3ee183d872f791d501882a98e001dd0b70a24ed8fdde228b2b48655a8da2f7b977e7497e54ada4e8064730708c5395dca8ed8ed33960bb2519d5b589e9ac3376111e9858d753afc757",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -58.5,
+          "snr": 5.5,
+          "hex": "08dfbefeb7909e3ee183d872f791d501882a98e001dd0b70a24ed8fdde228b2b48655a8da2f7b977e7497e54ada4e8064730708c5395dca8ed8ed33960bb2519d5b589e9ac3376111e9858d753afc757"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:55.526029+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 228 0 93.420 c=74228 g=93 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 3,
+      "length": 8,
+      "expected": "1c82927412531610",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-58.5 snr=6.0 hex=1c82927412531610",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -58.5,
+          "snr": 6.0,
+          "hex": "1c82927412531610"
+        }
+      ],
+      "startedUtc": "2026-10-06T22:13:56.531426+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 76 0 31.035 c=74187 g=91 s=1",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    }
+  ],
+  "transport": "STREAM",
+  "gapSamples": 15,
+  "profile": {
+    "frequencyHz": 2440125000,
+    "bandwidthHz": 203125,
+    "sf": 7,
+    "sync": 18,
+    "preamble": 16,
+    "windowSamples": 15000,
+    "frequencyCorrectionHz": 15000
+  },
+  "rule": "fresh RX status=0, header=0, CRC present=1 and CRC ok=1; exact full payload bytes",
+  "sha256": {
+    "companion/lr2021/.pio/build/aerolink-hf/firmware.bin": "7614e6b60f9b14425f335b1103035ba0a1f82910a0e1df7ee3eec0773e03c1e4",
+    "esp32-lora-sdr/research/ping-pong-dac/.pio/build/xiao-stream-research/firmware.bin": "b31a8f9408941ad8c47128bc6a7c9f5dc8e011bef806a239bdae6a2fd61fe335"
+  },
+  "firmwareHashMethod": "SHA256 of last-flashed input images; esptool write verification is separate",
+  "sourceSha256": {
+    "DacStreamer.cpp": "4570c4e9e882634093e132b5c3c6a0b4217205e687b716f7a927be203ef619c8",
+    "DacStreamer.h": "0aa34c512105c9f25fb3b198afbee01e5c9fd726ba803a364469daae54b8aac1",
+    "ESP32S3Radio.cpp": "1e4e5fe2bff8754fdda7a860727ecf61d21cf7eb13075a9719225f78418551ea",
+    "ESP32S3Radio.h": "0e36c237e46d0be7bd2a2dfd65df4a9e6cfd76974fb8a9f16a863768ca1bca6f",
+    "LoRaSDR.cpp": "d2008c0d36d4d65d7b68fae09c06357d78a80c8bc1e171b6a73113450decfbce",
+    "LoRaSDR.h": "2dc691ecd4e70addf9d9df178c24ae08f92efcbd43e500fcfb69077611bc3c02",
+    "main.cpp": "4fd99d55c8f1b45a155d35013867dcb6f4282cc1fe67ee0d902d2794ada63fd4"
+  },
+  "receiverIdentity": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1",
+  "finishedUtc": "2026-10-06T22:13:57.481177+00:00"
+}

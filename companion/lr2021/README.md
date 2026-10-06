@@ -21,12 +21,13 @@ not identify every AeroLink/custom PCB as a Heltec board.
 | DIO9 / IRQ | 14 |
 
 Check your wiring and save a firmware backup before flashing a different board.
-No GNSS data or autonomous beacons are used. This companion never transmits.
+No GNSS data or autonomous beacons are used. The default `aerolink-hf` build
+never transmits. The separate `aerolink-hf-tx` build enables manual bounded TX.
 
 ```sh
 cd companion/lr2021
-pio run
-pio run -t upload --upload-port YOUR_RECEIVER_PORT
+pio run -e aerolink-hf
+pio run -e aerolink-hf -t upload --upload-port YOUR_RECEIVER_PORT
 pio device monitor --port YOUR_RECEIVER_PORT --baud 115200
 ```
 
@@ -62,3 +63,26 @@ python evaluation/verify_public_receiver.py --tx-port YOUR_XIAO_PORT --rx-port Y
 The matrix sends 240 fresh randomized packets across CR4/5–4/8 and lengths
 1,8,32,80,128,255. It sends once per trial and saves every success/failure.
 The report identifies which receiver implementation produced each dataset.
+
+## Optional reverse-direction transmitter
+
+To send from the LR2021 into the XIAO's IQ capture backend, explicitly build
+`pio run -e aerolink-hf-tx` and upload that environment. It still receives at
+boot. `TX 8 4 48656c6c6f` sends exactly five bytes at SF8/CR4/8; lengths1–32,
+SF7–9, CR4/5–4/8 only. The initialized HF power request is fixed at−12dBm;
+actual radiated power has not been calibrated. Profiles with estimated airtime
+above250ms are rejected before transmission, and a300ms completion deadline
+aborts the packet. There are no automatic retries or periodic transmissions.
+
+On this board GPIO14 reads high even with chip IRQ zero. RadioLib7.7.0's
+blocking `transmit()` consequently did not provide a valid RF completion
+criterion in our initial fixture. This optional mode uses `startTransmit()`,
+polls the actual TX_DONE IRQ and then calls `finishTransmit()`. Readiness,
+TX status and actual receive proof are separate. A printed TX_PUBLIC status0
+alone **does not** prove the XIAO received anything.
+
+The receiver also snapshots IRQ before draining data and requires RX_DONE,
+valid header, no CRC/header-error IRQ, CRC presence, read status0 and exact
+expected bytes. `RX_IRQ` preserves the snapshot for diagnosis.
+See the [capture backend](../../firmware/iq-capture/README.md) and
+[live PC workflow](../../host/README.md) for the reverse-direction experiment.

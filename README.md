@@ -20,22 +20,27 @@ Read the capability table before choosing other settings.
 |---|---|
 | XIAO → LR2021 complete packet | Independent hardware CRC and exact-byte comparison |
 | On-device coding and transmission | Arduino / PlatformIO; the PC supplies payload bytes, not an I/Q waveform |
-| SF7, four coding rates, 1–255 bytes | **239/240** with the public receiver; all 40 × 255-byte trials passed. Earlier independent matrix: **237/240**, lengths 1–250; CR4/8 regression: 26/26, including English and Chinese |
+| SF7, four coding rates, 1–255 bytes | Final strict IRQ matrix: **224/240 accepted, 240/240 exact payloads**. Sixteen ambiguous header-error events rejected. Earlier API-based public matrix 239/240; [criteria and raw evidence](docs/test-report.md#final-receiver-irq-audit-stricter-hardware-evidence) |
 | Portable PHY encoder | 264/264 on-device cross-checks: SF7–12, CR4/5–4/8, lengths 1–255; this is **coding verification**, not RF verification |
 | SF7 at 406.25 / 812.5 kHz | Separate randomized matrices: 72/72 at each bandwidth, four coding rates, lengths 1–255; matching windows are required |
 | RF parameter selection | Frequency, preamble, coding rate, frequency correction, DAC amplitude and waveform window; unsupported combinations return an error |
 | Channel, preamble, sync and IQ polarity | 142/144 fresh 32-byte CRC packets across 48 settings; both failures retained. Three channels, four preambles, sync0x12/0x34 and both matched polarities |
 | SF8 / SF9 transmission | Windowed DAC has failed; PLL has delivered some exact CRC packets but only 1/10 SF8 and 4/10 SF9 in small diagnostic runs. Unreliable and experimental |
 | Analog level control | Optional raw PBUS codes; a constant-DAC seven-code study delivered 70/70. Codes are nonmonotonic and uncalibrated; see the report |
-| Receive on XIAO | Separate ESP-SDR I/Q capture + **PC** decoder path; [real recorded IQ and offline decoder](host/README.md) included. Native Arduino packet RX is not implemented |
+| Receive on XIAO | Public standalone IQ capture + **PC** full decoder: **104/108** live packets, SF7/8/9, four CRs, lengths1/8/32. [Capture source, live script and real recordings](host/README.md) included. Native Arduino packet RX is not implemented |
 | Calibrated TX power, distance or sensitivity | Not measured; raw gain and amplitude are not dBm |
 
 The measurements are from one stationary indoor board pair. Failed tests,
 resets and mismatched packets stay in the report.
 
+The reverse path requires the separate ESP-IDF capture application on XIAO,
+plus a PC decoder. It does not run inside the Arduino transmitter sketch.
+The default capture matrix retained99.18–100% of IQ within500ms windows;
+USB-frame drops are explicit. There is no continuous4MS/s USB claim.
+
 ![Two separately measured hardware datasets](docs/assets/public-receiver-results.svg)
 
-![Native XIAO transmission and independent LR2021 reception, including Chinese UTF-8 and exact bytes](docs/assets/live-proof.png)
+![Native XIAO transmission and independent LR2021 reception, including Chinese UTF-8 and exact bytes](docs/assets/final-live-proof.png)
 
 ## Your first packet
 
@@ -105,3 +110,5 @@ was reused and what was measured here.
 
 GPL-3.0-only. See [LICENSE](LICENSE) and [third-party notices](THIRD_PARTY.md).
 Use RF settings permitted for your location and connected hardware.
+
+The optional PSRAM queue retained all output IQ in a completed 36-window block (34 full CRC packets), but longer batches still aborted at ring edges. [Actual IQ, failures and retention figures](docs/test-report.md#final-finite-window-capture-validation).

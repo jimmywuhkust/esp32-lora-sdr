@@ -1,0 +1,101 @@
+{
+  "startedUtc": "2026-10-06T22:32:33.894688+00:00",
+  "completed": true,
+  "direction": "LR2021 HF TX -> XIAO I/Q -> PC",
+  "nativeArduinoRx": false,
+  "seed": 2026100725,
+  "windowMs": 350,
+  "frequencyHz": 2440125000,
+  "bandwidthHz": 203125,
+  "syncWord": 18,
+  "preamble": 16,
+  "requestedChipPowerDbm": -12,
+  "calibratedRadiatedPower": false,
+  "imageSha256": {
+    "firmware\\esp32s3\\experimental-lora.bin": "b52e794af826deaf4f70945f202ca56b15cb51ac9ada4680a8ed1e4417b7e92a",
+    "esp32-lora-sdr\\research\\lr2021-start-sf8\\.pio\\build\\aerolink-hf\\firmware.bin": "9732ba49c71b0d4013dee85a4cb07b7041371319d9c19efc9f1855fe6d9a3548"
+  },
+  "cases": [
+    {
+      "sf": 8,
+      "cr": 4,
+      "block": 0,
+      "expected": "1d18e2fbd62893463157a5b0b0093eda9607a48b1c6c3569c5aacbe1155952ff",
+      "startedUtc": "2026-10-06T22:32:33.997006+00:00",
+      "capture": {
+        "sampleRate": 250000,
+        "bits": 4,
+        "shift": 9,
+        "frames": 86,
+        "samples": 87605,
+        "gapSamples": 0,
+        "rfSamples": 87605,
+        "coverage": 100.0,
+        "outputDrops": 0,
+        "abandonedUnits": 0,
+        "end": [
+          0,
+          0,
+          456,
+          5606755,
+          350427,
+          7,
+          0,
+          86,
+          0,
+          0,
+          0,
+          0
+        ],
+        "file": "test-results\\live-reverse-public-irq-sf8-diagnostic\\window-001.iqs"
+      },
+      "txLines": [
+        "TX_PUBLIC status=0 sf=8 cr=4 bytes=32 hex=1d18e2fbd62893463157a5b0b0093eda9607a48b1c6c3569c5aacbe1155952ff"
+      ],
+      "errors": [],
+      "txStartAfterHostCaptureCallSeconds": [
+        0.09911609999835491
+      ],
+      "txDiagnostics": [
+        "TX_DIAG irq=0008000a errors=0000 elapsed_us=130568 gpio=1"
+      ],
+      "trigger": "first validated IQ frame + 50ms",
+      "iqSha256": "d4ee6c9fb49384b4ade326c6ac586ef29662d5a5b14fec4cb8978b8bcb506c25",
+      "packets": [
+        {
+          "text": "\u001d\u0018\ufffd\ufffd\ufffd(\ufffdF1W\ufffd\ufffd\ufffd\t>\u0696\u0007\ufffd\ufffd\u001cl5i\u016a\ufffd\ufffd\u0015YR\ufffd",
+          "hex": "1d18e2fbd62893463157a5b0b0093eda9607a48b1c6c3569c5aacbe1155952ff",
+          "bytes": 32,
+          "crcOk": true,
+          "crcHex": "57d7",
+          "sf": 8,
+          "codingRate": "4/8",
+          "frequency": 2440.125,
+          "cfoHz": 14996.34,
+          "syncBins": [
+            8,
+            16
+          ],
+          "sampleIndex": 25913,
+          "segmentSampleIndex": 0,
+          "segmentSamples": 87605,
+          "hypothesis": "magnitude/0",
+          "source": "XIAO I/Q \u2192 PC LoRa decoder"
+        }
+      ],
+      "decoderStats": {
+        "segments": 1,
+        "headerCandidates": 5,
+        "crcValid": 1,
+        "crcRejectedCandidates": 0,
+        "crcAbsent": 0,
+        "syncRejected": 0
+      },
+      "contiguousRuns": 1,
+      "passed": true
+    }
+  ],
+  "xiaoInfo": "S3SDR 6 burst 16380",
+  "radioInfo": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1",
+  "finishedUtc": "2026-10-06T22:32:34.607953+00:00"
+}
