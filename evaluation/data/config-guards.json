@@ -1,0 +1,102 @@
+{
+  "cases": [
+    {
+      "command": "AMP 0",
+      "expected": "ERR setting",
+      "reply": "ERR setting",
+      "passed": true
+    },
+    {
+      "command": "AMP 201",
+      "expected": "ERR setting",
+      "reply": "ERR setting",
+      "passed": true
+    },
+    {
+      "command": "WIN 999",
+      "expected": "ERR setting",
+      "reply": "ERR setting",
+      "passed": true
+    },
+    {
+      "command": "PRE 11",
+      "expected": "ERR setting",
+      "reply": "ERR setting",
+      "passed": true
+    },
+    {
+      "command": "BW 125000",
+      "expected": "ERR BW",
+      "reply": "ERR BW",
+      "passed": true
+    },
+    {
+      "command": "FREQ 2399000",
+      "expected": "ERR setting",
+      "reply": "ERR setting",
+      "passed": true
+    },
+    {
+      "command": "CFO 50001",
+      "expected": "ERR setting",
+      "reply": "ERR setting",
+      "passed": true
+    },
+    {
+      "command": "TX 7 4 ff trailing",
+      "expected": "ERR arguments",
+      "reply": "ERR arguments",
+      "passed": true
+    },
+    {
+      "command": "TX 7 4 f",
+      "expected": "ERR length",
+      "reply": "ERR length",
+      "passed": true
+    },
+    {
+      "command": "TX 7 4 gg",
+      "expected": "ERR hex",
+      "reply": "ERR hex",
+      "passed": true
+    },
+    {
+      "command": "TX 13 4 ff",
+      "expected": "ERR arguments",
+      "reply": "ERR arguments",
+      "passed": true
+    },
+    {
+      "command": "TX 7 5 ff",
+      "expected": "ERR arguments",
+      "reply": "ERR arguments",
+      "passed": true
+    },
+    {
+      "command": "TX 9 4 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfe",
+      "name": "PLL airtime cap",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE unsupported 0 0 305.152 buffer=00000000 copy=0",
+      "passed": true
+    },
+    {
+      "name": "Window longer than symbol",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE unsupported 0 0 11.422 buffer=00000000 copy=0",
+      "passed": true
+    }
+  ],
+  "method": "Invalid inputs and overlong PLL packet; no requested RF transmission",
+  "firmwareSha256": "c19ddca83d71cf379804294d57f9124b98d0a94c7e6c85c2eb9a09d2582ede0d",
+  "identity": "LoRaSDR native S3 0.1",
+  "pllSelect": "PLL selected",
+  "dacSelect": "DAC selected",
+  "bwSelect": "BW 406250",
+  "windowSelect": "WIN 15000",
+  "restore": [
+    "BW 203125",
+    "WIN 15000",
+    "LoRaSDR native S3 0.1"
+  ],
+  "passed": true
+}

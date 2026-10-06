@@ -1,0 +1,52 @@
+{
+  "startedUtc": "2026-10-06T20:02:18.386108+00:00",
+  "seed": 20261007,
+  "txPort": "COM3",
+  "rxPort": "COM4",
+  "sender": "bench",
+  "completed": true,
+  "cases": [
+    {
+      "block": 0,
+      "cr": 4,
+      "length": 32,
+      "expected": "49067b3a8eecdad021188ad350e6cb5a6b7686135b89904ad68ce29b81ec589f",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=5.8 hex=49067b3a8eecdad021188ad350e6cb5a6b7686135b89904ad68ce29b81ec589f",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 5.8,
+          "hex": "49067b3a8eecdad021188ad350e6cb5a6b7686135b89904ad68ce29b81ec589f"
+        },
+        {
+          "raw": "RX_STOP error=-706"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:02:18.472725+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f650 copy=40222",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=0 irq=00020000 gpio=1"
+    }
+  ],
+  "profile": {
+    "frequencyHz": 2440125000,
+    "bandwidthHz": 203125,
+    "sf": 7,
+    "sync": 18,
+    "preamble": 16
+  },
+  "rule": "fresh RX status=0, header=0, CRC present=1 and CRC ok=1; exact full payload bytes",
+  "sha256": {
+    ".pio/build/xiao-s3/firmware.bin": "34afeca78440f016ee099ef337c5277d23d37d2b96c4aa75655ce76eab2650b6",
+    "companion/lr2021/.pio/build/aerolink-hf/firmware.bin": "1e4b79426b28e9b4b4dba3abf0b07478241d08e12001da309ddffcd094f39f6f"
+  },
+  "receiverIdentity": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1",
+  "finishedUtc": "2026-10-06T20:02:19.914653+00:00"
+}

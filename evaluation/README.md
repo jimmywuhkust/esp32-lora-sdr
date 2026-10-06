@@ -1,0 +1,57 @@
+# Reproduce the bench measurements
+
+The independent receiver is a real LR2021. Local TX completion, a fresh
+CRC-present/CRC-valid RX result, matching length and exact payload bytes are
+all required. A spectrum peak alone does not count. No RF retries are hidden.
+
+1. Build and upload `xiao-s3` from the repository root.
+2. Build and upload the [public receiver](../companion/lr2021/README.md).
+3. Close serial monitors and disconnect the local web controller.
+4. Install `pyserial==3.5`, substitute the two ports, and run:
+
+```sh
+python verify_public_receiver.py --tx-port YOUR_XIAO_PORT --rx-port YOUR_LR2021_PORT --smoke --repeats 3 --output data/my-smoke.json
+python verify_public_receiver.py --tx-port YOUR_XIAO_PORT --rx-port YOUR_LR2021_PORT --repeats 10 --seed 20261007 --output data/my-matrix.json
+```
+
+Run those commands from `evaluation/`. The full matrix sends 240 packets:
+four coding rates × six lengths × ten fresh-payload repetitions, with shuffled
+configuration order in every block. Give each run a new output name. Every
+trial is checkpointed; a lost TX transaction or stopped receiver aborts the
+run and retains the failure. A missing RF packet is recorded and the run
+continues. Use `--sender sendonce --repeats 3` after uploading `xiao-send-once`
+to verify that beginner example.
+
+The harness records the SHA256 of local last-flashed images when present.
+This is not an automatic device readback. Flash the corresponding build and
+retain esptool's write-verification result. `--tx-image` and `--tx-source`
+identify separately built research firmware. Do not label a research image
+with a production binary hash.
+
+## Included datasets
+
+| File | Measurement |
+|---|---|
+| `native-matrix-basic.json` | Original native SF7 matrix: 237/240, lengths 1–250 |
+| `public-receiver.json` | Public receiver matrix: 239/240, lengths 1–255 |
+| `sendonce.json` | Beginner sketch: 3/3 independently received complete CRC packets |
+| `native-encoder.json` | 264 on-device symbol-encoding checks; not RF tests |
+| `native-amplitude-sf.json` | 180 SF/amplitude trials; only SF7 delivered packets |
+| `public-receiver-usb-desync.json` | Retained broken transport run; not an RF sensitivity estimate |
+
+The older private-application datasets are retained as historical evidence;
+the public receiver is the reproducible path. Different builds, payload sets
+and receiver implementations must not be pooled into a controlled comparison.
+
+## Regenerate scientific figures
+
+```sh
+python -m pip install numpy==2.5.3 matplotlib==3.11.2
+python plot_results.py
+```
+
+The script reads raw JSON and exports SVG, PNG and PDF to `docs/assets/`.
+Wilson 95% intervals describe these finite bench samples. Raw DAC amplitude
+is not dBm, successful-packet RSSI is conditional on reception, and theoretical
+airtime is not a measured RF trace. See the [report](../docs/test-report.md)
+for confounders, failures and the exact firmware hashes.

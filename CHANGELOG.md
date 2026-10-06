@@ -1,0 +1,17 @@
+# Changelog
+
+## 0.1.0 — experimental, 2026-10-07
+
+- Native Arduino/PlatformIO ESP32-S3 complete-packet LoRa transmitter, with
+  portable PHY encoding and independent LR2021 hardware CRC evidence.
+- Verified SF7, CR4/5–4/8 and lengths 1–255. Separate 203.125 / 406.25 / 812.5
+  kHz bench matrices and firmware hashes accompany the results.
+- Bounded, explicit-command SendOnce and SerialBench examples; no boot beacon.
+- Public RadioLib 7.7.0 LR2021 receiver companion and reproducible USB verifier.
+- English and Chinese guides, scientific figures with confidence intervals,
+  retained failures and credited prior work.
+
+This is not a complete SX1262/SX1280 replacement. SF8/SF9 interoperability,
+gap-free continuous waveforms, calibrated power, weak-signal SF recovery and
+native Arduino packet reception remain unachieved. The experimental continuous
+streamer is isolated from the working library.

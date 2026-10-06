@@ -4,7 +4,9 @@
 
 - Seeed XIAO ESP32-S3 with its 2.4 GHz antenna attached, USB data cable.
 - An independent 2.4 GHz LoRa receiver. The measured receiver is an AeroLink
-  LR2021 using its HF port and the privately supplied firmware.
+  LR2021 using its HF port. The public [RadioLib receiver companion](../companion/lr2021/README.md)
+  passed 239/240 independent CRC/complete-payload trials. An earlier dataset
+  used the privately supplied application; it is not needed for this workflow.
 - PlatformIO Core / VS Code, or Arduino IDE with **Espressif Arduino core 2.0.17**.
   Other core versions are unverified; the RF backend uses private SDK functions.
 - A serial terminal that sends a newline at the end of each command.
@@ -20,6 +22,7 @@ Download the repository ZIP, extract it, and open the folder containing
 
 ```sh
 pio run -e xiao-s3
+pio run -e xiao-send-once
 pio device list
 ```
 
@@ -82,6 +85,13 @@ the LR2021 must independently return the same hex bytes with CRC OK.
 For SendOnce, open the serial monitor and type `s`. The sketch prints local TX
 status and airtime, then waits for another explicit command.
 
+To install that example instead of SerialBench:
+
+```sh
+pio run -e xiao-send-once -t upload --upload-port YOUR_PORT
+pio device monitor --port YOUR_PORT --baud 115200
+```
+
 ## When a packet does not arrive
 
 Compare frequency, bandwidth, SF, sync, header mode and CRC settings first.
@@ -90,6 +100,10 @@ timing counters; a reset, timeout, unsupported configuration or missing packet
 is a failure, not delivery. A full CRC-valid packet with a different payload
 also does not prove delivery of the requested packet.
 
-SF8/SF9, other bandwidths, calibrated power and native packet reception are not
-currently verified capabilities of this release. Use the measured SF7 profile
+SF7 at 406.25 and 812.5 kHz is also measured; set `bandwidthHz` and
+`dacWindowSamples` to 406250/7500 or 812500/3750, and match the receiver.
+The serial commands are `BW 406250` then `WIN 7500`, for example.
+
+SF8/SF9, calibrated power and native packet reception are not
+currently verified capabilities of this release. Use the default SF7 profile
 for the first test. Record successes and failures when changing a parameter.

@@ -76,7 +76,7 @@ static unsigned IRAM_ATTR __attribute__((optimize("O3"))) playDac(const uint32_t
     uint32_t *destination=reinterpret_cast<uint32_t*>(0x3fcd0000);
     unsigned irq=portSET_INTERRUPT_MASK_FROM_ISR(),late=0;
     unsigned window=config->dacWindowSamples,n=1u<<config->spreadingFactor;
-    unsigned quarterWindow=1000u<<(config->spreadingFactor-7);
+    unsigned quarterWindow=(static_cast<uint64_t>(1000)*ringLength+12603)/25206;
     if(quarterWindow>window)quarterWindow=window;
     uint32_t next=cpu_hal_get_cycle_count()+window*12+2400;
     unsigned segments=config->preambleSymbols+5+symbolCount;
@@ -162,8 +162,9 @@ Error ESP32S3Radio::begin() {
 Error ESP32S3Radio::transmit(const uint8_t* data,size_t length,const Config& c,TxResult& result) {
     result=TxResult{};
     if(!ready_)return Error::NotReady;
+    if(c.transport!=Transport::Pll&&c.transport!=Transport::DacWindows)return Error::Unsupported;
     if(c.frequencyHz<2400200000u||c.frequencyHz>2483300000u||
-       c.bandwidthHz!=203125||c.spreadingFactor<7||c.spreadingFactor>9||
+       (c.bandwidthHz!=203125&&c.bandwidthHz!=406250&&c.bandwidthHz!=812500)||c.spreadingFactor<7||c.spreadingFactor>9||
        c.preambleSymbols<12||c.preambleSymbols>64||c.frequencyCorrectionHz<-50000||c.frequencyCorrectionHz>50000||
        c.gainCode<64||c.gainCode>200||!c.explicitHeader||!c.payloadCrc||
        c.updateRateHz<40000||c.updateRateHz>200000||240000000u%c.updateRateHz)return Error::Unsupported;
@@ -174,9 +175,10 @@ Error ESP32S3Radio::transmit(const uint8_t* data,size_t length,const Config& c,T
         if(c.dacAmplitude<1||c.dacAmplitude>200||c.dacWindowSamples<1000||
            c.dacWindowSamples>16380||result.packet.airtimeMs>1000)return Error::Unsupported;
         unsigned ringLength=static_cast<unsigned>(round((1u<<c.spreadingFactor)*40000000.0/c.bandwidthHz));
-        unsigned downLength=6000u<<(c.spreadingFactor-7);
+        if(c.dacWindowSamples>=ringLength)return Error::Unsupported;
+        unsigned downLength=(static_cast<uint64_t>(6000)*ringLength+12603)/25206;
         if(downLength>c.dacWindowSamples)downLength=c.dacWindowSamples;
-        bool compact=c.spreadingFactor>=8;
+        bool compact=ringLength>25206;
         unsigned ringBytes=(ringLength+downLength)*(compact?1:4),lookupOffset=(ringBytes+3)&~3u;
         uint32_t *ring=static_cast<uint32_t*>(heap_caps_malloc(lookupOffset+(compact?1024:0),MALLOC_CAP_INTERNAL|MALLOC_CAP_8BIT));
         if(!ring)return Error::NoMemory;
@@ -216,7 +218,9 @@ Error ESP32S3Radio::transmit(const uint8_t* data,size_t length,const Config& c,T
         return dacTimedOut?Error::PlaybackTimeout:Error::Ok;
     }
     unsigned total=static_cast<unsigned>(round(result.packet.airtimeMs*c.updateRateHz/1000));
-    if(total<1||total>32768||total>c.updateRateHz)return Error::Unsupported;
+    // Unlike windowed DAC, this timing loop cannot service pending interrupts.
+    // Reject long PLL packets before keying RF or approaching the SDK watchdog.
+    if(result.packet.airtimeMs>250||total<1||total>32768||total>c.updateRateHz)return Error::Unsupported;
     uint32_t *words=static_cast<uint32_t*>(heap_caps_malloc(total*4,MALLOC_CAP_INTERNAL|MALLOC_CAP_32BIT));
     if(!words)return Error::NoMemory;
     const unsigned n=1u<<c.spreadingFactor;

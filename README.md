@@ -20,8 +20,9 @@ Read the capability table before choosing other settings.
 |---|---|
 | XIAO → LR2021 complete packet | Independent hardware CRC and exact-byte comparison |
 | On-device coding and transmission | Arduino / PlatformIO; the PC supplies payload bytes, not an I/Q waveform |
-| SF7, four coding rates, 1–250 bytes | **237/240** in the completed randomized matrix (98.75%); 26/26 in the CR4/8 regression, including English and Chinese |
+| SF7, four coding rates, 1–255 bytes | **239/240** with the public receiver; all 40 × 255-byte trials passed. Earlier independent matrix: **237/240**, lengths 1–250; CR4/8 regression: 26/26, including English and Chinese |
 | Portable PHY encoder | 264/264 on-device cross-checks: SF7–12, CR4/5–4/8, lengths 1–255; this is **coding verification**, not RF verification |
+| SF7 at 406.25 / 812.5 kHz | Separate randomized matrices: 72/72 at each bandwidth, four coding rates, lengths 1–255; matching windows are required |
 | RF parameter selection | Frequency, preamble, coding rate, frequency correction, DAC amplitude and waveform window; unsupported combinations return an error |
 | SF8 / SF9 transmission | Experimental; current windowed-DAC trials have failed on LR2021 despite valid timing |
 | Receive on XIAO | Separate ESP-SDR I/Q capture + **PC** decoder path; native Arduino packet RX is not implemented |
@@ -30,7 +31,9 @@ Read the capability table before choosing other settings.
 The measurements are from one stationary indoor board pair. Failed tests,
 resets and mismatched packets stay in the report.
 
-![Hardware measurements](docs/assets/baseline-results.svg)
+![Two separately measured hardware datasets](docs/assets/public-receiver-results.svg)
+
+![Native XIAO transmission and independent LR2021 reception, including Chinese UTF-8 and exact bytes](docs/assets/live-proof.png)
 
 ## Your first packet
 
@@ -67,6 +70,8 @@ pio device monitor --port YOUR_PORT --baud 115200
 Then enter `INFO`, `DAC`, and
 `TX 7 4 48656c6c6f2066726f6d205849414f21`. Configure the LR2021 receiver
 to the matching profile and look for **CRC OK + the exact same hex bytes**.
+Use the included [public LR2021 companion](companion/lr2021/README.md) for a
+complete receiver setup and [automated verification](evaluation/verify_public_receiver.py).
 The +15 kHz correction in the defaults was measured for one bench pair; it is
 not a calibration value for every ESP32.
 

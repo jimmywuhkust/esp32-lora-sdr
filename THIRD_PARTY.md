@@ -15,6 +15,8 @@
   by the build system; their upstream license terms apply to SDK components.
 - **PlatformIO** supplies the pinned build environment. It is not part of this
   source distribution.
+- **RadioLib 7.7.0**, MIT: public LR2021 companion dependency installed by
+  PlatformIO. https://github.com/jgromes/RadioLib
 
 No private AeroLink source archive, GNSS data, account credentials or tool
 environment is included. Hardware results from the private bench receiver

@@ -43,7 +43,7 @@ backend. Separate ESP-SDR I/Q capture and PC decoding are a different workflow.
 | Config field | Meaning | Native RF boundary |
 |---|---|---|
 | `frequencyHz` | RF channel in Hz | 2400.2–2483.3 MHz, configured in 1 kHz steps for DAC |
-| `bandwidthHz` | LoRa bandwidth | 203125 only |
+| `bandwidthHz` | LoRa bandwidth | 203125, 406250, 812500; verified with SF7 and matching window lengths |
 | `spreadingFactor` | PHY SF | Encoder SF7–12; native RF SF7–9 experimental; only SF7 has demonstrated DAC interop |
 | `codingRate` | 1, 2, 3, 4 | 4/5, 4/6, 4/7, 4/8 |
 | `syncWord` | Two sync nibbles | Default `0x12`; other words unverified |
@@ -51,9 +51,9 @@ backend. Separate ESP-SDR I/Q capture and PC decoding are a different workflow.
 | `explicitHeader` / `payloadCrc` | Packet modes | RF requires both true |
 | `inverted` | S3 physical chirp convention | Measured default true |
 | `frequencyCorrectionHz` | LO correction | ±50 kHz; +15 kHz measured for one board pair |
-| `transport` | `Pll` or `DacWindows` | Select DAC explicitly for the measured profile |
+| `transport` | `Pll` or `DacWindows` | DAC is the default and the measured profile |
 | `dacAmplitude` | Signed 10-bit I/Q peak | 1–200, default 150; uncalibrated |
-| `dacWindowSamples` | Played up-chirp samples | 1000–16380, default 15000 |
+| `dacWindowSamples` | Played up-chirp samples | 1000–16380 and shorter than the symbol; SF7: 15000 / 7500 / 3750 for the three bandwidths |
 | `gainCode` | Vendor tone gain code | 64–200; not dBm and does not calibrate DAC power |
 | `updateRateHz` | PLL frequency update rate | 40–200 kHz, exact divisor of 240 MHz |
 
@@ -61,8 +61,10 @@ The DAC backend reserves RF SRAM bank 2 for playback and checks linked RAM
 boundaries before initialization. It requires internal RAM for its waveform
 and returns `NoMemory` if allocation fails. SF8/SF9 use compact phase tables;
 successful coding and timing do not establish LR2021 compatibility.
-DAC airtime is capped at one second. The independent bench firmware reports
-payload lengths up to 250 bytes, so 251–255 bytes have coding-only evidence.
+DAC airtime is capped at one second; PLL airtime is capped at 250 ms because
+its interrupt-masked loop cannot service the SDK watchdog. The original independent bench firmware reports
+payload lengths up to 250 bytes; the later public receiver verified 255-byte
+packets, including all forty full-length trials in its matrix.
 
 `TxResult` records coding metadata, update count, late updates, source buffer
 address and maximum copy cycles. The watchdog is serviced between symbol

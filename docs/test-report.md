@@ -1,10 +1,20 @@
 # Hardware test report — 7 October 2026
 
-Snapshot: 03:35 Hong Kong time. This is a measured engineering report, not a
+Updated through approximately 04:39 Hong Kong time. This is a measured engineering report, not a
 claim of universal compatibility or a peer-reviewed paper. Subsequent research
 results must be appended with their own firmware hashes and denominators.
 
 ## Main result
+
+Latest public-receiver matrix: **239/240**, SF7, four coding rates and lengths
+1–255 bytes; all forty 255-byte packets passed. Separate wider-band SF7
+matrices passed **72/72 at 406.25 kHz** and **72/72 at 812.5 kHz**. The beginner
+sketch passed **3/3** after a normal full PlatformIO upload. Later sections
+identify each dataset and its firmware; the original matrix below is retained.
+
+最新结论：公开接收器 239/240，覆盖 1–255 字节；两个更宽带宽批次各 72/72。
+入门示例实际刷机后 3/3 完整 CRC 收包。SF8/SF9、弱信号提高 SF 恢复、校准功率
+和原生 Arduino 收包仍未实现，完整失败记录保留。
 
 **A XIAO ESP32-S3 genuinely transmitted complete 2.4 GHz LoRa packets to an
 independent LR2021, with matching full payload and hardware CRC.** The portable
@@ -127,9 +137,9 @@ power, a shielded box, an attenuator sweep or an independent spectrum analyzer.
 No distance, sensitivity or emission-compliance number is established. Wilson
 intervals describe a Bernoulli model of these trials; correlated interference
 and a single bench limit generalization. Each individual matrix cell has only
-ten trials, even when it reads10/10.
+ten trials, even when it reads 10/10.
 
-The default SF7 up-chirp transmits about59.5% of its samples. Down-chirp and
+The default SF7 up-chirp transmits about 59.5% of its samples. Down-chirp and
 quarter-SFD windows are shorter. There are deliberate silent gaps. Raising SF
 lengthens symbols while the playback window is bounded, reducing transmitted
 energy fraction; a higher-SF range benefit cannot simply be assumed.
@@ -171,3 +181,174 @@ documents S3 LoRa through software receivers and explicitly leaves real-chip
 reception untested. [Its failed DAC experiments](https://github.com/jochenhammes/esp32-sdr-trx/blob/6de35a5138c8f6d7bf6af2b6c8dd0c99342e72f0/docs/research/IQ-TX-PHASE-A.md)
 directly informed our debugging. Our useful evidence here is measured LR2021
 interop, native library execution and retained successes **and** failures.
+
+## Follow-up: amplitude versus spreading factor
+
+Completed at approximately 03:55 HKT, with the same measured application image.
+180 fresh 32-byte random packets, CR4/8, 10 randomized blocks, six DAC amplitudes
+and three SF settings. The receiver was reconfigured to each transmitter SF.
+No RF packet was retried. All 180 requested TX operations completed locally.
+
+| DAC amplitude code | SF7 exact CRC | SF8 exact CRC | SF9 exact CRC |
+|---:|---:|---:|---:|
+| 1 | 0/10 | 0/10 | 0/10 |
+| 3 | 1/10 | 0/10 | 0/10 |
+| 10 | 10/10 | 0/10 | 0/10 |
+| 30 | 9/10 | 0/10 | 0/10 |
+| 75 | 10/10 | 0/10 | 0/10 |
+| 150 | 10/10 | 0/10 | 0/10 |
+
+![Amplitude and SF experiment](assets/amplitude-results.svg)
+
+Receiver-reported median RSSI on successful SF7 packets increased from −86 dBm
+at amplitude 3 (one survivor) to −62 dBm at amplitude 150. These are conditional
+on successful reception; missing packets have no comparable RSSI value. The raw
+amplitude is **not calibrated output power**, and small integer DAC codes also
+reduce phase/amplitude resolution. This is not a calibrated attenuator sweep
+and cannot isolate sensitivity from quantization effects. A 10/10 cell has a Wilson lower
+95% bound of about 72.25%, so this small sample does not establish perfect delivery.
+
+SF8/SF9 had zero CRC-valid requested receptions even at the largest amplitude.
+This experiment does **not** demonstrate weak-signal recovery by increasing SF.
+It reveals a waveform/backend limitation that must be resolved before such a
+claim. The 40/180 aggregate mixes working and nonworking SF configurations and
+must not replace the separate SF7 capability measurement.
+
+Exact raw file: `evaluation/data/native-amplitude-sf.json` (original name
+`native-matrix-power-1791316268459417400.json`). A fresh flash/rebuild regression
+also repeated all 26 CR4/8 baseline payloads successfully, including Chinese;
+its binary SHA256 matched the 240-case matrix exactly.
+
+## Public receiver bring-up: retained failures
+
+The public RadioLib 7.7.0 companion initially produced no delivered packet
+lines with GPIO interrupts alone. Polling chip IRQ status produced the first
+32-byte CRC-valid packet, but RX restart then returned SPI command error −706.
+Entering standby before draining the FIFO/restarting RX fixed a three-packet
+smoke test. These are implementation failures, not evidence that RadioLib or
+the LR2021 hardware is incapable of receiving the waveform.
+
+A subsequent randomized 240-request run received the first 16 requested
+payloads correctly, but the sixteenth XIAO TX completion line timed out. The
+host continued with one-line-shifted requests/replies, so later matching bytes
+were attributed to the wrong trial. Only **15/240** satisfied the entire
+recorded rule in this run. Its raw log is retained as
+`evaluation/data/public-receiver-usb-desync.json`; it is a transport/test-run
+failure and must not be pooled as an independent RF sensitivity estimate.
+
+The sender example now flushes TXSTART, allows USB/tick service after RF, and
+flushes TXEND. The verifier buffers complete lines, checkpoints each trial,
+and aborts after any invalid local transaction rather than cascading stale
+packets. The next dataset uses the normal complete PlatformIO upload workflow
+on the verified XIAO, including bootloader and partition table.
+
+Initial failed logs are included as `public-receiver-before-polling.json` and
+`public-receiver-before-standby.json`. Do not overwrite failures with successful
+retests or silently retry an RF packet.
+
+## Public, reusable receiver: 239/240 after the fixes
+
+Completed at approximately 04:17 HKT. The sender ran the repository's Arduino
+SerialBench firmware, installed through **normal `pio run -e xiao-s3 -t upload`**
+on the verified XIAO. The receiver ran the public RadioLib companion, with
+hardware payload CRC presence explicitly required. No private AeroLink driver
+or application is needed to reproduce this workflow.
+
+The randomized matrix tested SF7, CR4/5–4/8 and lengths **1,8,32,80,128,255**,
+10 fresh payloads per cell, seed 20261007. **239/240 (99.583%)** satisfied local
+TX completion, fresh independently CRC-valid reception and full-byte equality.
+All forty **255-byte** packets passed. The only miss was a one-byte CR4/8 case
+(`0f`); there was no RX line for that trial. No reset or invalid TX transaction
+was observed. This is still not perfect-delivery evidence.
+
+The payloads, firmware and receiver implementation differ from the original
+237/240 matrix. These are two separate engineering datasets, not a controlled
+comparison of receiver quality or proof that an RF bug was fixed.
+
+Raw file: `evaluation/data/public-receiver.json`.
+
+![Separate hardware datasets, with binomial confidence intervals](assets/public-receiver-results.svg)
+
+| Image | SHA256 |
+|---|---|
+| XIAO native SerialBench | `9a69a13204e841bf926cfb809f72c28f7a9718d192e70488b69b38a6a7d1ca70` |
+| Public LR2021 companion | `2bd3fe2a98cf0927f6c7aff0f427fb8b54e76842b46aa634ee125a72ad8043a9` |
+
+The latest companion also accepts an explicit `SF 7..9` setting for research.
+That command was added after the 240-trial receiver image was built and must
+be verified separately. The XIAO's PLL airtime guard, default DAC selection
+and USB completion flushing are included in the sender image of this dataset.
+Subsequent SF/BW commands were exercised by the SendOnce and bandwidth tests.
+
+## Beginner example and wider bandwidths
+
+The `SendOnce` Arduino sketch was installed with the normal complete PlatformIO
+upload workflow and tested with three explicit `s` commands. **3/3** packets
+were received with hardware CRC and the exact 16-byte `Hello from XIAO!`
+payload. Raw file: `evaluation/data/sendonce.json`. Its image SHA256 is
+`b90534f0701dda6f1c978f97f8c1d1fee904169f3d8ce49db2399337cea0ef73`.
+This small smoke test proves that example worked on the bench, not reliability
+across boards or environments.
+
+A separate windowed-DAC research build extended bandwidth selection. SF7 at
+**406.25 kHz: 72/72**, and **812.5 kHz: 72/72**, across all four coding rates
+and lengths 1,8,32,80,128,255, three shuffled fresh-payload blocks per bandwidth.
+The waveform windows were 7,500 and 3,750 samples respectively. A 72/72 sample
+has a Wilson 95% lower bound of approximately 94.93%; each 3/3 cell has much
+less precision. These are short bench measurements, not perfect delivery.
+Raw files: `bandwidth-sf7-406-matrix.json`, `bandwidth-sf7-812-matrix.json`.
+
+![Separate bandwidth measurements and calculated airtime](assets/bandwidth-results.svg)
+
+The initial 406.25 kHz/SF7 test retained 15,000 samples, longer than its symbol,
+and failed 0/3 with 108 late updates. Scaling the window fixed the measured
+SF7 profile. The library now rejects windows at least as long as the symbol
+before keying. Down-chirp and quarter-SFD windows use the actual symbol duration.
+The 203.125 kHz/SF7 waveform values remain 15,000/6,000/1,000 samples.
+After merging these changes, each of the three bandwidths passed another
+3/3 fresh 32-byte CRC4/8 packets on the actual library image. Its SHA256 is
+`c19ddca83d71cf379804294d57f9124b98d0a94c7e6c85c2eb9a09d2582ede0d`.
+The corresponding `merged-bandwidth-*-smoke.json` logs are included. Hardware
+command/airtime/window guards also passed **14/14**; these are rejection tests,
+not additional RF packet successes (`config-guards.json`).
+
+SF8 at 406.25 kHz and SF9 at 812.5 kHz still failed **0/3 each**, despite their
+59.5% up-chirp coverage and no late updates. Thus simply attributing every
+higher-SF failure to low coverage would be unjustified. The remaining causes
+include waveform/timing/header interoperability; no cause is proven yet.
+
+## Continuous-stream research: failures retained
+
+The upstream reader/writer experiment helped establish the 6 CPU cycles/sample
+budget for 40 MS/s playback. Our internal word-ring version with calculated
+down-chirps failed 0/3 at gap compensations 14 and 27. Removing periodic tick
+service still failed 0/3. Unrolling down-chirp conjugation reduced the maximum
+copy from about 4,112 to 2,505 cycles per 256-word block, still exceeding the
+1,536-cycle reader budget, and again failed 0/3.
+
+Precomputed up/down words in PSRAM failed SF7 0/3 with over 10,000 late blocks
+per packet. SF8 aborted on its first trial with an interrupt-watchdog reset;
+the remaining planned trials were not run. A nominal airtime cap cannot bound
+an overrunning implementation. The isolated source now includes an actual
+elapsed-cycle abort, added after that measured failure; it has not been promoted
+to the main library. Logs and version hashes are in `evaluation/data/research/`.
+
+The working library continues to use symbol windows. Continuous, gap-free
+transmission, calibrated power and weak-signal SF recovery remain unachieved.
+
+## Simple UI end-to-end proof
+
+The final merged Arduino library was tested through the local simple website
+with both English (16 bytes) and Chinese UTF-8 (48 bytes). Both arrived on the
+independent HF LR2021, with hardware CRC and exact byte equality, and zero
+reported late updates. Source/image metadata and both complete events are in
+`evaluation/data/native-web-proof.json`. The UI's calculated waveform metadata
+is descriptive; the actual PHY encoding and DAC playback ran on the XIAO.
+
+![Actual browser result with complete received bytes](assets/live-proof.png)
+
+The local controller explicitly restores frequency, bandwidth, CFO, preamble,
+window and amplitude before sending, so a prior research setting cannot silently
+carry into the default UI. The private AeroLink HF receiver application was
+restored from its verified backup for this web demonstration; the public
+RadioLib companion is the separately tested reproduction path.

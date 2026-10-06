@@ -22,3 +22,31 @@ unkeying the RF chain. We preserve unsuccessful attempts in the raw bench data.
 That branch is licensed [0BSD](https://github.com/jochenhammes/esp32-sdr-trx/blob/6de35a5138c8f6d7bf6af2b6c8dd0c99342e72f0/LICENSE).
 LoLRa has mixed per-file licenses; we have not bundled its RF implementations.
 External measurement numbers are prior-art reports, not measurements of our board.
+
+## What the published failures tell us
+
+The upstream LoRa investigation reports that a truncated chirp below roughly
+half a symbol broadened the dechirped peak and broke classes of symbol values.
+It also reports that attempted sync-based offset calibration worsened some
+captures and that its gated DAC waveform missed the intended SNR target.
+Those are particularly relevant to our SF8/SF9 failures: increasing SF doubles
+the symbol while our RF SRAM window remains bounded. This is a plausible
+mechanism, **not an established diagnosis** of our hardware failures.
+
+Its E1 IQ-streaming experiment writes already-read SRAM blocks and fills the
+last part of the next buffer after restarting playback. We tried a LoRa phase
+ring based on that scheduling idea. The initial compact implementation exceeded
+its block budget and failed independent LR2021 reception; its source remains
+under `research/` and is excluded from the working library build.
+
+LoRa SDR receiver research also predates this work: Tapparel et al.,
+[An Open-Source LoRa Physical Layer Prototype on GNU Radio (2020)](https://arxiv.org/abs/2002.08208),
+reports a compatible open PHY and timing/frequency compensation; Ghanaatian
+et al., [LoRa Digital Receiver Analysis and Implementation (2019)](https://arxiv.org/abs/1811.04146),
+analyzes receiver algorithms and carrier/sample-frequency offsets. These
+papers motivate measuring synchronization and packet error rates separately
+from encoder agreement; we have not reproduced their numerical results.
+
+This focused review is not a systematic exhaustive search or evidence that no
+other ESP32-S3-to-commercial-chip demonstration exists. The repository credits
+known prior work and makes no first-of-its-kind claim.

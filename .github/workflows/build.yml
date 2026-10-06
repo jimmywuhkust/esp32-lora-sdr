@@ -1,0 +1,16 @@
+name: Compile examples
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  arduino:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install platformio==6.1.19
+      - run: pio run -e xiao-s3 -e xiao-send-once
+      - run: pio run -d companion/lr2021
+      # Compilation is not a real RF/CRC test. Hardware results are separate.

@@ -24,6 +24,8 @@ void loop() {
   const uint8_t payload[]="Hello from XIAO!";
   TxResult result;
   Error status=radio.transmit(payload,sizeof(payload)-1,config,result);
+  delay(2);
   Serial.printf("TX %s; %.3f ms; late=%u\n",errorName(status),result.packet.airtimeMs,result.lateUpdates);
   Serial.println("Verify exact bytes and CRC on the independent receiver.");
+  Serial.flush();
 }

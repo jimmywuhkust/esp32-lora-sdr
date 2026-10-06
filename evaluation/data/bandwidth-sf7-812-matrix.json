@@ -1,0 +1,1835 @@
+{
+  "startedUtc": "2026-10-06T20:34:41.368045+00:00",
+  "seed": 20261007,
+  "txPort": "COM3",
+  "rxPort": "COM4",
+  "sender": "bench",
+  "completed": true,
+  "cases": [
+    {
+      "block": 0,
+      "cr": 4,
+      "length": 32,
+      "expected": "f667ca5068e6eeb11573733292e812fc390fd25c793fa999d11cc07b2b916ae4",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=4.2 hex=f667ca5068e6eeb11573733292e812fc390fd25c793fa999d11cc07b2b916ae4",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 4.2,
+          "hex": "f667ca5068e6eeb11573733292e812fc390fd25c793fa999d11cc07b2b916ae4"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:41.466980+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 17.054 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 4,
+      "length": 80,
+      "expected": "34f90d3c485fae0047f06090d40771566c06e5435be197bdbc1bad8b300f9ca828a51d0cc756a5369d22f68bc35bdc0e41ee640cd3196bbafd834e166dd0380a7b28500470c4f4fccddb63096418d482",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-63.5 snr=6.8 hex=34f90d3c485fae0047f06090d40771566c06e5435be197bdbc1bad8b300f9ca828a51d0cc756a5369d22f68bc35bdc0e41ee640cd3196bbafd834e166dd0380a7b28500470c4f4fccddb63096418d482",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -63.5,
+          "snr": 6.8,
+          "hex": "34f90d3c485fae0047f06090d40771566c06e5435be197bdbc1bad8b300f9ca828a51d0cc756a5369d22f68bc35bdc0e41ee640cd3196bbafd834e166dd0380a7b28500470c4f4fccddb63096418d482"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:42.329202+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 221 0 34.698 buffer=3fc9f688 copy=10280",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 2,
+      "length": 1,
+      "expected": "ed",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-63.5 snr=7.5 hex=ed",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -63.5,
+          "snr": 7.5,
+          "hex": "ed"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:43.206671+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 35 0 5.396 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 2,
+      "length": 128,
+      "expected": "59057ef4796abf0631f65a74ab535b1d7a1fa0a3b612f0da0f9df1494877560c7e344ce58f4fba523c21dea0934d900dd376eb0c798c19bd69ceea75f7614231dda8eb817f0696eddaef75617aa7d0805d3cc1bbabf9d8e9c91c2265d5b3ad21aab4ff382775ecff345fb189eb16fbf7aad6728cee0fe063df8a00a1f86d94f4",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=128 rssi=-63.5 snr=6.2 hex=59057ef4796abf0631f65a74ab535b1d7a1fa0a3b612f0da0f9df1494877560c7e344ce58f4fba523c21dea0934d900dd376eb0c798c19bd69ceea75f7614231dda8eb817f0696eddaef75617aa7d0805d3cc1bbabf9d8e9c91c2265d5b3ad21aab4ff382775ecff345fb189eb16fbf7aad6728cee0fe063df8a00a1f86d94f4",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 128,
+          "rssi": -63.5,
+          "snr": 6.2,
+          "hex": "59057ef4796abf0631f65a74ab535b1d7a1fa0a3b612f0da0f9df1494877560c7e344ce58f4fba523c21dea0934d900dd376eb0c798c19bd69ceea75f7614231dda8eb817f0696eddaef75617aa7d0805d3cc1bbabf9d8e9c91c2265d5b3ad21aab4ff382775ecff345fb189eb16fbf7aad6728cee0fe063df8a00a1f86d94f4"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:44.051453+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 257 0 40.369 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 3,
+      "length": 80,
+      "expected": "d32341236b2db7febd11b71671f2f0803305138ef3bde6a1ad7f375f56ae2308e980ddf768065c765b58b8476043ef5838d9bc70436fbb9bf73397f6502c8a0faedc58c8bd4839687c93495846772259",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-63.5 snr=6.0 hex=d32341236b2db7febd11b71671f2f0803305138ef3bde6a1ad7f375f56ae2308e980ddf768065c765b58b8476043ef5838d9bc70436fbb9bf73397f6502c8a0faedc58c8bd4839687c93495846772259",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -63.5,
+          "snr": 6.0,
+          "hex": "d32341236b2db7febd11b71671f2f0803305138ef3bde6a1ad7f375f56ae2308e980ddf768065c765b58b8476043ef5838d9bc70436fbb9bf73397f6502c8a0faedc58c8bd4839687c93495846772259"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:44.932926+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 197 0 30.917 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 3,
+      "length": 8,
+      "expected": "b67615bc454a31e6",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-63.5 snr=6.5 hex=b67615bc454a31e6",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -63.5,
+          "snr": 6.5,
+          "hex": "b67615bc454a31e6"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:45.812186+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 50 0 7.759 buffer=3fc9f688 copy=10279",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 1,
+      "length": 255,
+      "expected": "1286e7df1f19823bd36f7477249c6c7997941432053ce04b9f3810e4d5cd9366d069716a32703113dc0c3d8e9f21116d7f2b96cfa728410cd0867100ead8bba781e47e2204bdbc5510d9138af336b317dd50e87d6505340c4ba3f19db563951be68168306632fd445c1ae4cf20f9515fe2ff7401abad31f53a5dbbf4e8666bfda124b2d8673b0a829c259a4238e2cf4b220df50e273329d5a8793d25a934191eafa9c80f56dae9baddd65ec4ded005231ca2fcc5c4daa3a557a3c62f2389d6cd89c0bea2e529df8175b9c853181d30da16e5d1cc2a5e6c6b86b0c6f70896e2644e3a325c888f3586fd168d82de28d7c0823c32cc829ef706dbfb094ad1ec2b",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=255 rssi=-63.5 snr=3.5 hex=1286e7df1f19823bd36f7477249c6c7997941432053ce04b9f3810e4d5cd9366d069716a32703113dc0c3d8e9f21116d7f2b96cfa728410cd0867100ead8bba781e47e2204bdbc5510d9138af336b317dd50e87d6505340c4ba3f19db563951be68168306632fd445c1ae4cf20f9515fe2ff7401abad31f53a5dbbf4e8666bfda124b2d8673b0a829c259a4238e2cf4b220df50e273329d5a8793d25a934191eafa9c80f56dae9baddd65ec4ded005231ca2fcc5c4daa3a557a3c62f2389d6cd89c0bea2e529df8175b9c853181d30da16e5d1cc2a5e6c6b86b0c6f70896e2644e3a325c888f3586fd168d82de28d7c0823c32cc829ef706dbfb094ad1ec2b",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 255,
+          "rssi": -63.5,
+          "snr": 3.5,
+          "hex": "1286e7df1f19823bd36f7477249c6c7997941432053ce04b9f3810e4d5cd9366d069716a32703113dc0c3d8e9f21116d7f2b96cfa728410cd0867100ead8bba781e47e2204bdbc5510d9138af336b317dd50e87d6505340c4ba3f19db563951be68168306632fd445c1ae4cf20f9515fe2ff7401abad31f53a5dbbf4e8666bfda124b2d8673b0a829c259a4238e2cf4b220df50e273329d5a8793d25a934191eafa9c80f56dae9baddd65ec4ded005231ca2fcc5c4daa3a557a3c62f2389d6cd89c0bea2e529df8175b9c853181d30da16e5d1cc2a5e6c6b86b0c6f70896e2644e3a325c888f3586fd168d82de28d7c0823c32cc829ef706dbfb094ad1ec2b"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:46.656795+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 399 0 62.740 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 3,
+      "length": 255,
+      "expected": "024c21685bc3b59be658fbe98e195703790d0008ef0dbfbe151d342b25e770d2eba4538f54f032464feb7b3f06aaa0d653c9231086f11a1ed2b3a7eb355ec76526a13d2482134b4bb25096e09c216d701d7ece6499aa2b9e2b01a490cb483cded4b9ba2c770e6da12dc4fc3515291d9ff3156bf58590710ef6f4c30f8cacbc5a9075b918d3a913432414c197366fad6637728875930d6e2c1ce5e2a323f6b2af1003b1812fae84b361046383356368c4cd4b2626e580fdad6dbd36b29c6bd5d383aed34854e0a6d2ac1835b3c9c9f0f073b49c69aaf5ad3d871971b9edcd70ba19ac86988575b04bf07fc1097d55ec75b5d97f12ec9c18b7b46a86bac87c03",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=255 rssi=-63.5 snr=5.0 hex=024c21685bc3b59be658fbe98e195703790d0008ef0dbfbe151d342b25e770d2eba4538f54f032464feb7b3f06aaa0d653c9231086f11a1ed2b3a7eb355ec76526a13d2482134b4bb25096e09c216d701d7ece6499aa2b9e2b01a490cb483cded4b9ba2c770e6da12dc4fc3515291d9ff3156bf58590710ef6f4c30f8cacbc5a9075b918d3a913432414c197366fad6637728875930d6e2c1ce5e2a323f6b2af1003b1812fae84b361046383356368c4cd4b2626e580fdad6dbd36b29c6bd5d383aed34854e0a6d2ac1835b3c9c9f0f073b49c69aaf5ad3d871971b9edcd70ba19ac86988575b04bf07fc1097d55ec75b5d97f12ec9c18b7b46a86bac87c03",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 255,
+          "rssi": -63.5,
+          "snr": 5.0,
+          "hex": "024c21685bc3b59be658fbe98e195703790d0008ef0dbfbe151d342b25e770d2eba4538f54f032464feb7b3f06aaa0d653c9231086f11a1ed2b3a7eb355ec76526a13d2482134b4bb25096e09c216d701d7ece6499aa2b9e2b01a490cb483cded4b9ba2c770e6da12dc4fc3515291d9ff3156bf58590710ef6f4c30f8cacbc5a9075b918d3a913432414c197366fad6637728875930d6e2c1ce5e2a323f6b2af1003b1812fae84b361046383356368c4cd4b2626e580fdad6dbd36b29c6bd5d383aed34854e0a6d2ac1835b3c9c9f0f073b49c69aaf5ad3d871971b9edcd70ba19ac86988575b04bf07fc1097d55ec75b5d97f12ec9c18b7b46a86bac87c03"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:47.564423+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 547 0 86.055 buffer=3fc9f688 copy=10279",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 1,
+      "length": 1,
+      "expected": "34",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-63.5 snr=7.2 hex=34",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -63.5,
+          "snr": 7.2,
+          "hex": "34"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:48.503129+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 34 0 5.238 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 4,
+      "length": 255,
+      "expected": "e34f3c378121f0b117b20644530266a45ffa56deb1a05a66709ed16d50ec6d43c3056b59baaa3baa521ad27babc61d62bd267a5d1695b023028d52f6a19522d9b8ac854009e6d4927a1b82aeea0a75835ee49ab5eb1bbdc734d08d71426452108ddd1cc8322b32ef6deee32404f44fb68efe3058815acca98eea7aaf95f5b5dd2d1d3537761d6f2abc9ec5c8d05bf28ba5626b958d50cfd67df5ac77a637db0e074cb87a57f5ba15b44e528fee3f4e21c281590640827c7d3e4c72e3b1b8d64db67e3e4a0619a52ca614f2820fd7323c8af27e7b0636232a2418750714f4e14b6cc805da592f54c4714622abcf76fdd348130903df6efcad7a20e64cae8930",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=255 rssi=-63.5 snr=5.2 hex=e34f3c378121f0b117b20644530266a45ffa56deb1a05a66709ed16d50ec6d43c3056b59baaa3baa521ad27babc61d62bd267a5d1695b023028d52f6a19522d9b8ac854009e6d4927a1b82aeea0a75835ee49ab5eb1bbdc734d08d71426452108ddd1cc8322b32ef6deee32404f44fb68efe3058815acca98eea7aaf95f5b5dd2d1d3537761d6f2abc9ec5c8d05bf28ba5626b958d50cfd67df5ac77a637db0e074cb87a57f5ba15b44e528fee3f4e21c281590640827c7d3e4c72e3b1b8d64db67e3e4a0619a52ca614f2820fd7323c8af27e7b0636232a2418750714f4e14b6cc805da592f54c4714622abcf76fdd348130903df6efcad7a20e64cae8930",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 255,
+          "rssi": -63.5,
+          "snr": 5.2,
+          "hex": "e34f3c378121f0b117b20644530266a45ffa56deb1a05a66709ed16d50ec6d43c3056b59baaa3baa521ad27babc61d62bd267a5d1695b023028d52f6a19522d9b8ac854009e6d4927a1b82aeea0a75835ee49ab5eb1bbdc734d08d71426452108ddd1cc8322b32ef6deee32404f44fb68efe3058815acca98eea7aaf95f5b5dd2d1d3537761d6f2abc9ec5c8d05bf28ba5626b958d50cfd67df5ac77a637db0e074cb87a57f5ba15b44e528fee3f4e21c281590640827c7d3e4c72e3b1b8d64db67e3e4a0619a52ca614f2820fd7323c8af27e7b0636232a2418750714f4e14b6cc805da592f54c4714622abcf76fdd348130903df6efcad7a20e64cae8930"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:49.351629+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 621 0 97.713 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 4,
+      "length": 128,
+      "expected": "36423105b2d2d961a9f392445b8f61c030b65da57cc808c1098e9eb3e565b335f01a4f517e8c082868809cc578a5cbad2db273755e826a6cf74b5a4c81f6d17cf648148c12f3f2346208e51a8b09e82cca47260fdd631a3e4dac2fd7353c41c884c2c87e55b74acf6ec48c2e94410d90c2809f54854245f78f3cb7a5968c83d5",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=128 rssi=-63.5 snr=6.8 hex=36423105b2d2d961a9f392445b8f61c030b65da57cc808c1098e9eb3e565b335f01a4f517e8c082868809cc578a5cbad2db273755e826a6cf74b5a4c81f6d17cf648148c12f3f2346208e51a8b09e82cca47260fdd631a3e4dac2fd7353c41c884c2c87e55b74acf6ec48c2e94410d90c2809f54854245f78f3cb7a5968c83d5",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 128,
+          "rssi": -63.5,
+          "snr": 6.8,
+          "hex": "36423105b2d2d961a9f392445b8f61c030b65da57cc808c1098e9eb3e565b335f01a4f517e8c082868809cc578a5cbad2db273755e826a6cf74b5a4c81f6d17cf648148c12f3f2346208e51a8b09e82cca47260fdd631a3e4dac2fd7353c41c884c2c87e55b74acf6ec48c2e94410d90c2809f54854245f78f3cb7a5968c83d5"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:50.297676+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 333 0 52.342 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 1,
+      "length": 8,
+      "expected": "356aa1f18c124f8c",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-63.5 snr=3.8 hex=356aa1f18c124f8c",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -63.5,
+          "snr": 3.8,
+          "hex": "356aa1f18c124f8c"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:51.187712+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 44 0 6.814 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 3,
+      "length": 1,
+      "expected": "39",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-63.5 snr=6.2 hex=39",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -63.5,
+          "snr": 6.2,
+          "hex": "39"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:52.033975+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 36 0 5.553 buffer=3fc9f688 copy=10298",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 3,
+      "length": 32,
+      "expected": "83f12f4da35a19be9e62b8b4557ec8c8c1523c8c39299c1eda5b1418f46efcc8",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-63.5 snr=2.5 hex=83f12f4da35a19be9e62b8b4557ec8c8c1523c8c39299c1eda5b1418f46efcc8",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -63.5,
+          "snr": 2.5,
+          "hex": "83f12f4da35a19be9e62b8b4557ec8c8c1523c8c39299c1eda5b1418f46efcc8"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:52.880134+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 99 0 15.478 buffer=3fc9f688 copy=10298",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 3,
+      "length": 128,
+      "expected": "fafce1d0ed0cdd3670d7ba4ede809ab740d390647a25c9e2d590f7474bc7dfcb8657c2dc17eb113157a2efd2faf1aff605643b048481e270dca1e1ff3948e7a294d9c1a7a2d585e4b2b7adbbb4d6bad5c2315f69242ccbf47749cc3e2bdf6d451159e0fbf1c664eb57c5560470a4011cd0f2edcaeb49910ea844df7781a76b32",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=128 rssi=-63.5 snr=5.0 hex=fafce1d0ed0cdd3670d7ba4ede809ab740d390647a25c9e2d590f7474bc7dfcb8657c2dc17eb113157a2efd2faf1aff605643b048481e270dca1e1ff3948e7a294d9c1a7a2d585e4b2b7adbbb4d6bad5c2315f69242ccbf47749cc3e2bdf6d451159e0fbf1c664eb57c5560470a4011cd0f2edcaeb49910ea844df7781a76b32",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 128,
+          "rssi": -63.5,
+          "snr": 5.0,
+          "hex": "fafce1d0ed0cdd3670d7ba4ede809ab740d390647a25c9e2d590f7474bc7dfcb8657c2dc17eb113157a2efd2faf1aff605643b048481e270dca1e1ff3948e7a294d9c1a7a2d585e4b2b7adbbb4d6bad5c2315f69242ccbf47749cc3e2bdf6d451159e0fbf1c664eb57c5560470a4011cd0f2edcaeb49910ea844df7781a76b32"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:53.728849+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 295 0 46.356 buffer=3fc9f688 copy=10298",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 1,
+      "length": 128,
+      "expected": "f1afd640dd5b2baaf9f2330d409807402d50d68cf96becdee40a8fb507703b6ef89f7633eb0ee36398f39d7c6aeaacb5c7aa0cf3f7c7e02ce75f86f25d3e968c9de5abafcfad0a812be9a361dfffdce7799a8712a190fb97eb66decf6e9884682725ac8821c98cfae91b4778123c4eaf744aabe797e0ef6e3ac57237dae40f40",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=128 rssi=-63.5 snr=7.2 hex=f1afd640dd5b2baaf9f2330d409807402d50d68cf96becdee40a8fb507703b6ef89f7633eb0ee36398f39d7c6aeaacb5c7aa0cf3f7c7e02ce75f86f25d3e968c9de5abafcfad0a812be9a361dfffdce7799a8712a190fb97eb66decf6e9884682725ac8821c98cfae91b4778123c4eaf744aabe797e0ef6e3ac57237dae40f40",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 128,
+          "rssi": -63.5,
+          "snr": 7.2,
+          "hex": "f1afd640dd5b2baaf9f2330d409807402d50d68cf96becdee40a8fb507703b6ef89f7633eb0ee36398f39d7c6aeaacb5c7aa0cf3f7c7e02ce75f86f25d3e968c9de5abafcfad0a812be9a361dfffdce7799a8712a190fb97eb66decf6e9884682725ac8821c98cfae91b4778123c4eaf744aabe797e0ef6e3ac57237dae40f40"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:54.622620+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 219 0 34.383 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 2,
+      "length": 32,
+      "expected": "97fc617944fc9982243bedde6ba854e614f799afed5f159af748147692096f86",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-63.5 snr=0.5 hex=97fc617944fc9982243bedde6ba854e614f799afed5f159af748147692096f86",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -63.5,
+          "snr": 0.5,
+          "hex": "97fc617944fc9982243bedde6ba854e614f799afed5f159af748147692096f86"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:55.497417+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 89 0 13.903 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 1,
+      "length": 80,
+      "expected": "c038d52fe8af7f79ca8ef1c29b05e0b0af426d824f19a972e2b226b1196254979f8ac87f7a94db7b0f4e4b481d5f1df68deed7ad6d447577b2e60c808364abacb52f093cb5cfadc034ad24fb3fa251be",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-63.5 snr=4.0 hex=c038d52fe8af7f79ca8ef1c29b05e0b0af426d824f19a972e2b226b1196254979f8ac87f7a94db7b0f4e4b481d5f1df68deed7ad6d447577b2e60c808364abacb52f093cb5cfadc034ad24fb3fa251be",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -63.5,
+          "snr": 4.0,
+          "hex": "c038d52fe8af7f79ca8ef1c29b05e0b0af426d824f19a972e2b226b1196254979f8ac87f7a94db7b0f4e4b481d5f1df68deed7ad6d447577b2e60c808364abacb52f093cb5cfadc034ad24fb3fa251be"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:56.344347+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 149 0 23.355 buffer=3fc9f688 copy=10280",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 4,
+      "length": 1,
+      "expected": "0f",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-63.5 snr=7.5 hex=0f",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -63.5,
+          "snr": 7.5,
+          "hex": "0f"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:57.202808+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 37 0 5.711 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 4,
+      "length": 8,
+      "expected": "4434e6f2c17ff3d8",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-63.5 snr=4.5 hex=4434e6f2c17ff3d8",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -63.5,
+          "snr": 4.5,
+          "hex": "4434e6f2c17ff3d8"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:58.053047+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 53 0 8.231 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 2,
+      "length": 80,
+      "expected": "ea4ee5b4cc355126163e2a67249be06ff05407af77d10c8d78304c86513807cf819f1168a26597c4a656a2ddc9660d24fc7be90bf69b0e7aad1bf7692d67a44908a31664081f6810a4ceef1e9264fa80",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-64.5 snr=5.0 hex=ea4ee5b4cc355126163e2a67249be06ff05407af77d10c8d78304c86513807cf819f1168a26597c4a656a2ddc9660d24fc7be90bf69b0e7aad1bf7692d67a44908a31664081f6810a4ceef1e9264fa80",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -64.5,
+          "snr": 5.0,
+          "hex": "ea4ee5b4cc355126163e2a67249be06ff05407af77d10c8d78304c86513807cf819f1168a26597c4a656a2ddc9660d24fc7be90bf69b0e7aad1bf7692d67a44908a31664081f6810a4ceef1e9264fa80"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:58.903537+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 173 0 27.136 buffer=3fc9f688 copy=10280",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 1,
+      "length": 32,
+      "expected": "e89b386042f727b7c925e5c8e0d3f32c6b4c1ccbd573674070615ee06ebf3ed2",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-63.5 snr=4.8 hex=e89b386042f727b7c925e5c8e0d3f32c6b4c1ccbd573674070615ee06ebf3ed2",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -63.5,
+          "snr": 4.8,
+          "hex": "e89b386042f727b7c925e5c8e0d3f32c6b4c1ccbd573674070615ee06ebf3ed2"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:34:59.764610+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 79 0 12.327 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 2,
+      "length": 255,
+      "expected": "0f484baa093b54382e76cb96213233d2b708191b17e86599c150d1857be2a046374c4ab62afd591070ea371f2fd764572c1377666f1ff748841e4ddc75732806a1125478bb7874bbff751298e8c7e2d7e4e0b4880690292ae1472af3c82f18d7bf125480fdbed0f7b2601de1af4c1897728cfaf8b6b372293999796793046464f1770ca3fe55baa28aca58cff418690248fbcd6403b1bc1d32cd196a8c341368909d25366ca91c344af0065d4d24f4dac406301f8f611d92f5486d96ddb2bfc3494e2d47df30164fb55dc21eccf8efb89fbc2d62bb8e645195725cedbc20db0f293d966a98396a00df668e48752230477c2e9da2ac59225c5c97851e89cc10",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=255 rssi=-63.5 snr=6.2 hex=0f484baa093b54382e76cb96213233d2b708191b17e86599c150d1857be2a046374c4ab62afd591070ea371f2fd764572c1377666f1ff748841e4ddc75732806a1125478bb7874bbff751298e8c7e2d7e4e0b4880690292ae1472af3c82f18d7bf125480fdbed0f7b2601de1af4c1897728cfaf8b6b372293999796793046464f1770ca3fe55baa28aca58cff418690248fbcd6403b1bc1d32cd196a8c341368909d25366ca91c344af0065d4d24f4dac406301f8f611d92f5486d96ddb2bfc3494e2d47df30164fb55dc21eccf8efb89fbc2d62bb8e645195725cedbc20db0f293d966a98396a00df668e48752230477c2e9da2ac59225c5c97851e89cc10",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 255,
+          "rssi": -63.5,
+          "snr": 6.2,
+          "hex": "0f484baa093b54382e76cb96213233d2b708191b17e86599c150d1857be2a046374c4ab62afd591070ea371f2fd764572c1377666f1ff748841e4ddc75732806a1125478bb7874bbff751298e8c7e2d7e4e0b4880690292ae1472af3c82f18d7bf125480fdbed0f7b2601de1af4c1897728cfaf8b6b372293999796793046464f1770ca3fe55baa28aca58cff418690248fbcd6403b1bc1d32cd196a8c341368909d25366ca91c344af0065d4d24f4dac406301f8f611d92f5486d96ddb2bfc3494e2d47df30164fb55dc21eccf8efb89fbc2d62bb8e645195725cedbc20db0f293d966a98396a00df668e48752230477c2e9da2ac59225c5c97851e89cc10"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:00.606942+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 473 0 74.398 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 0,
+      "cr": 2,
+      "length": 8,
+      "expected": "2d3385e88481d23c",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-63.5 snr=5.8 hex=2d3385e88481d23c",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -63.5,
+          "snr": 5.8,
+          "hex": "2d3385e88481d23c"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:01.529603+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 47 0 7.286 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 2,
+      "length": 80,
+      "expected": "473211ba17800982ae2ddc21b2db90d0adb5c1e546c7fb6eddc302669ca0e4d80503da9ff6db652d4bcd8d1ab426bc9ba2b50b5bc204ac62678378a301610abbda55ba28d6fa174e66cb5790842bd3bd",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-63.5 snr=4.2 hex=473211ba17800982ae2ddc21b2db90d0adb5c1e546c7fb6eddc302669ca0e4d80503da9ff6db652d4bcd8d1ab426bc9ba2b50b5bc204ac62678378a301610abbda55ba28d6fa174e66cb5790842bd3bd",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -63.5,
+          "snr": 4.2,
+          "hex": "473211ba17800982ae2ddc21b2db90d0adb5c1e546c7fb6eddc302669ca0e4d80503da9ff6db652d4bcd8d1ab426bc9ba2b50b5bc204ac62678378a301610abbda55ba28d6fa174e66cb5790842bd3bd"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:02.372605+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 173 0 27.136 buffer=3fc9f688 copy=10280",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 3,
+      "length": 8,
+      "expected": "aa7e3bbac7ef26cf",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-63.5 snr=4.2 hex=aa7e3bbac7ef26cf",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -63.5,
+          "snr": 4.2,
+          "hex": "aa7e3bbac7ef26cf"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:03.247174+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 50 0 7.759 buffer=3fc9f688 copy=10279",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 1,
+      "length": 8,
+      "expected": "bb2f3bbe793eefa8",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-62.5 snr=3.2 hex=bb2f3bbe793eefa8",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -62.5,
+          "snr": 3.2,
+          "hex": "bb2f3bbe793eefa8"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:04.093990+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 44 0 6.814 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 4,
+      "length": 8,
+      "expected": "853deaa0cc288f99",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-63.5 snr=2.8 hex=853deaa0cc288f99",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -63.5,
+          "snr": 2.8,
+          "hex": "853deaa0cc288f99"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:04.943096+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 53 0 8.231 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 2,
+      "length": 255,
+      "expected": "b4486a1396f53b0539b3f17793f177591ca9c1d0024627c92ca63fbf9830dfa02a830b6147484608d9742888eddaf2014773c79d594ce5e5a6726b3bd4c80a047baf5d658fe44f683c5cc673f3c1465c7901298578073c1494d31e64c025b4b0a4d8f7b196a4de2ca9c2db8095c2f82e659a7666fd78220d23f81939c7fb594443e86925a7ae33e209d903e8b13881139d62733d44ad9ce295f74352dd30b5fe4da397b804771316ae41825abb4d96be044ea3ba90eed97d12dd723d1ba62d99fff42bbd4077f0cd22f11fea0b6ead3518c58fc2d847b0159ab5e7019c566d6ec12ea8937fa4df7089589b5bee5cb6b9a4bcc123b34de5195b57cbfe6981ce",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=255 rssi=-62.5 snr=4.5 hex=b4486a1396f53b0539b3f17793f177591ca9c1d0024627c92ca63fbf9830dfa02a830b6147484608d9742888eddaf2014773c79d594ce5e5a6726b3bd4c80a047baf5d658fe44f683c5cc673f3c1465c7901298578073c1494d31e64c025b4b0a4d8f7b196a4de2ca9c2db8095c2f82e659a7666fd78220d23f81939c7fb594443e86925a7ae33e209d903e8b13881139d62733d44ad9ce295f74352dd30b5fe4da397b804771316ae41825abb4d96be044ea3ba90eed97d12dd723d1ba62d99fff42bbd4077f0cd22f11fea0b6ead3518c58fc2d847b0159ab5e7019c566d6ec12ea8937fa4df7089589b5bee5cb6b9a4bcc123b34de5195b57cbfe6981ce",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 255,
+          "rssi": -62.5,
+          "snr": 4.5,
+          "hex": "b4486a1396f53b0539b3f17793f177591ca9c1d0024627c92ca63fbf9830dfa02a830b6147484608d9742888eddaf2014773c79d594ce5e5a6726b3bd4c80a047baf5d658fe44f683c5cc673f3c1465c7901298578073c1494d31e64c025b4b0a4d8f7b196a4de2ca9c2db8095c2f82e659a7666fd78220d23f81939c7fb594443e86925a7ae33e209d903e8b13881139d62733d44ad9ce295f74352dd30b5fe4da397b804771316ae41825abb4d96be044ea3ba90eed97d12dd723d1ba62d99fff42bbd4077f0cd22f11fea0b6ead3518c58fc2d847b0159ab5e7019c566d6ec12ea8937fa4df7089589b5bee5cb6b9a4bcc123b34de5195b57cbfe6981ce"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:05.784180+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 473 0 74.398 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 1,
+      "length": 80,
+      "expected": "64af91fa393bfead7360a6326693edde889f8fceb652d8d90c7062cce0370e429a686500a8aa09102816286dfb242e86eb4b4d8358e05e4215924046ff8aa88c0fe9c1ec403a3f59d94cdb41aef46bec",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-62.5 snr=3.5 hex=64af91fa393bfead7360a6326693edde889f8fceb652d8d90c7062cce0370e429a686500a8aa09102816286dfb242e86eb4b4d8358e05e4215924046ff8aa88c0fe9c1ec403a3f59d94cdb41aef46bec",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -62.5,
+          "snr": 3.5,
+          "hex": "64af91fa393bfead7360a6326693edde889f8fceb652d8d90c7062cce0370e429a686500a8aa09102816286dfb242e86eb4b4d8358e05e4215924046ff8aa88c0fe9c1ec403a3f59d94cdb41aef46bec"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:06.708821+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 149 0 23.355 buffer=3fc9f688 copy=10280",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 4,
+      "length": 128,
+      "expected": "d560f10a799251acba695797bb637000e1f9979a6d46b1eefe68717761f141dc47e1d07d8dc8ef3a04510dea73f6c539c9d6a1e7a62772c098487698b5270407b07308d72fefd90b1c6828c9a5815d55eb5e653489e47f2c1baa549bfcdb5868cd2f501001bf0c6e59c1001eccd1ca674bef98eba687555911783287350f326e",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=128 rssi=-63.5 snr=6.2 hex=d560f10a799251acba695797bb637000e1f9979a6d46b1eefe68717761f141dc47e1d07d8dc8ef3a04510dea73f6c539c9d6a1e7a62772c098487698b5270407b07308d72fefd90b1c6828c9a5815d55eb5e653489e47f2c1baa549bfcdb5868cd2f501001bf0c6e59c1001eccd1ca674bef98eba687555911783287350f326e",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 128,
+          "rssi": -63.5,
+          "snr": 6.2,
+          "hex": "d560f10a799251acba695797bb637000e1f9979a6d46b1eefe68717761f141dc47e1d07d8dc8ef3a04510dea73f6c539c9d6a1e7a62772c098487698b5270407b07308d72fefd90b1c6828c9a5815d55eb5e653489e47f2c1baa549bfcdb5868cd2f501001bf0c6e59c1001eccd1ca674bef98eba687555911783287350f326e"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:07.566585+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 333 0 52.342 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 3,
+      "length": 80,
+      "expected": "e4574d148469692206d5a3354d0e43178a5f06cc29d697fa9ad8bfed1d4f438be595915312471d96b13cac0d73afaea744a2bc6453a103af92e760626ccd4adba98ad96472ce64d37430680dddbf18de",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-63.5 snr=7.0 hex=e4574d148469692206d5a3354d0e43178a5f06cc29d697fa9ad8bfed1d4f438be595915312471d96b13cac0d73afaea744a2bc6453a103af92e760626ccd4adba98ad96472ce64d37430680dddbf18de",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -63.5,
+          "snr": 7.0,
+          "hex": "e4574d148469692206d5a3354d0e43178a5f06cc29d697fa9ad8bfed1d4f438be595915312471d96b13cac0d73afaea744a2bc6453a103af92e760626ccd4adba98ad96472ce64d37430680dddbf18de"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:08.460307+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 197 0 30.917 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 4,
+      "length": 80,
+      "expected": "1c1d8ac0e627e5b016d818ec84933d489deb6fa3dfd9e6d4503cef1701d3d1f81b70989b291042484f77a33e5b060fe66458ffe4b1245c9f9d052b397daf8db5e008c6b1c42f49c906eaac0d8b14f0c6",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-63.5 snr=6.2 hex=1c1d8ac0e627e5b016d818ec84933d489deb6fa3dfd9e6d4503cef1701d3d1f81b70989b291042484f77a33e5b060fe66458ffe4b1245c9f9d052b397daf8db5e008c6b1c42f49c906eaac0d8b14f0c6",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -63.5,
+          "snr": 6.2,
+          "hex": "1c1d8ac0e627e5b016d818ec84933d489deb6fa3dfd9e6d4503cef1701d3d1f81b70989b291042484f77a33e5b060fe66458ffe4b1245c9f9d052b397daf8db5e008c6b1c42f49c906eaac0d8b14f0c6"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:09.335412+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 221 0 34.698 buffer=3fc9f688 copy=10280",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 1,
+      "length": 32,
+      "expected": "57935da30b0305366a45ed4bed4f94800fcab55961d74bdc34849e902a77ef08",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-63.5 snr=4.8 hex=57935da30b0305366a45ed4bed4f94800fcab55961d74bdc34849e902a77ef08",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -63.5,
+          "snr": 4.8,
+          "hex": "57935da30b0305366a45ed4bed4f94800fcab55961d74bdc34849e902a77ef08"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:10.208702+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 79 0 12.327 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 1,
+      "length": 128,
+      "expected": "3bd71d1d103cbda860bd3f07929d1af2a31149002ae699f29a92740b7b8e6a8726c17c01a971e39bc83600371b44ea46735792338e5dd2f240135634a4dbf18fbaec0ec5a467db054f2a8c2d040e3bc786f8fe3d1576bef3dd09e34d17409c1ecbb885ae6348cea9d0165d3f5eecc793645e707fe1b3d860aceaaf1cc45a9a84",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=128 rssi=-62.5 snr=5.8 hex=3bd71d1d103cbda860bd3f07929d1af2a31149002ae699f29a92740b7b8e6a8726c17c01a971e39bc83600371b44ea46735792338e5dd2f240135634a4dbf18fbaec0ec5a467db054f2a8c2d040e3bc786f8fe3d1576bef3dd09e34d17409c1ecbb885ae6348cea9d0165d3f5eecc793645e707fe1b3d860aceaaf1cc45a9a84",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 128,
+          "rssi": -62.5,
+          "snr": 5.8,
+          "hex": "3bd71d1d103cbda860bd3f07929d1af2a31149002ae699f29a92740b7b8e6a8726c17c01a971e39bc83600371b44ea46735792338e5dd2f240135634a4dbf18fbaec0ec5a467db054f2a8c2d040e3bc786f8fe3d1576bef3dd09e34d17409c1ecbb885ae6348cea9d0165d3f5eecc793645e707fe1b3d860aceaaf1cc45a9a84"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:11.054765+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 219 0 34.383 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 2,
+      "length": 8,
+      "expected": "c8b204c1763f478f",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-63.5 snr=6.0 hex=c8b204c1763f478f",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -63.5,
+          "snr": 6.0,
+          "hex": "c8b204c1763f478f"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:11.929755+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 47 0 7.286 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 2,
+      "length": 32,
+      "expected": "bff9da057841da6af79a1edc84e47aa3421249653c60dc3fa874c93933a92b23",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-64.5 snr=4.8 hex=bff9da057841da6af79a1edc84e47aa3421249653c60dc3fa874c93933a92b23",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -64.5,
+          "snr": 4.8,
+          "hex": "bff9da057841da6af79a1edc84e47aa3421249653c60dc3fa874c93933a92b23"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:12.770210+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 89 0 13.903 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 4,
+      "length": 1,
+      "expected": "86",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-62.5 snr=7.2 hex=86",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -62.5,
+          "snr": 7.2,
+          "hex": "86"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:13.617143+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 37 0 5.711 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 3,
+      "length": 128,
+      "expected": "ca44dd7ef73edd0bfeeb61ff3e69395f6c2287e0981b0ae235a40884109b53548addcd3455dd2feb4a7a57094b0133516af2e1734eeef039bca46eae915907ab4aa6d8103e54f5490a8e78813f9691a0632a4aa51dd9b3772c040164005068af5339cd26a90ca05e34eb1b5c672679ff7e1975ed5abf9b638ff54b75f58a394a",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=128 rssi=-63.5 snr=6.8 hex=ca44dd7ef73edd0bfeeb61ff3e69395f6c2287e0981b0ae235a40884109b53548addcd3455dd2feb4a7a57094b0133516af2e1734eeef039bca46eae915907ab4aa6d8103e54f5490a8e78813f9691a0632a4aa51dd9b3772c040164005068af5339cd26a90ca05e34eb1b5c672679ff7e1975ed5abf9b638ff54b75f58a394a",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 128,
+          "rssi": -63.5,
+          "snr": 6.8,
+          "hex": "ca44dd7ef73edd0bfeeb61ff3e69395f6c2287e0981b0ae235a40884109b53548addcd3455dd2feb4a7a57094b0133516af2e1734eeef039bca46eae915907ab4aa6d8103e54f5490a8e78813f9691a0632a4aa51dd9b3772c040164005068af5339cd26a90ca05e34eb1b5c672679ff7e1975ed5abf9b638ff54b75f58a394a"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:14.463937+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 295 0 46.356 buffer=3fc9f688 copy=10298",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 3,
+      "length": 32,
+      "expected": "204448cddbb200352fa8f6f81d3cd7e5162451de78a3c55ab474bbd271c3c496",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-63.5 snr=5.8 hex=204448cddbb200352fa8f6f81d3cd7e5162451de78a3c55ab474bbd271c3c496",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -63.5,
+          "snr": 5.8,
+          "hex": "204448cddbb200352fa8f6f81d3cd7e5162451de78a3c55ab474bbd271c3c496"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:15.355846+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 99 0 15.478 buffer=3fc9f688 copy=10298",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 4,
+      "length": 32,
+      "expected": "3254164046d420ceb6ff61deb0cd1a5f6bb631d62aebcbce641d2134497486e8",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-63.5 snr=3.2 hex=3254164046d420ceb6ff61deb0cd1a5f6bb631d62aebcbce641d2134497486e8",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -63.5,
+          "snr": 3.2,
+          "hex": "3254164046d420ceb6ff61deb0cd1a5f6bb631d62aebcbce641d2134497486e8"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:16.202619+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 17.054 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 1,
+      "length": 1,
+      "expected": "86",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-63.5 snr=4.8 hex=86",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -63.5,
+          "snr": 4.8,
+          "hex": "86"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:17.049755+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 34 0 5.238 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 1,
+      "length": 255,
+      "expected": "4b73694a9edb0d804c7b2337ed5c268d79a56ee3a3d2a65017a54cfdb15f97895142c516cf606c7b327b8d1cb89818f78d31cc62de476c1360306f5d3586d5961a12980fcca42481a757c9a55be0ad8cb48e481e35d50fd57e4b076dd25c45f0447f363eacf413f2ec687cb170217b907affb02d258eb9e7a218cc1eca452d312839a7ce988c6ade7ab5ea7ef09bd57531ce05fbaeda7ac211001d371dc2ddeb2d5652d888a0f409c5094f9aac035838178c089576db4904376a446b68629a88c5e473f938cfd97563c9deaf82e7a5522eb0d174670be0e5dc76feead1496fafa8500f5f1d430e362bbd9fbc1bcc0e24d6282582b0ab5b55dc9fb2555757fe",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=255 rssi=-63.5 snr=2.2 hex=4b73694a9edb0d804c7b2337ed5c268d79a56ee3a3d2a65017a54cfdb15f97895142c516cf606c7b327b8d1cb89818f78d31cc62de476c1360306f5d3586d5961a12980fcca42481a757c9a55be0ad8cb48e481e35d50fd57e4b076dd25c45f0447f363eacf413f2ec687cb170217b907affb02d258eb9e7a218cc1eca452d312839a7ce988c6ade7ab5ea7ef09bd57531ce05fbaeda7ac211001d371dc2ddeb2d5652d888a0f409c5094f9aac035838178c089576db4904376a446b68629a88c5e473f938cfd97563c9deaf82e7a5522eb0d174670be0e5dc76feead1496fafa8500f5f1d430e362bbd9fbc1bcc0e24d6282582b0ab5b55dc9fb2555757fe",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 255,
+          "rssi": -63.5,
+          "snr": 2.2,
+          "hex": "4b73694a9edb0d804c7b2337ed5c268d79a56ee3a3d2a65017a54cfdb15f97895142c516cf606c7b327b8d1cb89818f78d31cc62de476c1360306f5d3586d5961a12980fcca42481a757c9a55be0ad8cb48e481e35d50fd57e4b076dd25c45f0447f363eacf413f2ec687cb170217b907affb02d258eb9e7a218cc1eca452d312839a7ce988c6ade7ab5ea7ef09bd57531ce05fbaeda7ac211001d371dc2ddeb2d5652d888a0f409c5094f9aac035838178c089576db4904376a446b68629a88c5e473f938cfd97563c9deaf82e7a5522eb0d174670be0e5dc76feead1496fafa8500f5f1d430e362bbd9fbc1bcc0e24d6282582b0ab5b55dc9fb2555757fe"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:17.897185+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 399 0 62.740 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 4,
+      "length": 255,
+      "expected": "b07405359dab9942bb003ccb15e02ff1c83653fd23aecebff94a7153264d63dd0a9c0fec1724835c379c92e327bda14ffef10f7debd18cb4a3ba850565781ac24c1b606c0770812dbcab3e0bc96ad5c350df744215881af7b1c9356a3314d5e1c377ff2d53ce348808963c90c2d4e5101c841d68b04ba3efffad8c615e495d7f0d67d61d23b7e89603e6026ed9a6a7fa6710f830cd14a2203b2339be683c17f13702d9482122dcd8e3080e87eb61c81f351ab0663d117eb80b81b552e0ebf5b85bac942d06c35fc0175931a05867a90db789a097a976afc31835a22d6d5f4afd16835b0bb7d9d776ff0369a2bd0a0716e8598d66807bce14f3157cb4d42ef7",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=255 rssi=-63.5 snr=6.2 hex=b07405359dab9942bb003ccb15e02ff1c83653fd23aecebff94a7153264d63dd0a9c0fec1724835c379c92e327bda14ffef10f7debd18cb4a3ba850565781ac24c1b606c0770812dbcab3e0bc96ad5c350df744215881af7b1c9356a3314d5e1c377ff2d53ce348808963c90c2d4e5101c841d68b04ba3efffad8c615e495d7f0d67d61d23b7e89603e6026ed9a6a7fa6710f830cd14a2203b2339be683c17f13702d9482122dcd8e3080e87eb61c81f351ab0663d117eb80b81b552e0ebf5b85bac942d06c35fc0175931a05867a90db789a097a976afc31835a22d6d5f4afd16835b0bb7d9d776ff0369a2bd0a0716e8598d66807bce14f3157cb4d42ef7",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 255,
+          "rssi": -63.5,
+          "snr": 6.2,
+          "hex": "b07405359dab9942bb003ccb15e02ff1c83653fd23aecebff94a7153264d63dd0a9c0fec1724835c379c92e327bda14ffef10f7debd18cb4a3ba850565781ac24c1b606c0770812dbcab3e0bc96ad5c350df744215881af7b1c9356a3314d5e1c377ff2d53ce348808963c90c2d4e5101c841d68b04ba3efffad8c615e495d7f0d67d61d23b7e89603e6026ed9a6a7fa6710f830cd14a2203b2339be683c17f13702d9482122dcd8e3080e87eb61c81f351ab0663d117eb80b81b552e0ebf5b85bac942d06c35fc0175931a05867a90db789a097a976afc31835a22d6d5f4afd16835b0bb7d9d776ff0369a2bd0a0716e8598d66807bce14f3157cb4d42ef7"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:18.812457+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 621 0 97.713 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 3,
+      "length": 255,
+      "expected": "84f8e311febf1ce83378de438424c439c52a9032421645980078a9e5d0f5921946b8555a2761b1361a5b12aa6e3576f259d5de768053fce3911d353312a8fc7d10eaa76af9b02419aba6fcaf54d59168054b6598915102af162f96b3c9e349983fc8df6d03e43dc5dbb35393eedfda5a5f8d9856de00dbeac55a9ef64b2fa04f5445482683d4346c7799686f492b5b75e6e04aac8f58f5cb3392a8cc2373958d776ce1b7b065938c219e0ffa983b1ee4ba719f1c45a7ed272d2a831d04915897ea43bc7372187dc66744725852bc11d3fd7c8481b68eaa795d13f9f3eade04ac3c1d116e32b8240dd3184f6a0bfca0a9640d090dca4801f38f0d1e5f851596",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=255 rssi=-63.5 snr=6.2 hex=84f8e311febf1ce83378de438424c439c52a9032421645980078a9e5d0f5921946b8555a2761b1361a5b12aa6e3576f259d5de768053fce3911d353312a8fc7d10eaa76af9b02419aba6fcaf54d59168054b6598915102af162f96b3c9e349983fc8df6d03e43dc5dbb35393eedfda5a5f8d9856de00dbeac55a9ef64b2fa04f5445482683d4346c7799686f492b5b75e6e04aac8f58f5cb3392a8cc2373958d776ce1b7b065938c219e0ffa983b1ee4ba719f1c45a7ed272d2a831d04915897ea43bc7372187dc66744725852bc11d3fd7c8481b68eaa795d13f9f3eade04ac3c1d116e32b8240dd3184f6a0bfca0a9640d090dca4801f38f0d1e5f851596",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 255,
+          "rssi": -63.5,
+          "snr": 6.2,
+          "hex": "84f8e311febf1ce83378de438424c439c52a9032421645980078a9e5d0f5921946b8555a2761b1361a5b12aa6e3576f259d5de768053fce3911d353312a8fc7d10eaa76af9b02419aba6fcaf54d59168054b6598915102af162f96b3c9e349983fc8df6d03e43dc5dbb35393eedfda5a5f8d9856de00dbeac55a9ef64b2fa04f5445482683d4346c7799686f492b5b75e6e04aac8f58f5cb3392a8cc2373958d776ce1b7b065938c219e0ffa983b1ee4ba719f1c45a7ed272d2a831d04915897ea43bc7372187dc66744725852bc11d3fd7c8481b68eaa795d13f9f3eade04ac3c1d116e32b8240dd3184f6a0bfca0a9640d090dca4801f38f0d1e5f851596"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:19.750275+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 547 0 86.055 buffer=3fc9f688 copy=10279",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 2,
+      "length": 1,
+      "expected": "58",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-64.5 snr=7.0 hex=58",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -64.5,
+          "snr": 7.0,
+          "hex": "58"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:20.687652+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 35 0 5.396 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 3,
+      "length": 1,
+      "expected": "98",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-64.5 snr=6.8 hex=98",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -64.5,
+          "snr": 6.8,
+          "hex": "98"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:21.531780+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 36 0 5.553 buffer=3fc9f688 copy=10313",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 2,
+      "length": 128,
+      "expected": "34f26ce4d1be808c2720be723be81a13a0399f256ae95272264c343cf9039de236acaa08fa15ab6de8a509dba63f0973ffb41c2dd3378228d4e1dc76ba1a5333c6b1d99bd096d4c1a05430ec99284676f3ae77ddf23e72e2e30e5eeee82bc17bc417a59fcc44f999331b54cb324e1b5f86258b376f43643f5ae64dc563932180",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=128 rssi=-63.5 snr=6.8 hex=34f26ce4d1be808c2720be723be81a13a0399f256ae95272264c343cf9039de236acaa08fa15ab6de8a509dba63f0973ffb41c2dd3378228d4e1dc76ba1a5333c6b1d99bd096d4c1a05430ec99284676f3ae77ddf23e72e2e30e5eeee82bc17bc417a59fcc44f999331b54cb324e1b5f86258b376f43643f5ae64dc563932180",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 128,
+          "rssi": -63.5,
+          "snr": 6.8,
+          "hex": "34f26ce4d1be808c2720be723be81a13a0399f256ae95272264c343cf9039de236acaa08fa15ab6de8a509dba63f0973ffb41c2dd3378228d4e1dc76ba1a5333c6b1d99bd096d4c1a05430ec99284676f3ae77ddf23e72e2e30e5eeee82bc17bc417a59fcc44f999331b54cb324e1b5f86258b376f43643f5ae64dc563932180"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:22.375539+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 257 0 40.369 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 1,
+      "length": 80,
+      "expected": "4cc7a072f567da34b18b52b836362217d0324f3b6dc00d65d723749e9dc372b67aa00c492de1ac76b5a16a108d6a962fb4eb0bb49edbc6900dcde8f8505ca66e9c19d4db8ba65a5e5af84f1b0fb753c9",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-63.5 snr=5.0 hex=4cc7a072f567da34b18b52b836362217d0324f3b6dc00d65d723749e9dc372b67aa00c492de1ac76b5a16a108d6a962fb4eb0bb49edbc6900dcde8f8505ca66e9c19d4db8ba65a5e5af84f1b0fb753c9",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -63.5,
+          "snr": 5.0,
+          "hex": "4cc7a072f567da34b18b52b836362217d0324f3b6dc00d65d723749e9dc372b67aa00c492de1ac76b5a16a108d6a962fb4eb0bb49edbc6900dcde8f8505ca66e9c19d4db8ba65a5e5af84f1b0fb753c9"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:23.250309+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 149 0 23.355 buffer=3fc9f688 copy=10280",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 1,
+      "length": 32,
+      "expected": "b5564f8f57ff868b99adfbb3f44f48d00bd70f165a21181b78fd4068a76f6073",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-63.5 snr=3.2 hex=b5564f8f57ff868b99adfbb3f44f48d00bd70f165a21181b78fd4068a76f6073",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -63.5,
+          "snr": 3.2,
+          "hex": "b5564f8f57ff868b99adfbb3f44f48d00bd70f165a21181b78fd4068a76f6073"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:24.116109+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 79 0 12.327 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 3,
+      "length": 80,
+      "expected": "60504656d91110b326a17007a297ac3dbdf80f773076582b768b080fe3987c35add01ca4f8e13bcaa0487af6a65637c0d218b0ae198913a6932140683f0c266b99b0536e2cee7a63965c63e018a58903",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-63.5 snr=4.5 hex=60504656d91110b326a17007a297ac3dbdf80f773076582b768b080fe3987c35add01ca4f8e13bcaa0487af6a65637c0d218b0ae198913a6932140683f0c266b99b0536e2cee7a63965c63e018a58903",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -63.5,
+          "snr": 4.5,
+          "hex": "60504656d91110b326a17007a297ac3dbdf80f773076582b768b080fe3987c35add01ca4f8e13bcaa0487af6a65637c0d218b0ae198913a6932140683f0c266b99b0536e2cee7a63965c63e018a58903"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:24.963226+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 197 0 30.917 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 1,
+      "length": 1,
+      "expected": "67",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-63.5 snr=7.8 hex=67",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -63.5,
+          "snr": 7.8,
+          "hex": "67"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:25.838475+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 34 0 5.238 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 2,
+      "length": 1,
+      "expected": "95",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-63.5 snr=5.0 hex=95",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -63.5,
+          "snr": 5.0,
+          "hex": "95"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:26.684330+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 35 0 5.396 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 1,
+      "length": 128,
+      "expected": "27611fb53dfe56300b7da758ad7b877e80a4ebd6812d35d71ebc2d944d0c190386100f3f2e6dc709fba4a48eb9925eb0578530e0a59a1128151bdc1a23c8b2d27bc4ce60be8398c1f5bab52e867a11e25d4ecde8614decedb73fe7885effc2ff7589f39033752d43e3d93033d6ba32474cd85d2180715911c03ccc1812a5a850",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=128 rssi=-63.5 snr=6.2 hex=27611fb53dfe56300b7da758ad7b877e80a4ebd6812d35d71ebc2d944d0c190386100f3f2e6dc709fba4a48eb9925eb0578530e0a59a1128151bdc1a23c8b2d27bc4ce60be8398c1f5bab52e867a11e25d4ecde8614decedb73fe7885effc2ff7589f39033752d43e3d93033d6ba32474cd85d2180715911c03ccc1812a5a850",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 128,
+          "rssi": -63.5,
+          "snr": 6.2,
+          "hex": "27611fb53dfe56300b7da758ad7b877e80a4ebd6812d35d71ebc2d944d0c190386100f3f2e6dc709fba4a48eb9925eb0578530e0a59a1128151bdc1a23c8b2d27bc4ce60be8398c1f5bab52e867a11e25d4ecde8614decedb73fe7885effc2ff7589f39033752d43e3d93033d6ba32474cd85d2180715911c03ccc1812a5a850"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:27.527901+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 219 0 34.383 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 3,
+      "length": 8,
+      "expected": "c719f5992374a880",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-63.5 snr=2.5 hex=c719f5992374a880",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -63.5,
+          "snr": 2.5,
+          "hex": "c719f5992374a880"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:28.405415+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 50 0 7.759 buffer=3fc9f688 copy=10279",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 2,
+      "length": 80,
+      "expected": "0de94d11035d26e893f0f5a4156b33e1ead5ff957e21736a0fedc1c2e384d36f088e51fd8eed6ac9f6cf59aaac1ef4e4b5052cfe96a029286150c2a0adbc18caf1eb252ea37d65d392c94a7d05039981",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-63.5 snr=5.5 hex=0de94d11035d26e893f0f5a4156b33e1ead5ff957e21736a0fedc1c2e384d36f088e51fd8eed6ac9f6cf59aaac1ef4e4b5052cfe96a029286150c2a0adbc18caf1eb252ea37d65d392c94a7d05039981",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -63.5,
+          "snr": 5.5,
+          "hex": "0de94d11035d26e893f0f5a4156b33e1ead5ff957e21736a0fedc1c2e384d36f088e51fd8eed6ac9f6cf59aaac1ef4e4b5052cfe96a029286150c2a0adbc18caf1eb252ea37d65d392c94a7d05039981"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:29.250807+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 173 0 27.136 buffer=3fc9f688 copy=10280",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 2,
+      "length": 8,
+      "expected": "8dcb15a15e76cd91",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-62.5 snr=3.5 hex=8dcb15a15e76cd91",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -62.5,
+          "snr": 3.5,
+          "hex": "8dcb15a15e76cd91"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:30.111535+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 47 0 7.286 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 3,
+      "length": 1,
+      "expected": "77",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-64.5 snr=6.0 hex=77",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -64.5,
+          "snr": 6.0,
+          "hex": "77"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:30.957049+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 36 0 5.553 buffer=3fc9f688 copy=10298",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 4,
+      "length": 128,
+      "expected": "44777a1c0df4ce8d6b1c86a5966ae47664dce0d5a1c8363220451d3fd403d5b88563fea52522fe7998af2e0d05a77e1a85db40a4ad17718e75c4187184ae88c4960be4fb59a853ad40614b3851011f90c432e053a43e2623cdb5b52c3ff6ba1aa64910f13e9b876f5fa8148460564ea88df52a5b16a43d4e7cc62c9790fb0767",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=128 rssi=-63.5 snr=6.0 hex=44777a1c0df4ce8d6b1c86a5966ae47664dce0d5a1c8363220451d3fd403d5b88563fea52522fe7998af2e0d05a77e1a85db40a4ad17718e75c4187184ae88c4960be4fb59a853ad40614b3851011f90c432e053a43e2623cdb5b52c3ff6ba1aa64910f13e9b876f5fa8148460564ea88df52a5b16a43d4e7cc62c9790fb0767",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 128,
+          "rssi": -63.5,
+          "snr": 6.0,
+          "hex": "44777a1c0df4ce8d6b1c86a5966ae47664dce0d5a1c8363220451d3fd403d5b88563fea52522fe7998af2e0d05a77e1a85db40a4ad17718e75c4187184ae88c4960be4fb59a853ad40614b3851011f90c432e053a43e2623cdb5b52c3ff6ba1aa64910f13e9b876f5fa8148460564ea88df52a5b16a43d4e7cc62c9790fb0767"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:31.802352+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 333 0 52.342 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 2,
+      "length": 32,
+      "expected": "4693932d6f62bd2e5b2986df88bfb718c0197388c5f5f2ddd398d27a5f04fa4c",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=6.0 hex=4693932d6f62bd2e5b2986df88bfb718c0197388c5f5f2ddd398d27a5f04fa4c",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 6.0,
+          "hex": "4693932d6f62bd2e5b2986df88bfb718c0197388c5f5f2ddd398d27a5f04fa4c"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:32.695500+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 89 0 13.903 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 2,
+      "length": 128,
+      "expected": "72fd9c86fe6e69ad02da9a6d385a7e426a0a89c1c89e98c54d381ae8d04894ccc184732a966f1530a667dbb9f9cee2d54ddc7fa8a793c03f21b76ae3912f30fb6c0fd7be16ba995021e479a19158660714319a29f50a752303762e2130d7cea626cfa082bf91a9b3cf316e79ae3561dc69269fc9893eea617a369cbb31f770b0",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=128 rssi=-63.5 snr=5.8 hex=72fd9c86fe6e69ad02da9a6d385a7e426a0a89c1c89e98c54d381ae8d04894ccc184732a966f1530a667dbb9f9cee2d54ddc7fa8a793c03f21b76ae3912f30fb6c0fd7be16ba995021e479a19158660714319a29f50a752303762e2130d7cea626cfa082bf91a9b3cf316e79ae3561dc69269fc9893eea617a369cbb31f770b0",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 128,
+          "rssi": -63.5,
+          "snr": 5.8,
+          "hex": "72fd9c86fe6e69ad02da9a6d385a7e426a0a89c1c89e98c54d381ae8d04894ccc184732a966f1530a667dbb9f9cee2d54ddc7fa8a793c03f21b76ae3912f30fb6c0fd7be16ba995021e479a19158660714319a29f50a752303762e2130d7cea626cfa082bf91a9b3cf316e79ae3561dc69269fc9893eea617a369cbb31f770b0"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:33.551190+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 257 0 40.369 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 3,
+      "length": 32,
+      "expected": "59f310e6d93d3ebc6c5ae90ad1cce600de84a03462fd13625c8235d0ade3513a",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-63.5 snr=4.2 hex=59f310e6d93d3ebc6c5ae90ad1cce600de84a03462fd13625c8235d0ade3513a",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -63.5,
+          "snr": 4.2,
+          "hex": "59f310e6d93d3ebc6c5ae90ad1cce600de84a03462fd13625c8235d0ade3513a"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:34.430710+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 99 0 15.478 buffer=3fc9f688 copy=10298",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 2,
+      "length": 255,
+      "expected": "24c05fb896bf95c137124904b04e3543ffe5ad98a32effd41f1df0957eeca95e320866e43d06235f85036555d468638e4e578b6ffa46a38a5f7e1bcb1cdcffc76331e5f1584e0a7730a638042887b6cd76e39a1ee9d7314de33fa25058edcada62af34b7bbaa0af7d9b46615f293057cdf63cde261b242506c62b757c9b331123f93907f7d4c77dfd031444b81c11ccceac6b81e7ea6eca3259e5c8438c4ded23a2f60861fdf9865537040c9665f456456967c796a86a5d0a78ea0e3a3e25ea70e8adcb3fac8e62d5c6f973f242828401ba3e3401a5fac973e84921f01debb5e74e4c96c8f906a50ca6c194953c28a8986dd68c945229baffed82b5c48b914",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=255 rssi=-63.5 snr=4.2 hex=24c05fb896bf95c137124904b04e3543ffe5ad98a32effd41f1df0957eeca95e320866e43d06235f85036555d468638e4e578b6ffa46a38a5f7e1bcb1cdcffc76331e5f1584e0a7730a638042887b6cd76e39a1ee9d7314de33fa25058edcada62af34b7bbaa0af7d9b46615f293057cdf63cde261b242506c62b757c9b331123f93907f7d4c77dfd031444b81c11ccceac6b81e7ea6eca3259e5c8438c4ded23a2f60861fdf9865537040c9665f456456967c796a86a5d0a78ea0e3a3e25ea70e8adcb3fac8e62d5c6f973f242828401ba3e3401a5fac973e84921f01debb5e74e4c96c8f906a50ca6c194953c28a8986dd68c945229baffed82b5c48b914",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 255,
+          "rssi": -63.5,
+          "snr": 4.2,
+          "hex": "24c05fb896bf95c137124904b04e3543ffe5ad98a32effd41f1df0957eeca95e320866e43d06235f85036555d468638e4e578b6ffa46a38a5f7e1bcb1cdcffc76331e5f1584e0a7730a638042887b6cd76e39a1ee9d7314de33fa25058edcada62af34b7bbaa0af7d9b46615f293057cdf63cde261b242506c62b757c9b331123f93907f7d4c77dfd031444b81c11ccceac6b81e7ea6eca3259e5c8438c4ded23a2f60861fdf9865537040c9665f456456967c796a86a5d0a78ea0e3a3e25ea70e8adcb3fac8e62d5c6f973f242828401ba3e3401a5fac973e84921f01debb5e74e4c96c8f906a50ca6c194953c28a8986dd68c945229baffed82b5c48b914"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:35.293511+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 473 0 74.398 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 4,
+      "length": 80,
+      "expected": "3ad6baa7ad592d3bb837f1ec649edba506ff36de4033fd2c0143d39d957f7490ecf9438a3957a598e4d32d90a2f15f32f4656cee2ef066661e361213d17608ce1bef714252263f9da5e4bb07adcc95bd",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-63.5 snr=7.0 hex=3ad6baa7ad592d3bb837f1ec649edba506ff36de4033fd2c0143d39d957f7490ecf9438a3957a598e4d32d90a2f15f32f4656cee2ef066661e361213d17608ce1bef714252263f9da5e4bb07adcc95bd",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 80,
+          "rssi": -63.5,
+          "snr": 7.0,
+          "hex": "3ad6baa7ad592d3bb837f1ec649edba506ff36de4033fd2c0143d39d957f7490ecf9438a3957a598e4d32d90a2f15f32f4656cee2ef066661e361213d17608ce1bef714252263f9da5e4bb07adcc95bd"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:36.211235+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 221 0 34.698 buffer=3fc9f688 copy=10280",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 4,
+      "length": 8,
+      "expected": "aaf9c78442c4b9c1",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-63.5 snr=1.8 hex=aaf9c78442c4b9c1",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -63.5,
+          "snr": 1.8,
+          "hex": "aaf9c78442c4b9c1"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:37.089819+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 53 0 8.231 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 4,
+      "length": 32,
+      "expected": "766ccb756c821ed92324475a677d628b3855201b65e8c41abe8bd2fda5f19275",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-63.5 snr=3.8 hex=766ccb756c821ed92324475a677d628b3855201b65e8c41abe8bd2fda5f19275",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -63.5,
+          "snr": 3.8,
+          "hex": "766ccb756c821ed92324475a677d628b3855201b65e8c41abe8bd2fda5f19275"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:37.934145+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 17.054 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 3,
+      "length": 255,
+      "expected": "8f08b1b96b9094d5c22f0f7e66fd3a7b5bd9c9b8baa641b89026ad989ce5910ae95f5f376d4de5bc641eed68e755e8b5557b33f6433cba7a4d535109d46773774684fd761a337027d60acc5d909ad1e16df554751728af33a05e70306de34d91a64c4c565e4cc04d3d698f8572640a53c56469f18205bd34376c5437780ae6aa19df030c6ef3dff865e2a990a8b9c9049d5f11f9dcc71a37a153bf636e15e03298d3b41e5b643103cf65df4dab93f61ce970e338f93e0b64bd367eb70e8872b39259945888aa2b68c19c8ef49cbaf34d63bf8997adb53feff5dd52619e97c3faf1efbae2b482a2192add5afb58b28fe07fb13f952125311187c8cc57644ce0",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=255 rssi=-63.5 snr=2.2 hex=8f08b1b96b9094d5c22f0f7e66fd3a7b5bd9c9b8baa641b89026ad989ce5910ae95f5f376d4de5bc641eed68e755e8b5557b33f6433cba7a4d535109d46773774684fd761a337027d60acc5d909ad1e16df554751728af33a05e70306de34d91a64c4c565e4cc04d3d698f8572640a53c56469f18205bd34376c5437780ae6aa19df030c6ef3dff865e2a990a8b9c9049d5f11f9dcc71a37a153bf636e15e03298d3b41e5b643103cf65df4dab93f61ce970e338f93e0b64bd367eb70e8872b39259945888aa2b68c19c8ef49cbaf34d63bf8997adb53feff5dd52619e97c3faf1efbae2b482a2192add5afb58b28fe07fb13f952125311187c8cc57644ce0",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 255,
+          "rssi": -63.5,
+          "snr": 2.2,
+          "hex": "8f08b1b96b9094d5c22f0f7e66fd3a7b5bd9c9b8baa641b89026ad989ce5910ae95f5f376d4de5bc641eed68e755e8b5557b33f6433cba7a4d535109d46773774684fd761a337027d60acc5d909ad1e16df554751728af33a05e70306de34d91a64c4c565e4cc04d3d698f8572640a53c56469f18205bd34376c5437780ae6aa19df030c6ef3dff865e2a990a8b9c9049d5f11f9dcc71a37a153bf636e15e03298d3b41e5b643103cf65df4dab93f61ce970e338f93e0b64bd367eb70e8872b39259945888aa2b68c19c8ef49cbaf34d63bf8997adb53feff5dd52619e97c3faf1efbae2b482a2192add5afb58b28fe07fb13f952125311187c8cc57644ce0"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:38.793250+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 547 0 86.055 buffer=3fc9f688 copy=10279",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 4,
+      "length": 255,
+      "expected": "6e1a1126d51311bcadb8715935f6ec879175d80d0468190af602da95b835296615c946dbdbfa262f63d9650a061250245a7be34f7c776c7ece2e9efc71765a55420bc1ef8bdeb530b0ddbb1f9ea38b3ccc973f8d226a610460d0b1bcd85c0379794cdbf822ce39b827e3536e89279aee583c1b90e7b7b5c89134dec74720f97966d204a4c48aef41acd803d01192c1e930fbf6f543973450738d6f0d86010263e29e2f4203f2d4b1b19eeceea4413fd635235bf04e7372b096210d125b6b966656595dc70443fca04113a231b6e75ea724e1b22313deb18207f32add5aea97da1e3352805e03322c20b9821a2bfb74861448b5b05ff9a349aeea2931422a6e",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=255 rssi=-63.5 snr=3.5 hex=6e1a1126d51311bcadb8715935f6ec879175d80d0468190af602da95b835296615c946dbdbfa262f63d9650a061250245a7be34f7c776c7ece2e9efc71765a55420bc1ef8bdeb530b0ddbb1f9ea38b3ccc973f8d226a610460d0b1bcd85c0379794cdbf822ce39b827e3536e89279aee583c1b90e7b7b5c89134dec74720f97966d204a4c48aef41acd803d01192c1e930fbf6f543973450738d6f0d86010263e29e2f4203f2d4b1b19eeceea4413fd635235bf04e7372b096210d125b6b966656595dc70443fca04113a231b6e75ea724e1b22313deb18207f32add5aea97da1e3352805e03322c20b9821a2bfb74861448b5b05ff9a349aeea2931422a6e",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 255,
+          "rssi": -63.5,
+          "snr": 3.5,
+          "hex": "6e1a1126d51311bcadb8715935f6ec879175d80d0468190af602da95b835296615c946dbdbfa262f63d9650a061250245a7be34f7c776c7ece2e9efc71765a55420bc1ef8bdeb530b0ddbb1f9ea38b3ccc973f8d226a610460d0b1bcd85c0379794cdbf822ce39b827e3536e89279aee583c1b90e7b7b5c89134dec74720f97966d204a4c48aef41acd803d01192c1e930fbf6f543973450738d6f0d86010263e29e2f4203f2d4b1b19eeceea4413fd635235bf04e7372b096210d125b6b966656595dc70443fca04113a231b6e75ea724e1b22313deb18207f32add5aea97da1e3352805e03322c20b9821a2bfb74861448b5b05ff9a349aeea2931422a6e"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:39.727773+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 621 0 97.713 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 3,
+      "length": 128,
+      "expected": "93fb721bd9468f98ccc2112b8cf45f5a58bcf4552a63517cb0b8302e45c863438003c5e4b5f175f1d62b17caa2d21e8b5ed21a3c4cbb23ee7f21c20c0e552aaab1d5d6bb3753a8a9ebc49147417288eb85f400de463d6c132c677901a2e01c528c3dd8a571adb2bc79d93af38950aff7f7edce97d482b3bc0cd2462c9e15fe25",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=128 rssi=-63.5 snr=3.2 hex=93fb721bd9468f98ccc2112b8cf45f5a58bcf4552a63517cb0b8302e45c863438003c5e4b5f175f1d62b17caa2d21e8b5ed21a3c4cbb23ee7f21c20c0e552aaab1d5d6bb3753a8a9ebc49147417288eb85f400de463d6c132c677901a2e01c528c3dd8a571adb2bc79d93af38950aff7f7edce97d482b3bc0cd2462c9e15fe25",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 128,
+          "rssi": -63.5,
+          "snr": 3.2,
+          "hex": "93fb721bd9468f98ccc2112b8cf45f5a58bcf4552a63517cb0b8302e45c863438003c5e4b5f175f1d62b17caa2d21e8b5ed21a3c4cbb23ee7f21c20c0e552aaab1d5d6bb3753a8a9ebc49147417288eb85f400de463d6c132c677901a2e01c528c3dd8a571adb2bc79d93af38950aff7f7edce97d482b3bc0cd2462c9e15fe25"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:40.681513+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 295 0 46.356 buffer=3fc9f688 copy=10298",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 1,
+      "length": 8,
+      "expected": "925f65ea16b667b4",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-63.5 snr=4.5 hex=925f65ea16b667b4",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 8,
+          "rssi": -63.5,
+          "snr": 4.5,
+          "hex": "925f65ea16b667b4"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:41.572180+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 44 0 6.814 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 4,
+      "length": 1,
+      "expected": "f7",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-62.5 snr=6.5 hex=f7",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 1,
+          "rssi": -62.5,
+          "snr": 6.5,
+          "hex": "f7"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:42.418523+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 37 0 5.711 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 1,
+      "length": 255,
+      "expected": "cd42d6746a0bc4709192b1a306613e5285956b48084fb5e88c8d7f2be42a1e4a512da4ffe0df6f3a2be81035a06ad503c7a70c3d6b0444f119639449960342a67e7ce4858ad43c6a166b298b5816835ea63d330d1864a58044069f74b5a41812833800caf5d95b1ce580bde823df9f3275038d2f88877a1530ddcfb36f9c10200af4e8cb4dc031ccbc961d2a8dc42a813bca3943e39ebbd02b5503b58914f96c145c6b0746446700a6b8da99047034ca3f3bbff3b7e94a21fb6a8d8a12cd64e841e5c11ed848c5165339b6e3e68c4984730e374c082b4e25da21a3ebe18d0468ece4b87720cecb8893ba7c0258da4463f395b76ea2d80352537015c2488b18",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=255 rssi=-64.5 snr=3.8 hex=cd42d6746a0bc4709192b1a306613e5285956b48084fb5e88c8d7f2be42a1e4a512da4ffe0df6f3a2be81035a06ad503c7a70c3d6b0444f119639449960342a67e7ce4858ad43c6a166b298b5816835ea63d330d1864a58044069f74b5a41812833800caf5d95b1ce580bde823df9f3275038d2f88877a1530ddcfb36f9c10200af4e8cb4dc031ccbc961d2a8dc42a813bca3943e39ebbd02b5503b58914f96c145c6b0746446700a6b8da99047034ca3f3bbff3b7e94a21fb6a8d8a12cd64e841e5c11ed848c5165339b6e3e68c4984730e374c082b4e25da21a3ebe18d0468ece4b87720cecb8893ba7c0258da4463f395b76ea2d80352537015c2488b18",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 255,
+          "rssi": -64.5,
+          "snr": 3.8,
+          "hex": "cd42d6746a0bc4709192b1a306613e5285956b48084fb5e88c8d7f2be42a1e4a512da4ffe0df6f3a2be81035a06ad503c7a70c3d6b0444f119639449960342a67e7ce4858ad43c6a166b298b5816835ea63d330d1864a58044069f74b5a41812833800caf5d95b1ce580bde823df9f3275038d2f88877a1530ddcfb36f9c10200af4e8cb4dc031ccbc961d2a8dc42a813bca3943e39ebbd02b5503b58914f96c145c6b0746446700a6b8da99047034ca3f3bbff3b7e94a21fb6a8d8a12cd64e841e5c11ed848c5165339b6e3e68c4984730e374c082b4e25da21a3ebe18d0468ece4b87720cecb8893ba7c0258da4463f395b76ea2d80352537015c2488b18"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:35:43.264684+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 399 0 62.740 buffer=3fc9f688 copy=10242",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    }
+  ],
+  "transport": "DAC",
+  "gapSamples": 14,
+  "profile": {
+    "frequencyHz": 2440125000,
+    "bandwidthHz": 812500,
+    "sf": 7,
+    "sync": 18,
+    "preamble": 16,
+    "windowSamples": 3750
+  },
+  "rule": "fresh RX status=0, header=0, CRC present=1 and CRC ok=1; exact full payload bytes",
+  "sha256": {
+    "companion/lr2021/.pio/build/aerolink-hf/firmware.bin": "240175b3e633eba069a96c4d90d78cd078ff4dc92de4547f41a08477b5541e2f",
+    "esp32-lora-sdr/research/bandwidth-dac/.pio/build/xiao-stream-research/firmware.bin": "6fa07e504de72c1320c7488ea9c570d7de056e40ebf689fb66afa1bd165b0eb2"
+  },
+  "firmwareHashMethod": "SHA256 of last-flashed input images; esptool write verification is separate",
+  "sourceSha256": {
+    "ESP32S3Radio.cpp": "5096ccdda9380f851fb0e93daaf03a7def237661d9cc11fe1c3f56e1a89b3029",
+    "ESP32S3Radio.h": "74531908789b22baeba270013d9c078700d3556b2f89dd80a0a316b900a6ec68",
+    "LoRaSDR.cpp": "d2008c0d36d4d65d7b68fae09c06357d78a80c8bc1e171b6a73113450decfbce",
+    "LoRaSDR.h": "f943aae585c584f4284f34058e20b756eb4c861581b6d20400ec65b6f0c4272a",
+    "main.cpp": "ca903577fb3d032a48810ebf67a3a0d6ac3f688dee799cdd6daa63c778add3e2"
+  },
+  "receiverIdentity": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1",
+  "finishedUtc": "2026-10-06T20:35:44.176258+00:00"
+}
