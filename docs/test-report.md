@@ -833,3 +833,13 @@ are included. Native Arduino full RX, stable higher-SF TX, calibrated power and
 weak-signal SF recovery remain unachieved; this is not a complete LoRa-chip API
 replacement. Local capture builds, cloud example builds and actual RF tests
 are separate evidence.
+## Final clean-environment verification
+
+Code snapshot `4cb41595e6192aa170819bb572230f3b13ae81f4` passed the
+[GitHub run](https://github.com/jimmywuhkust/esp32-lora-sdr/actions/runs/37546638905):
+Arduino/PlatformIO job 3m2s (both XIAO examples, RX-only and opt-in TX LR2021
+companions); recorded-IQ job16s (seven regression tests and both generated
+capture-image checksum checks). Whole run3m6s. The standalone ESP-IDF capture
+source was built/flashed locally; cloud CI verifies its bundled images, not an
+ESP-IDF rebuild. Compilation and saved-IQ replay do not replace actual RF tests.
+This final report-only addition changes no tested firmware or decoder source.

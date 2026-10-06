@@ -223,3 +223,7 @@ COM3已恢复XIAO正式Arduino发射固件，COM4运行新默认LR2021只收固�
 英文/中文说明、Arduino与PlatformIO例程、公开接收器、接收预编译固件、
 原始IQ、逐包成功/失败和SVG/PNG/PDF图表都已整理。完整双向原生Arduino库、
 稳定高SF发射、校准功率及弱信号SF恢复实验仍未完成，不能宣传为全功能LoRa芯片替代品。
+## 最终干净环境检查
+
+代码快照4cb4159的[GitHub运行](https://github.com/jimmywuhkust/esp32-lora-sdr/actions/runs/37546638905)全部通过：Arduino/PlatformIO编译两种XIAO例程、LR2021只收与可选发送固件，耗时3分2秒；录音任务16秒，通过七项回归和两版接收二进制校验。总耗时3分6秒。
+独立ESP-IDF接收源码是在本地编译/刷机验证；云端只校验其预编译镜像，不能说云端重新编译了该SDK工程。本次最后补充仅更新报告，不改已测试固件或解码器。
