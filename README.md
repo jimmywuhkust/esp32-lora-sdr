@@ -24,7 +24,8 @@ Read the capability table before choosing other settings.
 | Portable PHY encoder | 264/264 on-device cross-checks: SF7–12, CR4/5–4/8, lengths 1–255; this is **coding verification**, not RF verification |
 | SF7 at 406.25 / 812.5 kHz | Separate randomized matrices: 72/72 at each bandwidth, four coding rates, lengths 1–255; matching windows are required |
 | RF parameter selection | Frequency, preamble, coding rate, frequency correction, DAC amplitude and waveform window; unsupported combinations return an error |
-| SF8 / SF9 transmission | Experimental; current windowed-DAC trials have failed on LR2021 despite valid timing |
+| SF8 / SF9 transmission | Windowed DAC has failed; PLL has delivered some exact CRC packets but only 1/10 SF8 and 4/10 SF9 in small diagnostic runs. Unreliable and experimental |
+| Analog level control | Optional raw PBUS codes; a constant-DAC seven-code study delivered 70/70. Codes are nonmonotonic and uncalibrated; see the report |
 | Receive on XIAO | Separate ESP-SDR I/Q capture + **PC** decoder path; native Arduino packet RX is not implemented |
 | Calibrated TX power, distance or sensitivity | Not measured; raw gain and amplitude are not dBm |
 

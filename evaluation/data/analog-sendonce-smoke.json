@@ -1,0 +1,98 @@
+{
+  "startedUtc": "2026-10-06T21:10:28.255677+00:00",
+  "seed": 20261007,
+  "txPort": "COM3",
+  "rxPort": "COM4",
+  "sender": "sendonce",
+  "completed": true,
+  "cases": [
+    {
+      "block": 0,
+      "cr": 4,
+      "length": 16,
+      "expected": "48656c6c6f2066726f6d205849414f21",
+      "received": [],
+      "startedUtc": "2026-10-06T21:10:28.346075+00:00",
+      "start": "TX ok; 48.049 ms; late=0",
+      "end": "Verify exact bytes and CRC on the independent receiver.",
+      "transportOk": true,
+      "passed": false,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 4,
+      "length": 16,
+      "expected": "48656c6c6f2066726f6d205849414f21",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=16 rssi=-62.5 snr=6.5 hex=48656c6c6f2066726f6d205849414f21",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 16,
+          "rssi": -62.5,
+          "snr": 6.5,
+          "hex": "48656c6c6f2066726f6d205849414f21"
+        }
+      ],
+      "startedUtc": "2026-10-06T21:10:29.761535+00:00",
+      "start": "TX ok; 48.049 ms; late=0",
+      "end": "Verify exact bytes and CRC on the independent receiver.",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 4,
+      "length": 16,
+      "expected": "48656c6c6f2066726f6d205849414f21",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=16 rssi=-62.5 snr=6.8 hex=48656c6c6f2066726f6d205849414f21",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 16,
+          "rssi": -62.5,
+          "snr": 6.8,
+          "hex": "48656c6c6f2066726f6d205849414f21"
+        }
+      ],
+      "startedUtc": "2026-10-06T21:10:31.173154+00:00",
+      "start": "TX ok; 48.049 ms; late=0",
+      "end": "Verify exact bytes and CRC on the independent receiver.",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    }
+  ],
+  "transport": "DAC",
+  "gapSamples": 14,
+  "profile": {
+    "frequencyHz": 2440125000,
+    "bandwidthHz": 203125,
+    "sf": 7,
+    "sync": 18,
+    "preamble": 16,
+    "windowSamples": 15000
+  },
+  "rule": "fresh RX status=0, header=0, CRC present=1 and CRC ok=1; exact full payload bytes",
+  "sha256": {
+    ".pio/build/xiao-send-once/firmware.bin": "38c6c1ba8721006241883f852e7665c6ee629cd831dd8f01fa2c90c361b3acf5",
+    "companion/lr2021/.pio/build/aerolink-hf/firmware.bin": "240175b3e633eba069a96c4d90d78cd078ff4dc92de4547f41a08477b5541e2f"
+  },
+  "firmwareHashMethod": "SHA256 of last-flashed input images; esptool write verification is separate",
+  "sourceSha256": {
+    "ESP32S3Radio.cpp": "a43ae60050964290c1e90c5a583e61a831ede4e4da971a7c686f815e8432d583",
+    "ESP32S3Radio.h": "073c79cf2e40838e21d0751d2156126272e5d430a6ba4f8ffca30bdc09731ed6",
+    "LoRaSDR.cpp": "d2008c0d36d4d65d7b68fae09c06357d78a80c8bc1e171b6a73113450decfbce",
+    "LoRaSDR.h": "5016a05164cdd05b4ec91e98f2515938814e9b04255fdd91a25f5da18d35dd67",
+    "examples/SendOnce/SendOnce.ino": "3113731b6a45e27555e5fe19df28f80930911a8359838f22c682b83d2a58c1c4"
+  },
+  "receiverIdentity": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1",
+  "finishedUtc": "2026-10-06T21:10:32.591109+00:00"
+}

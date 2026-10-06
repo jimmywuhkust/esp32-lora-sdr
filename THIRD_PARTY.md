@@ -6,6 +6,8 @@
   `6de35a5138c8f6d7bf6af2b6c8dd0c99342e72f0`: PHY reference, register behavior
   and documented successful/failed RF experiments. The native encoder was
   independently expressed in C++ and cross-checked against that Python PHY.
+  The bounded PBUS writer also adapts its `firmware/src/radio.c` register
+  transaction and retains non-raising, readback and restoration checks.
   https://github.com/jochenhammes/esp32-sdr-trx
 - **lora-phy 0.3.0**, upstream project by the package authors: host PHY coding,
   CRC reference and separate PC decoder. https://pypi.org/project/lora-phy/

@@ -1,0 +1,100 @@
+{
+  "startedUtc": "2026-10-06T20:57:30.240473+00:00",
+  "seed": 20261007,
+  "txPort": "COM3",
+  "rxPort": "COM4",
+  "sender": "bench",
+  "completed": false,
+  "cases": [
+    {
+      "block": 0,
+      "cr": 4,
+      "length": 32,
+      "expected": "49067b3a8eecdad021188ad350e6cb5a6b7686135b89904ad68ce29b81ec589f",
+      "received": [
+        {
+          "raw": "RX status=-7 header=0 crc_present=1 crc_ok=0 bytes=32 rssi=-62.5 snr=5.5 hex=49067b2a8eecdad1c1181ad350e6cb5a8b768d135bb99040d68ee29b81ec589d",
+          "status": -7,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": false,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 5.5,
+          "hex": "49067b2a8eecdad1c1181ad350e6cb5a8b768d135bb99040d68ee29b81ec589d"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:57:30.343550+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fc9f688 copy=40222 before=63,63 after=63,63 pa=63",
+      "transportOk": true,
+      "passed": false,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 4,
+      "length": 32,
+      "expected": "b51929b43c083dd0d8f66f90f004f2be19bbf3194410b24730bc67dda062b9d0",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=5.2 hex=b51929b43c083dd0d8f66f90f004f2be19bbf3194410b24730bc67dda062b9d0",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -62.5,
+          "snr": 5.2,
+          "hex": "b51929b43c083dd0d8f66f90f004f2be19bbf3194410b24730bc67dda062b9d0"
+        }
+      ],
+      "startedUtc": "2026-10-06T20:57:31.780879+00:00",
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 6",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 4,
+      "length": 32,
+      "expected": "bde1db20c2682a808a094c8e95f0c9d27d3a73c0d343101aa50e4fd2b0d56a1a",
+      "received": [],
+      "startedUtc": "2026-10-06T20:57:42.493956+00:00",
+      "start": "8.214 buffer=3fc9f688 copy=40222 before=63,63 after=63,63 pa=63",
+      "end": "TXSTART NATIVE",
+      "transportOk": false,
+      "passed": false,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+    }
+  ],
+  "transport": "DAC",
+  "gapSamples": 14,
+  "profile": {
+    "frequencyHz": 2440125000,
+    "bandwidthHz": 203125,
+    "sf": 7,
+    "sync": 18,
+    "preamble": 16,
+    "windowSamples": 15000,
+    "analogGainCode": 63
+  },
+  "rule": "fresh RX status=0, header=0, CRC present=1 and CRC ok=1; exact full payload bytes",
+  "sha256": {
+    "companion/lr2021/.pio/build/aerolink-hf/firmware.bin": "240175b3e633eba069a96c4d90d78cd078ff4dc92de4547f41a08477b5541e2f",
+    "esp32-lora-sdr/research/analog-gain-dac/.pio/build/xiao-stream-research/firmware.bin": "f32dae871677a483b02127c7d9c40c9641e7bfd2fa6a7fa0185c6a5148641f5f"
+  },
+  "firmwareHashMethod": "SHA256 of last-flashed input images; esptool write verification is separate",
+  "sourceSha256": {
+    "ESP32S3Radio.cpp": "a4e15ac458461cde5c1237681d36a1fafc8c2264ab7ea79bcf412fe9f6ff8e9b",
+    "ESP32S3Radio.h": "1c9b310ff369f0b1b33d1a759a7bb4d3cf61b2ca3b656154fbcafaab515350dd",
+    "LoRaSDR.cpp": "d2008c0d36d4d65d7b68fae09c06357d78a80c8bc1e171b6a73113450decfbce",
+    "LoRaSDR.h": "bcb19d3a324ec0b6aef187e29c5ff3e2d1f57c89334302b265a222ecd0229633",
+    "main.cpp": "0dcf61e0c112c2afb1b8b20812a3f0ff97f684f8da38289a271f0004451b20bf"
+  },
+  "receiverIdentity": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1",
+  "error": "RuntimeError('Native serial transaction lost synchronization')",
+  "finishedUtc": "2026-10-06T20:57:43.145573+00:00"
+}

@@ -38,6 +38,8 @@ with a production binary hash.
 | `native-encoder.json` | 264 on-device symbol-encoding checks; not RF tests |
 | `native-amplitude-sf.json` | 180 SF/amplitude trials; only SF7 delivered packets |
 | `public-receiver-usb-desync.json` | Retained broken transport run; not an RF sensitivity estimate |
+| `analog-gain-sf7-sweep.json` | 70/70 at seven shuffled PBUS codes, constant DAC amplitude, verified readbacks |
+| `analog-gain1-matrix.json` | Separate lowest-code research matrix: 71/72 across four CRs and 1–255 bytes |
 
 The older private-application datasets are retained as historical evidence;
 the public receiver is the reproducible path. Different builds, payload sets

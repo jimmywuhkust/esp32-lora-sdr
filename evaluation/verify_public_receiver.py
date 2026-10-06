@@ -25,16 +25,27 @@ def main():
     p.add_argument('--sf',type=int,choices=[7,8,9],default=7)
     p.add_argument('--bandwidth',type=int,choices=[203125,406250,812500],default=203125)
     p.add_argument('--window',type=int,default=15000)
-    p.add_argument('--transport',choices=['DAC','STREAM'],default='DAC')
+    p.add_argument('--analog-gain',type=int,help='isolated analog-gain research build only; not calibrated dBm')
+    p.add_argument('--analog-gain-sweep',help='comma-separated PBUS codes; smoke research only, shuffled within each block')
+    p.add_argument('--transport',choices=['DAC','PLL','STREAM'],default='DAC')
     p.add_argument('--gap',type=int,default=14)
+    p.add_argument('--update-rate',type=int,help='isolated RATE-capable PLL research build only')
     p.add_argument('--tx-image',type=Path,help='override image hash for a separately built research transmitter')
     p.add_argument('--tx-source',type=Path,help='source directory of the separately built research transmitter')
     p.add_argument('--output',type=Path,default=ROOT/'evaluation/data/public-receiver.json')
     a=p.parse_args()
     if not 1<=a.repeats<=100:raise ValueError('repeats must be 1..100')
+    gains=[a.analog_gain]
+    if a.analog_gain_sweep:
+        if not a.smoke or a.sender!='bench' or a.analog_gain is not None:
+            raise ValueError('gain sweep requires --smoke bench and no --analog-gain')
+        gains=[int(v) for v in a.analog_gain_sweep.split(',')]
+        if not gains or len(set(gains))!=len(gains) or any(not 1<=v<=63 for v in gains):
+            raise ValueError('gain sweep requires distinct measured non-raising codes 1..63')
     rng=random.Random(a.seed)
     configs=[(cr,n) for cr in range(1,5) for n in [1,8,32,80,128,255]]
     if a.smoke:configs=[(4,32)]
+    configs=[(cr,n,gain) for cr,n in configs for gain in gains]
     result=dict(startedUtc=datetime.now(timezone.utc).isoformat(),seed=a.seed,
         txPort=a.tx_port,rxPort=a.rx_port,sender=a.sender,completed=False,cases=[],transport=a.transport,gapSamples=a.gap,
         profile=dict(frequencyHz=2440125000,bandwidthHz=a.bandwidth,sf=a.sf,sync=18,preamble=16,windowSamples=a.window),
@@ -45,9 +56,15 @@ def main():
     if a.tx_image:
         result['sha256'].pop(f'.pio/build/{"xiao-s3" if a.sender=="bench" else "xiao-send-once"}/firmware.bin',None)
         result['sha256'][str(a.tx_image).replace('\\','/')]=hashlib.sha256(a.tx_image.read_bytes()).hexdigest()
+    if a.analog_gain is not None:result['profile']['analogGainCode']=a.analog_gain
+    if a.analog_gain_sweep:result['profile']['analogGainCodes']=gains
+    if a.update_rate is not None:result['profile']['updateRateHz']=a.update_rate
     result['firmwareHashMethod']='SHA256 of last-flashed input images; esptool write verification is separate'
     source=a.tx_source or (ROOT/'research/full-symbol-dac-fast/src' if a.transport=='STREAM' else ROOT/'src')
     result['sourceSha256']={f.name:hashlib.sha256(f.read_bytes()).hexdigest() for f in sorted(source.glob('*')) if f.is_file()}
+    if source==ROOT/'src':
+        example=ROOT/f'examples/{"SerialBench/main.cpp" if a.sender=="bench" else "SendOnce/SendOnce.ino"}'
+        result['sourceSha256'][str(example.relative_to(ROOT)).replace('\\','/')]=hashlib.sha256(example.read_bytes()).hexdigest()
     tx=rx=None
     def line(port,timeout):
         end=time.monotonic()+timeout
@@ -68,6 +85,8 @@ def main():
             commands=[('INFO','LoRaSDR native S3 0.1'),(a.transport,a.transport+' selected'),('AMP 150','AMP 150')]
             commands.extend((cmd,cmd) for cmd in ['FREQ 2440125','CFO 15000','PRE 16',f'WIN {a.window}'])
             if a.transport!='STREAM':commands.append((f'BW {a.bandwidth}',f'BW {a.bandwidth}'))
+            if a.analog_gain is not None:commands.append((f'PA {a.analog_gain}',f'PA {a.analog_gain}'))
+            if a.update_rate is not None:commands.append((f'RATE {a.update_rate}',f'RATE {a.update_rate}'))
             if a.transport=='STREAM':commands.append((f'GAP {a.gap}',f'GAP {a.gap}'))
             for command,expected in commands:
                 tx.write((command+'\n').encode());reply=line(tx,5)
@@ -79,17 +98,26 @@ def main():
         if reply!=f'BW {a.bandwidth} status=0':raise RuntimeError(reply)
         for block in range(a.repeats):
             order=configs.copy();rng.shuffle(order)
-            if a.sender=='sendonce':order=[(4,16)]
-            for cr,n in order:
+            if a.sender=='sendonce':order=[(4,16,None)]
+            for cr,n,gain in order:
+                if a.analog_gain_sweep:
+                    tx.write(f'PA {gain}\n'.encode());reply=line(tx,5)
+                    if reply!=f'PA {gain}':raise RuntimeError('Gain setting failed: '+reply)
                 data=b'Hello from XIAO!' if a.sender=='sendonce' else rng.randbytes(n)
                 rx.reset_input_buffer()
                 case=dict(block=block,cr=cr,length=n,expected=data.hex(),received=[],
                     startedUtc=datetime.now(timezone.utc).isoformat())
+                if gain is not None:case['analogGainCode']=gain
                 tx.write(b's' if a.sender=='sendonce' else f'TX {a.sf} {cr} {data.hex()}\n'.encode())
                 case['start']=line(tx,10)
                 case['end']=line(tx,10)
                 case['transportOk']=case['start'].startswith('TX ok;') if a.sender=='sendonce' else (
                     case['start']=='TXSTART NATIVE' and case['end'].startswith('TXEND NATIVE ok '))
+                if gain:
+                    readback=re.search(r'a=(\d+),(\d+) b=(\d+),(\d+)$',case['end'])
+                    case['analogReadbackOk']=bool(readback and tuple(map(int,readback.groups()[2:]))==(gain,gain))
+                    if readback:case['analogReadback']=list(map(int,readback.groups()))
+                    case['transportOk']=case['transportOk'] and case['analogReadbackOk']
                 # Drain all lines after the synchronous TX. The receiver runs
                 # independently while TX blocks; no expected bytes are sent to it.
                 end=time.monotonic()+.5
@@ -115,7 +143,7 @@ def main():
                 # Continuing after a missing TXEND would shift every later
                 # request/reply and attribute the previous packet to a new job.
                 # Preserve this failed trial and stop instead of cascading.
-                if not case['transportOk']:raise RuntimeError('Native serial transaction lost synchronization')
+                if not case['transportOk']:raise RuntimeError('Local TX completion or serial synchronization failed: '+case['end'])
                 if 'ready=1' not in case['receiverAfter']:raise RuntimeError('Independent receiver stopped')
         result['completed']=True
     except BaseException as error:

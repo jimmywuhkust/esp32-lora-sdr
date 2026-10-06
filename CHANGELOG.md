@@ -10,8 +10,10 @@
 - Public RadioLib 7.7.0 LR2021 receiver companion and reproducible USB verifier.
 - English and Chinese guides, scientific figures with confidence intervals,
   retained failures and credited prior work.
+- Optional, experimental analog PBUS gain control with readback, restoration
+  and non-raising guards; default 0 leaves the measured RF defaults intact.
 
-This is not a complete SX1262/SX1280 replacement. SF8/SF9 interoperability,
+This is not a complete SX1262/SX1280 replacement. Reliable SF8/SF9 transmission,
 gap-free continuous waveforms, calibrated power, weak-signal SF recovery and
 native Arduino packet reception remain unachieved. The experimental continuous
 streamer is isolated from the working library.

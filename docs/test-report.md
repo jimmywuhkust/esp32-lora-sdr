@@ -1,6 +1,6 @@
 # Hardware test report — 7 October 2026
 
-Updated through approximately 04:48 Hong Kong time. This is a measured engineering report, not a
+Updated through approximately 05:12 Hong Kong time. This is a measured engineering report, not a
 claim of universal compatibility or a peer-reviewed paper. Subsequent research
 results must be appended with their own firmware hashes and denominators.
 
@@ -11,10 +11,16 @@ Latest public-receiver matrix: **239/240**, SF7, four coding rates and lengths
 matrices passed **72/72 at 406.25 kHz** and **72/72 at 812.5 kHz**. The beginner
 sketch passed **3/3** after a normal full PlatformIO upload. Later sections
 identify each dataset and its firmware; the original matrix below is retained.
+After the optional analog-control merge, its separate lowest-code regression
+passed **72/72**, guards **18/18**, and default-gain bandwidth smoke tests
+**3/3 each**. The newly rebuilt SendOnce example delivered **2/3**, with one
+miss retained; the earlier 3/3 applies to the earlier image.
 
 最新结论：公开接收器 239/240，覆盖 1–255 字节；两个更宽带宽批次各 72/72。
-入门示例实际刷机后 3/3 完整 CRC 收包。SF8/SF9、弱信号提高 SF 恢复、校准功率
-和原生 Arduino 收包仍未实现，完整失败记录保留。
+较早入门示例刷机后 3/3；最新重编译版本本轮 2/3，一次漏收保留。
+模拟增益七档研究 70/70，最低档合入后回归 72/72；仍没有校准成 dBm。
+SF8/SF9 的 PLL 路径有完整 CRC 包，但很不可靠；稳定高 SF、弱信号提高 SF
+恢复和原生 Arduino 收包仍未实现，完整失败记录保留。
 
 **A XIAO ESP32-S3 genuinely transmitted complete 2.4 GHz LoRa packets to an
 independent LR2021, with matching full payload and hardware CRC.** The portable
@@ -28,8 +34,8 @@ There were three misses; this result does not justify a 100% reliability claim.
 
 中文结论：XIAO 已经能用自带射频发送完整 LoRa 包，LR2021 独立接收并通过 CRC。
 完整随机实测为 237/240，覆盖四种纠错率和 1–250 字节；三个失败保留。
-SF8/SF9、弱信号下提高 SF 的恢复效果、校准发射功率和原生 Arduino 完整接收，
-在此快照中仍未验证成功，不能宣传为已经具备。
+稳定 SF8/SF9、弱信号下提高 SF 的恢复效果、校准发射功率和原生 Arduino 完整接收，
+在此快照中仍未具备，不能宣传为已完成。
 
 ![Real RF results and confidence intervals](assets/baseline-results.svg)
 
@@ -361,3 +367,87 @@ on a fresh Ubuntu runner. It built SerialBench, SendOnce and the public LR2021
 companion using pinned PlatformIO dependencies. Total duration was 1 minute
 57 seconds. This is additional clean-build evidence; the runner has no radio
 hardware and its success is not an RF test.
+
+## Analog gain control with constant waveform quantization
+
+An isolated build held DAC amplitude at 150 and varied both PBUS (5,1) and
+(5,3), inspired by the credited upstream IQ TX study. **70/70** fresh 32-byte
+SF7/CR4/8 packets passed: seven codes 1,3,8,16,32,48,63, ten shuffled blocks,
+no RF retries. Every trial also verified both gain readbacks and successful
+local completion. Raw file: `evaluation/data/analog-gain-sf7-sweep.json`.
+The image SHA256 was
+`884a7ac0def5183d2e7b47caa46ee3e88e054e136204ae7e68ff05105a58138f`.
+Each 10/10 point has a Wilson 95% lower bound of only about 72.25%.
+
+Median received RSSI was -91.5,-85.5,-88.5,-91.5,-87.5,-85.5,-62.5 dBm
+respectively. Thus signal level changed substantially without lowering DAC
+quantization, but **the codes are not monotonic and are not calibrated power**.
+There was no receive threshold crossing or SF recovery in this experiment.
+These results do not establish sensitivity, range or a legal spectral mask.
+
+![Constant-DAC analog gain study with confidence intervals](assets/analog-gain-results.svg)
+
+The reference's keyed default 119 did not match this build's measured 63/63.
+A non-raising guard rejected 119 before chirp playback. The first 63 smoke
+run then aborted after a fragmented USB completion line; its one exact and
+one corrupt RF reception are retained, not discarded or pooled with the
+completed sweep. Shortening successful completion lines below 64 bytes gave
+a fresh 3/3 smoke pass. All initial failure logs are in `evaluation/data/research/`.
+This remains an isolated research feature, not a conventional dBm API.
+
+## Further higher-SF diagnosis
+
+Increasing the down-chirp and quarter-SFD windows in the separate bandwidth
+build still gave SF8/406.25 kHz **0/3** and SF9/812.5 kHz **0/3**, with no
+late updates. The failed variants remain separate from the supported library.
+
+A different native PLL transport gave SF8/203.125 kHz **0/3**. SF9 at the
+same bandwidth received **1/3**, then **2/10** in a longer fresh-payload run
+at 80,000 register updates/s. The first three payloads were repeated between
+those two runs, so they must not be pooled as independent trials. The SF9
+exact CRC packets show some higher-SF encoding interoperability, while the
+many CRC failures show the PLL waveform is not reliable. They do not validate
+SF9 DAC transmission or weak-signal SF recovery. Raw local completion and
+all received corrupt bytes are retained in `evaluation/data/research/`.
+
+Increasing the PLL update rate gave SF9 **4/10** at 120,000 updates/s and
+SF8 **1/10** at 200,000 updates/s, with the same fresh-payload sequence per
+run. These were small sequential diagnostic trials, not a randomized rate
+comparison; their low delivery remains unsuitable for a supported profile.
+
+The lowest analog code was subsequently exercised across four coding rates
+and six lengths (1,8,32,80,128,255), three shuffled blocks. The separate
+research build delivered **71/72**, including all twelve 255-byte packets.
+One 32-byte CR4/8 trial had no exact CRC-valid reception; it was retained and
+not retried. This matrix does not show perfect delivery or a receive threshold.
+Raw file: `evaluation/data/analog-gain1-matrix.json`.
+
+## Optional analog-control library regression
+
+The library now exposes an explicitly experimental `analogGainCode`. Default
+0 skips PBUS changes. Nonzero codes 1–63 are DAC-only, checked against both
+actual keyed defaults, verified after programming, and restored with readback
+before returning. A restoration failure returns a local error.
+
+The merged SerialBench image SHA256 is
+`459905f6993f9f5062c54eb4e3e9ada28384ad6f60dd00a66e6ce8b1532dee39`.
+A separate code-1 regression delivered **72/72** across all four coding rates
+and six lengths, including twelve 255-byte packets. It reused the research
+matrix's payload sequence; this is a firmware regression, not additional
+independent randomized data to pool with 71/72. Raw file:
+`evaluation/data/merged-analog-gain1-matrix.json`.
+
+All **18/18** command/airtime/window/transport guards passed, including
+out-of-range analog requests and rejecting analog control on PLL before RF.
+The default `PA 0` path then delivered **3/3** fresh 32-byte packets at each
+of the three SF7 bandwidths. These small smoke tests preserve the earlier
+full-matrix denominators rather than claiming another full default matrix.
+
+The rebuilt SendOnce sketch was installed with the full normal PlatformIO
+upload and delivered **2/3** complete 16-byte CRC packets. Its first requested
+packet produced no RX line despite successful local completion and zero late
+updates; the cause is unproven. There was no retry to replace it. The new
+image SHA256 is
+`38c6c1ba8721006241883f852e7665c6ee629cd831dd8f01fa2c90c361b3acf5`.
+Raw file: `evaluation/data/analog-sendonce-smoke.json`. The earlier 3/3 test
+used another image; it does not make this missed packet disappear.

@@ -14,9 +14,14 @@ void loop() {
     if(!Serial.available()){delay(1);return;}
     String line=Serial.readStringUntil('\n');line.trim();
     if(line=="INFO"){Serial.println("LoRaSDR native S3 0.1");return;}
+    if(line.startsWith("RATE ")) {
+        unsigned value;char extra;
+        if(sscanf(line.c_str(),"RATE %u %c",&value,&extra)!=1||value<40000||value>200000||240000000u%value){Serial.println("ERR RATE");return;}
+        config.updateRateHz=value;Serial.printf("RATE %u\n",value);return;
+    }
     if(line.startsWith("PA ")) {
         unsigned value;char extra;
-        if(sscanf(line.c_str(),"PA %u %c",&value,&extra)!=1||value>63){Serial.println("ERR PA");return;}
+        if(sscanf(line.c_str(),"PA %u %c",&value,&extra)!=1||value<1||value>119){Serial.println("ERR PA");return;}
         config.analogGainCode=value;Serial.printf("PA %u\n",value);return;
     }
     if(line.startsWith("BW ")) {
@@ -64,10 +69,8 @@ void loop() {
         TxResult result;Serial.println("TXSTART NATIVE");Serial.flush();
         Error error=radio.transmit(payload,length,config,result);
         delay(2); // let the native USB interrupt/tick service recover after RF
-        if(config.analogGainCode)
-            Serial.printf("TXEND NATIVE %s %u %u %.3f a=%u,%u b=%u,%u\n",errorName(error),result.updates,result.lateUpdates,result.packet.airtimeMs,result.analogBefore1,result.analogBefore3,result.analogAfter1,result.analogAfter3);
-        else
-            Serial.printf("TXEND NATIVE %s %u %u %.3f buffer=%08x copy=%u\n",errorName(error),result.updates,result.lateUpdates,result.packet.airtimeMs,result.sourceAddress,result.maxCopyCycles);
+        // Keep successful completion below one USB full-speed CDC packet.
+        Serial.printf("TXEND NATIVE %s %u %u %.3f a=%u,%u b=%u,%u\n",errorName(error),result.updates,result.lateUpdates,result.packet.airtimeMs,result.analogBefore1,result.analogBefore3,result.analogAfter1,result.analogAfter3);
         Serial.flush();
     }
 }

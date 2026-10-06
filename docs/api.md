@@ -55,6 +55,7 @@ backend. Separate ESP-SDR I/Q capture and PC decoding are a different workflow.
 | `dacAmplitude` | Signed 10-bit I/Q peak | 1–200, default 150; uncalibrated |
 | `dacWindowSamples` | Played up-chirp samples | 1000–16380 and shorter than the symbol; SF7: 15000 / 7500 / 3750 for the three bandwidths |
 | `gainCode` | Vendor tone gain code | 64–200; not dBm and does not calibrate DAC power |
+| `analogGainCode` | Experimental PBUS level code | Default 0 keeps keyed defaults; 1–63 for DAC only; nonmonotonic, uncalibrated and never above either measured keyed default |
 | `updateRateHz` | PLL frequency update rate | 40–200 kHz, exact divisor of 240 MHz |
 
 The DAC backend reserves RF SRAM bank 2 for playback and checks linked RAM
@@ -71,6 +72,13 @@ address and maximum copy cycles. The watchdog is serviced between symbol
 windows. A DAC engine timeout returns `PlaybackTimeout` and stops playback.
 Late counters are diagnostic evidence, not a receiver acknowledgment.
 
+For explicit analog gain, `TxResult` also records both keyed defaults and
+both programmed readbacks, and `analogGainRestored`. The backend verifies
+the requested values and restoration; a failed transaction or restoration
+returns `NotReady`. It rejects this setting on PLL before keying RF. Do not
+interpret a register code as a linear power scale. `analogGainCode=0` skips
+PBUS changes entirely and keeps the previously measured default path.
+
 ## Bench protocol
 
 SerialBench accepts newline-terminated commands:
@@ -82,6 +90,8 @@ ENC 7 4 HEX          encode only; returns symbols, no RF
 TX 7 4 HEX           one native encoded RF packet
 AMP 150              raw DAC amplitude, 1–200
 GAIN 119             raw tone-gain code, 64–200
+PA 0                 preserve keyed analog defaults; experimental PA 1–63 for DAC
+BW 203125            203125 / 406250 / 812500 Hz; choose matching window
 WIN 15000            DAC window, 1000–16380 samples
 PRE 16               preamble, 12–64 symbols
 FREQ 2440125         channel in kHz

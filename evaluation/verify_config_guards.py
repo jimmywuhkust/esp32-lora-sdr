@@ -12,6 +12,7 @@ checks=[('AMP 0','ERR setting'),('AMP 201','ERR setting'),('WIN 999','ERR settin
  ('CFO 50001','ERR setting'),('TX 7 4 ff trailing','ERR arguments'),
  ('TX 7 4 f','ERR length'),('TX 7 4 gg','ERR hex'),('TX 13 4 ff','ERR arguments'),
  ('TX 7 5 ff','ERR arguments')]
+checks.extend([('PA 64','ERR PA'),('PA -1','ERR PA'),('PA 1 trailing','ERR PA')])
 result={'cases':[],'method':'Invalid inputs and overlong PLL packet; no requested RF transmission',
  'firmwareSha256':hashlib.sha256((ROOT/'.pio/build/xiao-s3/firmware.bin').read_bytes()).hexdigest()}
 with open_port(a.port) as port:
@@ -24,6 +25,7 @@ with open_port(a.port) as port:
         return buf.decode(errors='replace').strip()
     def command(value):port.write((value+'\n').encode());return read()
     result['identity']=command('INFO')
+    result['analogDefault']=command('PA 0')
     for value,expected in checks:
         reply=command(value)
         result['cases'].append(dict(command=value,expected=expected,reply=reply,passed=reply==expected))
@@ -33,6 +35,11 @@ with open_port(a.port) as port:
         first=command(value);last=read()
         result['cases'].append(dict(command=value,name=name,start=first,end=last,
             passed=first=='TXSTART NATIVE' and last.startswith('TXEND NATIVE unsupported 0 0 ')))
+    result['analogSelect']=command('PA 1')
+    first=command('TX 7 4 01');last=read()
+    result['cases'].append(dict(name='Analog gain rejected on PLL before keying',start=first,end=last,
+        passed=first=='TXSTART NATIVE' and last.startswith('TXEND NATIVE unsupported 0 0 ')))
+    result['analogRestore']=command('PA 0')
     result['dacSelect']=command('DAC')
     result['bwSelect']=command('BW 406250')
     result['windowSelect']=command('WIN 15000')

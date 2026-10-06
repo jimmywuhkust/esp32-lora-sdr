@@ -140,6 +140,30 @@ fig.text(.09,.045,'LR2021 independent receiver · 2440.125 MHz · explicit heade
     'Separate builds / shorter wider-band runs, not a controlled sensitivity comparison. Wilson 95% intervals; airtime is theoretical.',fontsize=8,color='#425465')
 for suffix in ('svg','pdf','png'):fig.savefig(OUT/f'bandwidth-results.{suffix}',dpi=240,facecolor='white')
 
+analog=read('analog-gain-sf7-sweep.json')
+codes=analog['profile']['analogGainCodes']
+fig,axes=plt.subplots(1,2,figsize=(10.4,4.0))
+for i,code in enumerate(codes):
+    cases=[c for c in analog['cases'] if c['analogGainCode']==code]
+    k=sum(c['passed'] for c in cases);n=len(cases);lo,hi=wilson(k,n)
+    axes[0].errorbar(i,100*k/n,yerr=[[max(0,100*(k/n-lo))],[max(0,100*(hi-k/n))]],fmt='o',capsize=3,color='#237b85')
+    axes[0].annotate(f'{k}/{n}',(i,100*k/n),xytext=(0,-22),textcoords='offset points',ha='center',fontsize=8)
+    values=[q['rssi'] for c in cases if c['passed'] for q in c['received'] if q.get('crcOk') and q.get('hex')==c['expected']]
+    axes[1].scatter([i]*len(values),values,s=18,color='#237b85',alpha=.35)
+    axes[1].scatter(i,np.median(values),s=45,marker='_',color='#182d47')
+    axes[1].annotate(f'n={len(values)}',(i,max(values)),xytext=(0,9),textcoords='offset points',ha='center',fontsize=8)
+axes[0].set_ylim(68,105);axes[0].set_ylabel('Exact bytes + CRC reception (%)')
+axes[0].set_title('A  Constant-DAC analog gain sweep',loc='left',pad=14)
+axes[1].set_ylim(-96,-55);axes[1].set_ylabel('LR2021 reported RSSI (dBm)')
+axes[1].set_title('B  Received packets only; median marks',loc='left',pad=14)
+for axis in axes:
+    axis.set_xticks(range(len(codes)),codes);axis.set_xlabel('PBUS code in both (5,1) and (5,3)')
+    axis.grid(axis='y',alpha=.15)
+fig.subplots_adjust(left=.09,right=.98,top=.82,bottom=.29,wspace=.4)
+fig.text(.09,.045,'SF7 · BW203.125 kHz · CR4/8 · 32 fresh random bytes · DAC amplitude 150 · 10 shuffled blocks\n'
+    'Undocumented codes are not calibrated power or monotonic. One stationary bench; Wilson 95% intervals; successful-packet RSSI only.',fontsize=8,color='#425465')
+for suffix in ('svg','pdf','png'):fig.savefig(OUT/f'analog-gain-results.{suffix}',dpi=240,facecolor='white')
+
 # Matplotlib's multiline SVG paths contain trailing blanks by default.
 for path in OUT.glob('*-results.svg'):
     path.write_text('\n'.join(line.rstrip() for line in path.read_text(encoding='utf-8').splitlines())+'\n',encoding='utf-8')

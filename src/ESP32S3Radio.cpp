@@ -22,6 +22,7 @@
 #include "freertos/task.h"
 extern "C" {
 unsigned rom_chip_i2c_readReg(unsigned,unsigned,unsigned);
+unsigned rom_pbus_rd(unsigned,unsigned);
 void rom_chip_i2c_writeReg(unsigned,unsigned,unsigned,unsigned);
 void set_rf_freq_offset(unsigned,unsigned,int);
 void start_tx_tone_step(unsigned,unsigned,unsigned,unsigned,unsigned,unsigned);
@@ -35,6 +36,21 @@ extern char _bss_end[],_data_end[],_iram_end[];
 }
 SOC_RESERVE_MEMORY_REGION(0x3fcd0000,0x3fce0000,s3_dac_bank);
 namespace lora_sdr {
+static bool pbusWrite(unsigned block,unsigned index,unsigned value) {
+    unsigned fields=((value&511u)<<6)|((block&15u)<<2)|((index&3u)<<15);
+    REG_WRITE(0x60006104,(REG_READ(0x60006104)&0xfffe0001u)|(fields&0x1fffcu)|2u);
+    uint32_t started=cpu_hal_get_cycle_count();
+    while(REG_READ(0x60006110)&0x80000000u) {
+        if(cpu_hal_get_cycle_count()-started>24000u){REG_CLR_BIT(0x60006104,2u);return false;}
+    }
+    REG_CLR_BIT(0x60006104,2u);return true;
+}
+static bool restoreAnalogGain(TxResult& result,uint32_t control) {
+    bool a=pbusWrite(5,1,result.analogBefore1),b=pbusWrite(5,3,result.analogBefore3);
+    bool restored=a&&b&&(rom_pbus_rd(5,1)&511u)==result.analogBefore1&&
+        (rom_pbus_rd(5,3)&511u)==result.analogBefore3;
+    REG_WRITE(0x60006104,control);result.analogGainRestored=restored;return restored;
+}
 static unsigned dacCopyCycles;
 static bool dacTimedOut;
 static void IRAM_ATTR __attribute__((optimize("O3"))) copyDac(uint32_t *destination,
@@ -163,6 +179,7 @@ Error ESP32S3Radio::transmit(const uint8_t* data,size_t length,const Config& c,T
     result=TxResult{};
     if(!ready_)return Error::NotReady;
     if(c.transport!=Transport::Pll&&c.transport!=Transport::DacWindows)return Error::Unsupported;
+    if(c.analogGainCode>63||(c.analogGainCode&&c.transport!=Transport::DacWindows))return Error::Unsupported;
     if(c.frequencyHz<2400200000u||c.frequencyHz>2483300000u||
        (c.bandwidthHz!=203125&&c.bandwidthHz!=406250&&c.bandwidthHz!=812500)||c.spreadingFactor<7||c.spreadingFactor>9||
        c.preambleSymbols<12||c.preambleSymbols>64||c.frequencyCorrectionHz<-50000||c.frequencyCorrectionHz>50000||
@@ -204,6 +221,25 @@ Error ESP32S3Radio::transmit(const uint8_t* data,size_t length,const Config& c,T
             }
         }
         txcal_debuge_mode();start_tx_tone_step(1,0,c.gainCode,0,0,0);
+        uint32_t pbusControl=0;
+        if(c.analogGainCode) {
+            pbusControl=REG_READ(0x60006104);
+            result.analogBefore1=rom_pbus_rd(5,1)&511u;
+            result.analogBefore3=rom_pbus_rd(5,3)&511u;
+            bool valid=c.analogGainCode<=result.analogBefore1&&c.analogGainCode<=result.analogBefore3;
+            if(valid) {
+                REG_SET_BIT(0x60006104,1u);
+                bool a=pbusWrite(5,1,c.analogGainCode),b=pbusWrite(5,3,c.analogGainCode);
+                valid=a&&b;
+            }
+            result.analogAfter1=rom_pbus_rd(5,1)&511u;
+            result.analogAfter3=rom_pbus_rd(5,3)&511u;
+            valid=valid&&result.analogAfter1==c.analogGainCode&&result.analogAfter3==c.analogGainCode;
+            if(!valid) {
+                restoreAnalogGain(result,pbusControl);
+                stop_tx_tone(1);txcal_work_mode();rom_pbus_xpd_tx_off();heap_caps_free(ring);return Error::NotReady;
+            }
+        }
         rom_set_txclk_en(1);
         rom_set_rxclk_en(1);
         int64_t frequency=static_cast<int64_t>(c.frequencyHz)+c.frequencyCorrectionHz;
@@ -214,7 +250,9 @@ Error ESP32S3Radio::transmit(const uint8_t* data,size_t length,const Config& c,T
         result.maxCopyCycles=dacCopyCycles;
         result.updates=c.preambleSymbols+5+result.packet.symbolCount;
         REG_WRITE(0x60033d64,saved&~0x80000000u);REG_WRITE(0x600c101c,owner);REG_WRITE(0x60006040,tone);
+        bool restored=!c.analogGainCode||restoreAnalogGain(result,pbusControl);
         stop_tx_tone(1);txcal_work_mode();rom_pbus_xpd_tx_off();heap_caps_free(ring);
+        if(!restored)return Error::NotReady;
         return dacTimedOut?Error::PlaybackTimeout:Error::Ok;
     }
     unsigned total=static_cast<unsigned>(round(result.packet.airtimeMs*c.updateRateHz/1000));

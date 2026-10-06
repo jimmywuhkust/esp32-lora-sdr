@@ -18,7 +18,7 @@ struct Config {
     int32_t frequencyCorrectionHz = 15000; // measured for the bench pair, not universal
     uint32_t updateRateHz = 80000;
     uint8_t gainCode = 119; // vendor code; deliberately not labelled dBm
-    uint8_t analogGainCode = 0; // 0 keeps keyed defaults; experimental DAC PBUS code 1..63, not dBm
+    uint8_t analogGainCode = 63; // measured keyed default on this Arduino build; still read/guard it
     Transport transport = Transport::DacWindows;
     uint16_t dacAmplitude = 150; // uncalibrated, signed 10-bit DAC units
     uint16_t dacWindowSamples = 15000;

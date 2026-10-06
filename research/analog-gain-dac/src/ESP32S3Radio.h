@@ -3,13 +3,12 @@
 
 namespace lora_sdr {
 struct TxResult {
+    unsigned analogBefore1=0,analogBefore3=0,analogAfter1=0,analogAfter3=0;
     PacketInfo packet;
     unsigned updates=0;
     unsigned lateUpdates=0;
     uint32_t sourceAddress=0;
     unsigned maxCopyCycles=0;
-    unsigned analogBefore1=0,analogBefore3=0,analogAfter1=0,analogAfter3=0;
-    bool analogGainRestored=false;
 };
 class ESP32S3Radio {
 public:

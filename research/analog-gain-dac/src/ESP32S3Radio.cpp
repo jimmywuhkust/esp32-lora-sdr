@@ -22,6 +22,7 @@
 #include "freertos/task.h"
 extern "C" {
 unsigned rom_chip_i2c_readReg(unsigned,unsigned,unsigned);
+unsigned rom_pbus_rd(unsigned,unsigned);
 void rom_chip_i2c_writeReg(unsigned,unsigned,unsigned,unsigned);
 void set_rf_freq_offset(unsigned,unsigned,int);
 void start_tx_tone_step(unsigned,unsigned,unsigned,unsigned,unsigned,unsigned);
@@ -35,6 +36,15 @@ extern char _bss_end[],_data_end[],_iram_end[];
 }
 SOC_RESERVE_MEMORY_REGION(0x3fcd0000,0x3fce0000,s3_dac_bank);
 namespace lora_sdr {
+static bool pbusWrite(unsigned block,unsigned index,unsigned value) {
+    unsigned fields=((value&511u)<<6)|((block&15u)<<2)|((index&3u)<<15);
+    REG_WRITE(0x60006104,(REG_READ(0x60006104)&0xfffe0001u)|(fields&0x1fffcu)|2u);
+    uint32_t started=cpu_hal_get_cycle_count();
+    while(REG_READ(0x60006110)&0x80000000u) {
+        if(cpu_hal_get_cycle_count()-started>24000u){REG_CLR_BIT(0x60006104,2u);return false;}
+    }
+    REG_CLR_BIT(0x60006104,2u);return true;
+}
 static unsigned dacCopyCycles;
 static bool dacTimedOut;
 static void IRAM_ATTR __attribute__((optimize("O3"))) copyDac(uint32_t *destination,
@@ -76,7 +86,7 @@ static unsigned IRAM_ATTR __attribute__((optimize("O3"))) playDac(const uint32_t
     uint32_t *destination=reinterpret_cast<uint32_t*>(0x3fcd0000);
     unsigned irq=portSET_INTERRUPT_MASK_FROM_ISR(),late=0;
     unsigned window=config->dacWindowSamples,n=1u<<config->spreadingFactor;
-    unsigned quarterWindow=(static_cast<uint64_t>(config->spreadingFactor>=8?2000:1000)*ringLength+12603)/25206;
+    unsigned quarterWindow=(static_cast<uint64_t>(1000)*ringLength+12603)/25206;
     if(quarterWindow>window)quarterWindow=window;
     uint32_t next=cpu_hal_get_cycle_count()+window*12+2400;
     unsigned segments=config->preambleSymbols+5+symbolCount;
@@ -172,10 +182,12 @@ Error ESP32S3Radio::transmit(const uint8_t* data,size_t length,const Config& c,T
     Error status=Encoder::encode(data,length,c,symbols,1024,result.packet);
     if(status!=Error::Ok)return status;
     if(c.transport==Transport::DacWindows) {
+        if(c.analogGainCode<1||c.analogGainCode>119)return Error::Unsupported;
         if(c.dacAmplitude<1||c.dacAmplitude>200||c.dacWindowSamples<1000||
            c.dacWindowSamples>16380||result.packet.airtimeMs>1000)return Error::Unsupported;
         unsigned ringLength=static_cast<unsigned>(round((1u<<c.spreadingFactor)*40000000.0/c.bandwidthHz));
-        unsigned downLength=(static_cast<uint64_t>(c.spreadingFactor>=8?15000:6000)*ringLength+12603)/25206;
+        if(c.dacWindowSamples>=ringLength)return Error::Unsupported;
+        unsigned downLength=(static_cast<uint64_t>(6000)*ringLength+12603)/25206;
         if(downLength>c.dacWindowSamples)downLength=c.dacWindowSamples;
         bool compact=ringLength>25206;
         unsigned ringBytes=(ringLength+downLength)*(compact?1:4),lookupOffset=(ringBytes+3)&~3u;
@@ -203,6 +215,21 @@ Error ESP32S3Radio::transmit(const uint8_t* data,size_t length,const Config& c,T
             }
         }
         txcal_debuge_mode();start_tx_tone_step(1,0,c.gainCode,0,0,0);
+        uint32_t pbusControl=REG_READ(0x60006104);
+        result.analogBefore1=rom_pbus_rd(5,1)&511u;
+        result.analogBefore3=rom_pbus_rd(5,3)&511u;
+        bool analogOk=c.analogGainCode<=result.analogBefore1&&c.analogGainCode<=result.analogBefore3;
+        if(analogOk) {
+            REG_SET_BIT(0x60006104,1u);
+            analogOk=pbusWrite(5,1,c.analogGainCode)&&pbusWrite(5,3,c.analogGainCode);
+        }
+        result.analogAfter1=rom_pbus_rd(5,1)&511u;
+        result.analogAfter3=rom_pbus_rd(5,3)&511u;
+        analogOk=analogOk&&result.analogAfter1==c.analogGainCode&&result.analogAfter3==c.analogGainCode;
+        if(!analogOk) {
+            pbusWrite(5,1,result.analogBefore1);pbusWrite(5,3,result.analogBefore3);REG_WRITE(0x60006104,pbusControl);
+            stop_tx_tone(1);txcal_work_mode();rom_pbus_xpd_tx_off();heap_caps_free(ring);return Error::NotReady;
+        }
         rom_set_txclk_en(1);
         rom_set_rxclk_en(1);
         int64_t frequency=static_cast<int64_t>(c.frequencyHz)+c.frequencyCorrectionHz;
@@ -213,6 +240,7 @@ Error ESP32S3Radio::transmit(const uint8_t* data,size_t length,const Config& c,T
         result.maxCopyCycles=dacCopyCycles;
         result.updates=c.preambleSymbols+5+result.packet.symbolCount;
         REG_WRITE(0x60033d64,saved&~0x80000000u);REG_WRITE(0x600c101c,owner);REG_WRITE(0x60006040,tone);
+        pbusWrite(5,1,result.analogBefore1);pbusWrite(5,3,result.analogBefore3);REG_WRITE(0x60006104,pbusControl);
         stop_tx_tone(1);txcal_work_mode();rom_pbus_xpd_tx_off();heap_caps_free(ring);
         return dacTimedOut?Error::PlaybackTimeout:Error::Ok;
     }

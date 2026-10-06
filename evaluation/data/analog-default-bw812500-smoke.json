@@ -1,0 +1,114 @@
+{
+  "startedUtc": "2026-10-06T21:09:35.027257+00:00",
+  "seed": 20261007,
+  "txPort": "COM3",
+  "rxPort": "COM4",
+  "sender": "bench",
+  "completed": true,
+  "cases": [
+    {
+      "block": 0,
+      "cr": 4,
+      "length": 32,
+      "expected": "49067b3a8eecdad021188ad350e6cb5a6b7686135b89904ad68ce29b81ec589f",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-63.5 snr=2.8 hex=49067b3a8eecdad021188ad350e6cb5a6b7686135b89904ad68ce29b81ec589f",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -63.5,
+          "snr": 2.8,
+          "hex": "49067b3a8eecdad021188ad350e6cb5a6b7686135b89904ad68ce29b81ec589f"
+        }
+      ],
+      "startedUtc": "2026-10-06T21:09:35.126605+00:00",
+      "analogGainCode": 0,
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 17.054 buffer=3fc9f680 copy=10243",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 1,
+      "cr": 4,
+      "length": 32,
+      "expected": "b51929b43c083dd0d8f66f90f004f2be19bbf3194410b24730bc67dda062b9d0",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-63.5 snr=4.5 hex=b51929b43c083dd0d8f66f90f004f2be19bbf3194410b24730bc67dda062b9d0",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -63.5,
+          "snr": 4.5,
+          "hex": "b51929b43c083dd0d8f66f90f004f2be19bbf3194410b24730bc67dda062b9d0"
+        }
+      ],
+      "startedUtc": "2026-10-06T21:09:35.986302+00:00",
+      "analogGainCode": 0,
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 17.054 buffer=3fc9f680 copy=10243",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+    },
+    {
+      "block": 2,
+      "cr": 4,
+      "length": 32,
+      "expected": "bde1db20c2682a808a094c8e95f0c9d27d3a73c0d343101aa50e4fd2b0d56a1a",
+      "received": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-63.5 snr=2.5 hex=bde1db20c2682a808a094c8e95f0c9d27d3a73c0d343101aa50e4fd2b0d56a1a",
+          "status": 0,
+          "headerStatus": 0,
+          "crcPresent": true,
+          "crcOk": true,
+          "bytes": 32,
+          "rssi": -63.5,
+          "snr": 2.5,
+          "hex": "bde1db20c2682a808a094c8e95f0c9d27d3a73c0d343101aa50e4fd2b0d56a1a"
+        }
+      ],
+      "startedUtc": "2026-10-06T21:09:36.839350+00:00",
+      "analogGainCode": 0,
+      "start": "TXSTART NATIVE",
+      "end": "TXEND NATIVE ok 109 0 17.054 buffer=3fc9f680 copy=10243",
+      "transportOk": true,
+      "passed": true,
+      "receiverAfter": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1"
+    }
+  ],
+  "transport": "DAC",
+  "gapSamples": 14,
+  "profile": {
+    "frequencyHz": 2440125000,
+    "bandwidthHz": 812500,
+    "sf": 7,
+    "sync": 18,
+    "preamble": 16,
+    "windowSamples": 3750,
+    "analogGainCode": 0
+  },
+  "rule": "fresh RX status=0, header=0, CRC present=1 and CRC ok=1; exact full payload bytes",
+  "sha256": {
+    ".pio/build/xiao-s3/firmware.bin": "459905f6993f9f5062c54eb4e3e9ada28384ad6f60dd00a66e6ce8b1532dee39",
+    "companion/lr2021/.pio/build/aerolink-hf/firmware.bin": "240175b3e633eba069a96c4d90d78cd078ff4dc92de4547f41a08477b5541e2f"
+  },
+  "firmwareHashMethod": "SHA256 of last-flashed input images; esptool write verification is separate",
+  "sourceSha256": {
+    "ESP32S3Radio.cpp": "a43ae60050964290c1e90c5a583e61a831ede4e4da971a7c686f815e8432d583",
+    "ESP32S3Radio.h": "073c79cf2e40838e21d0751d2156126272e5d430a6ba4f8ffca30bdc09731ed6",
+    "LoRaSDR.cpp": "d2008c0d36d4d65d7b68fae09c06357d78a80c8bc1e171b6a73113450decfbce",
+    "LoRaSDR.h": "5016a05164cdd05b4ec91e98f2515938814e9b04255fdd91a25f5da18d35dd67",
+    "examples/SerialBench/main.cpp": "37467812983773594253a6ba1c95829d561e0f3c47c7650aab2036cc5fbd6815"
+  },
+  "receiverIdentity": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1",
+  "finishedUtc": "2026-10-06T21:09:37.706003+00:00"
+}

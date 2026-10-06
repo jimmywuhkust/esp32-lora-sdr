@@ -21,3 +21,9 @@ support or weak-signal recovery at the same bandwidth.
 
 Build from this directory with `pio run`. This snapshot uses the historical
 `xiao-stream-research` environment name, but its transport is windowed DAC.
+
+The current research snapshot additionally doubles the quarter-SFD window
+and increases the down-chirp window for SF8/SF9 only. That later change still
+failed SF8/406.25 kHz 0/3 and SF9/812.5 kHz 0/3, with zero late updates.
+Those logs (`sfd-long-*-smoke.json`) have separate source/image hashes.
+This unmerged variant did not produce the earlier SF7 bandwidth matrices.
