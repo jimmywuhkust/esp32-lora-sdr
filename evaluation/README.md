@@ -16,6 +16,13 @@ All three preserve raw replies and use no PC packet decoder. Supply image
 paths where supported to identify the exact last-flashed build; hashes of a
 local file are not an automatic device readback. See [native results](../docs/native-report.md).
 
+The echo fixture records `strictRfTxPassed` from the independent CRC/header
+readout and its following IRQ, separately from the older `txPassed` criterion
+that also requires the local ACK console label. An interrupted current case
+and error are retained. The new `native-echo-library-settings.json` verifies
+the standalone profile API; its eight attempts are separate from the older
+eight-bit echo dataset.
+
 The older Arduino TX experiments follow below.
 
 The independent receiver is a real LR2021. Local TX completion, a fresh

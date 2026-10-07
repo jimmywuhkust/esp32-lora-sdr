@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.0 — experimental native library, 2026-10-07
+
+- Full on-device finite-window LoRa packet RX in the PlatformIO ESP-IDF
+  component: synchronization, FEC, explicit header, complete bytes and CRC.
+- `LoRaRadio` settings API, validated `LoRaSettings` profiles, atomic
+  configuration, text/binary `transmit()` and compatible `send()` aliases.
+- Standalone native receiver and opt-in receive-and-reply examples; no host
+  decoder, expected-payload input or browser runtime dependency.
+- Native receive, transmit, relative-amplitude and autonomous-echo datasets,
+  retained failures, firmware identities and English/Chinese guides.
+- Stock Arduino remains TX only; long native RX, high-SF TX, continuous RX
+  and calibrated output power remain limited or unsupported.
+
 ## 0.1.0 — experimental, 2026-10-07
 
 - Native Arduino/PlatformIO ESP32-S3 complete-packet LoRa transmitter, with

@@ -24,7 +24,8 @@ def main():
         settings=[(cr,n) for cr in (1,2,3,4) for n in (8,32)];rng.shuffle(settings)
         for cr,n in settings[:a.count]:
             data=rng.randbytes(n);reply=b'ACK:'+data
-            case=dict(cr=cr,length=n,expectedHex=data.hex(),expectedReplyHex=reply.hex(),xiao=[],lr2021=[])
+            case=dict(cr=cr,length=n,expectedHex=data.hex(),expectedReplyHex=reply.hex(),xiao=[],lr2021=[],rxPassed=False,txPassed=False,strictRfTxPassed=False)
+            report['cases'].append(case) # retain the current attempt on timeout
             # The autonomous receiver prints a marker every window. Discard
             # markers queued while LR2021 was configured or a prior ACK read.
             x.reset_input_buffer();x._line_buffer=bytearray()
@@ -61,7 +62,9 @@ def main():
                     if (irq&required)==required and not irq&errors and pending.startswith('RX status=0 header=0 crc_present=1 crc_ok=1 ') and pending.endswith('hex='+reply.hex()) and f'bytes={n+4} ' in pending:
                         case['strictRfTxPassed']=True
                     pending=None
-            report['cases'].append(case);print(len(report['cases']),cr,n,'RX',case['rxPassed'],'ACK',case['txPassed'],flush=True)
+            print(len(report['cases']),cr,n,'RX',case['rxPassed'],'ACK',case['txPassed'],'strict RF',case['strictRfTxPassed'],flush=True)
+    except BaseException as error:
+        report['error']=repr(error);raise
     finally:
         x.close();r.close();report['finishedUtc']=datetime.now(timezone.utc).isoformat()
         a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(report,indent=2),encoding='utf-8')

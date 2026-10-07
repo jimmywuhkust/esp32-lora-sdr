@@ -15,7 +15,8 @@
 | 4-bit 原生整包解码 | SF7/8/9、CR4/5 与 4/8、8/32 字节：12/12 |
 | 真正库接口 `receive()` | 同一配置网格：12/12；其中一次仅保留连续窗口前缀，整包仍完整 |
 | 同一固件交替收发 | 原生接收12/12，XIAO 发给 LR2021 严格验收10/12；两次失败保留 |
-| 最新独立回包例程 | XIAO原生接收8/8，LR2021严格接受ACK5/8，额外要求本地ACK日志则4/8 |
+| 早一轮8-bit独立回包例程 | XIAO原生接收8/8，LR2021严格接受ACK5/8，额外要求本地ACK日志则4/8 |
+| 新配置接口独立回包例程 | XIAO原生接收8/8，独立严格ACK5/8，额外要求本地ACK日志则3/8；另一组新载荷，不合并 |
 | 最新 8-bit I/Q 参数矩阵 | **27/31 完整包**；SF7 16/20，SF8 4/4，SF9 4/4，SF10/11/12各1/1 |
 | 最新真实 RF 拒收测试 | 无测试发射、没有 payload CRC、错误 sync、截断窗口：**4/4 正确拒收** |
 | 发射强度随机测试 | 8档×4次：20/32严格通过，最低1%、2%各0/4；这不是校准功率或灵敏度测量 |
@@ -37,7 +38,7 @@ XIAO 的日志，**对 XIAO 的串口写入为零**。LR2021 已接收到字节�
 提示期待的 payload。
 
 连续测试仍有丢包和混合包头错误 IRQ，不能把一次成功写成稳定100%。
-最新[独立回包原始记录](../evaluation/data/native-echo-eight-bit.json)里，8个ACK
+早一轮[独立回包原始记录](../evaluation/data/native-echo-eight-bit.json)里，8个ACK
 payload均一致，但3个存在混合包头错误IRQ，严格拒绝；另有本地ACK日志缺行，
 其中一次对方已严格接收成功。上述5/8和4/8是不同验收条件，不能混用。
 早期独立应用的0/8失败、IRAM修改单独失败、调整FIR批处理后的首次1/1，
@@ -49,13 +50,15 @@ payload均一致，但3个存在混合包头错误IRQ，严格拒绝；另有本
 ```cpp
 #include <LoRaRadio.h>
 lora_sdr::LoRaRadio radio;
-// 在程序里检查每个调用返回的 Error：
-radio.begin(2440.125);             // MHz
-radio.setSpreadingFactor(7);
-radio.setBandwidth(203.125);       // kHz
-radio.setCodingRate(8);            // 4/8
-radio.setTransmitPowerPercent(75); // 相对 DAC 幅度，不是 dBm
-radio.send("Hello from ESP32!");
+lora_sdr::LoRaSettings settings;
+settings.frequencyMHz = 2440.125;
+settings.spreadingFactor = 7;
+settings.codingRate = 8;             // 4/8
+settings.transmitPowerPercent = 75;  // 相对幅度，不是 dBm
+// 放在应用函数内：
+auto status = radio.begin(settings);
+if (status != lora_sdr::Error::Ok) return;
+status = radio.transmit("Hello from ESP32!");
 lora_sdr::RxPacket packet;
 auto result = radio.receive(packet, 500);
 ```
@@ -63,6 +66,21 @@ auto result = radio.receive(packet, 500);
 完整双向目前使用随仓库提供的 **PlatformIO ESP-IDF component** 和 PSRAM/
 核心配置。普通 Arduino core2.0.17 例程已有这个简洁发送 API，但完整接收仍
 返回 `Unsupported`。这点没有隐藏，也没有把电脑解码包装成 Arduino 接收。
+
+## 新配置接口的独立应用验证
+
+[新的八次独立应用验证](../evaluation/data/native-echo-library-settings.json) 直接调用
+`begin(LoRaSettings)`、`receive()` 和 `transmit()`；电脑给XIAO的串口写入为零。
+板上完整解包 **8/8**，LR2021独立严格CRC接受ACK **5/8**，额外要求本地ACK日志
+的旧组合判据为 **3/8**。8个ACK的payload读数均一致，但两次有混合包头错误
+IRQ`00040370`，一次有payload CRC错误IRQ`00440170`、读取状态−7，均拒收。
+五个本地ACK日志缺行，包括两个对端已经严格接收的回复。与旧八次不合并。
+
+新应用从源码`cd10e910…`构建，ESP-IDF6.0.1，664192字节，
+SHA256`dc4cac234c78a24dd873a8bc4bb466ab10049e887f891746de936f06d6c61a67`。
+[生成固件与本地构建记录](../evaluation/data/native-library-build.json) 保留输入镜像哈希；
+五个例程环境本地均编译通过。LR2021仍为`a46cbeac…`固件；之后XIAO恢复到原先
+已测的SDK6.2串口bench。这证明应用可独立调用新API，不能说明RF或日志失败已解决。
 
 ## 原生发射参数和接收状态
 
@@ -96,7 +114,12 @@ RadioLib 习惯的 `transmit()` 文本/二进制调用；原有 `send()` 仍等�
 不支持的接收返回。这些电脑上的API检查不算新增RF成功。射频数据仍保留
 各自实测固件哈希，不把新封装代码的构建身份追溯套给旧实验。
 
-最新源码`d590a708…`的[云端CI](https://github.com/jimmywuhkust/esp32-lora-sdr/actions/runs/37567375722)
+新库接口源码`cd10e910…`的[云端CI](https://github.com/jimmywuhkust/esp32-lora-sdr/actions/runs/37571334340)
+全部通过：Arduino2分45秒、录制IQ/原生C++/API回归22秒，三个原生PlatformIO
+环境8分20秒，总计8分24秒。[独立CI元数据](../evaluation/data/native-library-ci.json)
+记录精确源码与run。新八次独立应用使用该应用源码和本地生成镜像，而非旧固件。
+
+此前源码`d590a708…`的[云端CI](https://github.com/jimmywuhkust/esp32-lora-sdr/actions/runs/37567375722)
 全部通过：Arduino2分39秒、录制IQ/C++回归23秒、三个原生PlatformIO环境7分38秒。
 新增`xiao-bench`串口例程，与独立应用使用相同ESP-IDF6.0.1及原生库。
 编译通过与真实RF结果分开记录。

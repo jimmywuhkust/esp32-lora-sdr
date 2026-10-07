@@ -1,0 +1,33 @@
+{
+  "sourceCommit": "cd10e9109f85836f107dd916a936204af0bc550a",
+  "environment": "xiao-echo",
+  "sdk": "ESP-IDF6.0.1, espressif32@7.0.1",
+  "images": [
+    {
+      "offset": "0x0",
+      "bytes": 20960,
+      "sha256": "0a62a732ccbbbba9691d8d0905149f33a334b4474b6f565dc3d95485e9284fb5",
+      "file": "bootloader.bin"
+    },
+    {
+      "offset": "0x8000",
+      "bytes": 3072,
+      "sha256": "7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820",
+      "file": "partitions.bin"
+    },
+    {
+      "offset": "0x10000",
+      "bytes": 664192,
+      "sha256": "dc4cac234c78a24dd873a8bc4bb466ab10049e887f891746de936f06d6c61a67",
+      "file": "firmware.bin"
+    }
+  ],
+  "notes": "Hashes identify generated files supplied to esptool, not a complete device readback. esptool verified transferred writes. New LoRaSettings begin() and transmit() API; no NVS readback.",
+  "localBuilds": {
+    "xiao-s3": "success",
+    "xiao-send-once": "success",
+    "xiao-native": "success",
+    "xiao-echo": "success",
+    "xiao-bench": "success"
+  }
+}

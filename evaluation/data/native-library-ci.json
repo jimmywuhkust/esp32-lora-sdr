@@ -1,0 +1,21 @@
+{
+  "sourceCommit": "cd10e9109f85836f107dd916a936204af0bc550a",
+  "run": "https://github.com/jimmywuhkust/esp32-lora-sdr/actions/runs/37571334340",
+  "status": "success",
+  "totalSeconds": 504,
+  "jobs": {
+    "arduino": {
+      "status": "success",
+      "seconds": 165
+    },
+    "recorded-iq": {
+      "status": "success",
+      "seconds": 22
+    },
+    "native-platformio": {
+      "status": "success",
+      "seconds": 500
+    }
+  },
+  "notes": "Observed in authenticated GitHub Actions UI. Arduino TX and LR2021 RX/TX builds; recorded IQ, native C++ and library API regressions; xiao-native/xiao-echo/xiao-bench. CI is not live RF."
+}

@@ -142,7 +142,7 @@ ACK console labels and two rejected mixed-header IRQs explain part of that
 gap; the remaining trial had no native packet. Do not promote exact bytes
 from rejected IRQ events into successful delivery.
 
-The final [8-bit standalone receive-and-reply run](../evaluation/data/native-echo-eight-bit.json)
+The earlier [8-bit standalone receive-and-reply run](../evaluation/data/native-echo-eight-bit.json)
 gave **8/8 native full-packet RX**, **5/8 independently accepted exact ACKs**
 and **4/8 combined console-plus-RF gates**. Three local ACK console labels
 were absent, including one independently accepted ACK. Three other ACKs had
@@ -153,7 +153,26 @@ app hash `f7b6b843…` (664,160 bytes, ESP-IDF6.0.1) and LR2021 hash
 `a46cbeac…` (320,928 bytes). Its returned bytes came from actual on-device
 reception, not from a host copy of the expected payload. `fflush()` and a
 20 ms delay around TX did not eliminate all short ACK console omissions;
-that telemetry limitation remains unresolved.
+  that telemetry limitation remains unresolved.
+
+A separate [fresh eight-case standalone application check](../evaluation/data/native-echo-library-settings.json)
+exercised the new `begin(LoRaSettings)`, `receive()` and `transmit()` API on
+the board, with zero serial writes to the XIAO. Native RX was **8/8**;
+independent strict ACK reception was **5/8**; the original combined
+console-plus-RF score was **3/8**. All eight ACK payload readouts matched,
+but two had mixed header-error IRQ `00040370` and one had payload CRC error
+IRQ `00440170` / read status −7; those three are rejected. Five local ACK
+console labels were missing, including two independently accepted replies.
+This run is not pooled with the earlier echo run.
+
+The new application was built from source `cd10e910…` with ESP-IDF6.0.1:
+664,192-byte app SHA256 `dc4cac234c78a24dd873a8bc4bb466ab10049e887f891746de936f06d6c61a67`.
+The [generated build identity](../evaluation/data/native-library-build.json)
+also records bootloader/partition inputs and five successful local example
+builds. LR2021 still ran the independently identified `a46cbeac…` app. The
+SDR board was then restored to the previously measured SDK6.2 serial bench.
+This verifies standalone API use; it does not resolve the remaining RF or
+console reliability failures.
 
 ## Native TX parameters and receiver epochs
 
@@ -238,6 +257,13 @@ for a controlled high-SF TX recovery experiment. No range, link-budget or
 Multi-SF diversity advantage is claimed.
 
 ## Builds, reproducibility and current boundaries
+
+The subsequent [library API CI run37571334340](https://github.com/jimmywuhkust/esp32-lora-sdr/actions/runs/37571334340)
+succeeded for `cd10e910…`: Arduino2m45s, recorded-IQ/native-C++ and API
+regressions22s, all three native PlatformIO environments8m20s, total8m24s.
+[Its exact source/run metadata](../evaluation/data/native-library-ci.json)
+is retained separately. The new local standalone RF check above used that
+application source, not a CI-generated or unrelated older image.
 
 GitHub [CI run37567375722](https://github.com/jimmywuhkust/esp32-lora-sdr/actions/runs/37567375722)
 succeeded for source commit`d590a708…`: Arduino2m39s, recorded-IQ/native-C++

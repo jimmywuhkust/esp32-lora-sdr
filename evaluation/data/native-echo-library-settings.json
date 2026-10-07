@@ -1,0 +1,195 @@
+{
+  "startedUtc": "2026-10-07T04:32:38.150831+00:00",
+  "seed": 202610071234,
+  "retries": 0,
+  "xiaoSerialWrites": 0,
+  "pcDecoder": false,
+  "example": "NativeDuplex/xiao-echo",
+  "cases": [
+    {
+      "cr": 3,
+      "length": 8,
+      "expectedHex": "9dfb8a1175d7dfc8",
+      "expectedReplyHex": "41434b3a9dfb8a1175d7dfc8",
+      "xiao": [
+        "I (147) esp_image: segment 4: paddr=000a5d30 vaddr=4037a5b0 sizeLISTEN native sf=7 window=500",
+        "LISTEN native sf=7 window=500",
+        "NATIVE_RX crc_ok=1 bytes=8 hex=9dfb8a1175d7dfc8",
+        "LISTEN native sf=7 window=500"
+      ],
+      "lr2021": [
+        "TX_PUBLIC status=0 sf=7 cr=3 bytes=8 hex=9dfb8a1175d7dfc8",
+        "TX_DIAG irq=0008000a elapsed_us=34306 gpio=1",
+        "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=12 rssi=-61.5 snr=4.2 hex=41434b3a9dfb8a1175d7dfc8",
+        "RX_IRQ 00040370"
+      ],
+      "rxPassed": true,
+      "txPassed": false,
+      "strictRfTxPassed": false
+    },
+    {
+      "cr": 4,
+      "length": 32,
+      "expectedHex": "ba7088bee4b059ed3156e47192dbe8dc744f0984d1b8b1b72fabdb4f619eae8a",
+      "expectedReplyHex": "41434b3aba7088bee4b059ed3156e47192dbe8dc744f0984d1b8b1b72fabdb4f619eae8a",
+      "xiao": [
+        "LISTEN native sf=7 window=500",
+        "NATIVE_RX crc_ok=1 bytes=32 hex=ba7088bee4b059ed3156e47192dbe8dc744f0984d1b8b1b72fabdb4f619eae8a",
+        "NATIVE_ACK status=ok bytes=36"
+      ],
+      "lr2021": [
+        "TX_PUBLIC status=0 sf=7 cr=4 bytes=32 hex=ba7088bee4b059ed3156e47192dbe8dc744f0984d1b8b1b72fabdb4f619eae8a",
+        "TX_DIAG irq=0008000a elapsed_us=72351 gpio=1",
+        "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=36 rssi=-62.5 snr=3.8 hex=41434b3aba7088bee4b059ed3156e47192dbe8dc744f0984d1b8b1b72fabdb4f619eae8a",
+        "RX_IRQ 00040370"
+      ],
+      "rxPassed": true,
+      "txPassed": false,
+      "strictRfTxPassed": false
+    },
+    {
+      "cr": 2,
+      "length": 32,
+      "expectedHex": "0c0bc55787b0504099cf50da6083c32127ceaf2bf6e0ae17c7492f8085e24fcd",
+      "expectedReplyHex": "41434b3a0c0bc55787b0504099cf50da6083c32127ceaf2bf6e0ae17c7492f8085e24fcd",
+      "xiao": [
+        "LISTEN native sf=7 window=500",
+        "NATIVE_RX crc_ok=1 bytes=32 hex=0c0bc55787b0504099cf50da6083c32127ceaf2bf6e0ae17c7492f8085e24fcd",
+        "NATIVE_ACK status=ok bytes=36"
+      ],
+      "lr2021": [
+        "TX_PUBLIC status=0 sf=7 cr=2 bytes=32 hex=0c0bc55787b0504099cf50da6083c32127ceaf2bf6e0ae17c7492f8085e24fcd",
+        "TX_DIAG irq=0008000a elapsed_us=59364 gpio=1",
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=36 rssi=-62.5 snr=4.2 hex=41434b3a0c0bc55787b0504099cf50da6083c32127ceaf2bf6e0ae17c7492f8085e24fcd",
+        "RX_IRQ 00040170"
+      ],
+      "rxPassed": true,
+      "txPassed": true,
+      "strictRfTxPassed": true
+    },
+    {
+      "cr": 2,
+      "length": 8,
+      "expectedHex": "ef6f592c481fc35e",
+      "expectedReplyHex": "41434b3aef6f592c481fc35e",
+      "xiao": [
+        "LISTEN native sf=7 window=500",
+        "NATIVE_RX crc_ok=1 bytes=8 hex=ef6f592c481fc35e",
+        "LISTEN native sf=7 window=500"
+      ],
+      "lr2021": [
+        "TX_PUBLIC status=0 sf=7 cr=2 bytes=8 hex=ef6f592c481fc35e",
+        "TX_DIAG irq=0008000a elapsed_us=32247 gpio=1",
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=12 rssi=-62.5 snr=0.5 hex=41434b3aef6f592c481fc35e",
+        "RX_IRQ 00040170"
+      ],
+      "rxPassed": true,
+      "txPassed": false,
+      "strictRfTxPassed": true
+    },
+    {
+      "cr": 3,
+      "length": 32,
+      "expectedHex": "d8ff2c5a9f5ff5129937de3d988722a4e364773b391669bd329fdd4a3b0806ca",
+      "expectedReplyHex": "41434b3ad8ff2c5a9f5ff5129937de3d988722a4e364773b391669bd329fdd4a3b0806ca",
+      "xiao": [
+        "LISTEN native sf=7 window=500",
+        "NATIVE_RX crc_ok=1 bytes=32 hex=d8ff2c5a9f5ff5129937de3d988722a4e364773b391669bd329fdd4a3b0806ca",
+        "NATIVE_ACK status=ok bytes=36"
+      ],
+      "lr2021": [
+        "TX_PUBLIC status=0 sf=7 cr=3 bytes=32 hex=d8ff2c5a9f5ff5129937de3d988722a4e364773b391669bd329fdd4a3b0806ca",
+        "TX_DIAG irq=0008000a elapsed_us=65355 gpio=1",
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=36 rssi=-62.5 snr=3.2 hex=41434b3ad8ff2c5a9f5ff5129937de3d988722a4e364773b391669bd329fdd4a3b0806ca",
+        "RX_IRQ 00040170"
+      ],
+      "rxPassed": true,
+      "txPassed": true,
+      "strictRfTxPassed": true
+    },
+    {
+      "cr": 1,
+      "length": 32,
+      "expectedHex": "b36a13042749382602e418c2bb2e5d8e7dca602604cb345d3ef40f6737981058",
+      "expectedReplyHex": "41434b3ab36a13042749382602e418c2bb2e5d8e7dca602604cb345d3ef40f6737981058",
+      "xiao": [
+        "LISTEN native sf=7 window=500",
+        "NATIVE_RX crc_ok=1 bytes=32 hex=b36a13042749382602e418c2bb2e5d8e7dca602604cb345d3ef40f6737981058",
+        "NATIVE_ACK status=ok bytes=36"
+      ],
+      "lr2021": [
+        "TX_PUBLIC status=0 sf=7 cr=1 bytes=32 hex=b36a13042749382602e418c2bb2e5d8e7dca602604cb345d3ef40f6737981058",
+        "TX_DIAG irq=0008000a elapsed_us=53377 gpio=1",
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=36 rssi=-61.5 snr=5.8 hex=41434b3ab36a13042749382602e418c2bb2e5d8e7dca602604cb345d3ef40f6737981058",
+        "RX_IRQ 00040170"
+      ],
+      "rxPassed": true,
+      "txPassed": true,
+      "strictRfTxPassed": true
+    },
+    {
+      "cr": 4,
+      "length": 8,
+      "expectedHex": "b95fbaa9327b620b",
+      "expectedReplyHex": "41434b3ab95fbaa9327b620b",
+      "xiao": [
+        "LISTEN native sf=7 window=500",
+        "NATIVE_RX crc_ok=1 bytes=8 hex=b95fbaa9327b620b",
+        "LISTEN native sf=7 window=500"
+      ],
+      "lr2021": [
+        "TX_PUBLIC status=0 sf=7 cr=4 bytes=8 hex=b95fbaa9327b620b",
+        "TX_DIAG irq=0008000a elapsed_us=36226 gpio=1",
+        "RX status=-7 header=0 crc_present=1 crc_ok=0 bytes=12 rssi=-62.5 snr=3.8 hex=41434b3ab95fbaa932eb620b",
+        "RX_IRQ 00440170"
+      ],
+      "rxPassed": true,
+      "txPassed": false,
+      "strictRfTxPassed": false
+    },
+    {
+      "cr": 1,
+      "length": 8,
+      "expectedHex": "2a8fbbeb6214eecf",
+      "expectedReplyHex": "41434b3a2a8fbbeb6214eecf",
+      "xiao": [
+        "LISTEN native sf=7 window=500",
+        "NATIVE_RX crc_ok=1 bytes=8 hex=2a8fbbeb6214eecf",
+        "LISTEN native sf=7 window=500"
+      ],
+      "lr2021": [
+        "TX_PUBLIC status=0 sf=7 cr=1 bytes=8 hex=2a8fbbeb6214eecf",
+        "TX_DIAG irq=0008000a elapsed_us=30235 gpio=1",
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=12 rssi=-62.5 snr=2.5 hex=41434b3a2a8fbbeb6214eecf",
+        "RX_IRQ 00040170"
+      ],
+      "rxPassed": true,
+      "txPassed": false,
+      "strictRfTxPassed": true
+    }
+  ],
+  "xiaoImage": {
+    "bytes": 664192,
+    "sha256": "dc4cac234c78a24dd873a8bc4bb466ab10049e887f891746de936f06d6c61a67"
+  },
+  "lrImage": {
+    "bytes": 320928,
+    "sha256": "a46cbeacaf9a5dcd3d49e40d09996ef9d0791517f9e96a84548ae474596ad6ca"
+  },
+  "finishedUtc": "2026-10-07T04:33:46.697139+00:00",
+  "sourceCommit": "cd10e9109f85836f107dd916a936204af0bc550a",
+  "applicationApi": {
+    "begin": "LoRaRadio.begin(LoRaSettings)",
+    "transmit": "LoRaRadio.transmit(bytes,length)",
+    "receive": "LoRaRadio.receive(RxPacket,500)",
+    "codingRate": 8,
+    "relativePowerPercent": 75
+  },
+  "summary": {
+    "rxPassed": 8,
+    "strictRfTxPassed": 5,
+    "txPassed": 3,
+    "attempted": 8
+  },
+  "notes": "Fresh standalone application; host wrote no commands to the XIAO. Existing combined console+RF gate and new independent strict IRQ gate remain separate. No RF retries."
+}
