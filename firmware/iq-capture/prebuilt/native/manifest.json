@@ -18,7 +18,7 @@
     "src/NativeReceive.cpp": "54356735c09a13e639db3f20dfad00635339bdd969fcfbe4205f67b21a859460",
     "src/PacketDecoder.cpp": "837d0ea9aaf9fe28030a4eb6c33d4561545af502e53fcae22bb5ad42e681dcf0",
     "src/PacketDecoder.h": "60c71da38881543e3716cdda348b8807c09fc8135abb4f7a788dbead56ad9ece",
-    "src/RxFilter.h": "9df03cfbfbda7028c8b92e84f400e5215b1e1f53d1fc1515d4740f925b4245ae",
+    "src/RxFilter.h": "1f2715be29f4d0cac1c7023ecb5d3b5207f920fb4ac08b3fa1684058dfce900c",
     "firmware/iq-capture/main/CMakeLists.txt": "0c88e2bf099d63bf280f932329eac8a8bc8799bbafedef60daf3c9248e9b1511",
     "firmware/iq-capture/main/Kconfig.projbuild": "6079890dd472ac1cae0d3c072690b5aef51be34af70e05cc82d6538b88e729d3",
     "firmware/iq-capture/main/common/burst_gain.h": "728fb1d66ec875b28ad1082671fec90d906f1096cb61fbad53a7bcc2fd674c81",
@@ -47,7 +47,7 @@
     "firmware/iq-capture/main/common/spectrum_stats.c": "f71c908b40428d5a37ab7b19f1fd697ad1f08612fbe294b3a6d401b82e196b77",
     "firmware/iq-capture/main/common/spectrum_stats.h": "89fb38d0c36fcdeceec884aa2a5a7ec2b648ddf0e15c7ecd4bd90158216fe22b",
     "firmware/iq-capture/main/targets/esp32s3/linker.lf": "c6ee553ba34c0b9017057461114a1132654f1baf98e5a518af59fdcb275b402c",
-    "firmware/iq-capture/main/targets/esp32s3/receiver.c": "b5a11de4f64ef60685438d417c1b06dd48ecfb4fa0e9e7c61b238bf877e1e4d2",
+    "firmware/iq-capture/main/targets/esp32s3/receiver.c": "62f05f235ea6960d87dc16e2fce7b03a9c0171787ebfc5f134097121ee723d09",
     "firmware/iq-capture/main/targets/esp32s3/s3_core1.S": "406276930233376416d87132f0e2d7aaa6ee4517cc13909c2e54d7fe129fd50e",
     "firmware/iq-capture/main/targets/esp32s3/s3_fft_rnd.S": "36e912ff07ca893a4c57cb8828a7e1cdaaa363a9b3aad775e3f6493e620c36c4",
     "firmware/iq-capture/main/targets/esp32s3/s3_firdot.S": "40a5e1923b2b2287d8b008deb81aa373459de538c99f7abe39afc9a63c6348d4",
@@ -82,5 +82,7 @@
     "bitsPerComponent": 8,
     "shift": 5,
     "firBatch": 2048
-  }
+  },
+  "sourceHashFormat": "SHA-256 of source bytes with CRLF normalized to LF",
+  "sourceCommit": "00f48b560e63e351b8398beb19b5607b267fe4fa"
 }

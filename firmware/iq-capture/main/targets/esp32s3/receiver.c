@@ -543,8 +543,7 @@ int lora_sdr_platform_begin(void) {
 #endif
     started=true;return 0;
 }
-#ifndef LORA_SDR_NO_APP_MAIN
-void app_main(void) {
+void lora_sdr_platform_serial_loop(void) {
     usb_serial_jtag_driver_config_t usb={.tx_buffer_size=8192,.rx_buffer_size=8192};
     ESP_ERROR_CHECK(usb_serial_jtag_driver_install(&usb));
     ESP_ERROR_CHECK(lora_sdr_platform_begin());
@@ -574,4 +573,6 @@ void app_main(void) {
         lease_deadline=esp_timer_get_time()+5000000;
     }
 }
+#ifndef LORA_SDR_NO_APP_MAIN
+void app_main(void) { lora_sdr_platform_serial_loop(); }
 #endif

@@ -7,6 +7,20 @@ Use [the native guide](../../docs/native-guide.md) for on-device packets.
 artifacts documented below. `prebuilt/native` is the separately identified
 native RX/TX bench image; its manifest records generated images and hashes.
 
+The serial bench can also be compiled with the pinned PlatformIO ESP-IDF
+6.0.1 toolchain: run the native dependency setup, then
+`pio run -d examples/NativeDuplex -e xiao-bench` from the repository root.
+Its generated images are distinct from the ESP-IDF6.2 development prebuild;
+record the image actually flashed when comparing RF measurements.
+
+The native variant retains 250 kcomplex samples/s, 8-bit I/Q in PSRAM, then
+decodes on the ESP32. `LSET` configures the simple library; `TX SF CR HEX`
+sends one packet and `RXPACK SF WINDOW_MS` receives one finite window.
+`RXPACK READY` follows RF preparation; a fixture should wait about60ms before
+the companion sends. `RXPACKET` contains only complete CRC-valid payloads.
+The [native report](../../docs/native-report.md) preserves long-packet failures,
+negative RF checks and latency. It is half duplex with decode blind periods.
+
 This ESP-IDF application captures the XIAO ESP32-S3's internal 2.4 GHz RF and
 sends CRC32-protected IQS1 frames over native USB Serial/JTAG. The included PC
 decoder extracts full LoRa headers, payloads and CRC. **It does not implement

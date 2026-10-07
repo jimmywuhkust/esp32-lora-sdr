@@ -8,7 +8,11 @@ CRC，再用自带射频发射。应用调用 `send()` / `receive()`，不需要
 和 8 MB OPI PSRAM，已连接 2.4 GHz 天线。不同板型不能直接套用未验证的配置。
 
 安装 Git、Python 和 PlatformIO，把仓库下载到文件夹。Windows 建议用
-`C:\lora-sdr` 这样的纯英文路径。在仓库根目录运行：
+`C:\lora-sdr` 这样的纯英文路径。
+
+未安装 PlatformIO 时先运行 `python -m pip install platformio==6.1.19`。
+开发期间仓库暂为 private，需要访问权限；可从 GitHub 下载 ZIP 后解压，
+或通过 `git clone` 获取代码。随后进入仓库文件夹运行：
 
 ```sh
 python examples/NativeDuplex/setup_deps.py
@@ -21,6 +25,11 @@ pio device monitor --port YOUR_PORT --baud 115200
 把 `YOUR_PORT` 换成板子的端口，例如 `COM3`。项目锁定工具链和 DSP 依赖，
 提供 PSRAM、射频 SRAM 保留与采集核的配置。照随附例程修改自己的应用即可。
 默认例程只接收，开机不自动发包。
+
+可选的 `xiao-bench` 环境是 USB 命令演示，使用同一套锁定的 ESP-IDF 6.0.1
+和原生包处理代码。把上面构建和上传命令中的 `xiao-native` 换成
+`xiao-bench` 即可；开机仍不自动发包。它支持 `INFO`、`CAPS`、`LSET`、
+`TX`、`RXPACK`。独立应用直接调用 `LoRaRadio`，不需要这个串口桥接。
 
 `LoRaRadio` 提供频率 MHz、带宽 kHz、SF、编码率分母 5–8（代表 4/5–4/8）、
 前导码、同步字、频偏修正和发射幅度 1–100% 的设置。每个调用返回 `Error`。

@@ -11,6 +11,10 @@ Use a **Seeed XIAO ESP32-S3 with 8 MB flash and 8 MB OPI PSRAM**, its connected
 2.4 GHz antenna, and a USB data cable. Install Python, Git and PlatformIO.
 On Windows, clone into an ASCII-only path such as `C:\lora-sdr`.
 
+If PlatformIO is not installed yet, run `python -m pip install platformio==6.1.19`.
+Download the repository ZIP and extract it, or use `git clone` with your GitHub
+access. This repository is private during development; collaborators need access.
+
 From the repository root:
 
 ```sh
@@ -27,6 +31,19 @@ runs the RTOS on core 0 and dedicates core 1 to bounded acquisition. Use the
 supplied project configuration. An ordinary stock Arduino sketch currently
 supports TX only; its `receive()` returns `Unsupported`. Full native RX/TX is
 the **PlatformIO ESP-IDF component** route above.
+
+For the optional USB command bench, build and upload `xiao-bench` instead of
+`xiao-native`. This uses the same pinned SDK and native packet code. It waits
+for commands and sends no packet at boot:
+
+```sh
+pio run -d examples/NativeDuplex -e xiao-bench
+pio run -d examples/NativeDuplex -e xiao-bench -t upload --upload-port YOUR_PORT
+```
+
+Its `INFO`, `CAPS`, `LSET`, `TX` and `RXPACK` commands are documented in the
+[serial firmware guide](../firmware/iq-capture/README.md). Your standalone
+application calls `LoRaRadio` directly; it does not need this command bridge.
 
 ## The API your application calls
 

@@ -1,10 +1,14 @@
 #include "LoRaRadio.h"
+#include "NativePlatform.h"
 #include <cstdio>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 using namespace lora_sdr;
 
 extern "C" void app_main() {
+#ifdef LORA_SDR_SERIAL_BENCH
+    lora_sdr_platform_serial_loop();
+#else
     LoRaRadio radio;
     Error status=radio.begin(2440.125);
     if(status!=Error::Ok){printf("begin: %s\n",errorName(status));return;}
@@ -43,4 +47,5 @@ extern "C" void app_main() {
         }else if(status!=Error::ReceiveTimeout)printf("receive: %s capture=%u samples=%u drops=%u abandoned=%u\n",errorName(status),radio.lastReceive().captureStatus,radio.lastReceive().captureSamples,radio.lastReceive().captureDrops,radio.lastReceive().captureAbandoned);
         vTaskDelay(pdMS_TO_TICKS(10));
     }
+#endif
 }

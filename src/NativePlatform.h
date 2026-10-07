@@ -11,6 +11,8 @@ typedef struct {
     uint64_t capture_us;
 } lora_native_capture_t;
 int lora_sdr_platform_begin(void);
+// Optional USB/UART command bench. No packet is transmitted automatically.
+void lora_sdr_platform_serial_loop(void);
 int lora_sdr_platform_capture(uint32_t frequency,unsigned window_ms,lora_native_capture_t*);
 bool native_frames_to_iq(const uint8_t*,unsigned,int16_t**,unsigned*,uint64_t*);
 #ifdef __cplusplus
