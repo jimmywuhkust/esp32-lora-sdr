@@ -48,6 +48,19 @@ def main():
                 if s.startswith('RX_IRQ'):break
             case['rxPassed']=tx.startswith('TX_PUBLIC status=0 ') and any(s==f'NATIVE_RX crc_ok=1 bytes={n} hex={data.hex()}' for s in case['xiao'])
             case['txPassed']=any(s==f'NATIVE_ACK status=ok bytes={n+4}' for s in case['xiao']) and any('crc_ok=1' in s and s.endswith('hex='+reply.hex()) for s in case['lr2021'])
+            # Independent RF gate, separate from the existing console+RF score.
+            # Match the readout with its following IRQ; reject mixed error flags.
+            case['strictRfTxPassed']=False
+            pending=None
+            for s in case['lr2021']:
+                if s.startswith('RX '):pending=s
+                elif s.startswith('RX_IRQ ') and pending:
+                    irq=int(s.split()[1],16)
+                    required=(1<<4)|(1<<5)|(1<<18)
+                    errors=(1<<9)|(1<<22)
+                    if (irq&required)==required and not irq&errors and pending.startswith('RX status=0 header=0 crc_present=1 crc_ok=1 ') and pending.endswith('hex='+reply.hex()) and f'bytes={n+4} ' in pending:
+                        case['strictRfTxPassed']=True
+                    pending=None
             report['cases'].append(case);print(len(report['cases']),cr,n,'RX',case['rxPassed'],'ACK',case['txPassed'],flush=True)
     finally:
         x.close();r.close();report['finishedUtc']=datetime.now(timezone.utc).isoformat()

@@ -12,6 +12,10 @@ def main():
         subprocess.run([args.compiler,*(['c++'] if args.zig else []),'-O2','-std=c++11','-I',str(ROOT/'src'),
             *map(str,[ROOT/'tools/native_decode.cpp',ROOT/'src/LoRaSDR.cpp',ROOT/'src/PacketDecoder.cpp',ROOT/'src/IQDecoder.cpp']),'-o',str(exe)],check=True)
         subprocess.run([str(exe)],check=True)
+        api=work/('api.exe' if sys.platform=='win32' else 'api')
+        subprocess.run([args.compiler,*(['c++'] if args.zig else []),'-O2','-std=c++11','-I',str(ROOT/'src'),
+            str(ROOT/'tools/test_library_api.cpp'),'-o',str(api)],check=True)
+        subprocess.run([str(api)],check=True)
         def decode(iq,sf):
             path=work/'iq16.bin';np.stack((iq.real,iq.imag),axis=1).astype('<i2').tofile(path)
             result=subprocess.run([str(exe),str(path),str(sf)],check=True,capture_output=True,text=True)

@@ -1,0 +1,317 @@
+{
+  "pcDecoder": false,
+  "hostIqUploaded": false,
+  "retries": 0,
+  "xiaoSdk": "ESP-IDF6.0.1",
+  "xiaoImage": {
+    "bytes": 688208,
+    "sha256": "3b2c1039d61702310e494fe0b2104d1b545d47d010a616e746e4d285b1385400"
+  },
+  "lrImage": {
+    "bytes": 320928,
+    "sha256": "a46cbeacaf9a5dcd3d49e40d09996ef9d0791517f9e96a84548ae474596ad6ca"
+  },
+  "events": [
+    {
+      "id": "1791344444376883600",
+      "time": 1791344443.5724037,
+      "text": "Native H11",
+      "hex": "4e617469766520483131",
+      "bytes": 10,
+      "waveform": {
+        "sf": 7,
+        "codingRate": 1,
+        "preamble": 16,
+        "bandwidth": 203.125,
+        "bytes": 10,
+        "transport": "native ESP32 DAC windows",
+        "frequency": 2440.125,
+        "cfo": 15000,
+        "invert": true,
+        "dacAmplitude": 150,
+        "windowSamples": 15000,
+        "analogGainCode": 0,
+        "hostIqUploaded": false,
+        "symbols": null
+      },
+      "tx": {
+        "command": "TX 7 1 4e617469766520483131",
+        "start": "TXSTART NATIVE",
+        "end": "TXEND NATIVE ok 49 0 30.405 buffer=3fcb0000 copy=40239 tone=20062400 adc=00000000 gain=119,119",
+        "encoding": "on-device",
+        "firmware": "S3SDR 9 iq-capture 16380",
+        "receiverRearm": {
+          "raw": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1",
+          "time": 1791344443.579942
+        }
+      },
+      "received": {
+        "direction": "RX",
+        "text": "Native H11",
+        "hex": "4e617469766520483131",
+        "bytes": 10,
+        "crcOk": true,
+        "crcPresent": true,
+        "headerStatus": 0,
+        "status": 0,
+        "rssi": -61.5,
+        "snr": 3.5,
+        "sf": 7,
+        "time": 1791344444.3532856,
+        "source": "Public RadioLib LR2021 receiver",
+        "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=10 rssi=-61.5 snr=3.5 hex=4e617469766520483131"
+      },
+      "matched": true,
+      "direction": "xiao",
+      "source": "XIAO SDR RF TX → independent LR2021 HF RX",
+      "download": "/api/tx/download/1791344444376883600.json"
+    },
+    {
+      "id": "1791344499862002000",
+      "time": 1791344498.437104,
+      "text": "板上解包I12",
+      "hex": "e69dbfe4b88ae8a7a3e58c85493132",
+      "bytes": 15,
+      "waveform": {
+        "sf": 7,
+        "codingRate": 1,
+        "bandwidth": 203.125,
+        "hostDecoder": false
+      },
+      "tx": {
+        "encoding": "LR2021 hardware",
+        "decoder": "ESP32 native",
+        "hostIqUploaded": false,
+        "raw": [
+          "RXPACKET {\"hex\":\"e69dbfe4b88ae8a7a3e58c85493132\",\"bytes\":15,\"sf\":7,\"codingRate\":1,\"crcOk\":true,\"crcHex\":\"2846\",\"cfoHz\":17257.69,\"sampleIndex\":25234,\"correctedCodewords\":0,\"source\":\"ESP32 native decoder\"}",
+          "RXDECODE {\"ok\":true,\"samples\":125286,\"captureStatus\":0,\"drops\":0,\"abandoned\":0,\"candidates\":1,\"headers\":1,\"packets\":1,\"decodeUs\":852031,\"error\":\"ok\"}",
+          "RXPACKEND OK"
+        ]
+      },
+      "received": {
+        "hex": "e69dbfe4b88ae8a7a3e58c85493132",
+        "bytes": 15,
+        "sf": 7,
+        "codingRate": 1,
+        "crcOk": true,
+        "crcHex": "2846",
+        "cfoHz": 17257.69,
+        "sampleIndex": 25234,
+        "correctedCodewords": 0,
+        "source": "ESP32 native packet decoder",
+        "direction": "RX",
+        "text": "板上解包I12",
+        "time": 1791344499.859466
+      },
+      "matched": true,
+      "direction": "lr2021",
+      "source": "LR2021 HF TX → ESP32 native full packet RX",
+      "download": "/api/tx/download/1791344499862002000.json"
+    }
+  ],
+  "snapshot": {
+    "transmitter": {
+      "state": "ready",
+      "port": "COM3",
+      "message": "Exact bytes received · CRC OK",
+      "txPackets": 2,
+      "verifiedPackets": 2,
+      "profile": {
+        "frequency": 2440.125,
+        "bandwidth": 203.125,
+        "sf": 7,
+        "power": -12,
+        "preamble": 16,
+        "sync": 18
+      },
+      "correctionHz": 15000,
+      "events": [
+        {
+          "id": "1791344444376883600",
+          "time": 1791344443.5724037,
+          "text": "Native H11",
+          "hex": "4e617469766520483131",
+          "bytes": 10,
+          "waveform": {
+            "sf": 7,
+            "codingRate": 1,
+            "preamble": 16,
+            "bandwidth": 203.125,
+            "bytes": 10,
+            "transport": "native ESP32 DAC windows",
+            "frequency": 2440.125,
+            "cfo": 15000,
+            "invert": true,
+            "dacAmplitude": 150,
+            "windowSamples": 15000,
+            "analogGainCode": 0,
+            "hostIqUploaded": false,
+            "symbols": null
+          },
+          "tx": {
+            "command": "TX 7 1 4e617469766520483131",
+            "start": "TXSTART NATIVE",
+            "end": "TXEND NATIVE ok 49 0 30.405 buffer=3fcb0000 copy=40239 tone=20062400 adc=00000000 gain=119,119",
+            "encoding": "on-device",
+            "firmware": "S3SDR 9 iq-capture 16380",
+            "receiverRearm": {
+              "raw": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1",
+              "time": 1791344443.579942
+            }
+          },
+          "received": {
+            "direction": "RX",
+            "text": "Native H11",
+            "hex": "4e617469766520483131",
+            "bytes": 10,
+            "crcOk": true,
+            "crcPresent": true,
+            "headerStatus": 0,
+            "status": 0,
+            "rssi": -61.5,
+            "snr": 3.5,
+            "sf": 7,
+            "time": 1791344444.3532856,
+            "source": "Public RadioLib LR2021 receiver",
+            "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=10 rssi=-61.5 snr=3.5 hex=4e617469766520483131"
+          },
+          "matched": true,
+          "direction": "xiao",
+          "source": "XIAO SDR RF TX → independent LR2021 HF RX",
+          "download": "/api/tx/download/1791344444376883600.json"
+        },
+        {
+          "id": "1791344499862002000",
+          "time": 1791344498.437104,
+          "text": "板上解包I12",
+          "hex": "e69dbfe4b88ae8a7a3e58c85493132",
+          "bytes": 15,
+          "waveform": {
+            "sf": 7,
+            "codingRate": 1,
+            "bandwidth": 203.125,
+            "hostDecoder": false
+          },
+          "tx": {
+            "encoding": "LR2021 hardware",
+            "decoder": "ESP32 native",
+            "hostIqUploaded": false,
+            "raw": [
+              "RXPACKET {\"hex\":\"e69dbfe4b88ae8a7a3e58c85493132\",\"bytes\":15,\"sf\":7,\"codingRate\":1,\"crcOk\":true,\"crcHex\":\"2846\",\"cfoHz\":17257.69,\"sampleIndex\":25234,\"correctedCodewords\":0,\"source\":\"ESP32 native decoder\"}",
+              "RXDECODE {\"ok\":true,\"samples\":125286,\"captureStatus\":0,\"drops\":0,\"abandoned\":0,\"candidates\":1,\"headers\":1,\"packets\":1,\"decodeUs\":852031,\"error\":\"ok\"}",
+              "RXPACKEND OK"
+            ]
+          },
+          "received": {
+            "hex": "e69dbfe4b88ae8a7a3e58c85493132",
+            "bytes": 15,
+            "sf": 7,
+            "codingRate": 1,
+            "crcOk": true,
+            "crcHex": "2846",
+            "cfoHz": 17257.69,
+            "sampleIndex": 25234,
+            "correctedCodewords": 0,
+            "source": "ESP32 native packet decoder",
+            "direction": "RX",
+            "text": "板上解包I12",
+            "time": 1791344499.859466
+          },
+          "matched": true,
+          "direction": "lr2021",
+          "source": "LR2021 HF TX → ESP32 native full packet RX",
+          "download": "/api/tx/download/1791344499862002000.json"
+        }
+      ],
+      "identity": "S3SDR 9 iq-capture 16380",
+      "nativeReceiver": true
+    },
+    "receiver": {
+      "state": "receiving",
+      "port": "COM4",
+      "settings": {
+        "frequency": 2440.125,
+        "bandwidth": 203.125,
+        "sf": 7,
+        "power": -12,
+        "preamble": 16,
+        "sync": 18
+      },
+      "rxPackets": 2,
+      "rxCrcErrors": 0,
+      "rxRejected": 0,
+      "txPackets": 1,
+      "events": [
+        {
+          "direction": "RX",
+          "text": "Native H11",
+          "hex": "4e617469766520483131",
+          "bytes": 10,
+          "crcOk": true,
+          "crcPresent": true,
+          "headerStatus": 0,
+          "status": 0,
+          "rssi": -61.5,
+          "snr": 3.5,
+          "sf": 7,
+          "time": 1791344444.3532856,
+          "source": "Public RadioLib LR2021 receiver",
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=10 rssi=-61.5 snr=3.5 hex=4e617469766520483131"
+        },
+        {
+          "direction": "RX",
+          "text": "NNNNNNNNNN",
+          "hex": "4e4e4e4e4e4e4e4e4e4e",
+          "bytes": 10,
+          "crcOk": true,
+          "crcPresent": true,
+          "headerStatus": 0,
+          "status": 0,
+          "rssi": -113.5,
+          "snr": -12.5,
+          "sf": 7,
+          "time": 1791344512.3483279,
+          "source": "Public RadioLib LR2021 receiver",
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=10 rssi=-113.5 snr=-12.5 hex=4e4e4e4e4e4e4e4e4e4e"
+        }
+      ],
+      "message": "LR2021 back in RX after one packet",
+      "model": "LR2021 public RadioLib",
+      "firmware": "RadioLib 7.7.0 companion",
+      "crcPolicy": "required: status=0 + header=0 + present=1 + valid=1",
+      "publicReceiver": true,
+      "rxOnly": false,
+      "maxTxBytes": 32,
+      "rssi": -113.5,
+      "lastRearmInfo": {
+        "raw": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1",
+        "time": 1791344443.579942
+      },
+      "irqRecords": [
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=10 rssi=-61.5 snr=3.5 hex=4e617469766520483131",
+          "accepted": true,
+          "time": 1791344444.3532913,
+          "irq": "00040170"
+        },
+        {
+          "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=10 rssi=-113.5 snr=-12.5 hex=4e4e4e4e4e4e4e4e4e4e",
+          "accepted": true,
+          "time": 1791344512.3483336,
+          "irq": "00040170"
+        }
+      ],
+      "rssiTime": 1791344512.3483279,
+      "rssiKind": "packet",
+      "diagnostics": {
+        "validated": 2,
+        "crcErrors": 0,
+        "noCrc": 0,
+        "invalidMetadata": 0,
+        "hostDrops": 0
+      }
+    }
+  },
+  "notes": "One fresh forward and one fresh reverse UI attempt after introducing per-message independent receiver rearming; both passed the unchanged strict CRC and exact-byte gates. Pre-rearm IRQ is retained. This is a two-packet smoke, not a reliability estimate.",
+  "snapshotIncludesEarlierFirmwareHistory": true
+}

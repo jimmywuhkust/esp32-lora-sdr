@@ -1,0 +1,739 @@
+{
+  "pcDecoder": false,
+  "hostIqUploaded": false,
+  "retries": 0,
+  "xiaoSdk": "ESP-IDF6.2 development",
+  "xiaoImage": {
+    "bytes": 694800,
+    "sha256": "94238ac7dce3c446a218e21c5552d1018b8e5a15dd9d7047f366c642aea2668f"
+  },
+  "lrImage": {
+    "bytes": 320928,
+    "sha256": "a46cbeacaf9a5dcd3d49e40d09996ef9d0791517f9e96a84548ae474596ad6ca"
+  },
+  "events": [
+    {
+      "id": "1791343067978307400",
+      "time": 1791343065.179686,
+      "text": "Native ESP32 RF proof #A",
+      "hex": "4e61746976652045535033322052462070726f6f66202341",
+      "bytes": 24,
+      "waveform": {
+        "sf": 7,
+        "codingRate": 4,
+        "preamble": 16,
+        "bandwidth": 203.125,
+        "bytes": 24,
+        "transport": "native ESP32 DAC windows",
+        "frequency": 2440.125,
+        "cfo": 15000,
+        "invert": true,
+        "dacAmplitude": 150,
+        "windowSamples": 15000,
+        "analogGainCode": 0,
+        "hostIqUploaded": false,
+        "symbols": null
+      },
+      "tx": {
+        "command": "TX 7 4 4e61746976652045535033322052462070726f6f66202341",
+        "start": "TXSTART NATIVE",
+        "end": "TXEND NATIVE ok 93 0 58.132 buffer=3fcb0000 copy=40225 tone=20062400 adc=00000000 gain=119,119",
+        "encoding": "on-device",
+        "firmware": "S3SDR 9 iq-capture 16380"
+      },
+      "received": null,
+      "matched": false,
+      "direction": "xiao",
+      "source": "XIAO SDR RF TX → independent LR2021 HF RX"
+    },
+    {
+      "id": "1791343116444957300",
+      "time": 1791343115.0923374,
+      "text": "ESP32自己解包B",
+      "hex": "4553503332e887aae5b7b1e8a7a3e58c8542",
+      "bytes": 18,
+      "waveform": {
+        "sf": 7,
+        "codingRate": 1,
+        "bandwidth": 203.125,
+        "hostDecoder": false
+      },
+      "tx": {
+        "encoding": "LR2021 hardware",
+        "decoder": "ESP32 native",
+        "hostIqUploaded": false,
+        "raw": [
+          "RXPACKET {\"hex\":\"4553503332e887aae5b7b1e8a7a3e58c8542\",\"bytes\":18,\"sf\":7,\"codingRate\":1,\"crcOk\":true,\"crcHex\":\"9ecc\",\"cfoHz\":16265.87,\"sampleIndex\":20257,\"correctedCodewords\":0,\"source\":\"ESP32 native decoder\"}",
+          "RXDECODE {\"ok\":true,\"samples\":125263,\"captureStatus\":0,\"drops\":0,\"abandoned\":0,\"candidates\":1,\"headers\":1,\"packets\":1,\"decodeUs\":780642,\"error\":\"ok\"}",
+          "RXPACKEND OK"
+        ]
+      },
+      "received": {
+        "hex": "4553503332e887aae5b7b1e8a7a3e58c8542",
+        "bytes": 18,
+        "sf": 7,
+        "codingRate": 1,
+        "crcOk": true,
+        "crcHex": "9ecc",
+        "cfoHz": 16265.87,
+        "sampleIndex": 20257,
+        "correctedCodewords": 0,
+        "source": "ESP32 native packet decoder",
+        "direction": "RX",
+        "text": "ESP32自己解包B",
+        "time": 1791343116.4432433
+      },
+      "matched": true,
+      "direction": "lr2021",
+      "source": "LR2021 HF TX → ESP32 native full packet RX"
+    },
+    {
+      "id": "1791343395553683100",
+      "time": 1791343392.7607803,
+      "text": "Standalone LoRa C: XIAO sends RF",
+      "hex": "5374616e64616c6f6e65204c6f526120433a205849414f2073656e6473205246",
+      "bytes": 32,
+      "waveform": {
+        "sf": 7,
+        "codingRate": 4,
+        "preamble": 16,
+        "bandwidth": 203.125,
+        "bytes": 32,
+        "transport": "native ESP32 DAC windows",
+        "frequency": 2440.125,
+        "cfo": 15000,
+        "invert": true,
+        "dacAmplitude": 150,
+        "windowSamples": 15000,
+        "analogGainCode": 0,
+        "hostIqUploaded": false,
+        "symbols": null
+      },
+      "tx": {
+        "command": "TX 7 4 5374616e64616c6f6e65204c6f526120433a205849414f2073656e6473205246",
+        "start": "TXSTART NATIVE",
+        "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fcb0000 copy=40188 tone=20062400 adc=00000000 gain=119,119",
+        "encoding": "on-device",
+        "firmware": "S3SDR 9 iq-capture 16380"
+      },
+      "received": null,
+      "matched": false,
+      "direction": "xiao",
+      "source": "XIAO SDR RF TX → independent LR2021 HF RX"
+    },
+    {
+      "id": "1791343445098918500",
+      "time": 1791343442.3435466,
+      "text": "XIAO-D07",
+      "hex": "5849414f2d443037",
+      "bytes": 8,
+      "waveform": {
+        "sf": 7,
+        "codingRate": 4,
+        "preamble": 16,
+        "bandwidth": 203.125,
+        "bytes": 8,
+        "transport": "native ESP32 DAC windows",
+        "frequency": 2440.125,
+        "cfo": 15000,
+        "invert": true,
+        "dacAmplitude": 150,
+        "windowSamples": 15000,
+        "analogGainCode": 0,
+        "hostIqUploaded": false,
+        "symbols": null
+      },
+      "tx": {
+        "command": "TX 7 4 5849414f2d443037",
+        "start": "TXSTART NATIVE",
+        "end": "TXEND NATIVE ok 53 0 32.926 buffer=3fcb0000 copy=40188 tone=20062400 adc=00000000 gain=119,119",
+        "encoding": "on-device",
+        "firmware": "S3SDR 9 iq-capture 16380"
+      },
+      "received": null,
+      "matched": false,
+      "direction": "xiao",
+      "source": "XIAO SDR RF TX → independent LR2021 HF RX"
+    },
+    {
+      "id": "1791343609528942400",
+      "time": 1791343606.753898,
+      "text": "ESP32 LoRa E08",
+      "hex": "4553503332204c6f526120453038",
+      "bytes": 14,
+      "waveform": {
+        "sf": 7,
+        "codingRate": 1,
+        "preamble": 16,
+        "bandwidth": 203.125,
+        "bytes": 14,
+        "transport": "native ESP32 DAC windows",
+        "frequency": 2440.125,
+        "cfo": 15000,
+        "invert": true,
+        "dacAmplitude": 150,
+        "windowSamples": 15000,
+        "analogGainCode": 0,
+        "hostIqUploaded": false,
+        "symbols": null
+      },
+      "tx": {
+        "command": "TX 7 1 4553503332204c6f526120453038",
+        "start": "TXSTART NATIVE",
+        "end": "TXEND NATIVE ok 54 0 33.556 buffer=3fcb0000 copy=40236 tone=20062400 adc=00000000 gain=119,119",
+        "encoding": "on-device",
+        "firmware": "S3SDR 9 iq-capture 16380"
+      },
+      "received": null,
+      "matched": false,
+      "direction": "xiao",
+      "source": "XIAO SDR RF TX → independent LR2021 HF RX"
+    },
+    {
+      "id": "1791343709250366600",
+      "time": 1791343706.4949157,
+      "text": "XIAO-F09",
+      "hex": "5849414f2d463039",
+      "bytes": 8,
+      "waveform": {
+        "sf": 7,
+        "codingRate": 1,
+        "preamble": 16,
+        "bandwidth": 203.125,
+        "bytes": 8,
+        "transport": "native ESP32 DAC windows",
+        "frequency": 2440.125,
+        "cfo": 15000,
+        "invert": true,
+        "dacAmplitude": 150,
+        "windowSamples": 15000,
+        "analogGainCode": 0,
+        "hostIqUploaded": false,
+        "symbols": null
+      },
+      "tx": {
+        "command": "TX 7 1 5849414f2d463039",
+        "start": "TXSTART NATIVE",
+        "end": "TXEND NATIVE ok 44 0 27.254 buffer=3fcb0000 copy=40188 tone=20062400 adc=00000000 gain=119,119",
+        "encoding": "on-device",
+        "firmware": "S3SDR 9 iq-capture 16380"
+      },
+      "received": null,
+      "matched": false,
+      "direction": "xiao",
+      "source": "XIAO SDR RF TX → independent LR2021 HF RX"
+    }
+  ],
+  "snapshots": {
+    "native-web-before-cr-change.json": {
+      "transmitter": {
+        "state": "ready",
+        "port": "COM3",
+        "message": "Sent; no matching CRC-valid reception.",
+        "txPackets": 4,
+        "verifiedPackets": 1,
+        "profile": {
+          "frequency": 2440.125,
+          "bandwidth": 203.125,
+          "sf": 7,
+          "power": -12,
+          "preamble": 16,
+          "sync": 18
+        },
+        "correctionHz": 15000,
+        "events": [
+          {
+            "id": "1791343067978307400",
+            "time": 1791343065.179686,
+            "text": "Native ESP32 RF proof #A",
+            "hex": "4e61746976652045535033322052462070726f6f66202341",
+            "bytes": 24,
+            "waveform": {
+              "sf": 7,
+              "codingRate": 4,
+              "preamble": 16,
+              "bandwidth": 203.125,
+              "bytes": 24,
+              "transport": "native ESP32 DAC windows",
+              "frequency": 2440.125,
+              "cfo": 15000,
+              "invert": true,
+              "dacAmplitude": 150,
+              "windowSamples": 15000,
+              "analogGainCode": 0,
+              "hostIqUploaded": false,
+              "symbols": null
+            },
+            "tx": {
+              "command": "TX 7 4 4e61746976652045535033322052462070726f6f66202341",
+              "start": "TXSTART NATIVE",
+              "end": "TXEND NATIVE ok 93 0 58.132 buffer=3fcb0000 copy=40225 tone=20062400 adc=00000000 gain=119,119",
+              "encoding": "on-device",
+              "firmware": "S3SDR 9 iq-capture 16380"
+            },
+            "received": null,
+            "matched": false,
+            "direction": "xiao",
+            "source": "XIAO SDR RF TX → independent LR2021 HF RX",
+            "download": "/api/tx/download/1791343067978307400.json"
+          },
+          {
+            "id": "1791343116444957300",
+            "time": 1791343115.0923374,
+            "text": "ESP32自己解包B",
+            "hex": "4553503332e887aae5b7b1e8a7a3e58c8542",
+            "bytes": 18,
+            "waveform": {
+              "sf": 7,
+              "codingRate": 1,
+              "bandwidth": 203.125,
+              "hostDecoder": false
+            },
+            "tx": {
+              "encoding": "LR2021 hardware",
+              "decoder": "ESP32 native",
+              "hostIqUploaded": false,
+              "raw": [
+                "RXPACKET {\"hex\":\"4553503332e887aae5b7b1e8a7a3e58c8542\",\"bytes\":18,\"sf\":7,\"codingRate\":1,\"crcOk\":true,\"crcHex\":\"9ecc\",\"cfoHz\":16265.87,\"sampleIndex\":20257,\"correctedCodewords\":0,\"source\":\"ESP32 native decoder\"}",
+                "RXDECODE {\"ok\":true,\"samples\":125263,\"captureStatus\":0,\"drops\":0,\"abandoned\":0,\"candidates\":1,\"headers\":1,\"packets\":1,\"decodeUs\":780642,\"error\":\"ok\"}",
+                "RXPACKEND OK"
+              ]
+            },
+            "received": {
+              "hex": "4553503332e887aae5b7b1e8a7a3e58c8542",
+              "bytes": 18,
+              "sf": 7,
+              "codingRate": 1,
+              "crcOk": true,
+              "crcHex": "9ecc",
+              "cfoHz": 16265.87,
+              "sampleIndex": 20257,
+              "correctedCodewords": 0,
+              "source": "ESP32 native packet decoder",
+              "direction": "RX",
+              "text": "ESP32自己解包B",
+              "time": 1791343116.4432433
+            },
+            "matched": true,
+            "direction": "lr2021",
+            "source": "LR2021 HF TX → ESP32 native full packet RX",
+            "download": "/api/tx/download/1791343116444957300.json"
+          },
+          {
+            "id": "1791343395553683100",
+            "time": 1791343392.7607803,
+            "text": "Standalone LoRa C: XIAO sends RF",
+            "hex": "5374616e64616c6f6e65204c6f526120433a205849414f2073656e6473205246",
+            "bytes": 32,
+            "waveform": {
+              "sf": 7,
+              "codingRate": 4,
+              "preamble": 16,
+              "bandwidth": 203.125,
+              "bytes": 32,
+              "transport": "native ESP32 DAC windows",
+              "frequency": 2440.125,
+              "cfo": 15000,
+              "invert": true,
+              "dacAmplitude": 150,
+              "windowSamples": 15000,
+              "analogGainCode": 0,
+              "hostIqUploaded": false,
+              "symbols": null
+            },
+            "tx": {
+              "command": "TX 7 4 5374616e64616c6f6e65204c6f526120433a205849414f2073656e6473205246",
+              "start": "TXSTART NATIVE",
+              "end": "TXEND NATIVE ok 109 0 68.214 buffer=3fcb0000 copy=40188 tone=20062400 adc=00000000 gain=119,119",
+              "encoding": "on-device",
+              "firmware": "S3SDR 9 iq-capture 16380"
+            },
+            "received": null,
+            "matched": false,
+            "direction": "xiao",
+            "source": "XIAO SDR RF TX → independent LR2021 HF RX",
+            "download": "/api/tx/download/1791343395553683100.json"
+          },
+          {
+            "id": "1791343445098918500",
+            "time": 1791343442.3435466,
+            "text": "XIAO-D07",
+            "hex": "5849414f2d443037",
+            "bytes": 8,
+            "waveform": {
+              "sf": 7,
+              "codingRate": 4,
+              "preamble": 16,
+              "bandwidth": 203.125,
+              "bytes": 8,
+              "transport": "native ESP32 DAC windows",
+              "frequency": 2440.125,
+              "cfo": 15000,
+              "invert": true,
+              "dacAmplitude": 150,
+              "windowSamples": 15000,
+              "analogGainCode": 0,
+              "hostIqUploaded": false,
+              "symbols": null
+            },
+            "tx": {
+              "command": "TX 7 4 5849414f2d443037",
+              "start": "TXSTART NATIVE",
+              "end": "TXEND NATIVE ok 53 0 32.926 buffer=3fcb0000 copy=40188 tone=20062400 adc=00000000 gain=119,119",
+              "encoding": "on-device",
+              "firmware": "S3SDR 9 iq-capture 16380"
+            },
+            "received": null,
+            "matched": false,
+            "direction": "xiao",
+            "source": "XIAO SDR RF TX → independent LR2021 HF RX",
+            "download": "/api/tx/download/1791343445098918500.json"
+          }
+        ],
+        "identity": "S3SDR 9 iq-capture 16380",
+        "nativeReceiver": true
+      },
+      "receiver": {
+        "state": "receiving",
+        "port": "COM4",
+        "settings": {
+          "frequency": 2440.125,
+          "bandwidth": 203.125,
+          "sf": 7,
+          "power": -12,
+          "preamble": 16,
+          "sync": 18
+        },
+        "rxPackets": 0,
+        "rxCrcErrors": 1,
+        "rxRejected": 3,
+        "txPackets": 1,
+        "events": [],
+        "message": "Public LR2021 RX · strict header/payload CRC · no automatic TX",
+        "model": "LR2021 public RadioLib",
+        "firmware": "RadioLib 7.7.0 companion",
+        "crcPolicy": "required: status=0 + header=0 + present=1 + valid=1",
+        "publicReceiver": true,
+        "rxOnly": false,
+        "maxTxBytes": 32,
+        "rssi": null,
+        "rejections": [
+          "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=24 rssi=-61.5 snr=6.2 hex=4e61746976652045535033322052462070726f6f66202341",
+          "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=32 rssi=-61.5 snr=5.8 hex=5374616e64616c6f6e65204c6f526120433a205849414f2073656e6473205246",
+          "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=8 rssi=-61.5 snr=3.5 hex=5849414f2d443037",
+          "RX status=-7 header=0 crc_present=1 crc_ok=0 bytes=60 rssi=-113.5 snr=-12.2 hex=17dddcc4bb3c7dbf1b2a45a81dbb4dc18a079c9365b73c73a89e665ef9e3684eff7cd8901095056cea8a9a205150c36418899aef48b1ae0a5bec1b41"
+        ],
+        "diagnostics": {
+          "validated": 0,
+          "crcErrors": 1,
+          "noCrc": 0,
+          "invalidMetadata": 2,
+          "hostDrops": 0
+        }
+      }
+    },
+    "native-web-cr5-before-reset.json": {
+      "transmitter": {
+        "state": "ready",
+        "port": "COM3",
+        "message": "Sent; no matching CRC-valid reception.",
+        "txPackets": 1,
+        "verifiedPackets": 0,
+        "profile": {
+          "frequency": 2440.125,
+          "bandwidth": 203.125,
+          "sf": 7,
+          "power": -12,
+          "preamble": 16,
+          "sync": 18
+        },
+        "correctionHz": 15000,
+        "events": [
+          {
+            "id": "1791343609528942400",
+            "time": 1791343606.753898,
+            "text": "ESP32 LoRa E08",
+            "hex": "4553503332204c6f526120453038",
+            "bytes": 14,
+            "waveform": {
+              "sf": 7,
+              "codingRate": 1,
+              "preamble": 16,
+              "bandwidth": 203.125,
+              "bytes": 14,
+              "transport": "native ESP32 DAC windows",
+              "frequency": 2440.125,
+              "cfo": 15000,
+              "invert": true,
+              "dacAmplitude": 150,
+              "windowSamples": 15000,
+              "analogGainCode": 0,
+              "hostIqUploaded": false,
+              "symbols": null
+            },
+            "tx": {
+              "command": "TX 7 1 4553503332204c6f526120453038",
+              "start": "TXSTART NATIVE",
+              "end": "TXEND NATIVE ok 54 0 33.556 buffer=3fcb0000 copy=40236 tone=20062400 adc=00000000 gain=119,119",
+              "encoding": "on-device",
+              "firmware": "S3SDR 9 iq-capture 16380"
+            },
+            "received": null,
+            "matched": false,
+            "direction": "xiao",
+            "source": "XIAO SDR RF TX → independent LR2021 HF RX",
+            "download": "/api/tx/download/1791343609528942400.json"
+          }
+        ],
+        "identity": "S3SDR 9 iq-capture 16380",
+        "nativeReceiver": true
+      },
+      "receiver": {
+        "state": "receiving",
+        "port": "COM4",
+        "settings": {
+          "frequency": 2440.125,
+          "bandwidth": 203.125,
+          "sf": 7,
+          "power": -12,
+          "preamble": 16,
+          "sync": 18
+        },
+        "rxPackets": 1,
+        "rxCrcErrors": 0,
+        "rxRejected": 1,
+        "txPackets": 0,
+        "events": [
+          {
+            "direction": "RX",
+            "text": "EEEEEEEEEEEEEE",
+            "hex": "4545454545454545454545454545",
+            "bytes": 14,
+            "crcOk": true,
+            "crcPresent": true,
+            "headerStatus": 0,
+            "status": 0,
+            "rssi": -113.5,
+            "snr": -12.2,
+            "sf": 7,
+            "time": 1791343632.7245362,
+            "source": "Public RadioLib LR2021 receiver",
+            "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=14 rssi=-113.5 snr=-12.2 hex=4545454545454545454545454545"
+          }
+        ],
+        "message": "Public LR2021 RX · strict header/payload CRC · no automatic TX",
+        "model": "LR2021 public RadioLib",
+        "firmware": "RadioLib 7.7.0 companion",
+        "crcPolicy": "required: status=0 + header=0 + present=1 + valid=1",
+        "publicReceiver": true,
+        "rxOnly": false,
+        "maxTxBytes": 32,
+        "rssi": -113.5,
+        "irqRecords": [
+          {
+            "raw": "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=14 rssi=-61.5 snr=4.0 hex=4553503332204c6f526120453038",
+            "accepted": false,
+            "time": 1791343607.50715,
+            "irq": "00040370"
+          },
+          {
+            "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=14 rssi=-113.5 snr=-12.2 hex=4545454545454545454545454545",
+            "accepted": true,
+            "time": 1791343632.724541,
+            "irq": "00040170"
+          }
+        ],
+        "rejections": [
+          "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=14 rssi=-61.5 snr=4.0 hex=4553503332204c6f526120453038"
+        ],
+        "diagnostics": {
+          "validated": 1,
+          "crcErrors": 0,
+          "noCrc": 0,
+          "invalidMetadata": 1,
+          "hostDrops": 0
+        },
+        "rssiTime": 1791343632.7245362,
+        "rssiKind": "packet"
+      }
+    },
+    "native-web-before-sdk-switch.json": {
+      "transmitter": {
+        "state": "ready",
+        "port": "COM3",
+        "message": "Sent; no matching CRC-valid reception.",
+        "txPackets": 2,
+        "verifiedPackets": 0,
+        "profile": {
+          "frequency": 2440.125,
+          "bandwidth": 203.125,
+          "sf": 7,
+          "power": -12,
+          "preamble": 16,
+          "sync": 18
+        },
+        "correctionHz": 15000,
+        "events": [
+          {
+            "id": "1791343609528942400",
+            "time": 1791343606.753898,
+            "text": "ESP32 LoRa E08",
+            "hex": "4553503332204c6f526120453038",
+            "bytes": 14,
+            "waveform": {
+              "sf": 7,
+              "codingRate": 1,
+              "preamble": 16,
+              "bandwidth": 203.125,
+              "bytes": 14,
+              "transport": "native ESP32 DAC windows",
+              "frequency": 2440.125,
+              "cfo": 15000,
+              "invert": true,
+              "dacAmplitude": 150,
+              "windowSamples": 15000,
+              "analogGainCode": 0,
+              "hostIqUploaded": false,
+              "symbols": null
+            },
+            "tx": {
+              "command": "TX 7 1 4553503332204c6f526120453038",
+              "start": "TXSTART NATIVE",
+              "end": "TXEND NATIVE ok 54 0 33.556 buffer=3fcb0000 copy=40236 tone=20062400 adc=00000000 gain=119,119",
+              "encoding": "on-device",
+              "firmware": "S3SDR 9 iq-capture 16380"
+            },
+            "received": null,
+            "matched": false,
+            "direction": "xiao",
+            "source": "XIAO SDR RF TX → independent LR2021 HF RX",
+            "download": "/api/tx/download/1791343609528942400.json"
+          },
+          {
+            "id": "1791343709250366600",
+            "time": 1791343706.4949157,
+            "text": "XIAO-F09",
+            "hex": "5849414f2d463039",
+            "bytes": 8,
+            "waveform": {
+              "sf": 7,
+              "codingRate": 1,
+              "preamble": 16,
+              "bandwidth": 203.125,
+              "bytes": 8,
+              "transport": "native ESP32 DAC windows",
+              "frequency": 2440.125,
+              "cfo": 15000,
+              "invert": true,
+              "dacAmplitude": 150,
+              "windowSamples": 15000,
+              "analogGainCode": 0,
+              "hostIqUploaded": false,
+              "symbols": null
+            },
+            "tx": {
+              "command": "TX 7 1 5849414f2d463039",
+              "start": "TXSTART NATIVE",
+              "end": "TXEND NATIVE ok 44 0 27.254 buffer=3fcb0000 copy=40188 tone=20062400 adc=00000000 gain=119,119",
+              "encoding": "on-device",
+              "firmware": "S3SDR 9 iq-capture 16380"
+            },
+            "received": null,
+            "matched": false,
+            "direction": "xiao",
+            "source": "XIAO SDR RF TX → independent LR2021 HF RX",
+            "download": "/api/tx/download/1791343709250366600.json"
+          }
+        ],
+        "identity": "S3SDR 9 iq-capture 16380",
+        "nativeReceiver": true
+      },
+      "receiver": {
+        "state": "receiving",
+        "port": "COM4",
+        "settings": {
+          "frequency": 2440.125,
+          "bandwidth": 203.125,
+          "sf": 7,
+          "power": -12,
+          "preamble": 16,
+          "sync": 18
+        },
+        "rxPackets": 1,
+        "rxCrcErrors": 0,
+        "rxRejected": 2,
+        "txPackets": 0,
+        "events": [
+          {
+            "direction": "RX",
+            "text": "EEEEEEEEEEEEEE",
+            "hex": "4545454545454545454545454545",
+            "bytes": 14,
+            "crcOk": true,
+            "crcPresent": true,
+            "headerStatus": 0,
+            "status": 0,
+            "rssi": -113.5,
+            "snr": -12.2,
+            "sf": 7,
+            "time": 1791343632.7245362,
+            "source": "Public RadioLib LR2021 receiver",
+            "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=14 rssi=-113.5 snr=-12.2 hex=4545454545454545454545454545"
+          }
+        ],
+        "message": "Public LR2021 RX · strict header/payload CRC · no automatic TX",
+        "model": "LR2021 public RadioLib",
+        "firmware": "RadioLib 7.7.0 companion",
+        "crcPolicy": "required: status=0 + header=0 + present=1 + valid=1",
+        "publicReceiver": true,
+        "rxOnly": false,
+        "maxTxBytes": 32,
+        "rssi": null,
+        "irqRecords": [
+          {
+            "raw": "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=14 rssi=-61.5 snr=4.0 hex=4553503332204c6f526120453038",
+            "accepted": false,
+            "time": 1791343607.50715,
+            "irq": "00040370"
+          },
+          {
+            "raw": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=14 rssi=-113.5 snr=-12.2 hex=4545454545454545454545454545",
+            "accepted": true,
+            "time": 1791343632.724541,
+            "irq": "00040170"
+          },
+          {
+            "raw": "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=8 rssi=-62.5 snr=4.2 hex=5849414f2d463039",
+            "accepted": false,
+            "time": 1791343707.238847,
+            "irq": "00040370"
+          }
+        ],
+        "rejections": [
+          "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=14 rssi=-61.5 snr=4.0 hex=4553503332204c6f526120453038",
+          "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=8 rssi=-62.5 snr=4.2 hex=5849414f2d463039"
+        ],
+        "diagnostics": {
+          "validated": 1,
+          "crcErrors": 0,
+          "noCrc": 0,
+          "invalidMetadata": 2,
+          "hostDrops": 0
+        },
+        "rssiTime": 1791343632.7245362,
+        "rssiKind": "packet"
+      }
+    }
+  },
+  "notes": "Six fresh UI attempts: five strict XIAO TX rejections and one successful native XIAO RX. Coding rate changed after three failed forward attempts; LR2021 reset before the final forward attempt. The unsolicited mismatched E-only receiver event is not a sent-packet success. No expected bytes enter the MCU decoder.",
+  "summary": {
+    "xiao": {
+      "attempts": 5,
+      "accepted": 0
+    },
+    "lr2021": {
+      "attempts": 1,
+      "accepted": 1
+    }
+  }
+}

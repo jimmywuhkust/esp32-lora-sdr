@@ -10,14 +10,16 @@ extern "C" void app_main() {
     lora_sdr_platform_serial_loop();
 #else
     LoRaRadio radio;
-    Error status=radio.begin(2440.125);
+    LoRaSettings settings;
+    settings.frequencyMHz=2440.125;
+    settings.spreadingFactor=7;
+    settings.bandwidthKHz=203.125;
+    settings.codingRate=8;
+    settings.transmitPowerPercent=75;
+    Error status=radio.begin(settings);
     if(status!=Error::Ok){printf("begin: %s\n",errorName(status));return;}
-    radio.setSpreadingFactor(7);
-    radio.setBandwidth(203.125);
-    radio.setCodingRate(8);
-    radio.setTransmitPowerPercent(75);
     // Receive by default. To send, explicitly call:
-    // status=radio.send("Hello from one ESP32-S3!");
+    // status=radio.transmit("Hello from one ESP32-S3!");
     for(;;){
 #ifdef LORA_SDR_ECHO_DEMO
         // Explicit opt-in bench echo. RX is native; no computer commands or
@@ -38,7 +40,7 @@ extern "C" void app_main() {
                 vTaskDelay(pdMS_TO_TICKS(20));
                 uint8_t reply[255]={'A','C','K',':'};
                 memcpy(reply+4,packet.payload,packet.length);
-                status=radio.send(reply,packet.length+4);
+                status=radio.transmit(reply,packet.length+4);
                 printf("NATIVE_ACK status=%s bytes=%u\n",errorName(status),unsigned(packet.length+4));
                 fflush(stdout);
                 vTaskDelay(pdMS_TO_TICKS(20));

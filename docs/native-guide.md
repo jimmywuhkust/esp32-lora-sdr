@@ -52,16 +52,19 @@ application calls `LoRaRadio` directly; it does not need this command bridge.
 using namespace lora_sdr;
 LoRaRadio radio;
 
-// In app_main(), after checking each result:
-radio.begin(2440.125);             // MHz
-radio.setSpreadingFactor(7);
-radio.setBandwidth(203.125);       // kHz
-radio.setCodingRate(5);            // denominator: 5 means 4/5
-radio.setPreambleLength(16);
-radio.setSyncWord(0x12);
-radio.setTransmitPowerPercent(50); // DAC amplitude; uncalibrated, not dBm
+LoRaSettings settings;
+settings.frequencyMHz = 2440.125;
+settings.bandwidthKHz = 203.125;
+settings.spreadingFactor = 7;
+settings.codingRate = 5;            // denominator: 5 means 4/5
+settings.preambleLength = 16;
+settings.syncWord = 0x12;
+settings.transmitPowerPercent = 50; // DAC amplitude; uncalibrated, not dBm
 
-Error sent = radio.send("Hello from ESP32-S3!");
+// Inside app_main():
+Error status = radio.begin(settings);
+if (status != Error::Ok) return;
+Error sent = radio.transmit("Hello from ESP32-S3!");
 RxPacket packet;
 Error received = radio.receive(packet, 500);
 if (received == Error::Ok) {
@@ -70,10 +73,13 @@ if (received == Error::Ok) {
 }
 ```
 
-Call `send()` only when your application intends to transmit. The default
+Call `transmit()` only when your application intends to transmit. The default
 example receives and never sends at boot. Check the returned `Error` rather
-than assuming a setter or transmission succeeded. `send()` means the local
+than assuming a setter or transmission succeeded. `transmit()` means the local
 operation completed; delivery needs a valid packet at the other radio.
+`send()` is an equivalent alias. `configure(settings)` applies a complete
+valid profile or leaves the prior configuration unchanged on error; it emits
+no RF. Individual setters remain available for runtime changes.
 
 | Setting | Interface and current RF boundary |
 |---|---|
@@ -81,7 +87,7 @@ operation completed; delivery needs a valid packet at the other radio.
 | Spreading factor | `setSpreadingFactor(7..12)`; native RF RX demonstrated at SF7–12, with only one 8-byte trial each at SF10–12 in the final matrix. TX SF7 demonstrated; SF8/9 experimental and unreliable, SF10–12 return `Unsupported` |
 | Coding rate | `setCodingRate(5..8)` selects 4/5..4/8; explicit RX reads CR from the packet header |
 | Bandwidth | TX 203.125/406.25/812.5 kHz, with automatic matching DAC window; native RX currently **203.125 kHz** |
-| Length | `send(bytes, length)`, 1..255; the receiver extracts length from the explicit header. A complete packet must fit its capture window |
+| Length | `transmit(bytes, length)`, 1..255; the receiver extracts length from the explicit header. A complete packet must fit its capture window |
 | Preamble / sync | `setPreambleLength(12..64)`, `setSyncWord(byte)`; both radios must match sync |
 | TX level | `setTransmitPowerPercent(1..100)` maps to DAC peak 2..200; no calibrated dBm API |
 | Frequency correction | `setFrequencyCorrection(Hz)`, ±50 kHz. Default +15 kHz was measured for this pair |

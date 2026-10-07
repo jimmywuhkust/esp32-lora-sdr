@@ -1,151 +1,130 @@
-<p align="center"><img src="docs/assets/hero.svg" alt="ESP32 LoRa SDR — real packets from the RF inside ESP32-S3" width="100%"></p>
+<p align="center"><img src="docs/assets/hero.svg" alt="ESP32 LoRa SDR — an application library using the radio inside ESP32-S3" width="100%"></p>
 
 # ESP32 LoRa SDR
 
-**Send and decode complete 2.4 GHz LoRa packets on an ESP32-S3 using its own RF.**
-Capture, packet decoding, CRC and transmission run on the ESP32. The ESP32
-needs no external LoRa transceiver and no PC packet decoder. An independent
-LR2021 provides the other radio and verifies transmitted packets.
+**A C++ library for complete 2.4 GHz LoRa packets using the RF already inside your ESP32-S3.**
 
-[Native RX/TX guide](docs/native-guide.md) · [中文说明](README.zh-CN.md) ·
-[Native measurements](docs/native-report.md) · [API](docs/api.md) · [Prior art](docs/prior-art.md)
+Your application calls `begin()`, sets the radio parameters, then calls
+`transmit()` or `receive()`. The ESP32 performs waveform generation,
+demodulation, error correction and packet CRC. It needs no external LoRa
+chip, website or PC packet decoder. A second radio is the peer on the air.
 
-This is an **experimental radio library**, tested on a Seeed XIAO ESP32-S3.
-It uses undocumented RF registers and SDK PHY routines. The measured bench
-profile is 2440.125 MHz, 203.125 kHz bandwidth, SF7, private sync `0x12`.
-Read the capability table before choosing other settings.
+[Get started](docs/native-guide.md) · [API](docs/api.md) · [中文](README.zh-CN.md) ·
+[Measurements](docs/native-report.md) · [Prior art](docs/prior-art.md)
 
-## What is real today?
+Experimental; verified on **Seeed XIAO ESP32-S3, 8 MB flash + 8 MB OPI PSRAM**.
+Full native RX/TX uses the supplied **PlatformIO / ESP-IDF component**.
+Stock Arduino core 2.0.17 supports **TX only**; `receive()` returns
+`Unsupported`. The radio backend uses undocumented RF registers and SDK PHY
+routines, so other boards and SDKs require verification.
 
-| Capability | Evidence / limit |
-|---|---|
-| ESP32 native full-packet RX | Latest fresh RF: **27/31**, SF7–12; short packets strongest, long-packet failures retained. Four real negative checks correctly rejected. All header/FEC/dewhitening/CRC runs on-device. [Raw attempts and timing](docs/native-report.md) |
-| Both directions in one firmware | Alternating trial: native RX 12/12, strict LR2021 reception 10/12; two rejected transmissions retained. No firmware switch or radio reset between directions |
-| Convenient library interface | `LoRaRadio`: frequency, SF, CR, bandwidth, preamble, sync and relative TX level setters; `send()` / `receive()` |
-| XIAO → LR2021 complete packet | Independent hardware CRC and exact-byte comparison |
-| On-device coding and transmission | Arduino / PlatformIO; the PC supplies payload bytes, not an I/Q waveform |
-| SF7, four coding rates, 1–255 bytes | Final strict IRQ matrix: **224/240 accepted, 240/240 exact payloads**. Sixteen ambiguous header-error events rejected. Earlier API-based public matrix 239/240; [criteria and raw evidence](docs/test-report.md#final-receiver-irq-audit-stricter-hardware-evidence) |
-| Portable PHY encoder | 264/264 on-device cross-checks: SF7–12, CR4/5–4/8, lengths 1–255; this is **coding verification**, not RF verification |
-| SF7 at 406.25 / 812.5 kHz | Separate randomized matrices: 72/72 at each bandwidth, four coding rates, lengths 1–255; matching windows are required |
-| RF parameter selection | Frequency, preamble, coding rate, frequency correction, DAC amplitude and waveform window; unsupported combinations return an error |
-| Channel, preamble, sync and IQ polarity | 142/144 fresh 32-byte CRC packets across 48 settings; both failures retained. Three channels, four preambles, sync0x12/0x34 and both matched polarities |
-| SF8 / SF9 transmission | Windowed DAC has failed; PLL has delivered some exact CRC packets but only 1/10 SF8 and 4/10 SF9 in small diagnostic runs. Unreliable and experimental |
-| Analog level control | Optional raw PBUS codes; a constant-DAC seven-code study delivered 70/70. Codes are nonmonotonic and uncalibrated; see the report |
-| Packaging | Stock Arduino core 2.0.17: TX only. PlatformIO **ESP-IDF component**: native RX/TX using the supplied PSRAM/core configuration |
-| Calibrated TX power, distance or sensitivity | Not measured; raw gain and amplitude are not dBm |
+## Use it from your application
 
-The measurements are from one stationary indoor board pair. Failed tests,
-resets and mismatched packets stay in the report.
-
-Native RX captures finite windows at 250 kcomplex samples/s, then decodes on
-the ESP32. It has blind periods while decoding, especially at higher SFs.
-It is half-duplex and does not promise continuous reception. Native RF RX
-bandwidth is currently 203.125 kHz; SF7 is the demonstrated DAC TX profile.
-The earlier [PC-IQ measurements](docs/test-report.md) remain separate
-historical evidence.
-
-![Native receive capabilities and processing latency](docs/assets/native-reception.svg)
-
-![Native XIAO transmission and independent LR2021 reception, including Chinese UTF-8 and exact bytes](docs/assets/final-live-proof.png)
-
-## Simple native RX/TX API
+The units and setter names follow familiar LoRa library conventions:
+MHz, kHz, spreading factor and coding-rate denominator. Check returned errors.
 
 ```cpp
 #include <LoRaRadio.h>
-lora_sdr::LoRaRadio radio;
-// In your application, checking each returned Error:
-radio.begin(2440.125);              // MHz
-radio.setSpreadingFactor(7);
-radio.setBandwidth(203.125);        // kHz
-radio.setCodingRate(8);             // 4/8
-radio.setTransmitPowerPercent(75);  // relative amplitude, not calibrated dBm
-radio.send("Hello from XIAO!");
-lora_sdr::RxPacket packet;
-auto status = radio.receive(packet, 500);
-// On Ok: packet.payload, packet.length and packet.crcOk are ready to use.
+using namespace lora_sdr;
+
+LoRaRadio radio;
+LoRaSettings settings;
+settings.frequencyMHz = 2440.125;
+settings.bandwidthKHz = 203.125;
+settings.spreadingFactor = 7;
+settings.codingRate = 5;              // 4/5; choose 5, 6, 7 or 8
+settings.transmitPowerPercent = 75;   // relative amplitude, not dBm
+
+// Inside your application:
+Error status = radio.begin(settings);
+if (status != Error::Ok) return;
+
+status = radio.transmit("Hello from ESP32-S3!");
+// Local TX completion is not an acknowledgment from the peer.
+RxPacket packet;
+status = radio.receive(packet, 500);  // 500 ms capture, then native decoding
+if (status == Error::Ok) {
+    // Use packet.payload[0..packet.length): complete CRC-valid bytes.
+}
 ```
 
+Change settings with `setFrequency()`, `setBandwidth()`,
+`setSpreadingFactor()`, `setCodingRate()`, `setPreambleLength()`,
+`setSyncWord()` and `setTransmitPowerPercent()`. `configure(settings)`
+validates a whole profile before applying it. `transmit(bytes, length)` handles
+binary payloads of 1–255 bytes; `send()` is an equivalent alias.
+
+This is a separate library with a [RadioLib-inspired call style](docs/api.md).
+It is not a drop-in SX1262 driver. TX power has not been calibrated in dBm.
+
+## Build a standalone receiver or receive-and-reply application
+
+Install Python, Git and PlatformIO. Download the ZIP or clone the repository
+with your GitHub access; it is private during development. On Windows use
+an ASCII path such as `C:\lora-sdr`. From the repository root:
+
 ```sh
+python -m pip install platformio==6.1.19
 python examples/NativeDuplex/setup_deps.py
 pio run -d examples/NativeDuplex -e xiao-native
+pio device list
 pio run -d examples/NativeDuplex -e xiao-native -t upload --upload-port YOUR_PORT
 ```
 
-The native example receives by default. The explicitly selected `xiao-echo`
-example receives and replies on the ESP32 itself. Follow the
-[full native guide](docs/native-guide.md) for setup and current boundaries.
+Edit [the application](examples/NativeDuplex/main/main.cpp) to use the library
+in your own project. `xiao-native` receives by default. Select `xiao-echo` to
+receive a CRC-valid packet and transmit `ACK:` plus those bytes entirely on
+the ESP32. After flashing, USB logs are optional; RF packet processing runs
+on the board. Follow the [native guide](docs/native-guide.md) for the required
+PSRAM/core settings, peer configuration and timing.
 
-## Stock Arduino TX
+For stock Arduino TX, install the repository ZIP as a library, select XIAO
+ESP32-S3 with core 2.0.17, and open
+[SendOnce](examples/SendOnce/SendOnce.ino). The
+[Arduino guide](docs/quick-start.md) also covers its PlatformIO build.
 
-Use [SendOnce](examples/SendOnce/SendOnce.ino) or the USB
-[SerialBench](examples/SerialBench/main.cpp). No sketch in this project sends
-automatically at boot: type a command to start a bounded transmission.
+## Measured capabilities
 
-```cpp
-#include <LoRaSDR.h>
-#include <ESP32S3Radio.h>
+| Operation | Verified scope and current limit |
+|---|---|
+| Native transmit | SF7, CR4/5–4/8, 1–255 bytes. Latest 20-setting RF check: **19/20 strict CRC + exact bytes**, 20/20 exact bytes. The rejected attempt is retained. |
+| Native receive | 203.125 kHz, SF7–12: **27/31** fresh CRC-valid packets; SF10–12 have only one short trial each. Long packets are less reliable. Four negative checks rejected. |
+| Standalone receive and reply | ESP32 received **8/8** without host commands; independent LR2021 accepted **5/8** exact CRC-valid ACKs. |
+| Parameters | Frequency, SF, CR, bandwidth, preamble, sync, relative amplitude and frequency correction; see [supported ranges](docs/native-guide.md#the-api-your-application-calls). |
 
-lora_sdr::ESP32S3Radio radio;
-lora_sdr::Config config;
+![Native transmitter: four coding rates and five payload lengths](docs/assets/native-transmission.svg)
 
-// After radio.begin() returns Ok:
-config.transport = lora_sdr::Transport::DacWindows;
-config.spreadingFactor = 7;
-config.codingRate = 4;                 // 4/8
-const uint8_t message[] = "Hello from XIAO!";
-lora_sdr::TxResult result;
-auto status = radio.transmit(message, sizeof(message)-1, config, result);
-// status reports the TX operation. Only the independent receiver proves delivery.
-```
+These are separate measurements from one stationary indoor board pair,
+not a reliability or range guarantee. Raw payloads, failures, IRQ/CRC gates,
+firmware hashes and figures are in the [native report](docs/native-report.md).
+Earlier Arduino/PC-IQ investigations remain in the
+[historical report](docs/test-report.md).
 
-PlatformIO:
+Reception captures finite 50–900 ms windows at 250 kcomplex samples/s, then
+decodes on the ESP32. It is half-duplex, with blind time during decoding;
+higher SFs can take tens of seconds. TX SF8/9 is unreliable and SF10–12 is
+unsupported. Wi-Fi/BLE coexistence, calibrated output power, continuous RX,
+CAD and LoRaWAN are not implemented.
 
-```sh
-pio run -e xiao-s3
-pio device list
-pio run -e xiao-s3 -t upload --upload-port YOUR_PORT
-pio device monitor --port YOUR_PORT --baud 115200
-```
+## Optional debugging
 
-Then enter `INFO`, `DAC`, and
-`TX 7 4 48656c6c6f2066726f6d205849414f21`. Configure the LR2021 receiver
-to the matching profile and look for **CRC OK + the exact same hex bytes**.
-Use the included [public LR2021 companion](companion/lr2021/README.md) for a
-complete receiver setup and [automated verification](evaluation/verify_public_receiver.py).
-The +15 kHz correction in the defaults was measured for one bench pair; it is
-not a calibration value for every ESP32.
+The serial bench can display complete packets in a two-board browser UI.
+[The bench proof and instructions](docs/native-report.md#native-tx-parameters-and-receiver-epochs)
+are optional development tools. The library, standalone receiver and echo
+example have no browser or Python runtime dependency on the ESP32.
 
-## How it works
+## How it works and credit
 
-The PHY encoder creates the header, whitening, payload CRC, Hamming coding,
-diagonal interleaving and Gray-mapped symbols. The S3 backend keys its internal
-2.4 GHz RF chain and plays I/Q windows from RF SRAM at 40 MS/s. Native RX
-keeps IQ in PSRAM and runs a C++ demodulator and packet decoder on the ESP32;
-expected payload bytes are never inputs to that decoder.
+The encoder creates the explicit header, payload CRC, whitening, Hamming
+coding, interleaving and LoRa symbols. The backend plays I/Q windows through
+the S3 internal 2.4 GHz RF chain; native RX retains IQ in PSRAM and decodes
+complete packets in C++. The current DAC waveform has gaps between windows.
+It is not continuous, gap-free LoRa transmission.
 
-The current DAC waveform includes silent gaps between symbol windows. For the
-default SF7 profile, 15,000 of about 25,206 samples are played per full up-chirp
-(about 59.5%). This is **not continuous, gap-free LoRa transmission**. There
-is also a PLL modulation backend for research and comparison; its randomized
-payload reliability is lower on this bench.
-
-## Reproducibility and credit
-
-Research builds, seeds, payload hex, received hex, CRC results, timing failures
-and firmware hashes accompany the measurements. The test report distinguishes
-host-generated waveforms from native Arduino transmission and software checks
-from independent RF tests.
-
-This project follows earlier work by [ESPARGOS](https://github.com/ESPARGOS/esp-sdr),
+This project builds on [ESPARGOS](https://github.com/ESPARGOS/esp-sdr),
 [Jochen Hammes](https://github.com/jochenhammes/esp32-sdr-trx/tree/research/iq-tx)
-and [CNLohr](https://github.com/cnlohr/lolra). **It is not presented as the first
-firmware-generated LoRa transmitter.** Their failed experiments are useful
-engineering evidence; [our prior-art notes](docs/prior-art.md) explain what
-was reused and what was measured here.
-
-GPL-3.0-only. See [LICENSE](LICENSE) and [third-party notices](THIRD_PARTY.md).
-Use RF settings permitted for your location and connected hardware.
-
-Full native RX needs the supplied PlatformIO/ESP-IDF configuration on the
-verified S3 with OPI PSRAM. Stock Arduino full RX, reliable long-packet RX / higher-SF TX,
-calibrated power, sensitivity and distance remain unfinished.
+and [CNLohr](https://github.com/cnlohr/lolra). It is not presented as the first
+firmware-generated LoRa transmitter. [Prior-art notes](docs/prior-art.md)
+explain reused work and failed approaches. GPL-3.0-only;
+[third-party notices](THIRD_PARTY.md). Use RF settings permitted for your
+location and hardware.

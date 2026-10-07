@@ -4,13 +4,43 @@
 #include <cmath>
 
 namespace lora_sdr {
+// Application units follow common LoRa drivers: MHz, kHz and CR denominator.
+// Power is deliberately a relative DAC amplitude, not an invented dBm value.
+struct LoRaSettings {
+    double frequencyMHz=2440.125;
+    double bandwidthKHz=203.125;
+    uint8_t spreadingFactor=7;
+    uint8_t codingRate=5; // 4/5
+    uint8_t syncWord=0x12;
+    uint16_t preambleLength=16;
+    uint8_t transmitPowerPercent=75;
+    int32_t frequencyCorrectionHz=15000;
+};
 // Small user-facing API; all modulation/packet processing stays in the chip.
 // Full RX needs the native IDF component and its supplied sdkconfig.
 class LoRaRadio {
 public:
+    Error begin(const LoRaSettings& settings) {
+        Error status=configure(settings);
+        return status==Error::Ok?radio_.begin():status;
+    }
     Error begin(double frequencyMHz=2440.125) {
         Error status=setFrequency(frequencyMHz);
         return status==Error::Ok?radio_.begin():status;
+    }
+    // Validate the whole profile before changing settings. No RF is emitted.
+    Error configure(const LoRaSettings& settings) {
+        LoRaRadio next;
+        Error status=next.setFrequency(settings.frequencyMHz);
+        if(status==Error::Ok)status=next.setBandwidth(settings.bandwidthKHz);
+        if(status==Error::Ok)status=next.setSpreadingFactor(settings.spreadingFactor);
+        if(status==Error::Ok)status=next.setCodingRate(settings.codingRate);
+        if(status==Error::Ok)status=next.setSyncWord(settings.syncWord);
+        if(status==Error::Ok)status=next.setPreambleLength(settings.preambleLength);
+        if(status==Error::Ok)status=next.setTransmitPowerPercent(settings.transmitPowerPercent);
+        if(status==Error::Ok)status=next.setFrequencyCorrection(settings.frequencyCorrectionHz);
+        if(status==Error::Ok)config_=next.config_;
+        return status;
     }
     Error setFrequency(double mhz) {
         if(!std::isfinite(mhz)||mhz<2400.2||mhz>2483.3)return Error::InvalidConfig;
@@ -47,11 +77,16 @@ public:
         if(percent<1||percent>100)return Error::InvalidConfig;
         config_.dacAmplitude=percent*2;return Error::Ok;
     }
-    Error send(const uint8_t* payload,size_t length) {
+    Error transmit(const uint8_t* payload,size_t length) {
         return radio_.transmit(payload,length,config_,lastTx_);
     }
+    Error transmit(const char* text) {
+        return text?transmit(reinterpret_cast<const uint8_t*>(text),std::strlen(text)):Error::InvalidLength;
+    }
+    // Keep send() as an equivalent spelling for existing applications.
+    Error send(const uint8_t* payload,size_t length) {return transmit(payload,length);}
     Error send(const char* text) {
-        return text?send(reinterpret_cast<const uint8_t*>(text),std::strlen(text)):Error::InvalidLength;
+        return transmit(text);
     }
     Error receive(RxPacket& packet,uint32_t windowMs=350) {
         uint8_t data[255];size_t length=0;

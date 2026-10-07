@@ -1,7 +1,7 @@
 # 一个 ESP32-S3 原生收发 LoRa
 
 这套库让 ESP32 自己完成 LoRa 的采集、解调、包头、纠错、去白化、完整字节和
-CRC，再用自带射频发射。应用调用 `send()` / `receive()`，不需要电脑解包。
+CRC，再用自带射频发射。应用调用 `transmit()` / `receive()`，不需要电脑解包。
 
 目前完整双向版本走 **PlatformIO 的 ESP-IDF 组件**。普通 Arduino 库版本可以
 发送，完整接收仍返回 `Unsupported`。实测板是 XIAO ESP32-S3，8 MB flash
@@ -34,6 +34,32 @@ pio device monitor --port YOUR_PORT --baud 115200
 `LoRaRadio` 提供频率 MHz、带宽 kHz、SF、编码率分母 5–8（代表 4/5–4/8）、
 前导码、同步字、频偏修正和发射幅度 1–100% 的设置。每个调用返回 `Error`。
 幅度百分比可以重复设置，但还没有校准成天线输出 dBm。
+
+```cpp
+#include <LoRaRadio.h>
+using namespace lora_sdr;
+LoRaRadio radio;
+LoRaSettings settings;
+settings.frequencyMHz = 2440.125;
+settings.bandwidthKHz = 203.125;
+settings.spreadingFactor = 7;
+settings.codingRate = 5;              // 4/5
+settings.transmitPowerPercent = 75;
+// 放在 app_main() 内：
+Error status = radio.begin(settings);
+if (status != Error::Ok) return;
+status = radio.transmit("Hello from ESP32-S3!");
+RxPacket packet;
+status = radio.receive(packet, 500);
+if (status == Error::Ok) {
+    // 使用 packet.payload[0..packet.length)，不保证结尾有零。
+}
+```
+
+`begin(settings)` 先验证完整配置再初始化；`configure(settings)` 可以一次改
+整个配置，错误时保留原配置，不发射信号。运行时也可单独调用 setter。
+`send()` 是 `transmit()` 的等价别名。形式参考 RadioLib 的 LoRa 调用习惯，
+但这不是其 SX1262 驱动的直接替换；尚未实现的接口不会假装具有芯片同等能力。
 
 选择 `xiao-echo` 环境可以运行明确启用的回包例程：收到 CRC 有效的完整包后，
 ESP32 自己加上 `ACK:` 发回。测试程序只给 LR2021 发命令，不给 XIAO 写入

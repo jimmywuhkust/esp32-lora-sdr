@@ -142,9 +142,69 @@ ACK console labels and two rejected mixed-header IRQs explain part of that
 gap; the remaining trial had no native packet. Do not promote exact bytes
 from rejected IRQ events into successful delivery.
 
-The final receive-and-reply dataset and firmware hashes are linked below.
-Its returned bytes come from actual on-device reception, not from a host
-copy of the expected payload.
+The final [8-bit standalone receive-and-reply run](../evaluation/data/native-echo-eight-bit.json)
+gave **8/8 native full-packet RX**, **5/8 independently accepted exact ACKs**
+and **4/8 combined console-plus-RF gates**. Three local ACK console labels
+were absent, including one independently accepted ACK. Three other ACKs had
+exact bytes but mixed header-valid/header-error IRQs and stay rejected under
+the strict RF rule. All eight returned ACK payloads matched, but exact bytes
+alone are not the acceptance rule. The raw file contains the actual XIAO
+app hash `f7b6b843…` (664,160 bytes, ESP-IDF6.0.1) and LR2021 hash
+`a46cbeac…` (320,928 bytes). Its returned bytes came from actual on-device
+reception, not from a host copy of the expected payload. `fflush()` and a
+20 ms delay around TX did not eliminate all short ACK console omissions;
+that telemetry limitation remains unresolved.
+
+## Native TX parameters and receiver epochs
+
+The native serial API was checked with [20 fresh shuffled RF attempts](../evaluation/data/native-tx-rearmed.json),
+seed202610071208: SF7, all four CRs, and lengths1/8/32/80/255. **19/20** passed
+the unchanged strict LR2021 gate; **20/20** payloads matched. All four 255-byte
+packets passed. The rejected CR4/6, 8-byte attempt returned exact bytes but
+IRQ`00040370`. Its pre-rearm IRQ was zero, so old idle flags do **not** explain
+every mixed-header event. No retry was made. One observation per setting is
+a functionality check, not a reliability estimate. Actual app hashes are
+XIAO`94238ac7…`/694,800 bytes and LR2021`a46cbeac…`/320,928 bytes.
+
+![Native TX coding rate and packet length](assets/native-transmission.svg)
+
+The simple UI initially had [five forward rejections and one native RX success](../evaluation/data/native-web-sdk62.json)
+with the SDK6.2 app. Changing only the bench toolchain did not solve the issue:
+the first [SDK6.0.1 forward attempt also failed](../evaluation/data/native-web-sdk60-no-rearm.json).
+The bridge now records the receiver's pre-existing IRQ state, starts a fresh
+matching RX interval before each manual XIAO packet, and preserves the same
+strict packet gate. It supplies payload bytes to TX and displays MCU packet
+results; it performs no packet demodulation or I/Q upload.
+
+[Two fresh SDK6.0.1 messages](../evaluation/data/native-web-sdk60-rearmed.json)
+then passed, one in each direction. Before the successful forward packet,
+INFO recorded IRQ`00000320`; the accepted packet recorded`00040170`.
+Restoring the **same SDK6.2 binary** used in the initial failed run also gave
+[one forward and one reverse success](../evaluation/data/native-web-sdk62-rearmed.json).
+This supports scoping receiver state to each test interval; it does not prove
+that every earlier header-error flag was stale. An unsolicited mismatched
+E-only receiver readout was never counted as delivery of a sent packet.
+All failures and snapshots remain available; the builds/runs are not pooled.
+
+After restoring SDK6.2, the [final optional UI check](../evaluation/data/native-web-final.json)
+used four fresh messages: an 80-byte forward payload, a 20-byte native reverse
+payload, then fresh 10-byte/14-byte packets after a page reload. All four
+matched complete bytes and passed their independent/native CRC gates. These
+four attempts are separate from the 20-setting matrix. The last reload also
+verified connected Send/Disconnect controls after both directions completed.
+
+The [optional UI proof](assets/native-live-proof.png) shows both receiving boards,
+complete bytes and CRC. A computer can display this optional bench UI; the
+standalone library and echo program perform packet processing on the ESP32.
+
+The application API also provides `begin(LoRaSettings)`, atomic
+`configure(LoRaSettings)` and RadioLib-style `transmit()` text/binary overloads;
+existing `send()` calls remain equivalent. Application configuration and
+dispatch regressions cover invalid profiles preserving prior settings,
+embedded-zero bytes, propagation of backend failures and unsupported RX.
+Those host-side API checks claim no additional RF success. The retained RF
+datasets identify their original image hashes; newer wrapper code does not
+retroactively change those measured firmware identities.
 
 ## Relative TX level
 
@@ -178,6 +238,13 @@ for a controlled high-SF TX recovery experiment. No range, link-budget or
 Multi-SF diversity advantage is claimed.
 
 ## Builds, reproducibility and current boundaries
+
+GitHub [CI run37567375722](https://github.com/jimmywuhkust/esp32-lora-sdr/actions/runs/37567375722)
+succeeded for source commit`d590a708…`: Arduino2m39s, recorded-IQ/native-C++
+regressions23s, native PlatformIO7m38s, total7m42s. The native job builds
+`xiao-native`, `xiao-echo` and the new `xiao-bench` with ESP-IDF6.0.1.
+[Recorded CI metadata](../evaluation/data/native-ci.json) distinguishes
+these compile/regression checks from live RF measurements.
 
 The public [native bench manifest](../firmware/iq-capture/prebuilt/native/manifest.json)
 identifies the exact generated app/bootloader/partition hashes, source-file

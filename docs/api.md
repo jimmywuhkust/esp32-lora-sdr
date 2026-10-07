@@ -9,7 +9,10 @@ Include `LoRaRadio.h`. `LoRaRadio` exposes `begin(MHz)`, `setFrequency(MHz)`,
 `setSpreadingFactor(7..12)`, `setBandwidth(kHz)`, `setCodingRate(5..8)`,
 `setPreambleLength(12..64)`, `setSyncWord(byte)`,
 `setFrequencyCorrection(Hz)`, `setTransmitPowerPercent(1..100)`,
-`send(bytes, length)` / `send(text)`, and `receive(RxPacket&, windowMs)`.
+`transmit(bytes, length)` / `transmit(text)`, and `receive(RxPacket&, windowMs)`.
+`send()` is an equivalent alias. `begin(LoRaSettings)` validates a complete
+application profile before initialization; `configure(LoRaSettings)` updates
+it atomically without emitting RF. An invalid profile leaves settings unchanged.
 Every call returns `Error`. Changing bandwidth selects a matching DAC window.
 See [the native guide](native-guide.md) for the measured SF/bandwidth limits.
 Setter ranges alone are not an RF guarantee.
@@ -18,6 +21,15 @@ Setter ranges alone are not an RF guarantee.
 CRC and correction metadata. `lastReceive()` reports capture status, samples,
 drops, abandoned units and decode time. Native receive needs the IDF component;
 stock Arduino receive returns `Unsupported`.
+
+The call style follows the [RadioLib SX126x settings example](https://github.com/jgromes/RadioLib/blob/master/examples/SX126x/SX126x_Settings/SX126x_Settings.ino):
+frequency in MHz, bandwidth in kHz, SF, coding-rate denominator and explicit
+return-status checks. This is a separate library, not a RadioLib module or a
+drop-in SX1262 driver. `setTransmitPowerPercent()` controls relative amplitude;
+there is no calibrated `setOutputPower(dBm)` or supported continuous/interrupt
+RX, CAD, LoRaWAN, sleep or RSSI API. Refer to the
+[SX126x driver reference](https://jgromes.github.io/RadioLib/class_s_x126x.html)
+for the broader external-transceiver API; those functions cannot be assumed here.
 
 ## Encoder
 
@@ -64,8 +76,8 @@ A valid packet from a contiguous prefix can succeed after a boundary stop;
 | Config field | Meaning | Native RF boundary |
 |---|---|---|
 | `frequencyHz` | RF channel in Hz | 2400.2–2483.3 MHz, configured in 1 kHz steps for DAC |
-| `bandwidthHz` | LoRa bandwidth | 203125, 406250, 812500; verified with SF7 and matching window lengths |
-| `spreadingFactor` | PHY SF | Encoder SF7–12; native RF SF7–9 experimental; only SF7 has demonstrated DAC interop |
+| `bandwidthHz` | LoRa bandwidth | TX SF7: 203125, 406250, 812500 with matching windows; native RX: 203125 only |
+| `spreadingFactor` | PHY SF | Native RX SF7–12 tested; TX SF7 demonstrated, SF8/9 unreliable, SF10–12 returns `Unsupported` |
 | `codingRate` | 1, 2, 3, 4 | 4/5, 4/6, 4/7, 4/8 |
 | `syncWord` | Two sync nibbles | Default `0x12`; `0x12` and `0x34` covered by the settings matrix |
 | `preambleSymbols` | Preamble chirps | RF 12–64, default 16 |

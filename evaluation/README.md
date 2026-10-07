@@ -48,6 +48,22 @@ with a production binary hash.
 
 ## Included datasets
 
+The full native MCU sender can be checked separately from stock Arduino.
+Flash `prebuilt/native` or build `NativeDuplex/xiao-bench`, disconnect the UI,
+and give each run a new output path. If using a different build, pass its
+actual last-flashed `--image` and `--lr-image` paths:
+
+```sh
+python evaluation/verify_native_tx.py --xiao YOUR_XIAO_PORT --lr2021 YOUR_LR2021_PORT --output evaluation/data/my-native-tx.json
+python evaluation/plot_native_tx.py
+```
+
+Run these from the repository root. The fixture sends one fresh SF7 packet
+for each CR4/5–4/8 × length1/8/32/80/255 combination and starts a fresh LR2021
+RX interval before each attempt. It records the previous IRQ state and keeps
+the same strict CRC gate. The plotting script uses the included fixed dataset;
+it does not automatically replace it with a new measurement.
+
 | File | Measurement |
 |---|---|
 | `native-matrix-basic.json` | Original native SF7 matrix: 237/240, lengths 1–250 |
