@@ -2,79 +2,69 @@
 
 # ESP32 LoRa SDR
 
-**用 ESP32-S3 自带的 2.4 GHz 射频收发完整 LoRa 包的 C++ 库。**
+用 ESP32-S3 自带的射频收发 2.4 GHz LoRa 包。
+编码、解调、纠错和 CRC 都在板子上运行，无需外接 LoRa 芯片。
 
-应用直接调用 `begin()`、设置参数，再调用 `transmit()` / `receive()`。
-波形生成、解调、纠错和完整包 CRC 都在 ESP32 内完成，不需要外接 LoRa 芯片、
-网站或电脑解包。空中通信需要另一台参数匹配的无线设备作为对端。
+[英文](README.md) · [开始使用](docs/arduino-rx.zh-CN.md) · [API](docs/api.md) ·
+[测试结果](docs/arduino-report.zh-CN.md) · [已有工作](docs/prior-art.md)
 
-[英文主页](README.md) · [Arduino 收发入门](docs/arduino-rx.zh-CN.md) ·
-[API](docs/api.md) · [Arduino 实测](docs/arduino-report.zh-CN.md) · [已有工作](docs/prior-art.md)
+## 开始使用
 
-当前是实验性库，已验证 **Seeed XIAO ESP32-S3，8 MB flash + 8 MB OPI PSRAM**。
-**Arduino 已支持收发**：使用随附的 PlatformIO ArduinoDuplex 工程，把
-Arduino 2.0.17 作为 IDF 4.4.7 组件运行，应用仍是 `setup()` / `loop()`，
-完整解包和 CRC 在 ESP32 上完成。仅把 ZIP 安装进普通 Arduino core 仍是 TX
-路径，接收需要 duplex 工程。也提供纯 ESP-IDF 工程。底层使用未公开的射频
-寄存器和 SDK PHY 函数，其他板型、SDK 不能直接视为兼容。
+准备一块带 8 MB flash、8 MB OPI PSRAM 的 XIAO ESP32-S3，接好 2.4 GHz
+天线。对端可以是另一块运行本项目的 ESP32，或参数匹配的 2.4 GHz LoRa 电台。
 
-## 在自己的程序里调用
+**收发请使用随附的 PlatformIO 工程。Arduino IDE 目前只能发射**，安装库 ZIP
+不会启用接收。只需要发射时，可按 [Arduino IDE 步骤](docs/quick-start.md) 操作。
 
-单位和调用习惯参考常见 LoRa 库：MHz、kHz、SF、编码率分母。检查返回状态。
-
-```cpp
-#include <LoRaRadio.h>
-using namespace lora_sdr;
-
-LoRaRadio radio;
-LoRaSettings settings;
-settings.frequencyMHz = 2440.125;
-settings.bandwidthKHz = 203.125;
-settings.spreadingFactor = 7;
-settings.codingRate = 8;              // 4/8，可选 5、6、7、8
-settings.transmitPowerPercent = 75;   // 相对幅度，尚未校准为 dBm
-
-// 放在自己的应用函数内：
-Error status = radio.begin(settings);
-if (status != Error::Ok) return;
-status = radio.transmit("Hello from ESP32-S3!");
-RxPacket packet;
-status = radio.receive(packet, 500);  // 采集 500 ms，再在芯片内解码
-if (status == Error::Ok) {
-    // packet.payload[0..packet.length) 是完整 CRC 有效载荷。
-}
-```
-
-运行时可以用 `setSpreadingFactor()`、`setCodingRate()`、`setBandwidth()`、
-`setFrequency()`、`setPreambleLength()`、`setSyncWord()` 和
-`setTransmitPowerPercent()` 改参数。`configure(settings)` 先验证整个配置，
-非法配置不会部分生效。二进制发包用 `transmit(bytes, length)`，1–255 字节；
-`send()` 是等价别名。调用形式参考 RadioLib，但并非 SX1262 驱动的直接替换。
-本地 TX 返回成功也不等于对端已收到。
-
-## 编译独立接收或收包后回复的程序
-
-安装 Python、Git 和 PlatformIO。下载 ZIP 或通过 GitHub 权限克隆；开发期仓库
-为 private。Windows 建议放在 `C:\lora-sdr` 等纯英文路径。从仓库根目录运行：
+下载仓库 ZIP 并解压，或用自己的 GitHub 账号克隆。Windows 建议放在
+`C:\lora-sdr`。在包含 `README.md` 和 `platformio.ini` 的目录打开终端：
 
 ```sh
 python -m pip install platformio==6.1.19
 python examples/NativeDuplex/setup_deps.py
 pio run -d examples/ArduinoDuplex -e xiao-arduino-rx
 pio device list
-pio run -d examples/ArduinoDuplex -e xiao-arduino-rx -t upload --upload-port YOUR_PORT
 ```
 
-修改 [Arduino 示例](examples/ArduinoDuplex/main/main.cpp) 就可以直接调用库。
-`xiao-arduino-rx` 默认接收；选择 `xiao-arduino-echo` 后，ESP32 在 CRC 有效的包到达后发送
-`ACK:` 加原始载荷，全程无需电脑指令。刷好后 USB 日志可选。
-[Arduino 中文入门](docs/arduino-rx.zh-CN.md) 包含 PSRAM/core 配置、对端参数、
-收发时序和双 ESP32 ping/pong 示例。纯 `app_main()` 应用可用
-[原生工程](docs/native-guide.zh-CN.md)。
+从列表找到板子的串口，替换 `YOUR_PORT`，刷入并打开日志：
 
-普通 Arduino 发射可安装仓库 ZIP，选择 XIAO ESP32-S3 / core 2.0.17，打开
-[SendOnce](examples/SendOnce/SendOnce.ino)。[Arduino 步骤](docs/quick-start.md)
-还介绍了对应的 PlatformIO 构建。
+```sh
+pio run -d examples/ArduinoDuplex -e xiao-arduino-rx -t upload --upload-port YOUR_PORT
+pio device monitor --port YOUR_PORT --baud 115200
+```
+
+程序开始监听。对端设置为 **2440.125 MHz、BW 203.125 kHz、SF7、preamble
+16、sync `0x12`、显式包头和 payload CRC**。收到包后，日志显示
+`ARDUINO_RX crc_ok=1` 和完整字节。
+
+有两块 ESP32 时，先按 [ping/pong 步骤](docs/arduino-rx.zh-CN.md#两块-esp32-对传)
+发送请求并收到回复，再改参数。
+
+## 写自己的程序
+
+修改 [`examples/ArduinoDuplex/main/main.cpp`](examples/ArduinoDuplex/main/main.cpp)。
+在 `setup()` 初始化，在 `loop()` 调用收发。
+[指南中的完整接收程序](docs/arduino-rx.zh-CN.md#写自己的程序) 可以直接放进这个文件。
+
+`radio.begin(settings)` 成功后，主要调用是：
+
+```cpp
+Error status = radio.transmit("Hello from ESP32-S3!");
+
+RxPacket packet;
+status = radio.receive(packet, 500);
+if (status == Error::Ok) {
+    Serial.write(packet.payload, packet.length);
+}
+```
+
+`receive(packet, 500)` 采集 500 ms 后解码。`transmit()` 返回 `Ok` 表示本机
+完成发射，是否送达要看对端。
+
+频率用 MHz，带宽用 kHz，编码率填 `5`、`6`、`7`、`8`，对应 4/5 到 4/8。
+先用 SF7、编码率 `8`。功率是 1–100 的相对设置，不是 dBm。
+其他参数和错误码见 [API](docs/api.md)。用 `app_main()` 的 ESP-IDF 程序可参考
+[NativeDuplex](docs/native-guide.zh-CN.md)。
 
 ## 真实验证到的能力
 

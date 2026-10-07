@@ -1,7 +1,7 @@
 # First packet, step by step
 
 This page covers **stock Arduino transmission**. For full RX and TX on the
-ESP32, start with [the native PlatformIO guide](native-guide.md).
+ESP32, start with [the Arduino receive/transmit guide](arduino-rx.md).
 
 ## Hardware and software
 
@@ -107,6 +107,6 @@ SF7 at 406.25 and 812.5 kHz is also measured; set `bandwidthHz` and
 `dacWindowSamples` to 406250/7500 or 812500/3750, and match the receiver.
 The serial commands are `BW 406250` then `WIN 7500`, for example.
 
-SF8/SF9, calibrated power and native packet reception are not
-currently verified capabilities of this release. Use the default SF7 profile
-for the first test. Record successes and failures when changing a parameter.
+Use SF7 for your first transmission. SF8/SF9 TX remains unreliable and output
+power is not calibrated in dBm. For on-board reception, follow the
+[Arduino RX/TX guide](arduino-rx.md).

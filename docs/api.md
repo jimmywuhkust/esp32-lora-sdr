@@ -20,7 +20,7 @@ Setter ranges alone are not an RF guarantee.
 `RxPacket` owns up to 255 bytes and carries decoded length, SF, CR, payload
 CRC and correction metadata. `lastReceive()` reports capture status, samples,
 drops, abandoned units and decode time. Full receive needs the supplied IDF
-component, also available inside real Arduino `setup()` / `loop()` through
+component, used by the Arduino project in
 [ArduinoDuplex](arduino-rx.md). Installing only the ZIP into stock Arduino
 does not install this component; that profile returns `Unsupported` for RX.
 `RxPacket.softDecoded` identifies a CRC-valid SF7 packet recovered by the

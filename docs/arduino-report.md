@@ -57,7 +57,7 @@ acceptance. The initiator requires the complete matching reply. Each unique
 request has eight explicitly logged RF copies. A decoded request triggers
 eight reply copies. Those copies are not independent unique successes.
 The example waits 6.5 s before replies, listens in 500 ms windows, and stops
-after four unique requests. See [the timing guide](arduino-rx.md#two-esp32s).
+after four unique requests. See [the timing guide](arduino-rx.md#try-two-esp32s).
 
 The host observer also logs LR2021 reception of requests and replies. It
 does not supply expected bytes to either ESP32's decoder. Bench scheduling,

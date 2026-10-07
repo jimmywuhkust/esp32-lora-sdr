@@ -2,90 +2,78 @@
 
 # ESP32 LoRa SDR
 
-**A C++ library for complete 2.4 GHz LoRa packets using the RF already inside your ESP32-S3.**
+Send and receive 2.4 GHz LoRa packets with the radio inside an ESP32-S3.
+Packet encoding, decoding and CRC run on the board; no external LoRa chip is needed.
 
-Your application calls `begin()`, sets the radio parameters, then calls
-`transmit()` or `receive()`. The ESP32 performs waveform generation,
-demodulation, error correction and packet CRC. It needs no external LoRa
-chip, website or PC packet decoder. A second radio is the peer on the air.
+[Get started](docs/arduino-rx.md) · [API](docs/api.md) · [中文](README.zh-CN.md) ·
+[Test results](docs/arduino-report.md) · [Prior art](docs/prior-art.md)
 
-[Arduino RX/TX](docs/arduino-rx.md) · [API](docs/api.md) · [中文](README.zh-CN.md) ·
-[Measurements](docs/arduino-report.md) · [Prior art](docs/prior-art.md)
+## Get started
 
-Experimental; verified on **Seeed XIAO ESP32-S3, 8 MB flash + 8 MB OPI PSRAM**.
-**Arduino RX/TX is available through the supplied PlatformIO ArduinoDuplex
-profile**, using real `setup()` / `loop()` and Arduino 2.0.17 as an IDF 4.4.7
-component. Packet decoding and CRC stay on the MCU. An ESP-IDF-only profile
-is also included. Installing just the ZIP into a stock Arduino core provides
-TX only; use the duplex project for RX. The backend uses undocumented RF
-registers and SDK PHY routines, so other boards and SDKs require verification.
+Use a XIAO ESP32-S3 with 8 MB flash, 8 MB OPI PSRAM and its 2.4 GHz antenna.
+You also need a second ESP32 running this project, or a compatible 2.4 GHz
+LoRa radio, to send or receive packets.
 
-## Use it from your application
+For **send and receive**, start with the included PlatformIO project.
+**Arduino IDE currently supports sending only**; installing the library ZIP
+will not enable reception. See [the Arduino IDE instructions](docs/quick-start.md)
+if you only need to transmit.
 
-The units and setter names follow familiar LoRa library conventions:
-MHz, kHz, spreading factor and coding-rate denominator. Check returned errors.
-
-```cpp
-#include <LoRaRadio.h>
-using namespace lora_sdr;
-
-LoRaRadio radio;
-LoRaSettings settings;
-settings.frequencyMHz = 2440.125;
-settings.bandwidthKHz = 203.125;
-settings.spreadingFactor = 7;
-settings.codingRate = 8;              // 4/8; choose 5, 6, 7 or 8
-settings.transmitPowerPercent = 75;   // relative amplitude, not dBm
-
-// Inside your application:
-Error status = radio.begin(settings);
-if (status != Error::Ok) return;
-
-status = radio.transmit("Hello from ESP32-S3!");
-// Local TX completion is not an acknowledgment from the peer.
-RxPacket packet;
-status = radio.receive(packet, 500);  // 500 ms capture, then native decoding
-if (status == Error::Ok) {
-    // Use packet.payload[0..packet.length): complete CRC-valid bytes.
-}
-```
-
-Change settings with `setFrequency()`, `setBandwidth()`,
-`setSpreadingFactor()`, `setCodingRate()`, `setPreambleLength()`,
-`setSyncWord()` and `setTransmitPowerPercent()`. `configure(settings)`
-validates a whole profile before applying it. `transmit(bytes, length)` handles
-binary payloads of 1–255 bytes; `send()` is an equivalent alias.
-
-This is a separate library with a [RadioLib-inspired call style](docs/api.md).
-It is not a drop-in SX1262 driver. TX power has not been calibrated in dBm.
-
-## Build a standalone receiver or receive-and-reply application
-
-Install Python, Git and PlatformIO. Download the ZIP or clone the repository
-with your GitHub access; it is private during development. On Windows use
-an ASCII path such as `C:\lora-sdr`. From the repository root:
+Download and extract the repository, or clone it with your GitHub account.
+On Windows, use a folder such as `C:\lora-sdr`. Open a terminal in the
+directory containing `README.md` and `platformio.ini`:
 
 ```sh
 python -m pip install platformio==6.1.19
 python examples/NativeDuplex/setup_deps.py
 pio run -d examples/ArduinoDuplex -e xiao-arduino-rx
 pio device list
-pio run -d examples/ArduinoDuplex -e xiao-arduino-rx -t upload --upload-port YOUR_PORT
 ```
 
-Edit [the Arduino application](examples/ArduinoDuplex/main/main.cpp) to use the library
-in your own project. `xiao-arduino-rx` receives by default. Select `xiao-arduino-echo` to
-receive a CRC-valid packet and transmit `ACK:` plus those bytes entirely on
-the ESP32. After flashing, USB logs are optional; RF packet processing runs
-on the board. Follow the [Arduino guide](docs/arduino-rx.md) for the required
-PSRAM/core settings, peer configuration and timing. It also includes bounded
-`xiao-arduino-ping` / `xiao-arduino-pong` applications for two ESP32s.
-Prefer `app_main()`? Use the separate [native project](docs/native-guide.md).
+Find your board's port in the list, replace `YOUR_PORT`, then upload and open
+the serial monitor:
 
-For stock Arduino TX, install the repository ZIP as a library, select XIAO
-ESP32-S3 with core 2.0.17, and open
-[SendOnce](examples/SendOnce/SendOnce.ino). The
-[Arduino guide](docs/quick-start.md) also covers its PlatformIO build.
+```sh
+pio run -d examples/ArduinoDuplex -e xiao-arduino-rx -t upload --upload-port YOUR_PORT
+pio device monitor --port YOUR_PORT --baud 115200
+```
+
+The example listens for packets. Set the other radio to **2440.125 MHz,
+203.125 kHz bandwidth, SF7, preamble 16, sync `0x12`, explicit header and
+payload CRC**. Received bytes appear after `ARDUINO_RX crc_ok=1`.
+
+With two ESP32s, follow [the ping/pong instructions](docs/arduino-rx.md#try-two-esp32s)
+to send a request and receive a reply. Start there before changing radio settings.
+
+## Write your application
+
+Edit [`examples/ArduinoDuplex/main/main.cpp`](examples/ArduinoDuplex/main/main.cpp).
+Use `setup()` to start the radio and `loop()` to send or receive. The
+[guide includes a complete receiver](docs/arduino-rx.md#write-your-own-program)
+you can copy into that file.
+
+These are the calls you use after `radio.begin(settings)` succeeds:
+
+```cpp
+Error status = radio.transmit("Hello from ESP32-S3!");
+
+RxPacket packet;
+status = radio.receive(packet, 500);
+if (status == Error::Ok) {
+    Serial.write(packet.payload, packet.length);
+}
+```
+
+`receive(packet, 500)` captures for 500 ms, then decodes the recording.
+`transmit()` returning `Ok` means the board finished sending; check the
+other radio to confirm delivery.
+
+Set frequency in MHz, bandwidth in kHz and coding rate as `5`, `6`, `7` or
+`8` for 4/5 through 4/8. Start with SF7 and coding rate `8`. Power is a
+relative setting from 1 to 100, not dBm. See [the API](docs/api.md) for all
+settings and return values.
+
+For an ESP-IDF application using `app_main()`, use [NativeDuplex](docs/native-guide.md).
 
 ## Measured capabilities
 
