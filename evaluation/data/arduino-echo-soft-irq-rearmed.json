@@ -1,0 +1,225 @@
+{
+  "startedUtc": "2026-10-07T07:17:09.235763+00:00",
+  "seed": 202610071533,
+  "retries": 0,
+  "xiaoSerialWrites": 0,
+  "pcDecoder": false,
+  "example": "ArduinoDuplex/xiao-arduino-echo",
+  "cases": [
+    {
+      "cr": 1,
+      "length": 8,
+      "expectedHex": "8341b7bc499d59e7",
+      "expectedReplyHex": "41434b3a8341b7bc499d59e7",
+      "xiao": [
+        "LISTEN arduino sf=7 window=500",
+        "ARDUINO_RX crc_ok=1 bytes=8 sf=7 cr=1 hex=8341b7bc499d59e7",
+        "ARDUINO_CAPTURE samples=125282 status=0 drops=0 abandoned=0 soft=0 decode_us=595580",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500"
+      ],
+      "lr2021": [
+        "TX_PUBLIC status=0 sf=7 cr=1 bytes=8 hex=8341b7bc499d59e7",
+        "TX_DIAG irq=0008000a elapsed_us=30285 gpio=1",
+        "SF 7 status=0"
+      ],
+      "rxPassed": true,
+      "txPassed": false,
+      "strictRfTxPassed": false
+    },
+    {
+      "cr": 1,
+      "length": 32,
+      "expectedHex": "2b7ff05eee450fd053ed6d121eea6c66f3a877343fe57a4c0a2e1adeed2b7727",
+      "expectedReplyHex": "41434b3a2b7ff05eee450fd053ed6d121eea6c66f3a877343fe57a4c0a2e1adeed2b7727",
+      "xiao": [
+        "LISTEN arduino sf=7 window=500",
+        "ARDUINO_RX crc_ok=1 bytes=32 sf=7 cr=1 hex=2b7ff05eee450fd053ed6d121eea6c66f3a877343fe57a4c0a2e1adeed2b7727",
+        "ARDUINO_CAPTURE samples=125281 status=0 drops=0 abandoned=0 soft=0 decode_us=669673",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500"
+      ],
+      "lr2021": [
+        "TX_PUBLIC status=0 sf=7 cr=1 bytes=32 hex=2b7ff05eee450fd053ed6d121eea6c66f3a877343fe57a4c0a2e1adeed2b7727",
+        "TX_DIAG irq=0008000a elapsed_us=53407 gpio=1",
+        "SF 7 status=0",
+        "RX status=-4 header=0 crc_present=0 crc_ok=0 bytes=0 rssi=-62.5 snr=4.2 hex=",
+        "RX_IRQ 00040370"
+      ],
+      "rxPassed": true,
+      "txPassed": false,
+      "strictRfTxPassed": false
+    },
+    {
+      "cr": 3,
+      "length": 32,
+      "expectedHex": "c0c15cc5b25e1baa6b121a139890d21b769bad948e8f0a7d5af0e6f9af98f5c7",
+      "expectedReplyHex": "41434b3ac0c15cc5b25e1baa6b121a139890d21b769bad948e8f0a7d5af0e6f9af98f5c7",
+      "xiao": [
+        "LISTEN arduino sf=7 window=500",
+        "ARDUINO_RX crc_ok=1 bytes=32 sf=7 cr=3 hex=c0c15cc5b25e1baa6b121a139890d21b769bad948e8f0a7d5af0e6f9af98f5c7",
+        "ARDUINO_CAPTURE samples=125280 status=0 drops=0 abandoned=0 soft=0 decode_us=747254",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500"
+      ],
+      "lr2021": [
+        "TX_PUBLIC status=0 sf=7 cr=3 bytes=32 hex=c0c15cc5b25e1baa6b121a139890d21b769bad948e8f0a7d5af0e6f9af98f5c7",
+        "TX_DIAG irq=0008000a elapsed_us=65373 gpio=1",
+        "SF 7 status=0"
+      ],
+      "rxPassed": true,
+      "txPassed": false,
+      "strictRfTxPassed": false
+    },
+    {
+      "cr": 4,
+      "length": 8,
+      "expectedHex": "14a298998a720d31",
+      "expectedReplyHex": "41434b3a14a298998a720d31",
+      "xiao": [
+        "LISTEN arduino sf=7 window=500",
+        "ARDUINO_RX crc_ok=1 bytes=8 sf=7 cr=4 hex=14a298998a720d31",
+        "ARDUINO_CAPTURE samples=125280 status=0 drops=0 abandoned=0 soft=0 decode_us=621590",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500"
+      ],
+      "lr2021": [
+        "TX_PUBLIC status=0 sf=7 cr=4 bytes=8 hex=14a298998a720d31",
+        "TX_DIAG irq=0008000a elapsed_us=36304 gpio=1",
+        "SF 7 status=0"
+      ],
+      "rxPassed": true,
+      "txPassed": false,
+      "strictRfTxPassed": false
+    },
+    {
+      "cr": 2,
+      "length": 8,
+      "expectedHex": "0fc7d260b8cc4603",
+      "expectedReplyHex": "41434b3a0fc7d260b8cc4603",
+      "xiao": [
+        "LISTEN arduino sf=7 window=500",
+        "ARDUINO_RX crc_ok=1 bytes=8 sf=7 cr=2 hex=0fc7d260b8cc4603",
+        "ARDUINO_CAPTURE samples=125280 status=0 drops=0 abandoned=0 soft=0 decode_us=603541",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500"
+      ],
+      "lr2021": [
+        "TX_PUBLIC status=0 sf=7 cr=2 bytes=8 hex=0fc7d260b8cc4603",
+        "TX_DIAG irq=0008000a elapsed_us=32311 gpio=1",
+        "SF 7 status=0",
+        "RX status=-4 header=0 crc_present=0 crc_ok=0 bytes=0 rssi=-112.5 snr=-12.0 hex=",
+        "RX_IRQ 00040370"
+      ],
+      "rxPassed": true,
+      "txPassed": false,
+      "strictRfTxPassed": false
+    },
+    {
+      "cr": 4,
+      "length": 32,
+      "expectedHex": "093454da203a8c4b6bd14e8ce498847e64146e57482c83460653bfe4783d988c",
+      "expectedReplyHex": "41434b3a093454da203a8c4b6bd14e8ce498847e64146e57482c83460653bfe4783d988c",
+      "xiao": [
+        "LISTEN arduino sf=7 window=500",
+        "ARDUINO_RX crc_ok=1 bytes=32 sf=7 cr=4 hex=093454da203a8c4b6bd14e8ce498847e64146e57482c83460653bfe4783d988c",
+        "ARDUINO_CAPTURE samples=125280 status=0 drops=0 abandoned=0 soft=0 decode_us=778785",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500"
+      ],
+      "lr2021": [
+        "TX_PUBLIC status=0 sf=7 cr=4 bytes=32 hex=093454da203a8c4b6bd14e8ce498847e64146e57482c83460653bfe4783d988c",
+        "TX_DIAG irq=0008000a elapsed_us=72306 gpio=1",
+        "SF 7 status=0"
+      ],
+      "rxPassed": true,
+      "txPassed": false,
+      "strictRfTxPassed": false
+    },
+    {
+      "cr": 2,
+      "length": 32,
+      "expectedHex": "fbb85a1ed4e348400561b1c3bc6275acd272532314ef9a7adfe790e851e700a0",
+      "expectedReplyHex": "41434b3afbb85a1ed4e348400561b1c3bc6275acd272532314ef9a7adfe790e851e700a0",
+      "xiao": [
+        "LISTEN arduino sf=7 window=500",
+        "ARDUINO_RX crc_ok=1 bytes=32 sf=7 cr=2 hex=fbb85a1ed4e348400561b1c3bc6275acd272532314ef9a7adfe790e851e700a0",
+        "ARDUINO_CAPTURE samples=125280 status=0 drops=0 abandoned=0 soft=0 decode_us=719759",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500"
+      ],
+      "lr2021": [
+        "TX_PUBLIC status=0 sf=7 cr=2 bytes=32 hex=fbb85a1ed4e348400561b1c3bc6275acd272532314ef9a7adfe790e851e700a0",
+        "TX_DIAG irq=0008000a elapsed_us=59434 gpio=1",
+        "SF 7 status=0"
+      ],
+      "rxPassed": true,
+      "txPassed": false,
+      "strictRfTxPassed": false
+    },
+    {
+      "cr": 3,
+      "length": 8,
+      "expectedHex": "1fbe9d8c385471e9",
+      "expectedReplyHex": "41434b3a1fbe9d8c385471e9",
+      "xiao": [
+        "LISTEN arduino sf=7 window=500",
+        "ARDUINO_RX crc_ok=1 bytes=8 sf=7 cr=3 hex=1fbe9d8c385471e9",
+        "ARDUINO_CAPTURE samples=125281 status=0 drops=0 abandoned=0 soft=0 decode_us=612361",
+        "=ok bytes=12",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500",
+        "LISTEN arduino sf=7 window=500"
+      ],
+      "lr2021": [
+        "TX_PUBLIC status=0 sf=7 cr=3 bytes=8 hex=1fbe9d8c385471e9",
+        "TX_DIAG irq=0008000a elapsed_us=34295 gpio=1",
+        "SF 7 status=0"
+      ],
+      "rxPassed": true,
+      "txPassed": false,
+      "strictRfTxPassed": false
+    }
+  ],
+  "rearmLrAfterTx": true,
+  "xiaoImage": {
+    "bytes": 616288,
+    "sha256": "6fe5862710db69d9d233e45a391715cca7800ee93592879cd15f9bf658559702"
+  },
+  "lrImage": {
+    "bytes": 320928,
+    "sha256": "a46cbeacaf9a5dcd3d49e40d09996ef9d0791517f9e96a84548ae474596ad6ca"
+  },
+  "finishedUtc": "2026-10-07T07:18:51.958243+00:00"
+}

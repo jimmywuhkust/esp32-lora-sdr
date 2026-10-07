@@ -49,6 +49,13 @@ int s3_fft2r_sc16_rnd_stage(int16_t *data, int N, int16_t *w, unsigned stage);
 #endif
 #include "esp_attr.h"
 #include "esp_cpu.h"
+#include "esp_idf_version.h"
+#if ESP_IDF_VERSION_MAJOR < 5
+#define esp_cpu_get_cycle_count esp_cpu_get_ccount
+#if CONFIG_IDF_TARGET_ESP32S3
+#define CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ CONFIG_ESP32S3_DEFAULT_CPU_FREQ_MHZ
+#endif
+#endif
 #include "esp_rom_crc.h"
 #include "esp_timer.h"
 #include "freertos/FreeRTOS.h"
@@ -57,8 +64,17 @@ int s3_fft2r_sc16_rnd_stage(int16_t *data, int N, int16_t *w, unsigned stage);
 #include "soc/soc.h"
 #include "esp_heap_caps.h"
 #if CONFIG_IDF_TARGET_ESP32S3
+#if ESP_IDF_VERSION_MAJOR >= 5
 #include "hal/cpu_utility_ll.h"
 #include "xt_utils.h"
+#else
+#include "soc/system_reg.h"
+#include "soc/compare_set.h"
+static inline __attribute__((always_inline)) bool xt_utils_compare_and_set(volatile uint32_t* addr,uint32_t compare,uint32_t value) {
+    compare_and_set_native(addr,compare,&value);
+    return value==compare;
+}
+#endif
 #include "esp32s3/rom/ets_sys.h"
 #endif
 
@@ -1402,8 +1418,18 @@ static inline void c1_revoke(unsigned b) {
 static void c1_start(void) {
     hbuf = heap_caps_aligned_alloc(16, 2 * RING_SPEC_NFFT_MAX * sizeof(int16_t), MALLOC_CAP_DMA | MALLOC_CAP_8BIT);
     if (!hbuf) return; /* no second core: single-core SPEC */
+#if ESP_IDF_VERSION_MAJOR >= 5
     cpu_utility_ll_unstall_cpu(1);
     cpu_utility_ll_enable_clock_and_reset_app_cpu();
+#else
+    // IDF 4.4's S3 startup sequence. Unicore leaves this CPU clock gated;
+    // it belongs exclusively to the acquisition worker, never the RTOS.
+    esp_cpu_unstall(1);
+    REG_SET_BIT(SYSTEM_CORE_1_CONTROL_0_REG,SYSTEM_CONTROL_CORE_1_CLKGATE_EN);
+    REG_CLR_BIT(SYSTEM_CORE_1_CONTROL_0_REG,SYSTEM_CONTROL_CORE_1_RUNSTALL);
+    REG_SET_BIT(SYSTEM_CORE_1_CONTROL_0_REG,SYSTEM_CONTROL_CORE_1_RESETING);
+    REG_CLR_BIT(SYSTEM_CORE_1_CONTROL_0_REG,SYSTEM_CONTROL_CORE_1_RESETING);
+#endif
     ets_set_appcpu_boot_addr((uint32_t)s3_core1_entry);
     int64_t t0 = esp_timer_get_time();
     while (!c1.alive && esp_timer_get_time() - t0 < 50000) {

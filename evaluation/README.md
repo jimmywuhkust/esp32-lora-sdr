@@ -1,5 +1,30 @@
 # Reproduce the bench measurements
 
+## Arduino on-device RX/TX and two ESP32s
+
+Build and flash the [ArduinoDuplex profiles](../docs/arduino-rx.md). For the
+six directed links, both ESP32s need `xiao-arduino-bench`; the LR2021 uses its
+public TX/RX companion. The host schedules real RF and checks complete bytes
+after MCU decoding. No expected payload is supplied to either decoder.
+
+```sh
+python evaluation/verify_three_radios.py --a ESP32_A_PORT --b ESP32_B_PORT --lr LR_PORT --image BENCH_BIN --lr-image LR_BIN --output NEW_TRIAD_JSON
+```
+
+For autonomous ping/pong, flash `xiao-arduino-pong` first and
+`xiao-arduino-ping` last. Start this read-only observer within the initiator's
+10-second startup delay. It writes zero serial bytes to either ESP32. The
+optional LR2021 independently observes packets; its settings are host-written.
+
+```sh
+python evaluation/verify_arduino_ping_pong.py --ping INITIATOR_PORT --pong RESPONDER_PORT --lr LR_PORT --ping-image PING_BIN --pong-image PONG_BIN --output NEW_PAIR_JSON
+```
+
+To test the Arduino echo application against the LR2021, use
+`verify_native_echo.py --application arduino` and pass the actual echo image.
+Read [the Arduino report](../docs/arduino-report.md) for successes, misses,
+firmware identities, explicit RF repeats and finite-window limitations.
+
 For full on-device RX/TX, first follow the [native guide](../docs/native-guide.md).
 From the repository root, with both serial monitors closed:
 

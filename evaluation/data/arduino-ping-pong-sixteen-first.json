@@ -1,0 +1,326 @@
+{
+  "startedUtc": "2026-10-07T06:47:17.248081+00:00",
+  "esp32SerialWrites": 0,
+  "pcDecoder": false,
+  "hostIqUploaded": false,
+  "finished": true,
+  "lines": [
+    {
+      "board": "LR2021",
+      "text": "FREQ 2440125 status=0"
+    },
+    {
+      "board": "LR2021",
+      "text": "BW 203125 status=0"
+    },
+    {
+      "board": "LR2021",
+      "text": "PRE 16 status=0"
+    },
+    {
+      "board": "LR2021",
+      "text": "SYNC 18 status=0"
+    },
+    {
+      "board": "LR2021",
+      "text": "INV 0 status=0"
+    },
+    {
+      "board": "LR2021",
+      "text": "CRC 1 status=0"
+    },
+    {
+      "board": "LR2021",
+      "text": "SF 7 status=0"
+    },
+    {
+      "board": "ping",
+      "text": "\u001b[0;32mI (106) esp_image: segment 1: paddr=0001e4f0 vaddr=3fc981ARDUINO_START cpu=240 core=0 psram=8386307 heap=95823"
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_BEGIN status=ok heap=51447 largest=19456 core1=1"
+    },
+    {
+      "board": "pong",
+      "text": "\u001b[0;32mI (106) esp_image: segment 1: paddr=0001e448 vaddr=3fc981LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "ping",
+      "text": "PING_SEND seq=0 hex=50494e47de672cb20000000039c3ab47dc491d06"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=140 rssi=-113.5 snr=-12.5 hex=f8ce4da40fbf1d801bc61ad18bdb0fefdefdeaecb315565bda403eddeba1fb82e4debc9b431a5fa78ad4d11a26780d78907d05685cca255aa7f9a95b914161b28547b1667132f03c32c228e0fc091d99439c08278e47774f8a0c5352d086bf3b8859f30a260a821f36ed6a63ed2e7e1abd2f5bdec62c549ff046ca8afb302f42a30e42f15ae54adca4b2031d"
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040370"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "ping",
+      "text": "PING_RESULT seq=0 tx=ok crc_exact_pong=0"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "ping",
+      "text": "PING_SEND seq=1 hex=50494e47de672cb201000000d0489b5b3b94fb72"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "ping",
+      "text": "PING_RESULT seq=1 tx=ok crc_exact_pong=0"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "ping",
+      "text": "PING_SEND seq=2 hex=50494e47de672cb202000000d3160e22536ccba2"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "ping",
+      "text": "PING_RESULT seq=2 tx=ok crc_exact_pong=0"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "ping",
+      "text": "PING_SEND seq=3 hex=50494e47de672cb203000000ff9ce459149bfe88"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "ping",
+      "text": "PING_RESULT seq=3 tx=ok crc_exact_pong=0"
+    },
+    {
+      "board": "ping",
+      "text": "PING_FINISHED attempts=4 accepted=0"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500"
+    }
+  ],
+  "requests": [
+    {
+      "sequence": 0,
+      "hex": "50494e47de672cb20000000039c3ab47dc491d06",
+      "responderCrcExact": false,
+      "independentRequestCrcExact": false,
+      "independentReplyCrcExact": false
+    },
+    {
+      "sequence": 1,
+      "hex": "50494e47de672cb201000000d0489b5b3b94fb72",
+      "responderCrcExact": false,
+      "independentRequestCrcExact": false,
+      "independentReplyCrcExact": false
+    },
+    {
+      "sequence": 2,
+      "hex": "50494e47de672cb202000000d3160e22536ccba2",
+      "responderCrcExact": false,
+      "independentRequestCrcExact": false,
+      "independentReplyCrcExact": false
+    },
+    {
+      "sequence": 3,
+      "hex": "50494e47de672cb203000000ff9ce459149bfe88",
+      "responderCrcExact": false,
+      "independentRequestCrcExact": false,
+      "independentReplyCrcExact": false
+    }
+  ],
+  "results": [
+    {
+      "sequence": 0,
+      "tx": "ok",
+      "crcExactPong": false
+    },
+    {
+      "sequence": 1,
+      "tx": "ok",
+      "crcExactPong": false
+    },
+    {
+      "sequence": 2,
+      "tx": "ok",
+      "crcExactPong": false
+    },
+    {
+      "sequence": 3,
+      "tx": "ok",
+      "crcExactPong": false
+    }
+  ],
+  "pingImage": {
+    "bytes": 615488,
+    "sha256": "e6135e167788892eb7f5a4856325afd333cb23b4e50e7a8cb61c87dfc32f6958"
+  },
+  "pongImage": {
+    "bytes": 614512,
+    "sha256": "e04cd7275cd8bbaaafaafe9c171f4518db5022f39b7afaba79f567246cab5dd3"
+  },
+  "finishedUtc": "2026-10-07T06:48:24.833894+00:00"
+}

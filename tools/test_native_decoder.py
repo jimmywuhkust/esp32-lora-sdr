@@ -1,5 +1,5 @@
 """Compile the same C++ decoder used by ESP32; test real RF and negatives."""
-import argparse,json,pathlib,subprocess,sys,tempfile
+import argparse,hashlib,json,pathlib,subprocess,sys,tempfile
 import numpy as np
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'host'))
@@ -33,4 +33,12 @@ def main():
             noise=np.random.default_rng(sf).integers(-8,8,(12000,2))
             assert not decode(noise[:,0]+1j*noise[:,1],sf),'noise accepted'
             print(f'SF{sf}: real full packet + truncation/zero/noise negative tests passed')
+        for fixture in json.loads((ROOT/'host/samples/esp32-peer-manifest.json').read_text()):
+            raw=(ROOT/'host/samples'/fixture['file']).read_bytes()
+            assert len(raw)==fixture['bytes'] and hashlib.sha256(raw).hexdigest()==fixture['sha256']
+            iq=np.frombuffer(raw,dtype='<i2').reshape(-1,2)
+            packets=decode(iq[:,0]+1j*iq[:,1],7)
+            assert len(packets)==1 and packets[0]['crcOk'] and packets[0]['softDecoded'],packets
+            assert packets[0]['hex']==fixture['expectedHex'],packets
+            print(f"{fixture['file']}: saved ESP32 RF full CRC packet recovered by soft FEC (offline regression)")
 if __name__=='__main__':main()

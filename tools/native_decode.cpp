@@ -7,7 +7,7 @@ using namespace lora_sdr;
 static void packet(const RxPacket& p,void*) {
     printf("{\"bytes\":%zu,\"sf\":%u,\"cr\":%u,\"crcOk\":true,\"hex\":\"",p.length,p.spreadingFactor,p.codingRate);
     for(size_t i=0;i<p.length;i++)printf("%02x",p.payload[i]);
-    printf("\",\"crc\":\"%04x\",\"sampleIndex\":%llu,\"cfoHz\":%.2f}\n",p.crc,(unsigned long long)p.sampleIndex,p.frequencyOffsetHz);
+    printf("\",\"crc\":\"%04x\",\"sampleIndex\":%llu,\"cfoHz\":%.2f,\"softDecoded\":%s}\n",p.crc,(unsigned long long)p.sampleIndex,p.frequencyOffsetHz,p.softDecoded?"true":"false");
 }
 int main(int argc,char** argv) {
     Config c;
@@ -37,7 +37,50 @@ int main(int argc,char** argv) {
             if(PacketDecoder::decode(sa,ia.symbolCount,c,p)){puts("FAIL corrupt CRC accepted");return 1;}
             negative++;
         }
-        printf("PASS %u packet codec round trips; truncation rejected; %u CRC negatives rejected\n",tests,negative);return 0;
+        unsigned soft=0,softNegative=0;
+        c.spreadingFactor=7;
+        for(unsigned cr=1;cr<=4;cr++)for(unsigned length: {1u,2u,7u,32u,127u,255u}) {
+            c.codingRate=cr;uint8_t data[255];
+            for(unsigned j=0;j<length;j++)data[j]=(j*71+length*5+cr)&255;
+            uint16_t s[1100];PacketInfo info;RxPacket p;
+            if(Encoder::encode(data,length,c,s,1100,info)!=Error::Ok)return 1;
+            std::vector<float> weights(info.symbolCount*7);
+            for(size_t j=8;j<info.symbolCount;j++) {
+                unsigned gray=(s[j]-1)&127;gray^=gray>>1;
+                for(unsigned bit=0;bit<7;bit++)weights[j*7+bit]=(gray&(1u<<bit))?1.f:-1.f;
+            }
+            if(!PacketDecoder::decodeSoft(s,info.symbolCount,weights.data(),c,p)||
+               !p.softDecoded||p.length!=length||memcmp(data,p.payload,length)) {
+                puts("FAIL ideal soft decisions");return 1;
+            }
+            // Incorrect hard peaks in a body block must not override the
+            // independent FFT bit confidence supplied to the soft decoder.
+            for(unsigned j=8;j<8+4+cr;j++)s[j]=(s[j]+17)&127;
+            if(!PacketDecoder::decodeSoft(s,info.symbolCount,weights.data(),c,p)||memcmp(data,p.payload,length)) {
+                puts("FAIL soft recovery");return 1;
+            }
+            if(PacketDecoder::decodeSoft(s,info.symbolCount-1,weights.data(),c,p)) {
+                puts("FAIL soft truncation");return 1;
+            }
+            soft++;
+        }
+        for(unsigned cr=1;cr<=4;cr++) {
+            c.codingRate=cr;uint8_t a[32],b[32];
+            for(unsigned j=0;j<32;j++)a[j]=b[j]=j*17;
+            b[3]^=4;uint16_t sa[1100],sb[1100];PacketInfo ia,ib;RxPacket p;
+            Encoder::encode(a,32,c,sa,1100,ia);Encoder::encode(b,32,c,sb,1100,ib);
+            memcpy(sa+8,sb+8,(4+cr)*sizeof(uint16_t));
+            std::vector<float> weights(ia.symbolCount*7);
+            for(size_t j=8;j<ia.symbolCount;j++) {
+                unsigned gray=(sa[j]-1)&127;gray^=gray>>1;
+                for(unsigned bit=0;bit<7;bit++)weights[j*7+bit]=(gray&(1u<<bit))?1.f:-1.f;
+            }
+            if(PacketDecoder::decodeSoft(sa,ia.symbolCount,weights.data(),c,p)) {
+                puts("FAIL soft accepted wrong CRC");return 1;
+            }
+            softNegative++;
+        }
+        printf("PASS %u packet codec round trips; truncation rejected; %u CRC negatives rejected; %u soft recovery cases; %u soft CRC negatives\n",tests,negative,soft,softNegative);return 0;
     }
     if(argc!=3)return 2;c.spreadingFactor=atoi(argv[2]);
     FILE* f=fopen(argv[1],"rb");if(!f)return 3;

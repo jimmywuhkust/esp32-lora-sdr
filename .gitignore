@@ -7,6 +7,7 @@ __pycache__/
 .env
 examples/NativeDuplex/components/
 examples/NativeDuplex/sdkconfig*
+examples/ArduinoDuplex/sdkconfig*
 evaluation/data/*/
 !evaluation/data/research/
 

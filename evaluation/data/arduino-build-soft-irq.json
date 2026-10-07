@@ -1,0 +1,151 @@
+{
+  "sourceFingerprint": "8b3fb7d4e2b8c37a9fa54557005a0d5b93813f610a011ae1459c842dba43a8f3",
+  "normalization": "CRLF to LF",
+  "sources": {
+    "examples/ArduinoDuplex/arduino.defaults": "2aa1567d4c5a8a290c7d762aa67dcb159022c1478f0d7cfe910b80a6dbd752e1",
+    "examples/ArduinoDuplex/CMakeLists.txt": "57820f415e761736c97803f3577813acf0086043585cb5e954a7c2dacf9bb17c",
+    "examples/ArduinoDuplex/main/CMakeLists.txt": "e61fcc6a220fa1bc9674d16b72c61657dc2787f3d8bb99221c7ebf400935d170",
+    "examples/ArduinoDuplex/main/main.cpp": "7e5d7ad7ef141cc3b689bc12a4dc196ff207dede7f27809d16a85b1c68481360",
+    "examples/ArduinoDuplex/platformio.ini": "75957efa72dde4845cfa46583b0e67bfae15ea79da593fe0db14c0dea3d303d1",
+    "firmware/iq-capture/main/common/burst_gain.h": "728fb1d66ec875b28ad1082671fec90d906f1096cb61fbad53a7bcc2fd674c81",
+    "firmware/iq-capture/main/common/burst_gain_table.h": "790432303eb383f4d4ba73224021217518b1978fd12667b325e9472bdbc431e8",
+    "firmware/iq-capture/main/common/burst_limits.h": "b67a0adc8dcf3bdb0aa4cc863d84c4c7b023e95ab6a3ca3637cbcc2d4f97443d",
+    "firmware/iq-capture/main/common/burst_serial.c": "59f5d22940b1e348ac0a4825b167a1cbf01bcfc24e58a688c3c309cebaecf675",
+    "firmware/iq-capture/main/common/burst_serial.h": "1120520248f8f7d1f6f240ce95b527f50f32bdb40d6ddb31fe67a18e469f9c8b",
+    "firmware/iq-capture/main/common/lora_chirp.c": "3cf3974e36d8ff71c885819488ddb391627183dcf53b2ee863e398c0b61d276c",
+    "firmware/iq-capture/main/common/lora_chirp.h": "33d49b4605ea51d8f94cd1c7be512178b9db2bf6491fae6952f70199c4b01508",
+    "firmware/iq-capture/main/common/native_packet.cpp": "9c4a6104deafbcd745abc9b4f6bce8191ed7821a79b1dcfac36cbf0158b2c5a8",
+    "firmware/iq-capture/main/common/native_packet.h": "869d2d1178c253be19c3e1d587a2d23ad7dfbad85414cf44e832e8da60ab83f4",
+    "firmware/iq-capture/main/common/ring_capture.c": "35d0c0ed0a79a24725e90ba6fea1478886aeff0662838d46266e99c738e999e1",
+    "firmware/iq-capture/main/common/ring_capture.h": "23aeae85bff713a42af0e907679b7889ad7bae7e1ef1c393f9037dfcc409a50e",
+    "firmware/iq-capture/main/common/ring_io.h": "19bf80f05c597fdd89cbff4707248a844077b38a31cf09eefecbd63a6f71ced5",
+    "firmware/iq-capture/main/common/ring_scalar.h": "6268ba906c4094013999dc14283457cc69c3bd6465d59035a10492a74eb1bf55",
+    "firmware/iq-capture/main/common/rx_bandwidth.h": "d93c7c525f618532707cc771e7fbda16fe8dff5b490d7cc0f3e3e41ee8effa06",
+    "firmware/iq-capture/main/common/rx_lo.h": "93a286c7f8432aef9cdf6795f3067c7a30381ab7da43aab2a1507616e3dfbddd",
+    "firmware/iq-capture/main/common/rx_pll_cal.h": "a5528cf32466e3a3d7f5f0920046b6b0db96034d993bbafe501844020fbf450a",
+    "firmware/iq-capture/main/common/rx_recalibration.c": "de7b162d988347465122599480845092a8556fcaa81c6c6b09d3f8790bb7aa23",
+    "firmware/iq-capture/main/common/rx_recalibration.h": "8a4a5fae62361b4b8808edf0eddea4f2883b0b3057f6f4270134068501a46df0",
+    "firmware/iq-capture/main/common/rx_tuning.h": "d251c194bcd455383e6fc42e1d43185caca88fd32109918e1de49c2042e80c29",
+    "firmware/iq-capture/main/common/spectrum.h": "c28edea88c9a4958c97ce4656e7b22a1fa6bb05a2dfb2e97c81d5f8e8e8d1a6a",
+    "firmware/iq-capture/main/common/spectrum_dc.h": "0bb86dd093d104cf4c8d19ef67a00725748b311d674816b9d1d156651ff00ae8",
+    "firmware/iq-capture/main/common/spectrum_fft.h": "1634022a6958b08f4c430bb6f353ad774457a37634b2dd9f94feeeb8c618cad2",
+    "firmware/iq-capture/main/common/spectrum_math.h": "d9eab1073d806201437415177f87034feec9ba2b3b14057724062fb2ba530342",
+    "firmware/iq-capture/main/common/spectrum_stats.c": "f71c908b40428d5a37ab7b19f1fd697ad1f08612fbe294b3a6d401b82e196b77",
+    "firmware/iq-capture/main/common/spectrum_stats.h": "89fb38d0c36fcdeceec884aa2a5a7ec2b648ddf0e15c7ecd4bd90158216fe22b",
+    "firmware/iq-capture/main/targets/esp32s3/linker.lf": "c6ee553ba34c0b9017057461114a1132654f1baf98e5a518af59fdcb275b402c",
+    "firmware/iq-capture/main/targets/esp32s3/receiver.c": "85845350c79a633c07e8306d27fd08fab7578b2a18b54f509cb77602d5008b55",
+    "firmware/iq-capture/main/targets/esp32s3/s3_core1.S": "406276930233376416d87132f0e2d7aaa6ee4517cc13909c2e54d7fe129fd50e",
+    "firmware/iq-capture/main/targets/esp32s3/s3_fft_rnd.S": "36e912ff07ca893a4c57cb8828a7e1cdaaa363a9b3aad775e3f6493e620c36c4",
+    "firmware/iq-capture/main/targets/esp32s3/s3_firdot.S": "40a5e1923b2b2287d8b008deb81aa373459de538c99f7abe39afc9a63c6348d4",
+    "firmware/iq-capture/main/targets/esp32s3/s3_unpack.S": "1bd29c448efbb27d50a13a73114d6fbbd7c10b3924d00d9f1a24bde3a75da2e0",
+    "firmware/iq-capture/main/targets/esp32s3/sram_guard.ld": "5e8247b0e406fa9fb195b03f32a12b19f91227427864d505a2190270a92e1470",
+    "firmware/iq-capture/sdkconfig.defaults": "10f7be0a288b01261f72e712f94353a1853466ab1e56d540d2b11b9266459ede",
+    "firmware/iq-capture/sdkconfig.psram": "a1025f92afa878761f5c0de49f1e434e029149abadd9aca9863ffbdfcffd2841",
+    "idf/CMakeLists.txt": "23217174d988f69e787c87a5aa7973f2331a676e6e4696ac5e73c5e0c1d2d2f5",
+    "idf/linker.lf": "d6847fbfc3d7048e1e677c7df3432043b6a777b8a9caf980727d096aa7ac45c2",
+    "src/ESP32S3Radio.cpp": "5a3b05bb91f6a28cfa0fe3d18ba1fb5ffb78f2ac25ac8da8cfe180bdfcaa62fb",
+    "src/ESP32S3Radio.h": "10f380d33853d193c1e2432f0b7e6c75fb3501dad324e31e3a5ca4a725de6b80",
+    "src/IQDecoder.cpp": "220047bf4f97038ce78411a230eaf237cac42193928c8f5a5def923db60e8172",
+    "src/LoRaRadio.h": "487d52469447b0444f437df1376e3eeacd4a8683f5f53964d9a7517d365d2890",
+    "src/LoRaSDR.cpp": "54eb474e7f1861644e050c5668b99438e8f35054a533e2502d63f39e241bfea4",
+    "src/LoRaSDR.h": "c868192b80f0258f163b2cf7b78e357ce3cb030f977c6dc6f9f13bff4619be5d",
+    "src/NativePlatform.h": "b35bd94414522cfb1009ed9fdcf3d4bd150e8e695c001f2272fb04aeb73ba099",
+    "src/NativeReceive.cpp": "8c2a5865a09311f5756feda629c4cf1b255ddc3317e5f750233ea1b222a977fe",
+    "src/PacketDecoder.cpp": "2d7a14bb0f89a446ca38543c4cf577b7fc6194f864231f7c7d6162880fedd37a",
+    "src/PacketDecoder.h": "890100e978dbfdfaa666d5e7372bf59c7ab0d726b2b209b72382def9e8616bef",
+    "src/RxFilter.h": "1f2715be29f4d0cac1c7023ecb5d3b5207f920fb4ac08b3fa1684058dfce900c"
+  },
+  "sourceMatchesAsciiBuild": true,
+  "profile": "Arduino 2.0.17 as ESP-IDF 4.4.7 component",
+  "platformio": "6.1.19",
+  "espressif32": "7.0.1",
+  "espDsp": "a53a0756833c045311ea1d79a2badf495cdfde4c",
+  "images": {
+    "xiao-arduino-rx": {
+      "bootloader.bin": {
+        "offset": "0x0",
+        "bytes": 20736,
+        "sha256": "febd26b2b9b2fe6e11423cb96845e9c7e445c17f53328345958c2be44942ce5b"
+      },
+      "partitions.bin": {
+        "offset": "0x8000",
+        "bytes": 3072,
+        "sha256": "7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820"
+      },
+      "firmware.bin": {
+        "offset": "0x10000",
+        "bytes": 608752,
+        "sha256": "f59a61a5be5c2935f384b778ab35f761070a51fd5b0c8168df2eb21580d893cd"
+      }
+    },
+    "xiao-arduino-echo": {
+      "bootloader.bin": {
+        "offset": "0x0",
+        "bytes": 20736,
+        "sha256": "77a289b5206c4995c1c6db4a8b9ef065ee99220dbf30af1c7cd398d9957004b0"
+      },
+      "partitions.bin": {
+        "offset": "0x8000",
+        "bytes": 3072,
+        "sha256": "7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820"
+      },
+      "firmware.bin": {
+        "offset": "0x10000",
+        "bytes": 616288,
+        "sha256": "6fe5862710db69d9d233e45a391715cca7800ee93592879cd15f9bf658559702"
+      }
+    },
+    "xiao-arduino-bench": {
+      "bootloader.bin": {
+        "offset": "0x0",
+        "bytes": 20736,
+        "sha256": "69e96df5dd785b14c827c07417f09cd1d120048f4657a3d16e38e51f652a60ac"
+      },
+      "partitions.bin": {
+        "offset": "0x8000",
+        "bytes": 3072,
+        "sha256": "7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820"
+      },
+      "firmware.bin": {
+        "offset": "0x10000",
+        "bytes": 656384,
+        "sha256": "0dcedf3a4280723cfe06731511f7d38951e591e4f116de70d768cd37deb08fd1"
+      }
+    },
+    "xiao-arduino-ping": {
+      "bootloader.bin": {
+        "offset": "0x0",
+        "bytes": 20736,
+        "sha256": "1a37dd0982b9356642f7f2d5657b9a53d9bf7f42d5250458bd0c9c89f8a0bb85"
+      },
+      "partitions.bin": {
+        "offset": "0x8000",
+        "bytes": 3072,
+        "sha256": "7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820"
+      },
+      "firmware.bin": {
+        "offset": "0x10000",
+        "bytes": 617408,
+        "sha256": "9b3bb6ef674dea0a901fb625988e3ebb5b70552bc73c6037c64806bdd64d877e"
+      }
+    },
+    "xiao-arduino-pong": {
+      "bootloader.bin": {
+        "offset": "0x0",
+        "bytes": 20736,
+        "sha256": "c0a70432c84d57894f0ab3f532da7720ff0a8b9f00af6a3c2cf4b6e23d59a205"
+      },
+      "partitions.bin": {
+        "offset": "0x8000",
+        "bytes": 3072,
+        "sha256": "7f00b6c042a89b15b0cac534f82ed988caf29278ff5700b0c511eb1b5bb7c820"
+      },
+      "firmware.bin": {
+        "offset": "0x10000",
+        "bytes": 616368,
+        "sha256": "ea2eaf1327ed44a39766deac61c7c0571655d02b1211130b03b2ea43761cecea"
+      }
+    }
+  },
+  "buildSuccess": true
+}

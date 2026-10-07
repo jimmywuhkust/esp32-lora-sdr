@@ -1,0 +1,17 @@
+{
+  "kind": "Arduino console/RF diagnostic",
+  "xiaoSerialWrites": 0,
+  "pcDecoder": false,
+  "xiao": [],
+  "lr2021": [
+    "FREQ 2440125 status=0",
+    "BW 203125 status=0",
+    "PRE 16 status=0",
+    "SYNC 18 status=0",
+    "INV 0 status=0",
+    "TX_PUBLIC status=0 sf=7 cr=1 bytes=16 hex=ae5397ef6a0f233854b34be6860a1c18",
+    "TX_DIAG irq=0008000a elapsed_us=40339 gpio=1"
+  ],
+  "expectedHex": "ae5397ef6a0f233854b34be6860a1c18",
+  "expectedReplyHex": "41434b3aae5397ef6a0f233854b34be6860a1c18"
+}

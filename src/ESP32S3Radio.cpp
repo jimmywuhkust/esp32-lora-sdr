@@ -20,9 +20,13 @@ extern "C" int lora_sdr_platform_begin(void);
 #include "esp_event.h"
 #include "esp_netif.h"
 #include "esp_rom_sys.h"
+#include "esp_timer.h"
 #include "esp_phy_init.h"
 #include "esp_heap_caps.h"
 #include "heap_memory_layout.h"
+#if defined(LORA_SDR_NATIVE_BACKEND) && defined(ARDUINO_ARCH_ESP32)
+extern "C" int lora_sdr_platform_begin(void);
+#endif
 #include "soc/soc.h"
 #include "soc/system_reg.h"
 #include "soc/syscon_reg.h"
@@ -43,7 +47,7 @@ void rom_set_txclk_en(unsigned);
 void rom_set_rxclk_en(unsigned);
 extern char _bss_end[],_data_end[],_iram_end[];
 }
-#if defined(ARDUINO_ARCH_ESP32)
+#if defined(ARDUINO_ARCH_ESP32) && !defined(LORA_SDR_NATIVE_BACKEND)
 SOC_RESERVE_MEMORY_REGION(0x3fcd0000,0x3fce0000,s3_dac_bank);
 #endif
 namespace lora_sdr {
@@ -65,7 +69,7 @@ static bool restoreAnalogGain(TxResult& result,uint32_t control) {
 static unsigned dacCopyCycles;
 static bool dacTimedOut;
 static void freeDacSource(uint32_t* ring) {
-#if defined(ESP_PLATFORM) && !defined(ARDUINO_ARCH_ESP32)
+#if defined(ESP_PLATFORM) && (!defined(ARDUINO_ARCH_ESP32) || defined(LORA_SDR_NATIVE_BACKEND))
     if(reinterpret_cast<uintptr_t>(ring)==0x3fcb0000u)return;
 #endif
     heap_caps_free(ring);
@@ -118,11 +122,16 @@ static unsigned IRAM_ATTR __attribute__((optimize("O3"))) playDac(const uint32_t
         // Arduino's SDK interrupt watchdog defaults to ~300 ms. Service
         // pending ticks in a bounded idle gap; never mask an entire long
         // packet. The absolute RF deadlines keep running during this pause.
+#if !defined(LORA_SDR_NATIVE_BACKEND)
         if(segment&&segment%16==0) {
             portCLEAR_INTERRUPT_MASK_FROM_ISR(irq);
             esp_rom_delay_us(8);
             irq=portSET_INTERRUPT_MASK_FROM_ISR();
         }
+#endif
+        // The supplied native/ArduinoDuplex profiles disable watchdogs for
+        // bounded acquisition. Keep this bounded TX atomic there too: a USB
+        // ISR or task switch during a header chirp can exceed its RF deadline.
         unsigned symbol=0;bool descending=false,quarter=false;
         if(segment==config->preambleSymbols)symbol=(config->syncWord>>4)*8;
         else if(segment==config->preambleSymbols+1)symbol=(config->syncWord&15)*8;
@@ -174,13 +183,16 @@ Error ESP32S3Radio::begin() {
     if(ready_)return Error::Ok;
 #if defined(ARDUINO_ARCH_ESP32)
     if(getCpuFrequencyMhz()!=240)return Error::Unsupported;
+#if defined(LORA_SDR_NATIVE_BACKEND)
+    if(lora_sdr_platform_begin()!=0)return Error::NotReady;
+#endif
 #else
     if(esp_clk_cpu_freq()!=240000000)return Error::Unsupported;
     if(lora_sdr_platform_begin()!=0)return Error::NotReady;
 #endif
     if(reinterpret_cast<uintptr_t>(_bss_end)>0x3fcd0000u||reinterpret_cast<uintptr_t>(_data_end)>0x3fcd0000u||
        reinterpret_cast<uintptr_t>(_iram_end)>0x403c0000u)return Error::Unsupported;
-#if defined(ARDUINO_ARCH_ESP32)
+#if defined(ARDUINO_ARCH_ESP32) && !defined(LORA_SDR_NATIVE_BACKEND)
     esp_err_t event=esp_event_loop_create_default();
     if(event!=ESP_OK&&event!=ESP_ERR_INVALID_STATE)return Error::NotReady;
     if(esp_netif_init()!=ESP_OK)return Error::NotReady;
@@ -212,7 +224,7 @@ Error ESP32S3Radio::transmit(const uint8_t* data,size_t length,const Config& c,T
     uint16_t symbols[1024];
     Error status=Encoder::encode(data,length,c,symbols,1024,result.packet);
     if(status!=Error::Ok)return status;
-#if defined(ESP_PLATFORM) && !defined(ARDUINO_ARCH_ESP32)
+#if defined(ESP_PLATFORM) && (!defined(ARDUINO_ARCH_ESP32) || defined(LORA_SDR_NATIVE_BACKEND))
     // Restore the SDK channel state before entering the TX test mode.
     if(esp_wifi_set_channel(1,WIFI_SECOND_CHAN_NONE)!=ESP_OK)return Error::NotReady;
     rom_pbus_xpd_rx_off();
@@ -227,7 +239,7 @@ Error ESP32S3Radio::transmit(const uint8_t* data,size_t length,const Config& c,T
         bool compact=ringLength>25206;
         unsigned ringBytes=(ringLength+downLength)*(compact?1:4),lookupOffset=(ringBytes+3)&~3u;
         uint32_t *ring;
-#if defined(ESP_PLATFORM) && !defined(ARDUINO_ARCH_ESP32)
+#if defined(ESP_PLATFORM) && (!defined(ARDUINO_ARCH_ESP32) || defined(LORA_SDR_NATIVE_BACKEND))
         // Half-duplex: receive is stopped. Reuse reserved RF banks 0 and 1
         // as the waveform source; bank 2 alone belongs to the DAC engine.
         // This keeps the proven SF7 32-bit waveform without a 125 KiB heap
@@ -242,24 +254,29 @@ Error ESP32S3Radio::transmit(const uint8_t* data,size_t length,const Config& c,T
         result.sourceAddress=reinterpret_cast<uintptr_t>(ring);
         uint32_t *lookup=compact?reinterpret_cast<uint32_t*>(reinterpret_cast<uint8_t*>(ring)+lookupOffset):nullptr;
         const uint32_t *down=compact?reinterpret_cast<uint32_t*>(reinterpret_cast<uint8_t*>(ring)+ringLength):ring+ringLength;
+        int64_t generationStarted=esp_timer_get_time();
         if(compact)for(unsigned j=0;j<256;j++) {
-            double angle=j*6.283185307179586/256;
-            int i=lround(c.dacAmplitude*cos(angle)),q=lround(c.dacAmplitude*sin(angle));
+            float angle=j*6.283185307179586f/256;
+            int i=lroundf(c.dacAmplitude*cosf(angle)),q=lroundf(c.dacAmplitude*sinf(angle));
             lookup[j]=(static_cast<unsigned>(i)&1023u)|((static_cast<unsigned>(q)&1023u)<<10);
         }
         for(unsigned j=0;j<ringLength;j++) {
-            double chip=j*c.bandwidthHz/40000000.0,n=1u<<c.spreadingFactor;
-            double phase=3.141592653589793*(chip*chip/n-chip)*(c.inverted?-1:1);
+            // The S3 has a single-precision FPU. Software double trig delayed
+            // RF by ~0.7 s, past a peer's 500 ms receive window. Float phase
+            // stays much finer than the 10-bit DAC resolution at these SFs.
+            float chip=j*(c.bandwidthHz/40000000.0f),n=1u<<c.spreadingFactor;
+            float phase=3.141592653589793f*(chip*chip/n-chip)*(c.inverted?-1.0f:1.0f);
             if(compact) {
                 auto *phases=reinterpret_cast<uint8_t*>(ring);
-                phases[j]=static_cast<uint8_t>(lround(phase*256/6.283185307179586));
+                phases[j]=static_cast<uint8_t>(lroundf(phase*256/6.283185307179586f));
                 if(j<downLength)phases[ringLength+j]=static_cast<uint8_t>(-phases[j]);
             } else {
-                int i=lround(c.dacAmplitude*cos(phase)),q=lround(c.dacAmplitude*sin(phase));
+                int i=lroundf(c.dacAmplitude*cosf(phase)),q=lroundf(c.dacAmplitude*sinf(phase));
                 ring[j]=(static_cast<unsigned>(i)&1023u)|((static_cast<unsigned>(q)&1023u)<<10);
                 if(j<downLength)ring[ringLength+j]=(static_cast<unsigned>(i)&1023u)|((static_cast<unsigned>(-q)&1023u)<<10);
             }
         }
+        result.waveformBuildUs=esp_timer_get_time()-generationStarted;
         txcal_debuge_mode();start_tx_tone_step(1,0,c.gainCode,0,0,0);
         uint32_t pbusControl=0;
         if(c.analogGainCode) {

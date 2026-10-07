@@ -1,0 +1,31 @@
+{
+  "startedUtc": "2026-10-07T05:19:57.321159+00:00",
+  "seed": 202610071320,
+  "retries": 0,
+  "xiaoSerialWrites": 0,
+  "pcDecoder": false,
+  "example": "ArduinoDuplex/xiao-arduino-echo",
+  "cases": [
+    {
+      "cr": 2,
+      "length": 8,
+      "expectedHex": "ccebf6c4741fdfea",
+      "expectedReplyHex": "41434b3accebf6c4741fdfea",
+      "xiao": [],
+      "lr2021": [],
+      "rxPassed": false,
+      "txPassed": false,
+      "strictRfTxPassed": false
+    }
+  ],
+  "xiaoImage": {
+    "bytes": 613632,
+    "sha256": "7283dfbe5e681d558b55c3330e20489678104512aa267848ff89079c43d41390"
+  },
+  "lrImage": {
+    "bytes": 320928,
+    "sha256": "a46cbeacaf9a5dcd3d49e40d09996ef9d0791517f9e96a84548ae474596ad6ca"
+  },
+  "error": "TimeoutError({'cr': 2, 'length': 8, 'expectedHex': 'ccebf6c4741fdfea', 'expectedReplyHex': '41434b3accebf6c4741fdfea', 'xiao': [], 'lr2021': [], 'rxPassed': False, 'txPassed': False, 'strictRfTxPassed': False})",
+  "finishedUtc": "2026-10-07T05:20:27.822032+00:00"
+}

@@ -9,6 +9,7 @@ struct TxResult {
     unsigned lateUpdates=0;
     uint32_t sourceAddress=0;
     unsigned maxCopyCycles=0;
+    uint32_t waveformBuildUs=0;
     unsigned analogBefore1=0,analogBefore3=0,analogAfter1=0,analogAfter3=0;
     bool analogGainRestored=false;
     uint32_t basebandControl=0, adcControl=0;

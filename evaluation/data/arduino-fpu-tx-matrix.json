@@ -1,0 +1,466 @@
+{
+  "startedUtc": "2026-10-07T06:15:17.901493+00:00",
+  "seed": 202610071416,
+  "retries": 0,
+  "pcDecoder": false,
+  "hostIqUploaded": false,
+  "completed": true,
+  "profile": {
+    "frequencyMHz": 2440.125,
+    "bandwidthHz": 203125,
+    "sf": 7,
+    "preamble": 16,
+    "sync": 18,
+    "relativePowerPercent": 75
+  },
+  "cases": [
+    {
+      "sf": 7,
+      "codingRate": 1,
+      "bytes": 1,
+      "expectedHex": "79",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 34 0 20.953 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63 build_us=79602"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-61.5 snr=5.0 hex=79",
+        "RX_IRQ 00040170"
+      ],
+      "exactBytes": true,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "codingRate": 1,
+      "bytes": 8,
+      "expectedHex": "691358757bd578d6",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 44 0 27.254 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63 build_us=79414"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-61.5 snr=2.5 hex=691358757bd578d6",
+        "RX_IRQ 00040170"
+      ],
+      "exactBytes": true,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "codingRate": 2,
+      "bytes": 32,
+      "expectedHex": "510cbfb88e0aac5fde88160d0b8bf895c6d0a0c8f6a8f03eb784520fcc8185e7",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 89 0 55.611 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63 build_us=79192"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-61.5 snr=8.0 hex=510cbfb88e0aac5fde88160d0b8bf895c6d0a0c8f6a8f03eb784520fcc8185e7",
+        "RX_IRQ 00040170"
+      ],
+      "exactBytes": true,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "codingRate": 4,
+      "bytes": 32,
+      "expectedHex": "d241159cb9c4efa1d715649e68d5219e4dd449080d17ba0ab45cdd8c1a80f928",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 109 0 68.214 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63 build_us=79521"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-60.5 snr=2.2 hex=d241159cb9c4efa1d715649e68d5219e4dd449080d17ba0ab45cdd8c1a80f928",
+        "RX_IRQ 00040170"
+      ],
+      "exactBytes": true,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "codingRate": 3,
+      "bytes": 1,
+      "expectedHex": "c4",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 36 0 22.213 buffer=3fcb0000 copy=56265 tone=20062400 adc=00000000 gain=63,63 build_us=79226"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-61.5 snr=8.2 hex=c4",
+        "RX_IRQ 00040170"
+      ],
+      "exactBytes": true,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "codingRate": 1,
+      "bytes": 32,
+      "expectedHex": "242f085fe74300b0b9a90ed283deb206a3f8e5d7fb969123699569c966aea95a",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63 build_us=79272"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-60.5 snr=8.5 hex=242f085fe74300b0b9a90ed283deb206a3f8e5d7fb969123699569c966aea95a",
+        "RX_IRQ 00040170"
+      ],
+      "exactBytes": true,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "codingRate": 4,
+      "bytes": 1,
+      "expectedHex": "49",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 37 0 22.843 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63 build_us=79086"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-61.5 snr=4.8 hex=49",
+        "RX_IRQ 00040170"
+      ],
+      "exactBytes": true,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "codingRate": 4,
+      "bytes": 80,
+      "expectedHex": "bee80495eb45c974314cf528e3c725905578d58016597fcf5bc8be542771c7ce72b4d89054ac02d7a67b919c9a2eeb2c2cff7c5200c28facb57d8776ef53668563af6433875333851a02c3783f77756d",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 221 0 138.791 buffer=3fcb0000 copy=56265 tone=20062400 adc=00000000 gain=63,63 build_us=79200"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-61.5 snr=9.0 hex=bee80495eb45c974314cf528e3c725905578d58016597fcf5bc8be542771c7ce72b4d89054ac02d7a67b919c9a2eeb2c2cff7c5200c28facb57d8776ef53668563af6433875333851a02c3783f77756d",
+        "RX_IRQ 00040170"
+      ],
+      "exactBytes": true,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "codingRate": 1,
+      "bytes": 80,
+      "expectedHex": "14d11e73039a6e9408fb64358dd9f17e741705d964d8d96f3bb9b57f4ae01ec2660b04174f23297da329e80235de8b0f4d3bd90ffc2b0e9b8cda4dd64ba4f7735fab89d70633214cdeeb78b0b5b5ce8d",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 149 0 93.420 buffer=3fcb0000 copy=56265 tone=20062400 adc=00000000 gain=63,63 build_us=79230"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-61.5 snr=4.0 hex=14d11e73039a6e9408fb64358dd9f17e741705d964d8d96f3bb9b57f4ae01ec2660b04174f23297da329e80235de8b0f4d3bd90ffc2b0e9b8cda4dd64ba4f7735fab89d70633214cdeeb78b0b5b5ce8d",
+        "RX_IRQ 00040170"
+      ],
+      "exactBytes": true,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "codingRate": 1,
+      "bytes": 255,
+      "expectedHex": "c5ec44acd2a8ea527bd7bc3a6cf7f93cde5a7fa6ed469d11c8c9efb32a56979ca7880086a566378c445c206650aa653ccfbd3487f9b876f257630d59ec7aee54681fca16a24c73edc65d225fc1df58e585a24b4623135c0e190220ef606ed43ee513229c28cda9567f156e40b0775582206825d22ea6a6bd15c304d5a8296fa50e668efd18b9fba1f94ba8cf6f7e9b79fe6b862ee4aef1f1ee2e5662f3d947af6fe30144802a647faa8bceb5acd2c421e0f7b47ee09a4dc6a5d310ef125abf554e53e7f63d3b1de75d318bf416c2546393334c5ff8ff9457979da6b7c39a5bc8ae96514346ea2e4062cc54a49200f2045caaeec0403c77d96a4cbd7cf1d7fc",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 399 0 250.959 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63 build_us=79240"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=255 rssi=-61.5 snr=8.5 hex=c5ec44acd2a8ea527bd7bc3a6cf7f93cde5a7fa6ed469d11c8c9efb32a56979ca7880086a566378c445c206650aa653ccfbd3487f9b876f257630d59ec7aee54681fca16a24c73edc65d225fc1df58e585a24b4623135c0e190220ef606ed43ee513229c28cda9567f156e40b0775582206825d22ea6a6bd15c304d5a8296fa50e668efd18b9fba1f94ba8cf6f7e9b79fe6b862ee4aef1f1ee2e5662f3d947af6fe30144802a647faa8bceb5acd2c421e0f7b47ee09a4dc6a5d310ef125abf554e53e7f63d3b1de75d318bf416c2546393334c5ff8ff9457979da6b7c39a5bc8ae96514346ea2e4062cc54a49200f2045caaeec0403c77d96a4cbd7cf1d7fc",
+        "RX_IRQ 00040171"
+      ],
+      "exactBytes": true,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "codingRate": 2,
+      "bytes": 8,
+      "expectedHex": "adb98b5167e1b32b",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 47 0 29.145 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63 build_us=79229"
+      ],
+      "lr2021": [],
+      "exactBytes": false,
+      "passed": false
+    },
+    {
+      "sf": 7,
+      "codingRate": 2,
+      "bytes": 255,
+      "expectedHex": "5ab12ef74c351892f03aa6566958e44cbf8ab3b271fc9219c27137b781b0e850ee8627074de434ff3190aecc23901d57cf0f619cb4e7b3c6091aed9b50dc2634bddf5eb7e4030a9330b872e1c00e5562cb7d992868d1041eb96aeb27f0ca1980c8875d6cab029bce289c0fd2c4c2beade56278e58e72ac5ef1e7f2d19567d04e6b4ada647a32d3a5509c97e21db2dde93cdc78a84de906898ebbcacd80b20d36476c8229b43c61548e0642fbfff7c42f07ab1bb26d5836335ff01fc5e2a3ba8cf141ad62169d7c5b85a8206f8c69fd43beab558d798be68094c0b9490ee0283a4204766d8bda41d92f94b0ed173335ed5be3ab2ed349b39d3b208982cfb0ec",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 473 0 297.590 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63 build_us=79268"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=255 rssi=-61.5 snr=6.0 hex=5ab12ef74c351892f03aa6566958e44cbf8ab3b271fc9219c27137b781b0e850ee8627074de434ff3190aecc23901d57cf0f619cb4e7b3c6091aed9b50dc2634bddf5eb7e4030a9330b872e1c00e5562cb7d992868d1041eb96aeb27f0ca1980c8875d6cab029bce289c0fd2c4c2beade56278e58e72ac5ef1e7f2d19567d04e6b4ada647a32d3a5509c97e21db2dde93cdc78a84de906898ebbcacd80b20d36476c8229b43c61548e0642fbfff7c42f07ab1bb26d5836335ff01fc5e2a3ba8cf141ad62169d7c5b85a8206f8c69fd43beab558d798be68094c0b9490ee0283a4204766d8bda41d92f94b0ed173335ed5be3ab2ed349b39d3b208982cfb0ec",
+        "RX_IRQ 00040171"
+      ],
+      "exactBytes": true,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "codingRate": 4,
+      "bytes": 8,
+      "expectedHex": "3d22ee8f9b06aebb",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 53 0 32.926 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63 build_us=79193"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-61.5 snr=8.0 hex=3d22ee8f9b06aebb",
+        "RX_IRQ 00040170"
+      ],
+      "exactBytes": true,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "codingRate": 2,
+      "bytes": 1,
+      "expectedHex": "91",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 35 0 21.583 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63 build_us=79234"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=1 rssi=-62.5 snr=9.0 hex=91",
+        "RX_IRQ 00040170"
+      ],
+      "exactBytes": true,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "codingRate": 3,
+      "bytes": 8,
+      "expectedHex": "dcb547924c0896db",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 50 0 31.035 buffer=3fcb0000 copy=56265 tone=20062400 adc=00000000 gain=63,63 build_us=79230"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-61.5 snr=8.2 hex=dcb547924c0896db",
+        "RX_IRQ 00040170"
+      ],
+      "exactBytes": true,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "codingRate": 4,
+      "bytes": 255,
+      "expectedHex": "162fdaed4696aa2fc38e90bcc6da32d78d4bcf3d06bf9e26da0a67bc31a71fe87067e19f2682a5c12866a7f1cee1faa0daee66c09d0d9de6e594f99153bb79613ab027bf7e3d979c1b06d2908261badd88cc0da714a3ccfd6172c723e509c56274fae4579d3b48de9476264fbd55a93c4c398562e91c9dd6b44bfdbe92128a7fb1b01cef7ed3a4710d60cc5edd7ef8f3b59b3fef460deb66bc937ae211e4dd71af2ac30bdcc1cf53f51496c6538d41f05ae3baae7dde8a5557808c91facb165c3ae163e63979591a8931d295fc3eaeaceeaedad355a461ba3a45e5e809ef8fbdf8c5ebadcc4322de031280f2ce697c9e5db71c318eaa8e89eb02955297122c",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 621 0 390.853 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63 build_us=79232"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=255 rssi=-61.5 snr=2.5 hex=162fdaed4696aa2fc38e90bcc6da32d78d4bcf3d06bf9e26da0a67bc31a71fe87067e19f2682a5c12866a7f1cee1faa0daee66c09d0d9de6e594f99153bb79613ab027bf7e3d979c1b06d2908261badd88cc0da714a3ccfd6172c723e509c56274fae4579d3b48de9476264fbd55a93c4c398562e91c9dd6b44bfdbe92128a7fb1b01cef7ed3a4710d60cc5edd7ef8f3b59b3fef460deb66bc937ae211e4dd71af2ac30bdcc1cf53f51496c6538d41f05ae3baae7dde8a5557808c91facb165c3ae163e63979591a8931d295fc3eaeaceeaedad355a461ba3a45e5e809ef8fbdf8c5ebadcc4322de031280f2ce697c9e5db71c318eaa8e89eb02955297122c",
+        "RX_IRQ 00040171"
+      ],
+      "exactBytes": true,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "codingRate": 3,
+      "bytes": 255,
+      "expectedHex": "f84405a024e02c1719cbeb199eaccb88c61da521bfd4f778741610862b03606ae78e5eaa350104d5b145d29ab496482af2df30370cba5cc0cfdf9447cbfe883dff7d3bb1a890676b9e40f4a62c3a3e0f4cdcc0c7d1ee34633d504df0010ce1c48dbdac80e4e240541043dad13a9f2ed7cfaea8d2d6caad9779310397b17317f7a9c0fba572b8f014fbd11ec1b61c91981fb85e6ef206b6a724f8540582d2a0c1fe0054dd7b045bc57a0fc96297cdff518ebce3b682ed5a69d2bee0f4a59311294622ea08adc172558ec16dda81e2746fae13abd5618b5448285ecd94831464e5c37227198eb54553089dc260a8c11186906924d20bc4b8770eb75d6018c940",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 547 0 344.222 buffer=3fcb0000 copy=56265 tone=20062400 adc=00000000 gain=63,63 build_us=79194"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=255 rssi=-61.5 snr=8.5 hex=f84405a024e02c1719cbeb199eaccb88c61da521bfd4f778741610862b03606ae78e5eaa350104d5b145d29ab496482af2df30370cba5cc0cfdf9447cbfe883dff7d3bb1a890676b9e40f4a62c3a3e0f4cdcc0c7d1ee34633d504df0010ce1c48dbdac80e4e240541043dad13a9f2ed7cfaea8d2d6caad9779310397b17317f7a9c0fba572b8f014fbd11ec1b61c91981fb85e6ef206b6a724f8540582d2a0c1fe0054dd7b045bc57a0fc96297cdff518ebce3b682ed5a69d2bee0f4a59311294622ea08adc172558ec16dda81e2746fae13abd5618b5448285ecd94831464e5c37227198eb54553089dc260a8c11186906924d20bc4b8770eb75d6018c940",
+        "RX_IRQ 00040171"
+      ],
+      "exactBytes": true,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "codingRate": 2,
+      "bytes": 80,
+      "expectedHex": "a18fb7791a26eab00e28f46e162943961925335b8724f49351cffbc0f0b3d57ada675f4853647e4ac56c2f67619631863f46b958bde1451db367bc0ac7eb84cb75767cd999b1b6ce001558929e4912e4",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 173 0 108.544 buffer=3fcb0000 copy=56265 tone=20062400 adc=00000000 gain=63,63 build_us=79271"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-61.5 snr=8.8 hex=a18fb7791a26eab00e28f46e162943961925335b8724f49351cffbc0f0b3d57ada675f4853647e4ac56c2f67619631863f46b958bde1451db367bc0ac7eb84cb75767cd999b1b6ce001558929e4912e4",
+        "RX_IRQ 00040170"
+      ],
+      "exactBytes": true,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "codingRate": 3,
+      "bytes": 32,
+      "expectedHex": "444eb711554fe031911ce40eacca1924c5605653e9a27fcc2ea7d80d13912af8",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 99 0 61.913 buffer=3fcb0000 copy=56249 tone=20062400 adc=00000000 gain=63,63 build_us=79228"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-61.5 snr=8.8 hex=444eb711554fe031911ce40eacca1924c5605653e9a27fcc2ea7d80d13912af8",
+        "RX_IRQ 00040170"
+      ],
+      "exactBytes": true,
+      "passed": true
+    },
+    {
+      "sf": 7,
+      "codingRate": 3,
+      "bytes": 80,
+      "expectedHex": "84af967b422fd4dc0a7703f5ac861e0e25f9acce668e269a8bc66275375531bb328902afb308597427a263e1a35fa911ddbe048b6ecb1575375a041b9b5c7003adeba12b9ad050aeb60b81f5af3514b2",
+      "beforeRearm": [
+        "LR2021_PUBLIC status=0 ready=1 irq=00000000 gpio=1"
+      ],
+      "rearm": [
+        "SF 7 status=0"
+      ],
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 197 0 123.668 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63 build_us=79233"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=80 rssi=-61.5 snr=8.8 hex=84af967b422fd4dc0a7703f5ac861e0e25f9acce668e269a8bc66275375531bb328902afb308597427a263e1a35fa911ddbe048b6ecb1575375a041b9b5c7003adeba12b9ad050aeb60b81f5af3514b2",
+        "RX_IRQ 00040170"
+      ],
+      "exactBytes": true,
+      "passed": true
+    }
+  ],
+  "xiaoImage": {
+    "bytes": 654144,
+    "sha256": "3a76a4a6c6b4eb20f04afba57b822413351857451f756e916e906a8200025fa9"
+  },
+  "lrImage": {
+    "bytes": 320928,
+    "sha256": "a46cbeacaf9a5dcd3d49e40d09996ef9d0791517f9e96a84548ae474596ad6ca"
+  },
+  "xiaoIdentity": "S3SDR 9 iq-capture 16380",
+  "lrIdentity": "LR2021_PUBLIC status=0 ready=1 irq=00000320 gpio=1",
+  "finishedUtc": "2026-10-07T06:15:26.670748+00:00"
+}

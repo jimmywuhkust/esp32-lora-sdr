@@ -1,0 +1,85 @@
+{
+  "pcDecoder": false,
+  "retries": 0,
+  "sourceImageSha256": "3a76a4a6c6b4eb20f04afba57b822413351857451f756e916e906a8200025fa9",
+  "cases": [
+    {
+      "source": "COM3",
+      "target": "COM5",
+      "windowMs": 500,
+      "expectedHex": "d55336cd65f750da",
+      "txWallSeconds": 0.11910629994235933,
+      "ready": [
+        "RXPACK READY"
+      ],
+      "tx": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 53 0 32.926 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63 build_us=79189"
+      ],
+      "rx": [
+        "RXDECODE {\"ok\":false,\"samples\":125107,\"captureStatus\":0,\"drops\":0,\"abandoned\":0,\"candidates\":5,\"headers\":5,\"packets\":0,\"decodeUs\":10288242,\"error\":\"no complete CRC-valid packet in receive window\"}",
+        "RXPACKEND FAIL"
+      ],
+      "passed": false
+    },
+    {
+      "source": "COM3",
+      "target": "COM5",
+      "windowMs": 500,
+      "expectedHex": "9ffe09e4a5cb4fa471884234054e2268c453e07e9007d5d6066d55fefc3fe900",
+      "txWallSeconds": 0.15443840017542243,
+      "ready": [
+        "RXPACK READY"
+      ],
+      "tx": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 109 0 68.214 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63 build_us=79262"
+      ],
+      "rx": [
+        "RXDECODE {\"ok\":false,\"samples\":125106,\"captureStatus\":0,\"drops\":0,\"abandoned\":0,\"candidates\":5,\"headers\":5,\"packets\":0,\"decodeUs\":10283868,\"error\":\"no complete CRC-valid packet in receive window\"}",
+        "RXPACKEND FAIL"
+      ],
+      "passed": false
+    },
+    {
+      "source": "COM3",
+      "target": "COM4",
+      "windowMs": 500,
+      "expectedHex": "5db2fd1ad89be40c",
+      "txWallSeconds": 0.11909930012188852,
+      "ready": [
+        "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=8 rssi=-61.5 snr=7.5 hex=d55336cd65f750da",
+        "RX_IRQ 00040370",
+        "SF 7 status=0"
+      ],
+      "tx": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 53 0 32.926 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63 build_us=79271"
+      ],
+      "rx": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-60.5 snr=8.8 hex=5db2fd1ad89be40c",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true
+    },
+    {
+      "source": "COM3",
+      "target": "COM4",
+      "windowMs": 500,
+      "expectedHex": "e4819425ac28d7f199dda34addbada454b3de875f9cbcd22df4ce3914b32c0ec",
+      "txWallSeconds": 0.1541330001782626,
+      "ready": [
+        "SF 7 status=0"
+      ],
+      "tx": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 109 0 68.214 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63 build_us=79087"
+      ],
+      "rx": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-61.5 snr=8.5 hex=e4819425ac28d7f199dda34addbada454b3de875f9cbcd22df4ce3914b32c0ec",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true
+    }
+  ]
+}

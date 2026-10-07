@@ -1,3 +1,9 @@
+# 最新 Arduino 进展
+
+本文保留早期固件的历史测量；下文“Arduino 只发不收”和电脑解包的结论属于
+当时快照。最新 [ArduinoDuplex 独立收发与硬件报告](arduino-report.zh-CN.md)
+已实现芯片内完整解包、纠错和 CRC，电脑解包不是库的依赖。
+
 # 通宵测试摘要：2026-10-07
 
 **最新：[ESP32 自己解包并收发的报告](native-report.zh-CN.md)。** 本文保留早期

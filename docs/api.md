@@ -1,7 +1,7 @@
 # Library API and capability boundaries
 
 Namespace: `lora_sdr`. Include `LoRaSDR.h` for portable coding and
-`ESP32S3Radio.h` for the Arduino ESP32-S3 transmitter.
+`ESP32S3Radio.h` for the ESP32-S3 radio backend.
 
 ## Simple RX/TX interface
 
@@ -19,8 +19,12 @@ Setter ranges alone are not an RF guarantee.
 
 `RxPacket` owns up to 255 bytes and carries decoded length, SF, CR, payload
 CRC and correction metadata. `lastReceive()` reports capture status, samples,
-drops, abandoned units and decode time. Native receive needs the IDF component;
-stock Arduino receive returns `Unsupported`.
+drops, abandoned units and decode time. Full receive needs the supplied IDF
+component, also available inside real Arduino `setup()` / `loop()` through
+[ArduinoDuplex](arduino-rx.md). Installing only the ZIP into stock Arduino
+does not install this component; that profile returns `Unsupported` for RX.
+`RxPacket.softDecoded` identifies a CRC-valid SF7 packet recovered by the
+bounded FFT-confidence / soft-FEC fallback after hard decisions failed.
 
 The call style follows the [RadioLib SX126x settings example](https://github.com/jgromes/RadioLib/blob/master/examples/SX126x/SX126x_Settings/SX126x_Settings.ino):
 frequency in MHz, bandwidth in kHz, SF, coding-rate denominator and explicit
@@ -70,8 +74,8 @@ PSRAM and full on-device CRC-valid packet decoding. The overload accepts
 `Config`, `RxResult` and a 50..900 ms capture window. `ReceiveTimeout` means no
 complete CRC-valid packet was found, `CaptureGap` means invalid IQ continuity.
 A valid packet from a contiguous prefix can succeed after a boundary stop;
-`RxResult.captureStatus` preserves that stop. Stock Arduino RX remains
-`Unsupported`.
+`RxResult.captureStatus` preserves that stop. The ArduinoDuplex profile links
+this same backend. The stock Arduino ZIP profile remains TX only.
 
 | Config field | Meaning | Native RF boundary |
 |---|---|---|

@@ -9,14 +9,16 @@ Your application calls `begin()`, sets the radio parameters, then calls
 demodulation, error correction and packet CRC. It needs no external LoRa
 chip, website or PC packet decoder. A second radio is the peer on the air.
 
-[Get started](docs/native-guide.md) · [API](docs/api.md) · [中文](README.zh-CN.md) ·
-[Measurements](docs/native-report.md) · [Prior art](docs/prior-art.md)
+[Arduino RX/TX](docs/arduino-rx.md) · [API](docs/api.md) · [中文](README.zh-CN.md) ·
+[Measurements](docs/arduino-report.md) · [Prior art](docs/prior-art.md)
 
 Experimental; verified on **Seeed XIAO ESP32-S3, 8 MB flash + 8 MB OPI PSRAM**.
-Full native RX/TX uses the supplied **PlatformIO / ESP-IDF component**.
-Stock Arduino core 2.0.17 supports **TX only**; `receive()` returns
-`Unsupported`. The radio backend uses undocumented RF registers and SDK PHY
-routines, so other boards and SDKs require verification.
+**Arduino RX/TX is available through the supplied PlatformIO ArduinoDuplex
+profile**, using real `setup()` / `loop()` and Arduino 2.0.17 as an IDF 4.4.7
+component. Packet decoding and CRC stay on the MCU. An ESP-IDF-only profile
+is also included. Installing just the ZIP into a stock Arduino core provides
+TX only; use the duplex project for RX. The backend uses undocumented RF
+registers and SDK PHY routines, so other boards and SDKs require verification.
 
 ## Use it from your application
 
@@ -66,17 +68,19 @@ an ASCII path such as `C:\lora-sdr`. From the repository root:
 ```sh
 python -m pip install platformio==6.1.19
 python examples/NativeDuplex/setup_deps.py
-pio run -d examples/NativeDuplex -e xiao-native
+pio run -d examples/ArduinoDuplex -e xiao-arduino-rx
 pio device list
-pio run -d examples/NativeDuplex -e xiao-native -t upload --upload-port YOUR_PORT
+pio run -d examples/ArduinoDuplex -e xiao-arduino-rx -t upload --upload-port YOUR_PORT
 ```
 
-Edit [the application](examples/NativeDuplex/main/main.cpp) to use the library
-in your own project. `xiao-native` receives by default. Select `xiao-echo` to
+Edit [the Arduino application](examples/ArduinoDuplex/main/main.cpp) to use the library
+in your own project. `xiao-arduino-rx` receives by default. Select `xiao-arduino-echo` to
 receive a CRC-valid packet and transmit `ACK:` plus those bytes entirely on
 the ESP32. After flashing, USB logs are optional; RF packet processing runs
-on the board. Follow the [native guide](docs/native-guide.md) for the required
-PSRAM/core settings, peer configuration and timing.
+on the board. Follow the [Arduino guide](docs/arduino-rx.md) for the required
+PSRAM/core settings, peer configuration and timing. It also includes bounded
+`xiao-arduino-ping` / `xiao-arduino-pong` applications for two ESP32s.
+Prefer `app_main()`? Use the separate [native project](docs/native-guide.md).
 
 For stock Arduino TX, install the repository ZIP as a library, select XIAO
 ESP32-S3 with core 2.0.17, and open

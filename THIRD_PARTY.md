@@ -1,7 +1,12 @@
 # Third-party work
 
-- **ESPARGOS esp-sdr**, GPLv3: foundation for the separate capture firmware
-  and the investigation of the S3 RF chain. https://github.com/ESPARGOS/esp-sdr
+- **ESPARGOS esp-sdr**, GPLv3: foundation for the capture firmware and the
+  linked native/Arduino RX backend. Modified sources, build files, the GPL
+  license and pinned provenance are included. https://github.com/ESPARGOS/esp-sdr
+- **h0m3us3r eSpDR**, 0BSD: the capture source credits its bank rotation,
+  128-bit PIE stores and core startup reference. Its 0BSD license notice is
+  reproduced below with the other 0BSD reference.
+  https://github.com/h0m3us3r/eSpDR
 - **Jochen Hammes esp32-sdr-trx**, 0BSD, pinned research commit
   `6de35a5138c8f6d7bf6af2b6c8dd0c99342e72f0`: PHY reference, register behavior
   and documented successful/failed RF experiments. The native encoder was
@@ -31,7 +36,7 @@ No private AeroLink source archive, GNSS data, account credentials or tool
 environment is included. Hardware results from the private bench receiver
 must not be confused with a tested public receiver firmware release.
 
-0BSD license notice for the esp32-sdr-trx reference:
+0BSD license notice for the esp32-sdr-trx and eSpDR references:
 
 Permission to use, copy, modify, and/or distribute this software for any purpose
 with or without fee is hereby granted.

@@ -1,0 +1,38 @@
+[
+  {
+    "expectedHex": "f79008a7663f2fe4",
+    "header": "RXIQ 75139 a55c9998 status=0 drops=0 abandoned=0",
+    "tx": [
+      "TXSTART NATIVE",
+      "TXEND NATIVE ok 53 0 32.926 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63 build_us=79090"
+    ],
+    "file": "ESP32-fpu-to-COM5.iq16",
+    "bytes": 300556,
+    "sha256": "266f590997d66c534a11946c38c65968c5858a2c5d3e538281408154b29c77f5",
+    "source": "COM3 internal RF to COM5 internal RF",
+    "sf": 7,
+    "bandwidthHz": 203125,
+    "sampleRate": 250000,
+    "format": "interleaved little-endian signed int16 I,Q",
+    "purpose": "offline regression of the same C++ decoder; not live on-device RF proof",
+    "syntheticPayload": true
+  },
+  {
+    "expectedHex": "5db2fd1ad89be40c9b11a2b685751913e06f810df8534045f135998892fbce7b",
+    "header": "RXIQ 75139 717491ba status=0 drops=0 abandoned=0",
+    "tx": [
+      "TXSTART NATIVE",
+      "TXEND NATIVE ok 109 0 68.214 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63 build_us=79563"
+    ],
+    "file": "ESP32-full16-to-COM5.iq16",
+    "bytes": 300556,
+    "sha256": "7543193695da0632ae60a768c2d4163c7236ef32e445d205438b0fe9cbebd3f3",
+    "source": "COM3 internal RF to COM5 internal RF",
+    "sf": 7,
+    "bandwidthHz": 203125,
+    "sampleRate": 250000,
+    "format": "interleaved little-endian signed int16 I,Q",
+    "purpose": "offline regression of the same C++ decoder; not live on-device RF proof",
+    "syntheticPayload": true
+  }
+]

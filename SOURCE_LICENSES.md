@@ -1,11 +1,15 @@
 # Source and dependency credits
 
-The Arduino transmitter and host adapters are GPL-3.0-only under `LICENSE`.
-Experimental firmware is kept separate from the supported library sources.
+This library, its Arduino/native applications and host adapters are
+GPL-3.0-only under `LICENSE`. The full RX backend includes modified GPL
+ESPARGOS/esp-sdr code. It is linked into the Arduino component application;
+its directory location does not exempt the resulting library from GPL.
+Distribute the corresponding source, build files, license and notices with
+binary releases. Keep upstream notices and per-file license identifiers.
 
 - `firmware/iq-capture`: GPL-3.0 ESPARGOS/esp-sdr source with local changes.
   Its `provenance.json` records origin, pin and the pre-edit copied-file hashes.
-  The core1 startup notes its0BSD eSpDR startup reference in the source comment.
+  The core1 startup notes its 0BSD eSpDR startup reference in the source comment.
 - DAC register/timing research: Jochen Hammes'0BSD esp32-sdr-trx, pinned and
   linked in `docs/prior-art.md`; research source retains attribution comments.
 - ESP-IDF and ESP-DSP: fetched public Espressif dependencies. Their original

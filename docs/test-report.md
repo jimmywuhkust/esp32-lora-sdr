@@ -1,5 +1,9 @@
 # Hardware test report — 7 October 2026
 
+**Historical measurements. Arduino RX now exists in the dedicated
+[ArduinoDuplex profile and new hardware report](arduino-report.md).**
+TX-only / PC-decoder statements below describe their original snapshots.
+
 **New: [full on-device RX/TX measurements](native-report.md).** The report
 below retains the earlier Arduino TX and separate PC-IQ decoder experiments.
 The native PlatformIO component now decodes complete CRC packets on ESP32;

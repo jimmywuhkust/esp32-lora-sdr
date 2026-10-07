@@ -8,13 +8,15 @@
 波形生成、解调、纠错和完整包 CRC 都在 ESP32 内完成，不需要外接 LoRa 芯片、
 网站或电脑解包。空中通信需要另一台参数匹配的无线设备作为对端。
 
-[英文主页](README.md) · [原生收发入门](docs/native-guide.zh-CN.md) ·
-[API](docs/api.md) · [原生测试报告](docs/native-report.zh-CN.md) · [已有工作](docs/prior-art.md)
+[英文主页](README.md) · [Arduino 收发入门](docs/arduino-rx.zh-CN.md) ·
+[API](docs/api.md) · [Arduino 实测](docs/arduino-report.zh-CN.md) · [已有工作](docs/prior-art.md)
 
 当前是实验性库，已验证 **Seeed XIAO ESP32-S3，8 MB flash + 8 MB OPI PSRAM**。
-完整原生收发走随附的 **PlatformIO / ESP-IDF 组件**。普通 Arduino core 2.0.17
-目前支持发射，接收返回 `Unsupported`。底层使用未公开的射频寄存器和 SDK PHY
-函数，其他板型、SDK 不能直接视为兼容。
+**Arduino 已支持收发**：使用随附的 PlatformIO ArduinoDuplex 工程，把
+Arduino 2.0.17 作为 IDF 4.4.7 组件运行，应用仍是 `setup()` / `loop()`，
+完整解包和 CRC 在 ESP32 上完成。仅把 ZIP 安装进普通 Arduino core 仍是 TX
+路径，接收需要 duplex 工程。也提供纯 ESP-IDF 工程。底层使用未公开的射频
+寄存器和 SDK PHY 函数，其他板型、SDK 不能直接视为兼容。
 
 ## 在自己的程序里调用
 
@@ -58,15 +60,17 @@ if (status == Error::Ok) {
 ```sh
 python -m pip install platformio==6.1.19
 python examples/NativeDuplex/setup_deps.py
-pio run -d examples/NativeDuplex -e xiao-native
+pio run -d examples/ArduinoDuplex -e xiao-arduino-rx
 pio device list
-pio run -d examples/NativeDuplex -e xiao-native -t upload --upload-port YOUR_PORT
+pio run -d examples/ArduinoDuplex -e xiao-arduino-rx -t upload --upload-port YOUR_PORT
 ```
 
-修改 [应用示例](examples/NativeDuplex/main/main.cpp) 就可以直接调用库。
-`xiao-native` 默认接收；选择 `xiao-echo` 后，ESP32 在 CRC 有效的包到达后发送
+修改 [Arduino 示例](examples/ArduinoDuplex/main/main.cpp) 就可以直接调用库。
+`xiao-arduino-rx` 默认接收；选择 `xiao-arduino-echo` 后，ESP32 在 CRC 有效的包到达后发送
 `ACK:` 加原始载荷，全程无需电脑指令。刷好后 USB 日志可选。
-[中文入门](docs/native-guide.zh-CN.md) 包含 PSRAM/core 配置、对端参数和收发时序。
+[Arduino 中文入门](docs/arduino-rx.zh-CN.md) 包含 PSRAM/core 配置、对端参数、
+收发时序和双 ESP32 ping/pong 示例。纯 `app_main()` 应用可用
+[原生工程](docs/native-guide.zh-CN.md)。
 
 普通 Arduino 发射可安装仓库 ZIP，选择 XIAO ESP32-S3 / core 2.0.17，打开
 [SendOnce](examples/SendOnce/SendOnce.ino)。[Arduino 步骤](docs/quick-start.md)

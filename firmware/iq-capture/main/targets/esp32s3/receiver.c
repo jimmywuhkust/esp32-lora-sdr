@@ -5,10 +5,10 @@
 #include <string.h>
 #include "driver/usb_serial_jtag.h"
 #include "esp_cpu.h"
+#include "esp_idf_version.h"
 #include "esp_event.h"
 #include "esp_heap_caps.h"
 #include "esp_log.h"
-#include "esp_phy_cert_test.h"
 #include "esp_rom_crc.h"
 #include "esp_timer.h"
 #include "esp_wifi.h"
@@ -330,7 +330,7 @@ static bool ring_command(const char *line) {
 int lora_sdr_platform_capture(uint32_t frequency,unsigned ms,lora_native_capture_t* result) {
     memset(result,0,sizeof(*result));
     if(frequency<2400200000u||frequency>2483300000u||ms<50||ms>900)return 1;
-    unsigned capacity=ms*550+32768;
+    unsigned capacity=ms*1050+32768;
     uint8_t* memory=heap_caps_malloc(capacity,MALLOC_CAP_SPIRAM|MALLOC_CAP_8BIT);
     if(!memory)return 2;
     frequency_mhz=frequency/1000000-4;s3_fofs=(frequency%1000000)/1000;
@@ -339,10 +339,10 @@ int lora_sdr_platform_capture(uint32_t frequency,unsigned ms,lora_native_capture
     // A serial test fixture must not start TX during first-tune calibration.
     // Native application reception has no serial notification pending.
     native_capture_ready();
-    // With the native 2048-sample FIR batching, PSRAM can retain 8-bit I/Q
-    // without a USB stream. Keep four more quantization bits than the early
-    // 4-bit proof; capture-frame integrity still gates packet processing.
-    ring_config_t c={.mode=RING_MODE_IQ,.rate=6,.duration_ms=ms,.iq_dec=64,.iq_bits=8,.iq_shift=5,.iq_rot=true};
+    // Preserve the FIR's signed 16-bit output in PSRAM. An 8-bit/shift-5
+    // buffer clipped strong ESP32 bursts and damaged otherwise valid symbols.
+    // Acquisition continuity still gates all packet processing.
+    ring_config_t c={.mode=RING_MODE_IQ,.rate=6,.duration_ms=ms,.iq_dec=64,.iq_bits=16,.iq_shift=0,.iq_rot=true};
     ring_result_t r;ring_capture_memory_sink(memory,capacity);
     ring_capture_run(&c,&r);rx_filter_restore();
     unsigned bytes=ring_capture_memory_size();bool overflow=ring_capture_memory_overflow();ring_capture_memory_sink(NULL,0);
@@ -353,6 +353,9 @@ int lora_sdr_platform_capture(uint32_t frequency,unsigned ms,lora_native_capture
 static void __attribute__((unused)) handle_command(char *line) {
     if(native_setting_command(line))return;
     unsigned sf, count; char vector_extra;
+    if(sscanf(line,"RXIQ %u %c",&count,&vector_extra)==1 && count>=50 && count<=900) {
+        native_capture_iq_debug(count);return;
+    }
     unsigned cr;char hex[511],txextra;
     if(sscanf(line,"TX %u %u %510s %c",&sf,&cr,hex,&txextra)==3) {
         rx_ready=false;reply("TXSTART NATIVE\n");
@@ -530,6 +533,13 @@ int lora_sdr_platform_begin(void) {
     ESP_ERROR_CHECK(e);
     ESP_ERROR_CHECK(esp_event_loop_create_default());
     wifi_init_config_t cfg=WIFI_INIT_CONFIG_DEFAULT();
+#if ESP_IDF_VERSION_MAJOR < 5
+    /* IDF 4.4's default static TX pool leaves no contiguous 8 KiB block for
+     * the acquisition worker under the three-bank SRAM reservation. SDR
+     * uses neither Wi-Fi packets nor their default large buffer pools. */
+    cfg.static_rx_buf_num=2;cfg.dynamic_rx_buf_num=4;
+    cfg.tx_buf_type=1;cfg.static_tx_buf_num=0;cfg.dynamic_tx_buf_num=4;cfg.cache_tx_buf_num=4;
+#endif
     ESP_ERROR_CHECK(esp_wifi_init(&cfg));
     ESP_ERROR_CHECK(esp_wifi_set_storage(WIFI_STORAGE_RAM));
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_NULL));
@@ -549,7 +559,11 @@ void lora_sdr_platform_serial_loop(void) {
     ESP_ERROR_CHECK(lora_sdr_platform_begin());
     esp_log_level_set("*",ESP_LOG_NONE);
     /* USB may be unplugged when the host uses the UART bridge. */
+#if ESP_IDF_VERSION_MAJOR >= 5
     (void)usb_serial_jtag_wait_tx_done(pdMS_TO_TICKS(100));
+#else
+    vTaskDelay(pdMS_TO_TICKS(100));
+#endif
     ESP_ERROR_CHECK(usb_serial_jtag_driver_uninstall());
     burst_serial_init();
     char line[600];

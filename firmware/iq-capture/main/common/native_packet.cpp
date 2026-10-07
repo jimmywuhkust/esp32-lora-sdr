@@ -46,13 +46,13 @@ extern "C" bool native_transmit_hex(unsigned sf,unsigned cr,const char* hex) {
     Error status=nativeRadio.begin(nativeRadio.configuration().frequencyHz/1e6);
     if(status==Error::Ok)status=nativeRadio.send(data,length);
     const TxResult& result=nativeRadio.lastTransmit();
-    char line[220];int n=snprintf(line,sizeof(line),"TXEND NATIVE %s %u %u %.3f buffer=%08x copy=%u tone=%08x adc=%08x gain=%u,%u\n",errorName(status),result.updates,result.lateUpdates,result.packet.airtimeMs,(unsigned)result.sourceAddress,result.maxCopyCycles,(unsigned)result.basebandControl,(unsigned)result.adcControl,result.keyedGain1,result.keyedGain3);
+    char line[240];int n=snprintf(line,sizeof(line),"TXEND NATIVE %s %u %u %.3f buffer=%08x copy=%u tone=%08x adc=%08x gain=%u,%u build_us=%u\n",errorName(status),result.updates,result.lateUpdates,result.packet.airtimeMs,(unsigned)result.sourceAddress,result.maxCopyCycles,(unsigned)result.basebandControl,(unsigned)result.adcControl,result.keyedGain1,result.keyedGain3,(unsigned)result.waveformBuildUs);
     burst_serial_send(line,n);return true;
 }
 static void emit(const RxPacket& p,void*) {
     char hex[511];for(unsigned i=0;i<p.length;i++)sprintf(hex+2*i,"%02x",p.payload[i]);
-    char line[800];int n=snprintf(line,sizeof(line),"RXPACKET {\"hex\":\"%s\",\"bytes\":%u,\"sf\":%u,\"codingRate\":%u,\"crcOk\":true,\"crcHex\":\"%04x\",\"cfoHz\":%.2f,\"sampleIndex\":%" PRIu64 ",\"correctedCodewords\":%u,\"source\":\"ESP32 native decoder\"}\n",
-        hex,(unsigned)p.length,p.spreadingFactor,p.codingRate,p.crc,p.frequencyOffsetHz,p.sampleIndex,p.correctedCodewords);
+    char line[800];int n=snprintf(line,sizeof(line),"RXPACKET {\"hex\":\"%s\",\"bytes\":%u,\"sf\":%u,\"codingRate\":%u,\"crcOk\":true,\"crcHex\":\"%04x\",\"cfoHz\":%.2f,\"sampleIndex\":%" PRIu64 ",\"correctedCodewords\":%u,\"softDecoded\":%s,\"source\":\"ESP32 native decoder\"}\n",
+        hex,(unsigned)p.length,p.spreadingFactor,p.codingRate,p.crc,p.frequencyOffsetHz,p.sampleIndex,p.correctedCodewords,p.softDecoded?"true":"false");
     burst_serial_send(line,n);
 }
 extern "C" bool native_decode_iq(const int16_t* iq,unsigned samples,unsigned sf,unsigned sync,uint64_t first) {
@@ -110,4 +110,18 @@ extern "C" void native_receive_command(unsigned sf,unsigned ms) {
     char line[300];int n=snprintf(line,sizeof(line),"RXDECODE {\"ok\":%s,\"samples\":%u,\"captureStatus\":%u,\"drops\":%u,\"abandoned\":%u,\"candidates\":%u,\"headers\":%u,\"packets\":%u,\"decodeUs\":%" PRIu64 ",\"error\":\"%s\"}\n",status==Error::Ok?"true":"false",result.captureSamples,result.captureStatus,result.captureDrops,result.captureAbandoned,result.decoder.candidates,result.decoder.headers,result.decoder.packets,result.decodeUs,errorName(status));
     burst_serial_send(line,n);
     const char* end=status==Error::Ok?"RXPACKEND OK\n":"RXPACKEND FAIL\n";burst_serial_send(end,strlen(end));
+}
+// Optional finite raw recording for RF diagnosis. Applications still call
+// receive() and decode on the ESP32; this fixture never feeds expected bytes.
+extern "C" void native_capture_iq_debug(unsigned ms) {
+    Error begin=nativeRadio.begin(nativeRadio.configuration().frequencyHz/1e6);
+    lora_native_capture_t capture{};
+    serialReadyPending=begin==Error::Ok;
+    int status=begin==Error::Ok?lora_sdr_platform_capture(nativeRadio.configuration().frequencyHz,ms,&capture):4;
+    serialReadyPending=false;
+    if(status){const char* err="RXIQ FAIL\n";burst_serial_send(err,strlen(err));return;}
+    uint32_t crc=esp_rom_crc32_le(0,reinterpret_cast<uint8_t*>(capture.iq),capture.samples*4);
+    char header[160];int n=snprintf(header,sizeof(header),"RXIQ %u %08x status=%u drops=%u abandoned=%u\n",
+        capture.samples,(unsigned)crc,capture.capture_status,capture.drops,capture.abandoned);
+    burst_serial_send(header,n);burst_serial_send(capture.iq,capture.samples*4);free(capture.iq);
 }

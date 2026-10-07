@@ -7,13 +7,17 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--xiao',default='COM3');p.add_argument('--lr2021',default='COM4')
     p.add_argument('--output',type=pathlib.Path,required=True);p.add_argument('--seed',type=int,default=202610071051)
     p.add_argument('--count',type=int,default=8)
+    p.add_argument('--application',choices=('native','arduino'),default='native')
+    p.add_argument('--rearm-lr-after-tx',action='store_true',help='record a fresh LR2021 RX epoch after its TX completes')
     p.add_argument('--xiao-image',type=pathlib.Path)
     p.add_argument('--lr-image',type=pathlib.Path)
     a=p.parse_args()
     if a.output.exists():p.error('output must be new')
     if not 1<=a.count<=8:p.error('count must be 1..8')
+    prefix='ARDUINO' if a.application=='arduino' else 'NATIVE'
+    example='ArduinoDuplex/xiao-arduino-echo' if a.application=='arduino' else 'NativeDuplex/xiao-echo'
     report=dict(startedUtc=datetime.now(timezone.utc).isoformat(),seed=a.seed,retries=0,
-                xiaoSerialWrites=0,pcDecoder=False,example='NativeDuplex/xiao-echo',cases=[])
+                xiaoSerialWrites=0,pcDecoder=False,example=example,cases=[],rearmLrAfterTx=a.rearm_lr_after_tx)
     for name,path in (('xiaoImage',a.xiao_image),('lrImage',a.lr_image)):
         if path:
             raw=path.read_bytes();report[name]=dict(bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest())
@@ -37,18 +41,23 @@ def main():
             else:raise TimeoutError(case)
             time.sleep(.06)
             tx,lines=command(r,f'TX 7 {cr} {data.hex()}','TX_PUBLIC');case['lr2021'].extend(lines)
+            if a.rearm_lr_after_tx:
+                rearm,lines=command(r,'SF 7','SF 7 ');case['lr2021'].extend(lines)
+                assert rearm=='SF 7 status=0',rearm
             deadline=time.monotonic()+10
             while time.monotonic()<deadline:
                 s=line(x,.2)
                 if s:case['xiao'].append(s)
-                if s.startswith('NATIVE_ACK'):break
+                if s.startswith(prefix+'_ACK'):break
             deadline=time.monotonic()+2
             while time.monotonic()<deadline:
                 s=line(r,.2)
                 if s:case['lr2021'].append(s)
                 if s.startswith('RX_IRQ'):break
-            case['rxPassed']=tx.startswith('TX_PUBLIC status=0 ') and any(s==f'NATIVE_RX crc_ok=1 bytes={n} hex={data.hex()}' for s in case['xiao'])
-            case['txPassed']=any(s==f'NATIVE_ACK status=ok bytes={n+4}' for s in case['xiao']) and any('crc_ok=1' in s and s.endswith('hex='+reply.hex()) for s in case['lr2021'])
+            rx_line=(f'ARDUINO_RX crc_ok=1 bytes={n} sf=7 cr={cr} hex={data.hex()}' if a.application=='arduino'
+                     else f'NATIVE_RX crc_ok=1 bytes={n} hex={data.hex()}')
+            case['rxPassed']=tx.startswith('TX_PUBLIC status=0 ') and rx_line in case['xiao']
+            case['txPassed']=any(s==f'{prefix}_ACK status=ok bytes={n+4}' for s in case['xiao']) and any('crc_ok=1' in s and s.endswith('hex='+reply.hex()) for s in case['lr2021'])
             # Independent RF gate, separate from the existing console+RF score.
             # Match the readout with its following IRQ; reject mixed error flags.
             case['strictRfTxPassed']=False

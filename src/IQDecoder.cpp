@@ -8,6 +8,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <algorithm>
+#ifdef LORA_SDR_DIAGNOSTIC_TRACE
+#include <cstdio>
+#endif
 #ifdef ESP_PLATFORM
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -37,7 +40,7 @@ struct Demod {
     const Complex* signal;size_t samples;unsigned n,bins,fftLength,chips;
     Complex *work,*up;float cfo=0;bool coherent=false;unsigned calls=0;
     struct Peak {float height;int bin;bool valid;};
-    Peak dechirp(int start,bool isUp=true){
+    Peak dechirp(int start,bool isUp=true,bool coarse=false){
         if(start<0||static_cast<size_t>(start)+n>samples)return {0,0,false};
         Complex step={cosf(-2*pi*cfo/406250),sinf(-2*pi*cfo/406250)},w={1,0};
         for(unsigned j=0;j<n;j++){
@@ -45,17 +48,19 @@ struct Demod {
             work[j]=mul(signal[start+j],ch);
             if(cfo){work[j]=mul(work[j],w);w=mul(w,step);}
         }
-        memset(work+n,0,(fftLength-n)*sizeof(Complex));fft(work,fftLength);
+        unsigned size=coarse?n:fftLength,folded=coarse?chips:bins;
+        if(!coarse)memset(work+n,0,(fftLength-n)*sizeof(Complex));
+        fft(work,size);
         float best=0;int bin=0;
-        for(unsigned j=0;j<bins;j++){
-            Complex a=work[j],b=work[fftLength-bins+j];
+        for(unsigned j=0;j<folded;j++){
+            Complex a=work[j],b=work[size-folded+j];
             float power=coherent?magnitude(add(a,b)):magnitude(a)+magnitude(b);
             if(power>best){best=power;bin=j;}
         }
 #ifdef ESP_PLATFORM
         if((++calls&15)==0)vTaskDelay(1);
 #endif
-        return {best,bin,best>0};
+        return {best,bin*(coarse?8:1),best>0};
     }
     float symbolValue(int bin,int ref)const {
         int v=(bin+int(bins)-ref)%int(bins);if(v<0)v+=bins;
@@ -64,11 +69,29 @@ struct Demod {
     int symbol(int bin,int ref)const {
         return static_cast<int>(lroundf(symbolValue(bin,ref)))%chips;
     }
+    void bitConfidence(int ref,float drift,float* output)const {
+        float zero[7]={},one[7]={};
+        for(unsigned symbol=0;symbol<128;symbol++) {
+            int bin=int(lroundf(ref+(symbol+drift)*8))%int(bins);if(bin<0)bin+=bins;
+            Complex a=work[bin],b=work[fftLength-bins+bin];
+            float power=coherent?magnitude(add(a,b)):magnitude(a)+magnitude(b);
+            unsigned gray=(symbol-1)&127;gray^=gray>>1;
+            for(unsigned bit=0;bit<7;bit++) {
+                float& best=(gray&(1u<<bit))?one[bit]:zero[bit];if(power>best)best=power;
+            }
+        }
+        for(unsigned bit=0;bit<7;bit++)output[bit]=(one[bit]-zero[bit])/(one[bit]+zero[bit]+1e-9f);
+    }
     int detect(int start) {
         int previous=-1;unsigned run=0;
         while(start>=0&&static_cast<size_t>(start)+6*n+1<samples){
-            if(run==5)return start-static_cast<int>(lroundf(previous/4.0f));
-            Peak p=dechirp(start);if(!p.valid)return -1;
+            if(run==5){
+                // Refine timing/CFO with the original padded FFT only once
+                // a stable preamble exists. Noise windows need no 8x FFT.
+                Peak fine=dechirp(start-int(n));
+                return fine.valid?start-static_cast<int>(lroundf(fine.bin/4.0f)):-1;
+            }
+            Peak p=dechirp(start,true,true);if(!p.valid)return -1;
             int delta=previous<0?int(bins):abs(previous-p.bin);delta=std::min(delta,int(bins)-delta);
             run=(previous>=0&&delta<=8)?run+1:1;previous=p.bin;start+=n;
         }return -1;
@@ -103,7 +126,8 @@ bool decodeIQ(const int16_t* iq,size_t count,const Config& c,PacketCallback call
     Complex* work=static_cast<Complex*>(malloc(fftLength*sizeof(Complex)));
     Complex* up=static_cast<Complex*>(malloc(n*sizeof(Complex)));
     uint16_t* rawBins=static_cast<uint16_t*>(malloc(1100*sizeof(uint16_t)));
-    if(!filtered||!signal||!work||!up||!rawBins){free(filtered);free(signal);free(work);free(up);free(rawBins);return false;}
+    float* confidence=c.spreadingFactor==7?static_cast<float*>(malloc(1100*7*sizeof(float))):nullptr;
+    if(!filtered||!signal||!work||!up||!rawBins){free(filtered);free(signal);free(work);free(up);free(rawBins);free(confidence);return false;}
     Complex state[5][2]={};
     for(size_t i=0;i<count;i++){
         Complex x={float(iq[2*i]),float(iq[2*i+1])};
@@ -130,10 +154,16 @@ bool decodeIQ(const int16_t* iq,size_t count,const Config& c,PacketCallback call
     rx.fftLength=fftLength;rx.chips=1u<<c.spreadingFactor;rx.work=work;rx.up=up;
     const int timings[5]={0,-2,1,0,-2};
     uint64_t accepted[32]={};unsigned acceptedCount=0;
+    bool magnitudeCandidate=false,coherentCandidate=false;
     for(unsigned hypothesis=0;hypothesis<5&&(!maxPackets||stats.packets<maxPackets);hypothesis++){
+        // Timing adjustments happen after detection. If a fold found no
+        // preamble, its other timing hypotheses would repeat the same scan.
+        if((hypothesis==1||hypothesis==2)&&!magnitudeCandidate)continue;
+        if(hypothesis==4&&!coherentCandidate)continue;
         int cursor=0;rx.coherent=hypothesis>=3;
         while(cursor>=0&&static_cast<size_t>(cursor)+8*n<=samples&&(!maxPackets||stats.packets<maxPackets)){
             rx.cfo=0;int detected=rx.detect(cursor);if(detected<0)break;stats.candidates++;
+            if(rx.coherent)coherentCandidate=true;else magnitudeCandidate=true;
             int start=0,ref=0;float offset=0;
             if(!rx.sync(detected,start,ref,offset)){cursor=std::max(cursor+int(n),detected+int(n));continue;}
             start+=timings[hypothesis];
@@ -158,7 +188,10 @@ bool decodeIQ(const int16_t* iq,size_t count,const Config& c,PacketCallback call
                 if(delta>1)syncOk=false;
             }
             if(!syncOk){stats.syncRejected++;cursor=start+total*n;continue;}
-            for(size_t j=8;j<total;j++){auto p=rx.dechirp(start+j*n);if(!p.valid){complete=false;break;}rawBins[j]=p.bin;}
+            for(size_t j=8;j<total;j++){
+                auto p=rx.dechirp(start+j*n);if(!p.valid){complete=false;break;}rawBins[j]=p.bin;
+                if(confidence)rx.bitConfidence(ref,(j+2)*float(rx.chips)*offset/c.frequencyHz,confidence+j*7);
+            }
             // Keep fractional CFO/SFO correction until nearest-integer rounding.
             // A second, quantized-peak hypothesis preserves the earlier path
             // for distorted folded peaks. Both must pass the entire CRC; the
@@ -174,15 +207,24 @@ bool decodeIQ(const int16_t* iq,size_t count,const Config& c,PacketCallback call
                 }
                 decoded=PacketDecoder::decode(symbols,total,c,packet);
             }
+            if(complete&&!decoded&&confidence)decoded=PacketDecoder::decodeSoft(symbols,total,confidence,c,packet);
             if(decoded){
                 packet.frequencyOffsetHz=offset;packet.sampleIndex=firstSample+(start*8ull+6)/13;
                 bool duplicate=false;
                 for(unsigned j=0;j<acceptedCount;j++)if(llabs(static_cast<int64_t>(packet.sampleIndex-accepted[j]))<int64_t(rx.chips*250000ull/203125))duplicate=true;
                 if(!duplicate){if(acceptedCount<32)accepted[acceptedCount++]=packet.sampleIndex;stats.packets++;callback(packet,context);}
-            }else stats.crcRejected++;
+            }else {
+                stats.crcRejected++;
+#ifdef LORA_SDR_DIAGNOSTIC_TRACE
+                printf("TRACE rejected hypothesis=%u start=%d ref=%d cfo=%.1f bytes=%u cr=%u crc=%04x hex=",
+                    hypothesis,start,ref,offset,unsigned(packet.length),packet.codingRate,packet.crc);
+                for(size_t j=0;j<packet.length;j++)printf("%02x",packet.payload[j]);
+                printf(" symbols=");for(size_t j=0;j<total;j++)printf("%u,",symbols[j]);printf("\n");
+#endif
+            }
             cursor=start+total*n;
         }
     }
-    free(signal);free(work);free(up);free(rawBins);return true;
+    free(signal);free(work);free(up);free(rawBins);free(confidence);return true;
 }
 }

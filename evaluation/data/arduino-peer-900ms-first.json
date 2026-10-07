@@ -1,0 +1,41 @@
+[
+  {
+    "source": "COM3",
+    "target": "COM5",
+    "windowMs": 900,
+    "expectedHex": "a3918d237170f242",
+    "txWallSeconds": 0.7578730001114309,
+    "ready": [
+      "RXPACK READY"
+    ],
+    "tx": [
+      "TXSTART NATIVE",
+      "TXEND NATIVE ok 53 0 32.926 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63"
+    ],
+    "rx": [
+      "RXDECODE {\"ok\":false,\"samples\":225231,\"captureStatus\":0,\"drops\":0,\"abandoned\":0,\"candidates\":5,\"headers\":5,\"packets\":0,\"decodeUs\":18336800,\"error\":\"no complete CRC-valid packet in receive window\"}",
+      "RXPACKEND FAIL"
+    ],
+    "passed": false
+  },
+  {
+    "source": "COM5",
+    "target": "COM3",
+    "windowMs": 900,
+    "expectedHex": "fe42316f2ac01348",
+    "txWallSeconds": 0.7595713001210243,
+    "ready": [
+      "RXPACK READY"
+    ],
+    "tx": [
+      "TXSTART NATIVE",
+      "TXEND NATIVE ok 53 0 32.926 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63"
+    ],
+    "rx": [
+      "RXPACKET {\"hex\":\"fe42316f2ac01348\",\"bytes\":8,\"sf\":7,\"codingRate\":4,\"crcOk\":true,\"crcHex\":\"8ada\",\"cfoHz\":-18051.15,\"sampleIndex\":197642,\"correctedCodewords\":10,\"source\":\"ESP32 native decoder\"}",
+      "RXDECODE {\"ok\":true,\"samples\":225233,\"captureStatus\":0,\"drops\":0,\"abandoned\":0,\"candidates\":2,\"headers\":2,\"packets\":1,\"decodeUs\":7843972,\"error\":\"ok\"}",
+      "RXPACKEND OK"
+    ],
+    "passed": true
+  }
+]

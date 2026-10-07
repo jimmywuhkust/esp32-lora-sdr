@@ -1,0 +1,66 @@
+[
+  {
+    "port": "COM3",
+    "expectedHex": "4fc1432884e9183f",
+    "rearm": [
+      "SF 7 status=0"
+    ],
+    "tx": [
+      "TXSTART NATIVE",
+      "TXEND NATIVE ok 53 0 32.926 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63"
+    ],
+    "rx": [
+      "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-61.5 snr=-0.2 hex=4fc1432884e9183f",
+      "RX_IRQ 00040170"
+    ],
+    "passed": true
+  },
+  {
+    "port": "COM3",
+    "expectedHex": "a59516d9dfa51c1f073ea141af162d7b9761eb92669ae3717188f445a8c730ca",
+    "rearm": [
+      "SF 7 status=0"
+    ],
+    "tx": [
+      "TXSTART NATIVE",
+      "TXEND NATIVE ok 109 0 68.214 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63"
+    ],
+    "rx": [
+      "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-61.5 snr=6.0 hex=a59516d9dfa51c1f073ea141af162d7b9761eb92669ae3717188f445a8c730ca",
+      "RX_IRQ 00040170"
+    ],
+    "passed": true
+  },
+  {
+    "port": "COM5",
+    "expectedHex": "a7e157d4e025e44c",
+    "rearm": [
+      "SF 7 status=0"
+    ],
+    "tx": [
+      "TXSTART NATIVE",
+      "TXEND NATIVE ok 53 0 32.926 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63"
+    ],
+    "rx": [
+      "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=8 rssi=-60.5 snr=2.5 hex=a7e157d4e025e44c",
+      "RX_IRQ 00040170"
+    ],
+    "passed": true
+  },
+  {
+    "port": "COM5",
+    "expectedHex": "ce20db0b38c94699faa03f6fdf085f97a898b5c0bd515e9545aadc7d9cb94017",
+    "rearm": [
+      "SF 7 status=0"
+    ],
+    "tx": [
+      "TXSTART NATIVE",
+      "TXEND NATIVE ok 109 0 68.214 buffer=3fcb0000 copy=56216 tone=20062400 adc=00000000 gain=63,63"
+    ],
+    "rx": [
+      "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-60.5 snr=3.5 hex=ce20db0b38c94699faa03f6fdf085f97a898b5c0bd515e9545aadc7d9cb94017",
+      "RX_IRQ 00040170"
+    ],
+    "passed": true
+  }
+]

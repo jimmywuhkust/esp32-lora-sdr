@@ -1,6 +1,9 @@
 #include "PacketDecoder.h"
 #include <string.h>
 #include <algorithm>
+#ifdef LORA_SDR_DIAGNOSTIC_TRACE
+#include <cstdio>
+#endif
 namespace lora_sdr {
 static unsigned parity(unsigned v) {v^=v>>4;v^=v>>2;v^=v>>1;return v&1;}
 static uint8_t code(unsigned x,unsigned cr) {
@@ -48,13 +51,7 @@ size_t PacketDecoder::symbolCount(const RxPacket& p,const Config& c) {
     unsigned rows=c.spreadingFactor-(ldro?2:0);
     return 8+(used>first?(used-first+rows-1)/rows*(4+p.codingRate):0);
 }
-bool PacketDecoder::decode(const uint16_t* s,size_t count,const Config& c,RxPacket& p) {
-    if(count<8||!header(s,c,p)||!p.crcPresent||count<symbolCount(p,c))return false;
-    uint8_t n[540]={};unsigned corrected=0;
-    unsigned first=c.spreadingFactor-2;block(s,first,8,true,n,corrected);
-    bool ldro=(static_cast<uint64_t>(1u<<c.spreadingFactor)*1000>static_cast<uint64_t>(c.bandwidthHz)*16);
-    unsigned rows=c.spreadingFactor-(ldro?2:0),cols=4+p.codingRate,at=first;
-    for(size_t i=8;i+cols<=symbolCount(p,c);i+=cols){block(s+i,rows,cols,ldro,n+at,corrected);at+=rows;}
+static bool finish(const uint8_t* n,unsigned corrected,RxPacket& p) {
     uint8_t w=255;
     for(size_t i=0;i<p.length;i++){
         p.payload[i]=(n[5+2*i]|(n[6+2*i]<<4))^w;
@@ -64,5 +61,45 @@ bool PacketDecoder::decode(const uint16_t* s,size_t count,const Config& c,RxPack
     p.crc=n[k]|(n[k+1]<<4)|(n[k+2]<<8)|(n[k+3]<<12);
     p.correctedCodewords=corrected;p.crcOk=p.crc==Encoder::crc16(p.payload,p.length);
     return p.crcOk;
+}
+bool PacketDecoder::decode(const uint16_t* s,size_t count,const Config& c,RxPacket& p) {
+    if(count<8||!header(s,c,p)||!p.crcPresent||count<symbolCount(p,c))return false;
+    uint8_t n[540]={};unsigned corrected=0;
+    unsigned first=c.spreadingFactor-2;block(s,first,8,true,n,corrected);
+    bool ldro=(static_cast<uint64_t>(1u<<c.spreadingFactor)*1000>static_cast<uint64_t>(c.bandwidthHz)*16);
+    unsigned rows=c.spreadingFactor-(ldro?2:0),cols=4+p.codingRate,at=first;
+    for(size_t i=8;i+cols<=symbolCount(p,c);i+=cols){block(s+i,rows,cols,ldro,n+at,corrected);at+=rows;}
+    return finish(n,corrected,p);
+}
+bool PacketDecoder::decodeSoft(const uint16_t* s,size_t count,const float* confidence,const Config& c,RxPacket& p) {
+    if(!confidence||c.spreadingFactor!=7||count<8||!header(s,c,p)||!p.crcPresent||count<symbolCount(p,c))return false;
+    uint8_t n[540]={};unsigned corrected=0;
+    block(s,5,8,true,n,corrected);unsigned columns=4+p.codingRate,at=5;
+    for(size_t i=8;i+columns<=symbolCount(p,c);i+=columns) {
+        float weights[7][8]={};unsigned hard[7]={};
+        for(unsigned col=0;col<columns;col++) {
+            unsigned gray=(s[i+col]-1)&127;gray^=gray>>1;
+            for(unsigned j=0;j<7;j++) {
+                unsigned row=(col+6-j)%7;
+                weights[row][columns-1-col]=confidence[(i+col)*7+6-j];
+                hard[row]|=((gray>>(6-j))&1)<<(columns-1-col);
+            }
+        }
+        for(unsigned row=0;row<7;row++) {
+            float best=-1000;unsigned choice=0;
+            for(unsigned value=0;value<16;value++) {
+                unsigned encoded=code(value,p.codingRate);float score=0;
+                for(unsigned bit=0;bit<columns;bit++)score+=(encoded&(1u<<bit))?weights[row][bit]:-weights[row][bit];
+                if(score>best){best=score;choice=value;}
+            }
+            n[at+row]=choice;
+#ifdef LORA_SDR_DIAGNOSTIC_TRACE
+            printf("SOFT row=%u at=%u cr=%u hard=%u choice=%u encoded=%u score=%f\n",row,at,p.codingRate,hard[row],choice,code(choice,p.codingRate),best);
+#endif
+            if(code(choice,p.codingRate)!=hard[row])corrected++;
+        }
+        at+=7;
+    }
+    bool valid=finish(n,corrected,p);p.softDecoded=valid;return valid;
 }
 }

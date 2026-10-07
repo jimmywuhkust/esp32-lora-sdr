@@ -1,7 +1,7 @@
 #include "ESP32S3Radio.h"
 #include <cstring>
 #include <cstdlib>
-#if defined(ESP_PLATFORM) && !defined(ARDUINO_ARCH_ESP32)
+#if defined(ESP_PLATFORM) && (!defined(ARDUINO_ARCH_ESP32) || defined(LORA_SDR_NATIVE_BACKEND))
 #include "NativePlatform.h"
 #include "esp_timer.h"
 #endif
@@ -11,7 +11,7 @@ Error ESP32S3Radio::receive(uint8_t* data,size_t capacity,size_t& length) {
 }
 Error ESP32S3Radio::receive(uint8_t* data,size_t capacity,size_t& length,const Config& c,RxResult& result,uint32_t ms) {
     length=0;result=RxResult{};
-#if defined(ESP_PLATFORM) && !defined(ARDUINO_ARCH_ESP32)
+#if defined(ESP_PLATFORM) && (!defined(ARDUINO_ARCH_ESP32) || defined(LORA_SDR_NATIVE_BACKEND))
     if(!ready_)return Error::NotReady;
     if(!data||!capacity||ms<50||ms>900||c.frequencyHz<2400200000u||c.frequencyHz>2483300000u)return Error::InvalidConfig;
     if(c.bandwidthHz!=203125||c.spreadingFactor<7||c.spreadingFactor>12||!c.explicitHeader||!c.payloadCrc)return Error::Unsupported;
