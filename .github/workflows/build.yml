@@ -23,6 +23,19 @@ jobs:
           python-version: '3.13'
       - run: python -m pip install -r host/requirements.txt
       - run: python -m unittest discover -s host -p 'test_*.py'
+      - run: python tools/test_native_decoder.py
       - run: python firmware/iq-capture/flash_prebuilt.py --variant default --check-only
       - run: python firmware/iq-capture/flash_prebuilt.py --variant psram --check-only
+      - run: python firmware/iq-capture/flash_prebuilt.py --variant native --check-only
       # Saved real RF at SF7/8/9 plus negative regressions; no live RF CI.
+  native-platformio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - run: python -m pip install platformio==6.1.19
+      - run: python examples/NativeDuplex/setup_deps.py
+      - run: pio run -d examples/NativeDuplex -e xiao-native -e xiao-echo
+      # This checks the full on-device RX/TX component; RF is tested locally.

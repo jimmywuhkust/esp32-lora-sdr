@@ -1,0 +1,38 @@
+[
+  {
+    "expected": "556e6966696564206e6174697665204c6f52612070726f6f66202330",
+    "xiao": [
+      "TXSTART NATIVE",
+      "TXEND NATIVE ok 74 0 46.159 buffer=3fc9f680 copy=40260 tone=20062400 adc=00000000 gain=63,63"
+    ],
+    "lr2021": [
+      "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=28 rssi=-62.5 snr=3.5 hex=556e6966696564206e6174697665204c6f52612070726f6f66202330",
+      "RX_IRQ 00040170"
+    ],
+    "passed": true
+  },
+  {
+    "expected": "556e6966696564206e6174697665204c6f52612070726f6f66202331",
+    "xiao": [
+      "TXSTART NATIVE",
+      "TXEND NATIVE ok 74 0 46.159 buffer=3fc9f680 copy=40260 tone=20062400 adc=00000000 gain=63,63"
+    ],
+    "lr2021": [
+      "RX status=-7 header=0 crc_present=1 crc_ok=0 bytes=28 rssi=-62.5 snr=3.5 hex=556860660ae56420ae697409b675108c675262207071cf6f664a2331",
+      "RX_IRQ 00440170"
+    ],
+    "passed": false
+  },
+  {
+    "expected": "556e6966696564206e6174697665204c6f52612070726f6f66202332",
+    "xiao": [
+      "TXSTART NATIVE",
+      "TXEND NATIVE ok 74 0 46.159 buffer=3fc9f680 copy=40260 tone=20062400 adc=00000000 gain=63,63"
+    ],
+    "lr2021": [
+      "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=28 rssi=-62.5 snr=3.8 hex=556e6966696564206e6174697665204c6f52612070726f6f66202332",
+      "RX_IRQ 00040170"
+    ],
+    "passed": true
+  }
+]

@@ -1,5 +1,12 @@
 # Standalone XIAO IQ capture firmware
 
+**Current source also includes native packet RX/TX in the PSRAM build.**
+It calls the same `LoRaRadio` C++ library as the standalone native application.
+Use [the native guide](../../docs/native-guide.md) for on-device packets.
+`prebuilt/default` and `prebuilt/psram` are the earlier, frozen IQ-to-PC
+artifacts documented below. `prebuilt/native` is the separately identified
+native RX/TX bench image; its manifest records generated images and hashes.
+
 This ESP-IDF application captures the XIAO ESP32-S3's internal 2.4 GHz RF and
 sends CRC32-protected IQS1 frames over native USB Serial/JTAG. The included PC
 decoder extracts full LoRa headers, payloads and CRC. **It does not implement
@@ -9,7 +16,7 @@ and partition table; their SDK versions differ.
 
 Source derives from GPL-3.0 ESPARGOS/esp-sdr plus our bounded capture/transport
 changes. `provenance.json` records the upstream commit and original copied-file
-hashes. The TX implementation and command are removed from this image. No
+hashes. The archived IQ-only images had their TX command removed. No
 private AeroLink source, calibration/NVS backup or GNSS data is included.
 
 ## Pinned toolchain
@@ -93,6 +100,12 @@ requires 8 MB OPI PSRAM. Close every program using that USB port, then run:
 python flash_prebuilt.py --variant default --check-only
 python flash_prebuilt.py --variant default --port YOUR_XIAO_PORT
 ```
+
+For the new **8 MB OPI PSRAM native RX/TX bench** use `--variant native`.
+Its commands include `TX SF CR HEX`, `RXPACK SF WINDOW_MS`, and settings
+such as `LSET POWER 75`, `LSET BW 203125`, `LSET FREQ 2440125`.
+The application performs all packet processing on the ESP32 and does not
+send any test packet automatically at boot.
 
 For the optional PSRAM experiment substitute `--variant psram`. The default
 final image passed a fresh SF7/8/9 9/9 live smoke after a new build and flash;

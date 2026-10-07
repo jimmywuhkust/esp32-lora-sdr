@@ -25,6 +25,8 @@
 #include "esp_rom_sys.h"
 #include "ring_capture.h"
 #include "lora_chirp.h"
+#include "native_packet.h"
+#include "NativePlatform.h"
 #include "hal/usb_serial_jtag_ll.h"
 
 /* Vendor S3 adctrig uses the 64 KiB aperture at 0x3fcd0000 (MAC_DUMP_USAGE=4).
@@ -325,10 +327,53 @@ static bool ring_command(const char *line) {
     return true;
 }
 
-static void handle_command(char *line) {
+int lora_sdr_platform_capture(uint32_t frequency,unsigned ms,lora_native_capture_t* result) {
+    memset(result,0,sizeof(*result));
+    if(frequency<2400200000u||frequency>2483300000u||ms<50||ms>900)return 1;
+    unsigned capacity=ms*550+32768;
+    uint8_t* memory=heap_caps_malloc(capacity,MALLOC_CAP_SPIRAM|MALLOC_CAP_8BIT);
+    if(!memory)return 2;
+    frequency_mhz=frequency/1000000-4;s3_fofs=(frequency%1000000)/1000;
+    rx_ready=false;rx_filter=-1;gain_mode=GAIN_HARDWARE;
+    prepare_rx();rx_filter_apply();
+    // A serial test fixture must not start TX during first-tune calibration.
+    // Native application reception has no serial notification pending.
+    native_capture_ready();
+    // With the native 2048-sample FIR batching, PSRAM can retain 8-bit I/Q
+    // without a USB stream. Keep four more quantization bits than the early
+    // 4-bit proof; capture-frame integrity still gates packet processing.
+    ring_config_t c={.mode=RING_MODE_IQ,.rate=6,.duration_ms=ms,.iq_dec=64,.iq_bits=8,.iq_shift=5,.iq_rot=true};
+    ring_result_t r;ring_capture_memory_sink(memory,capacity);
+    ring_capture_run(&c,&r);rx_filter_restore();
+    unsigned bytes=ring_capture_memory_size();bool overflow=ring_capture_memory_overflow();ring_capture_memory_sink(NULL,0);
+    result->capture_status=r.status;result->drops=r.drops;result->abandoned=r.abandoned;result->capture_us=r.elapsed_us;
+    bool ok=!overflow&&native_frames_to_iq(memory,bytes,&result->iq,&result->samples,&result->first_sample);
+    free(memory);return ok?0:3;
+}
+static void __attribute__((unused)) handle_command(char *line) {
+    if(native_setting_command(line))return;
     unsigned sf, count; char vector_extra;
+    unsigned cr;char hex[511],txextra;
+    if(sscanf(line,"TX %u %u %510s %c",&sf,&cr,hex,&txextra)==3) {
+        rx_ready=false;reply("TXSTART NATIVE\n");
+        if(!native_transmit_hex(sf,cr,hex))reply("ERR tx_args\n");
+        return;
+    }
+    if(sscanf(line,"RXPACK %u %u %c",&sf,&count,&vector_extra)==2) {
+        if(sf<7||sf>12||count<50||count>900||!ring_capture_dual_active()) {reply("ERR rxpack_args\n");return;}
+        native_receive_command(sf,count);return;
+    }
+    if(sscanf(line,"RXVEC %u %u %c",&sf,&count,&vector_extra)==2) {
+        if(sf<7||sf>12||count<256||count>250000){reply("ERR rxvec_args\n");return;}
+        int16_t *memory=heap_caps_malloc(count*4,MALLOC_CAP_SPIRAM|MALLOC_CAP_8BIT);
+        if(!memory){reply("ERR rxvec_psram\n");return;}
+        reply("RXVEC READY\n");unsigned got=0;int64_t deadline=esp_timer_get_time()+15000000;
+        while(got<count*4&&esp_timer_get_time()<deadline){int n=usb_serial_jtag_ll_read_rxfifo((uint8_t*)memory+got,count*4-got>64?64:count*4-got);if(n>0)got+=n;else vTaskDelay(1);}
+        bool ok=got==count*4&&native_decode_iq(memory,count,sf,0x12,0);free(memory);
+        reply(ok?"RXVECEND OK\n":"RXVECEND FAIL\n");return;
+    }
     if (!strcmp(line,"LORAINFO?")) {
-        reply("LORAINFO {\"bandwidth\":203125,\"sfMin\":5,\"sfMax\":11,\"packetDecoder\":false,\"loOffsetMHz\":-4}\n");
+        reply("LORAINFO {\"bandwidth\":203125,\"sfMin\":7,\"sfMax\":12,\"packetDecoder\":true,\"decoder\":\"ESP32 native finite window\",\"loOffsetMHz\":-4}\n");
         return;
     }
     if (sscanf(line,"LORAFIRVEC %u %u %c",&sf,&count,&vector_extra)==2) {
@@ -431,7 +476,7 @@ static void handle_command(char *line) {
 #if CONFIG_ESP_SDR_UART_ENABLED
                   "DUALSERIAL "
 #endif
-                  "TUNEEXT RX40 RX16 LPFANA GAIN HWAGC IQ8 RING SPEC SPECN SPECCAPS SPECSTAT DCT LORA IQS\n");
+                  "TUNEEXT RX40 RX16 LPFANA GAIN HWAGC IQ8 RING SPEC SPECN SPECCAPS SPECSTAT DCT LORA IQS TXNATIVE RXNATIVE LSET\n");
         }
         else if(sscanf(line,"BANDWIDTH %u %c",&n,&extra)==1 && (!n || (n>=RX_BANDWIDTH_MIN && n<=RX_BANDWIDTH_MAX))) {
             rx_filter=rx_bandwidth_dcap(n);reply("OK\n");
@@ -474,15 +519,15 @@ static void handle_command(char *line) {
         else reply("ERR command\n");
 }
 
-void app_main(void) {
+int lora_sdr_platform_begin(void) {
+    static bool started=false;
+    if(started)return 0;
     esp_log_level_set("*",ESP_LOG_NONE);
     esp_err_t e=nvs_flash_init();
     if(e==ESP_ERR_NVS_NO_FREE_PAGES||e==ESP_ERR_NVS_NEW_VERSION_FOUND) {
         ESP_ERROR_CHECK(nvs_flash_erase());e=nvs_flash_init();
     }
     ESP_ERROR_CHECK(e);
-    usb_serial_jtag_driver_config_t usb={.tx_buffer_size=8192,.rx_buffer_size=8192};
-    ESP_ERROR_CHECK(usb_serial_jtag_driver_install(&usb));
     ESP_ERROR_CHECK(esp_event_loop_create_default());
     wifi_init_config_t cfg=WIFI_INIT_CONFIG_DEFAULT();
     ESP_ERROR_CHECK(esp_wifi_init(&cfg));
@@ -492,14 +537,23 @@ void app_main(void) {
     ESP_ERROR_CHECK(esp_wifi_set_ps(WIFI_PS_NONE));
     ESP_ERROR_CHECK(esp_wifi_set_promiscuous(true));
     ESP_ERROR_CHECK(esp_wifi_set_channel(1,WIFI_SECOND_CHAN_NONE));
-    prepare_rx();
+    ring_capture_init();
+#ifdef LORA_SDR_NO_APP_MAIN
+    if(!ring_capture_dual_active())return 1;
+#endif
+    started=true;return 0;
+}
+#ifndef LORA_SDR_NO_APP_MAIN
+void app_main(void) {
+    usb_serial_jtag_driver_config_t usb={.tx_buffer_size=8192,.rx_buffer_size=8192};
+    ESP_ERROR_CHECK(usb_serial_jtag_driver_install(&usb));
+    ESP_ERROR_CHECK(lora_sdr_platform_begin());
     esp_log_level_set("*",ESP_LOG_NONE);
     /* USB may be unplugged when the host uses the UART bridge. */
     (void)usb_serial_jtag_wait_tx_done(pdMS_TO_TICKS(100));
     ESP_ERROR_CHECK(usb_serial_jtag_driver_uninstall());
     burst_serial_init();
-    ring_capture_init();
-    char line[128];
+    char line[600];
     int owner=-1;
     int64_t lease_deadline=0;
     for(;;) {
@@ -520,3 +574,4 @@ void app_main(void) {
         lease_deadline=esp_timer_get_time()+5000000;
     }
 }
+#endif

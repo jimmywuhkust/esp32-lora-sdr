@@ -3,6 +3,22 @@
 Namespace: `lora_sdr`. Include `LoRaSDR.h` for portable coding and
 `ESP32S3Radio.h` for the Arduino ESP32-S3 transmitter.
 
+## Simple RX/TX interface
+
+Include `LoRaRadio.h`. `LoRaRadio` exposes `begin(MHz)`, `setFrequency(MHz)`,
+`setSpreadingFactor(7..12)`, `setBandwidth(kHz)`, `setCodingRate(5..8)`,
+`setPreambleLength(12..64)`, `setSyncWord(byte)`,
+`setFrequencyCorrection(Hz)`, `setTransmitPowerPercent(1..100)`,
+`send(bytes, length)` / `send(text)`, and `receive(RxPacket&, windowMs)`.
+Every call returns `Error`. Changing bandwidth selects a matching DAC window.
+See [the native guide](native-guide.md) for the measured SF/bandwidth limits.
+Setter ranges alone are not an RF guarantee.
+
+`RxPacket` owns up to 255 bytes and carries decoded length, SF, CR, payload
+CRC and correction metadata. `lastReceive()` reports capture status, samples,
+drops, abandoned units and decode time. Native receive needs the IDF component;
+stock Arduino receive returns `Unsupported`.
+
 ## Encoder
 
 ```cpp
@@ -37,8 +53,13 @@ mode without associating to a network. Wi-Fi and BLE application coexistence
 is not supported. Initialization does not transmit a test packet automatically.
 RF transmission blocks until that one bounded packet completes.
 
-`receive()` returns `Unsupported`: there is no native packet receiver in this
-backend. Separate ESP-SDR I/Q capture and PC decoding are a different workflow.
+The **native ESP-IDF component** implements `receive()` with capture into
+PSRAM and full on-device CRC-valid packet decoding. The overload accepts
+`Config`, `RxResult` and a 50..900 ms capture window. `ReceiveTimeout` means no
+complete CRC-valid packet was found, `CaptureGap` means invalid IQ continuity.
+A valid packet from a contiguous prefix can succeed after a boundary stop;
+`RxResult.captureStatus` preserves that stop. Stock Arduino RX remains
+`Unsupported`.
 
 | Config field | Meaning | Native RF boundary |
 |---|---|---|

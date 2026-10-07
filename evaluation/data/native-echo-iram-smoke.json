@@ -1,0 +1,58 @@
+{
+  "startedUtc": "2026-10-07T02:40:27.063818+00:00",
+  "seed": 202610071074,
+  "retries": 0,
+  "xiaoSerialWrites": 0,
+  "pcDecoder": false,
+  "example": "NativeDuplex/xiao-echo",
+  "cases": [
+    {
+      "cr": 3,
+      "length": 8,
+      "expectedHex": "e7cc74067476322f",
+      "expectedReplyHex": "41434b3ae7cc74067476322f",
+      "xiao": [
+        "LISTEN native sf=7 window=500",
+        "LISTEN native sf=7 window=500",
+        "receive: IQ capture contains a gap capture=0 samples=0 drops=0 abandoned=257",
+        "LISTEN native sf=7 window=500",
+        "receive: IQ capture contains a gap capture=0 samples=0 drops=0 abandoned=252",
+        "LISTEN native sf=7 window=500",
+        "receive: IQ capture contains a gap capture=0 samples=0 drops=0 abandoned=238",
+        "LISTEN native sf=7 window=500",
+        "receive: IQ capture contains a gap capture=0 samples=0 drops=0 abandoned=235",
+        "LISTEN native sf=7 window=500",
+        "receive: IQ capture contains a gap capture=0 samples=0 drops=0 abandoned=247",
+        "LISTEN native sf=7 window=500",
+        "receive: IQ capture contains a gap capture=0 samples=0 drops=0 abandoned=251",
+        "LISTEN native sf=7 window=500",
+        "receive: IQ capture contains a gap capture=0 samples=0 drops=0 abandoned=247",
+        "LISTEN native sf=7 window=500",
+        "LISTEN native sf=7 window=500",
+        "LISTEN native sf=7 window=500",
+        "LISTEN native sf=7 window=500",
+        "LISTEN native sf=7 window=500",
+        "LISTEN native sf=7 window=500",
+        "receive: IQ capture contains a gap capture=0 samples=0 drops=0 abandoned=251",
+        "LISTEN native sf=7 window=500",
+        "receive: IQ capture contains a gap capture=0 samples=0 drops=0 abandoned=258",
+        "LISTEN native sf=7 window=500",
+        "receive: IQ capture contains a gap capture=4 samples=0 drops=0 abandoned=202",
+        "LISTEN native sf=7 window=500",
+        "receive: IQ capture contains a gap capture=0 samples=0 drops=0 abandoned=248",
+        "LISTEN native sf=7 window=500",
+        "receive: IQ capture contains a gap capture=0 samples=0 drops=0 abandoned=254",
+        "LISTEN native sf=7 window=500",
+        "receive: IQ capture contains a gap capture=0 samples=0 drops=0 abandoned=247",
+        "LISTEN native sf=7 window=500"
+      ],
+      "lr2021": [
+        "TX_PUBLIC status=0 sf=7 cr=3 bytes=8 hex=e7cc74067476322f",
+        "TX_DIAG irq=0008000a elapsed_us=34307 gpio=1"
+      ],
+      "rxPassed": false,
+      "txPassed": false
+    }
+  ],
+  "finishedUtc": "2026-10-07T02:40:40.070811+00:00"
+}

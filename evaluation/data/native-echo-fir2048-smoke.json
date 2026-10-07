@@ -1,0 +1,31 @@
+{
+  "startedUtc": "2026-10-07T02:44:52.314879+00:00",
+  "seed": 202610071075,
+  "retries": 0,
+  "xiaoSerialWrites": 0,
+  "pcDecoder": false,
+  "example": "NativeDuplex/xiao-echo",
+  "cases": [
+    {
+      "cr": 3,
+      "length": 32,
+      "expectedHex": "b840529ba2e6909e14a64b6827daa81658e895514027e4e25d5f49ff7438a01e",
+      "expectedReplyHex": "41434b3ab840529ba2e6909e14a64b6827daa81658e895514027e4e25d5f49ff7438a01e",
+      "xiao": [
+        "I (148) esp_image: segment 4: paddr=000a5c28 vaddr=4037a5c0 sizeLISTEN native sf=7 window=500",
+        "LISTEN native sf=7 window=500",
+        "NATIVE_RX crc_ok=1 bytes=32 hex=b840529ba2e6909e14a64b6827daa81658e895514027e4e25d5f49ff7438a01e",
+        "NATIVE_ACK status=ok bytes=36"
+      ],
+      "lr2021": [
+        "TX_PUBLIC status=0 sf=7 cr=3 bytes=32 hex=b840529ba2e6909e14a64b6827daa81658e895514027e4e25d5f49ff7438a01e",
+        "TX_DIAG irq=0008000a elapsed_us=65459 gpio=1",
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=36 rssi=-65.5 snr=3.5 hex=41434b3ab840529ba2e6909e14a64b6827daa81658e895514027e4e25d5f49ff7438a01e",
+        "RX_IRQ 00040170"
+      ],
+      "rxPassed": true,
+      "txPassed": true
+    }
+  ],
+  "finishedUtc": "2026-10-07T02:45:10.176491+00:00"
+}

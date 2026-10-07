@@ -80,6 +80,8 @@ const char* errorName(Error error) {
     case Error::BufferTooSmall:return "symbol buffer too small";case Error::Unsupported:return "unsupported";
     case Error::NoMemory:return "insufficient memory";case Error::NotReady:return "radio not ready";
     case Error::PlaybackTimeout:return "DAC playback timeout";
+    case Error::ReceiveTimeout:return "no complete CRC-valid packet in receive window";
+    case Error::CaptureGap:return "IQ capture contains a gap";
     }return "unknown error";
 }
 }

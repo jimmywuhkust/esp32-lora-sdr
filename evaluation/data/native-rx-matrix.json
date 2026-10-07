@@ -1,0 +1,384 @@
+{
+  "startedUtc": "2026-10-07T02:56:59.479234+00:00",
+  "seed": 202610071107,
+  "retries": 0,
+  "pcDecoder": false,
+  "cases": [
+    {
+      "kind": "packet",
+      "sf": 9,
+      "cr": 1,
+      "length": 32,
+      "windowMs": 500,
+      "expectedHex": "ed24b2ca927d79380bd89737cce9a4806d248c015296d34a82ff8702b034dc0c",
+      "expectAccept": true,
+      "xiao": [
+        "RXPACK READY",
+        "RXPACKET {\"hex\":\"ed24b2ca927d79380bd89737cce9a4806d248c015296d34a82ff8702b034dc0c\",\"bytes\":32,\"sf\":9,\"codingRate\":1,\"crcOk\":true,\"crcHex\":\"8584\",\"cfoHz\":15422.82,\"sampleIndex\":21918,\"correctedCodewords\":0,\"source\":\"ESP32 native decoder\"}",
+        "RXDECODE {\"ok\":true,\"samples\":125265,\"captureStatus\":0,\"drops\":0,\"abandoned\":0,\"candidates\":1,\"headers\":1,\"packets\":1,\"decodeUs\":3832301,\"error\":\"ok\"}",
+        "RXPACKEND OK"
+      ],
+      "lr2021": [
+        "TX_PUBLIC status=0 sf=9 cr=1 bytes=32 hex=ed24b2ca927d79380bd89737cce9a4806d248c015296d34a82ff8702b034dc0c"
+      ],
+      "decode": {
+        "ok": true,
+        "samples": 125265,
+        "captureStatus": 0,
+        "drops": 0,
+        "abandoned": 0,
+        "candidates": 1,
+        "headers": 1,
+        "packets": 1,
+        "decodeUs": 3832301,
+        "error": "ok"
+      },
+      "packets": [
+        {
+          "hex": "ed24b2ca927d79380bd89737cce9a4806d248c015296d34a82ff8702b034dc0c",
+          "bytes": 32,
+          "sf": 9,
+          "codingRate": 1,
+          "crcOk": true,
+          "crcHex": "8584",
+          "cfoHz": 15422.82,
+          "sampleIndex": 21918,
+          "correctedCodewords": 0,
+          "source": "ESP32 native decoder"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "kind": "packet",
+      "sf": 7,
+      "cr": 1,
+      "length": 8,
+      "windowMs": 500,
+      "expectedHex": "f7d524d169828ba6",
+      "expectAccept": true,
+      "xiao": [
+        "RXPACK READY",
+        "RXPACKET {\"hex\":\"f7d524d169828ba6\",\"bytes\":8,\"sf\":7,\"codingRate\":1,\"crcOk\":true,\"crcHex\":\"698d\",\"cfoHz\":15075.68,\"sampleIndex\":16810,\"correctedCodewords\":0,\"source\":\"ESP32 native decoder\"}",
+        "RXDECODE {\"ok\":true,\"samples\":125262,\"captureStatus\":0,\"drops\":0,\"abandoned\":0,\"candidates\":1,\"headers\":1,\"packets\":1,\"decodeUs\":697009,\"error\":\"ok\"}",
+        "RXPACKEND OK"
+      ],
+      "lr2021": [
+        "TX_DIAG irq=0008000a elapsed_us=175438 gpio=1",
+        "TX_PUBLIC status=0 sf=7 cr=1 bytes=8 hex=f7d524d169828ba6"
+      ],
+      "decode": {
+        "ok": true,
+        "samples": 125262,
+        "captureStatus": 0,
+        "drops": 0,
+        "abandoned": 0,
+        "candidates": 1,
+        "headers": 1,
+        "packets": 1,
+        "decodeUs": 697009,
+        "error": "ok"
+      },
+      "packets": [
+        {
+          "hex": "f7d524d169828ba6",
+          "bytes": 8,
+          "sf": 7,
+          "codingRate": 1,
+          "crcOk": true,
+          "crcHex": "698d",
+          "cfoHz": 15075.68,
+          "sampleIndex": 16810,
+          "correctedCodewords": 0,
+          "source": "ESP32 native decoder"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "kind": "packet",
+      "sf": 7,
+      "cr": 4,
+      "length": 32,
+      "windowMs": 500,
+      "expectedHex": "c33cd20c31a4cc45d2f00689a3667eabe5a4e8ab17c7326238a18054ebf69de4",
+      "expectAccept": true,
+      "xiao": [
+        "RXPACK READY",
+        "RXPACKET {\"hex\":\"c33cd20c31a4cc45d2f00689a3667eabe5a4e8ab17c7326238a18054ebf69de4\",\"bytes\":32,\"sf\":7,\"codingRate\":4,\"crcOk\":true,\"crcHex\":\"1e1d\",\"cfoHz\":15075.68,\"sampleIndex\":16906,\"correctedCodewords\":0,\"source\":\"ESP32 native decoder\"}",
+        "RXDECODE {\"ok\":true,\"samples\":125263,\"captureStatus\":0,\"drops\":0,\"abandoned\":0,\"candidates\":1,\"headers\":1,\"packets\":1,\"decodeUs\":841765,\"error\":\"ok\"}",
+        "RXPACKEND OK"
+      ],
+      "lr2021": [
+        "TX_DIAG irq=0008000a elapsed_us=30279 gpio=1",
+        "TX_PUBLIC status=0 sf=7 cr=4 bytes=32 hex=c33cd20c31a4cc45d2f00689a3667eabe5a4e8ab17c7326238a18054ebf69de4"
+      ],
+      "decode": {
+        "ok": true,
+        "samples": 125263,
+        "captureStatus": 0,
+        "drops": 0,
+        "abandoned": 0,
+        "candidates": 1,
+        "headers": 1,
+        "packets": 1,
+        "decodeUs": 841765,
+        "error": "ok"
+      },
+      "packets": [
+        {
+          "hex": "c33cd20c31a4cc45d2f00689a3667eabe5a4e8ab17c7326238a18054ebf69de4",
+          "bytes": 32,
+          "sf": 7,
+          "codingRate": 4,
+          "crcOk": true,
+          "crcHex": "1e1d",
+          "cfoHz": 15075.68,
+          "sampleIndex": 16906,
+          "correctedCodewords": 0,
+          "source": "ESP32 native decoder"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "kind": "packet",
+      "sf": 7,
+      "cr": 3,
+      "length": 32,
+      "windowMs": 500,
+      "expectedHex": "81f6b91b54a2296a4af12ec422e0aa25f6a4993e5ceb7d271ff91320f82639c7",
+      "expectAccept": true,
+      "xiao": [
+        "RXPACK READY",
+        "RXPACKET {\"hex\":\"81f6b91b54a2296a4af12ec422e0aa25f6a4993e5ceb7d271ff91320f82639c7\",\"bytes\":32,\"sf\":7,\"codingRate\":3,\"crcOk\":true,\"crcHex\":\"e0a6\",\"cfoHz\":15075.68,\"sampleIndex\":16901,\"correctedCodewords\":0,\"source\":\"ESP32 native decoder\"}",
+        "RXDECODE {\"ok\":true,\"samples\":125263,\"captureStatus\":0,\"drops\":0,\"abandoned\":0,\"candidates\":1,\"headers\":1,\"packets\":1,\"decodeUs\":819320,\"error\":\"ok\"}",
+        "RXPACKEND OK"
+      ],
+      "lr2021": [
+        "TX_DIAG irq=0008000a elapsed_us=72431 gpio=1",
+        "TX_PUBLIC status=0 sf=7 cr=3 bytes=32 hex=81f6b91b54a2296a4af12ec422e0aa25f6a4993e5ceb7d271ff91320f82639c7"
+      ],
+      "decode": {
+        "ok": true,
+        "samples": 125263,
+        "captureStatus": 0,
+        "drops": 0,
+        "abandoned": 0,
+        "candidates": 1,
+        "headers": 1,
+        "packets": 1,
+        "decodeUs": 819320,
+        "error": "ok"
+      },
+      "packets": [
+        {
+          "hex": "81f6b91b54a2296a4af12ec422e0aa25f6a4993e5ceb7d271ff91320f82639c7",
+          "bytes": 32,
+          "sf": 7,
+          "codingRate": 3,
+          "crcOk": true,
+          "crcHex": "e0a6",
+          "cfoHz": 15075.68,
+          "sampleIndex": 16901,
+          "correctedCodewords": 0,
+          "source": "ESP32 native decoder"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "kind": "packet",
+      "sf": 7,
+      "cr": 2,
+      "length": 80,
+      "windowMs": 500,
+      "expectedHex": "7c6c59bcbed295068b9a3acc7d8b0790e3219db4ad77f95b3b299ea508ec64236f234b8fd5a90c307a9d9f43b3d712c6bd90084fd1fb12955652a55a4d7331f4b990a6c6b0301699ddd095a5a68ddf6d",
+      "expectAccept": true,
+      "xiao": [
+        "RXPACK READY",
+        "RXPACKET {\"hex\":\"7c6c59bcbed295068b9a3acc7d8b0790e3219db4ad77f95b3b299ea508ec64236f234b8fd5a90c307a9d9f43b3d712c6bd90084fd1fb12955652a55a4d7331f4b990a6c6b0301699ddd095a5a68ddf6d\",\"bytes\":80,\"sf\":7,\"codingRate\":2,\"crcOk\":true,\"crcHex\":\"9617\",\"cfoHz\":15274.05,\"sampleIndex\":17111,\"correctedCodewords\":0,\"source\":\"ESP32 native decoder\"}",
+        "RXDECODE {\"ok\":true,\"samples\":125263,\"captureStatus\":0,\"drops\":0,\"abandoned\":0,\"candidates\":1,\"headers\":1,\"packets\":1,\"decodeUs\":993367,\"error\":\"ok\"}",
+        "RXPACKEND OK"
+      ],
+      "lr2021": [
+        "TX_DIAG irq=0008000a elapsed_us=65412 gpio=1",
+        "TX_PUBLIC status=0 sf=7 cr=2 bytes=80 hex=7c6c59bcbed295068b9a3acc7d8b0790e3219db4ad77f95b3b299ea508ec64236f234b8fd5a90c307a9d9f43b3d712c6bd90084fd1fb12955652a55a4d7331f4b990a6c6b0301699ddd095a5a68ddf6d"
+      ],
+      "decode": {
+        "ok": true,
+        "samples": 125263,
+        "captureStatus": 0,
+        "drops": 0,
+        "abandoned": 0,
+        "candidates": 1,
+        "headers": 1,
+        "packets": 1,
+        "decodeUs": 993367,
+        "error": "ok"
+      },
+      "packets": [
+        {
+          "hex": "7c6c59bcbed295068b9a3acc7d8b0790e3219db4ad77f95b3b299ea508ec64236f234b8fd5a90c307a9d9f43b3d712c6bd90084fd1fb12955652a55a4d7331f4b990a6c6b0301699ddd095a5a68ddf6d",
+          "bytes": 80,
+          "sf": 7,
+          "codingRate": 2,
+          "crcOk": true,
+          "crcHex": "9617",
+          "cfoHz": 15274.05,
+          "sampleIndex": 17111,
+          "correctedCodewords": 0,
+          "source": "ESP32 native decoder"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "kind": "packet",
+      "sf": 7,
+      "cr": 3,
+      "length": 1,
+      "windowMs": 500,
+      "expectedHex": "32",
+      "expectAccept": true,
+      "xiao": [
+        "RXPACK READY",
+        "RXPACKET {\"hex\":\"32\",\"bytes\":1,\"sf\":7,\"codingRate\":3,\"crcOk\":true,\"crcHex\":\"0032\",\"cfoHz\":15274.05,\"sampleIndex\":17015,\"correctedCodewords\":0,\"source\":\"ESP32 native decoder\"}",
+        "RXDECODE {\"ok\":true,\"samples\":125263,\"captureStatus\":0,\"drops\":0,\"abandoned\":0,\"candidates\":1,\"headers\":1,\"packets\":1,\"decodeUs\":682374,\"error\":\"ok\"}",
+        "RXPACKEND OK"
+      ],
+      "lr2021": [
+        "TX_DIAG irq=0008000a elapsed_us=113618 gpio=1",
+        "TX_PUBLIC status=0 sf=7 cr=3 bytes=1 hex=32"
+      ],
+      "decode": {
+        "ok": true,
+        "samples": 125263,
+        "captureStatus": 0,
+        "drops": 0,
+        "abandoned": 0,
+        "candidates": 1,
+        "headers": 1,
+        "packets": 1,
+        "decodeUs": 682374,
+        "error": "ok"
+      },
+      "packets": [
+        {
+          "hex": "32",
+          "bytes": 1,
+          "sf": 7,
+          "codingRate": 3,
+          "crcOk": true,
+          "crcHex": "0032",
+          "cfoHz": 15274.05,
+          "sampleIndex": 17015,
+          "correctedCodewords": 0,
+          "source": "ESP32 native decoder"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "kind": "packet",
+      "sf": 12,
+      "cr": 1,
+      "length": 8,
+      "windowMs": 900,
+      "expectedHex": "46bc1cb3f00e9b18",
+      "expectAccept": true,
+      "xiao": [
+        "RXPACK READY",
+        "RXPACKET {\"hex\":\"46bc1cb3f00e9b18\",\"bytes\":8,\"sf\":12,\"codingRate\":1,\"crcOk\":true,\"crcHex\":\"d8c9\",\"cfoHz\":15013.69,\"sampleIndex\":115698,\"correctedCodewords\":0,\"source\":\"ESP32 native decoder\"}",
+        "RXDECODE {\"ok\":true,\"samples\":225172,\"captureStatus\":0,\"drops\":0,\"abandoned\":0,\"candidates\":1,\"headers\":1,\"packets\":1,\"decodeUs\":21020501,\"error\":\"ok\"}",
+        "RXPACKEND OK"
+      ],
+      "lr2021": [
+        "TX_DIAG irq=0008000a elapsed_us=25263 gpio=1",
+        "TX_PUBLIC status=0 sf=12 cr=1 bytes=8 hex=46bc1cb3f00e9b18"
+      ],
+      "decode": {
+        "ok": true,
+        "samples": 225172,
+        "captureStatus": 0,
+        "drops": 0,
+        "abandoned": 0,
+        "candidates": 1,
+        "headers": 1,
+        "packets": 1,
+        "decodeUs": 21020501,
+        "error": "ok"
+      },
+      "packets": [
+        {
+          "hex": "46bc1cb3f00e9b18",
+          "bytes": 8,
+          "sf": 12,
+          "codingRate": 1,
+          "crcOk": true,
+          "crcHex": "d8c9",
+          "cfoHz": 15013.69,
+          "sampleIndex": 115698,
+          "correctedCodewords": 0,
+          "source": "ESP32 native decoder"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "kind": "packet",
+      "sf": 8,
+      "cr": 4,
+      "length": 32,
+      "windowMs": 500,
+      "expectedHex": "43b01a5db43fdfbed92214160abde47b2ecb94a0f2864dde52c94e66a2823318",
+      "expectAccept": true,
+      "xiao": [
+        "RXPACK READY",
+        "RXPACKET {\"hex\":\"43b01a5db43fdfbed92214160abde47b2ecb94a0f2864dde52c94e66a2823318\",\"bytes\":32,\"sf\":8,\"codingRate\":4,\"crcOk\":true,\"crcHex\":\"4c24\",\"cfoHz\":14778.14,\"sampleIndex\":20070,\"correctedCodewords\":0,\"source\":\"ESP32 native decoder\"}",
+        "RXDECODE {\"ok\":true,\"samples\":125264,\"captureStatus\":0,\"drops\":0,\"abandoned\":0,\"candidates\":1,\"headers\":1,\"packets\":1,\"decodeUs\":1209973,\"error\":\"ok\"}",
+        "RXPACKEND OK"
+      ],
+      "lr2021": [
+        "TX_DIAG irq=0008000a elapsed_us=774282 gpio=1",
+        "TX_PUBLIC status=0 sf=8 cr=4 bytes=32 hex=43b01a5db43fdfbed92214160abde47b2ecb94a0f2864dde52c94e66a2823318"
+      ],
+      "decode": {
+        "ok": true,
+        "samples": 125264,
+        "captureStatus": 0,
+        "drops": 0,
+        "abandoned": 0,
+        "candidates": 1,
+        "headers": 1,
+        "packets": 1,
+        "decodeUs": 1209973,
+        "error": "ok"
+      },
+      "packets": [
+        {
+          "hex": "43b01a5db43fdfbed92214160abde47b2ecb94a0f2864dde52c94e66a2823318",
+          "bytes": 32,
+          "sf": 8,
+          "codingRate": 4,
+          "crcOk": true,
+          "crcHex": "4c24",
+          "cfoHz": 14778.14,
+          "sampleIndex": 20070,
+          "correctedCodewords": 0,
+          "source": "ESP32 native decoder"
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "completed": false,
+  "xiaoImage": {
+    "bytes": 694592,
+    "sha256": "df1adf0abe9590eff4ab5f9c19ebfdac23524dcea7f93912459afe28e5b7fdde"
+  },
+  "xiaoIdentity": "S3SDR 9 iq-capture 16380",
+  "xiaoCapabilities": "CAPS UARTBAUD RXLIMITS SERIALLEASE TUNEEXT RX40 RX16 LPFANA GAIN HWAGC IQ8 RING SPEC SPECN SPECCAPS SPECSTAT DCT LORA IQS TXNATIVE RXNATIVE LSET",
+  "lrIdentity": "LR2021_PUBLIC status=0 ready=1 irq=00000020 gpio=1",
+  "finishedUtc": "2026-10-07T02:57:44.817467+00:00"
+}

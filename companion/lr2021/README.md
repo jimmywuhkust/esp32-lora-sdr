@@ -68,10 +68,10 @@ The report identifies which receiver implementation produced each dataset.
 
 To send from the LR2021 into the XIAO's IQ capture backend, explicitly build
 `pio run -e aerolink-hf-tx` and upload that environment. It still receives at
-boot. `TX 8 4 48656c6c6f` sends exactly five bytes at SF8/CR4/8; lengths1–32,
-SF7–9, CR4/5–4/8 only. The initialized HF power request is fixed at−12dBm;
+boot. `TX 8 4 48656c6c6f` sends exactly five bytes at SF8/CR4/8; lengths1–255,
+SF7–12, CR4/5–4/8, subject to the airtime limit. The initialized HF power request is fixed at−12dBm;
 actual radiated power has not been calibrated. Profiles with estimated airtime
-above250ms are rejected before transmission, and a300ms completion deadline
+above825ms are rejected before transmission, and a900ms completion deadline
 aborts the packet. There are no automatic retries or periodic transmissions.
 
 On this board GPIO14 reads high even with chip IRQ zero. RadioLib7.7.0's
@@ -86,3 +86,10 @@ valid header, no CRC/header-error IRQ, CRC presence, read status0 and exact
 expected bytes. `RX_IRQ` preserves the snapshot for diagnosis.
 See the [capture backend](../../firmware/iq-capture/README.md) and
 [live PC workflow](../../host/README.md) for the reverse-direction experiment.
+
+The [native component](../../docs/native-guide.md) now also decodes the
+packet completely on the XIAO. `CAPS` reports whether manual TX is enabled.
+After TX, this companion calls `explicitHeader()` before restarting RX to
+restore the maximum payload length; without it, a short TX limited the length
+of the next RX on this chip/RadioLib version. `CRC 0` / `CRC 1` is provided for
+explicit negative-test setup; normal tests require CRC enabled.

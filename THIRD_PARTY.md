@@ -11,6 +11,13 @@
   https://github.com/jochenhammes/esp32-sdr-trx
 - **lora-phy 0.3.0**, upstream project by the package authors: host PHY coding,
   CRC reference and separate PC decoder. https://pypi.org/project/lora-phy/
+- **jkadbear LoRaPHY**, MIT, copyright 2020–2022 jkadbear: reference for native
+  synchronization, folded FFT demodulation and packet processing. The native
+  code is expressed in C++; its math was compared with the installed
+  `lora-phy 0.3.0` Python translation and actual RF recordings.
+  https://github.com/jkadbear/LoRaPHY
+  The Python package's referenced repository was unavailable during this
+  review, so no additional unverified license claim is made for that repository.
 - **CNLohr LoLRa**: prior art. RF implementations from its mixed-license
   repository are not bundled. https://github.com/cnlohr/lolra
 - **Espressif ESP-IDF / Arduino core**: SDK and prebuilt PHY routines installed
@@ -36,3 +43,25 @@ INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
 LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
+
+MIT notice for the LoRaPHY reference:
+
+Copyright (C) 2020-2022 jkadbear, jkadbear@gmail.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.

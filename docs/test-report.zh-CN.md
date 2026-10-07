@@ -1,5 +1,9 @@
 # 通宵测试摘要：2026-10-07
 
+**最新：[ESP32 自己解包并收发的报告](native-report.zh-CN.md)。** 本文保留早期
+Arduino 发射、电脑 I/Q 解码等历史测试；新的 PlatformIO ESP-IDF 例程已经在
+ESP32 上完成整包与 CRC，普通 Arduino 的完整接收仍返回 `Unsupported`。
+
 **XIAO ESP32-S3 已经用自带射频发出完整 2.4 GHz LoRa 包，LR2021 HF 接收、
 硬件 CRC 通过、完整 payload 逐字节一致。** 发射编码和调制在 XIAO 上完成，
 电脑只提供要发送的字节。它已经是一条真实的无线链路。

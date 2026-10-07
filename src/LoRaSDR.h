@@ -4,7 +4,7 @@
 
 namespace lora_sdr {
 enum class Transport { Pll, DacWindows };
-enum class Error { Ok, InvalidConfig, InvalidLength, BufferTooSmall, Unsupported, NoMemory, NotReady, PlaybackTimeout };
+enum class Error { Ok, InvalidConfig, InvalidLength, BufferTooSmall, Unsupported, NoMemory, NotReady, PlaybackTimeout, ReceiveTimeout, CaptureGap };
 struct Config {
     uint32_t frequencyHz = 2440125000u;
     uint32_t bandwidthHz = 203125;

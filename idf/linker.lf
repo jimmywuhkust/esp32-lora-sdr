@@ -1,0 +1,11 @@
+[mapping:lora_sdr_dsp]
+archive: libesp-dsp.a
+entries:
+    dsps_fft2r_sc16_aes3 (noflash)
+
+[mapping:lora_sdr_ring]
+archive: libidf.a
+entries:
+    s3_fft_rnd (noflash)
+    s3_unpack (noflash)
+    s3_firdot (noflash)

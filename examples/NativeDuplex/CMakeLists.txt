@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.16)
+set(ENV{IDF_COMPONENT_MANAGER} "0")
+list(APPEND EXTRA_COMPONENT_DIRS "${CMAKE_CURRENT_LIST_DIR}/../../idf")
+set(SDKCONFIG_DEFAULTS "${CMAKE_CURRENT_LIST_DIR}/../../firmware/iq-capture/sdkconfig.defaults;${CMAKE_CURRENT_LIST_DIR}/../../firmware/iq-capture/sdkconfig.psram")
+include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+idf_build_set_property(MINIMAL_BUILD ON)
+project(native_lora_duplex)

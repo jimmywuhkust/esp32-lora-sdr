@@ -89,6 +89,11 @@ void ring_capture_init(void);
 /* Caller has prepared the receiver (tuning, gain, filter). Interrupts are
  * disabled throughout bank rotation. */
 void ring_capture_run(const ring_config_t *config, ring_result_t *result);
+/* Idle-only selection of an on-device IQ sink. Capture core 0 copies into
+ * PSRAM; core 1 produces CRC-framed IQ into its queue. No USB IQ output. */
+void ring_capture_memory_sink(uint8_t *buffer, unsigned capacity);
+unsigned ring_capture_memory_size(void);
+bool ring_capture_memory_overflow(void);
 const uint32_t *ring_capture_bank(unsigned bank);
 unsigned ring_capture_rate_hz(unsigned rate);
 bool ring_capture_valid_nfft(unsigned n);

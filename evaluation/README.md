@@ -1,5 +1,23 @@
 # Reproduce the bench measurements
 
+For full on-device RX/TX, first follow the [native guide](../docs/native-guide.md).
+From the repository root, with both serial monitors closed:
+
+```sh
+python evaluation/verify_native_echo.py --xiao YOUR_XIAO_PORT --lr2021 YOUR_LR_PORT --output echo-result.json
+python evaluation/verify_native_rx.py --xiao YOUR_XIAO_PORT --lr2021 YOUR_LR_PORT --output rx-result.json
+python evaluation/verify_native_levels.py --xiao YOUR_XIAO_PORT --lr2021 YOUR_LR_PORT --output levels-result.json
+```
+
+The echo fixture only reads the XIAO console: its own application receives,
+decodes, validates and replies. The RX matrix and amplitude sweep require the
+separate `prebuilt/native` serial bench, not the autonomous echo application.
+All three preserve raw replies and use no PC packet decoder. Supply image
+paths where supported to identify the exact last-flashed build; hashes of a
+local file are not an automatic device readback. See [native results](../docs/native-report.md).
+
+The older Arduino TX experiments follow below.
+
 The independent receiver is a real LR2021. Local TX completion, a fresh
 CRC-present/CRC-valid RX result, matching length and exact payload bytes are
 all required. A spectrum peak alone does not count. No RF retries are hidden.

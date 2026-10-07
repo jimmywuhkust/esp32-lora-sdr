@@ -1,0 +1,189 @@
+{
+  "startedUtc": "2026-10-07T01:53:39.977688+00:00",
+  "pcDecoder": false,
+  "rfRetries": 0,
+  "cases": [
+    {
+      "sf": 9,
+      "cr": 4,
+      "length": 32,
+      "expectedHex": "6abfff8d08a4afbd6778486e63488d6cf8a801d19ca3217dbbd281a12062285c",
+      "lines": [
+        "RXCAPTURE 0 0 652 8017014 501068 7 0 644 0 330 132750 0",
+        "RXPACKEND FAIL"
+      ],
+      "ready": "RXPACK READY",
+      "tx": "TX_PUBLIC status=0 sf=9 cr=4 bytes=32 hex=6abfff8d08a4afbd6778486e63488d6cf8a801d19ca3217dbbd281a12062285c",
+      "txDiag": "TX_DIAG irq=0008000a elapsed_us=236442 gpio=1",
+      "passed": false,
+      "packets": []
+    },
+    {
+      "sf": 7,
+      "cr": 4,
+      "length": 32,
+      "expectedHex": "8ad89a3ebfee80fb4e0b436f908a7c4c570f3328c0f7ccf4d89beec4979e31db",
+      "lines": [
+        "RXCAPTURE 0 0 652 8017082 501072 7 0 645 0 339 129634 0",
+        "RXPACKEND FAIL"
+      ],
+      "ready": "RXPACK READY",
+      "tx": "TX_PUBLIC status=0 sf=7 cr=4 bytes=32 hex=8ad89a3ebfee80fb4e0b436f908a7c4c570f3328c0f7ccf4d89beec4979e31db",
+      "txDiag": "TX_DIAG irq=0008000a elapsed_us=72406 gpio=1",
+      "passed": false,
+      "packets": []
+    },
+    {
+      "sf": 8,
+      "cr": 1,
+      "length": 8,
+      "expectedHex": "f53bd9c1d9be31f7",
+      "lines": [
+        "RXCAPTURE 0 0 652 8017027 501068 7 0 646 0 332 140480 0",
+        "RXPACKEND FAIL"
+      ],
+      "ready": "RXPACK READY",
+      "tx": "TX_PUBLIC status=0 sf=8 cr=1 bytes=8 hex=f53bd9c1d9be31f7",
+      "txDiag": "TX_DIAG irq=0008000a elapsed_us=57278 gpio=1",
+      "passed": false,
+      "packets": []
+    },
+    {
+      "sf": 7,
+      "cr": 4,
+      "length": 8,
+      "expectedHex": "6f4c90cb2532e69a",
+      "lines": [
+        "RXCAPTURE 0 0 652 8016929 501062 7 0 646 0 328 136228 0",
+        "RXPACKEND FAIL"
+      ],
+      "ready": "RXPACK READY",
+      "tx": "TX_PUBLIC status=0 sf=7 cr=4 bytes=8 hex=6f4c90cb2532e69a",
+      "txDiag": "TX_DIAG irq=0008000a elapsed_us=36283 gpio=1",
+      "passed": false,
+      "packets": []
+    },
+    {
+      "sf": 9,
+      "cr": 1,
+      "length": 8,
+      "expectedHex": "8df6bea914849df5",
+      "lines": [
+        "RXCAPTURE 4 280498358 51 626872 39952 7 0 45 0 14 4725 0",
+        "RXPACKEND FAIL"
+      ],
+      "ready": "RXPACK READY",
+      "tx": "TX_PUBLIC status=0 sf=9 cr=1 bytes=8 hex=8df6bea914849df5",
+      "txDiag": "TX_DIAG irq=0008000a elapsed_us=99280 gpio=1",
+      "passed": false,
+      "packets": []
+    },
+    {
+      "sf": 9,
+      "cr": 1,
+      "length": 32,
+      "expectedHex": "295652304f02b4fea22b94d7b4f33f2cadcef24a477180f0374f4af68b9861e3",
+      "lines": [
+        "RXCAPTURE 0 0 652 8017054 501070 7 0 646 0 338 135949 0",
+        "RXPACKEND FAIL"
+      ],
+      "ready": "RXPACK READY",
+      "tx": "TX_PUBLIC status=0 sf=9 cr=1 bytes=32 hex=295652304f02b4fea22b94d7b4f33f2cadcef24a477180f0374f4af68b9861e3",
+      "txDiag": "TX_DIAG irq=0008000a elapsed_us=175385 gpio=1",
+      "passed": false,
+      "packets": []
+    },
+    {
+      "sf": 7,
+      "cr": 1,
+      "length": 32,
+      "expectedHex": "a7521376306455fd80e8d1448f3a0e0c7cd0d17974112bf73c9268c3759fea36",
+      "lines": [
+        "RXCAPTURE 0 0 652 8017019 501068 7 0 646 0 334 137933 0",
+        "RXPACKEND FAIL"
+      ],
+      "ready": "RXPACK READY",
+      "tx": "TX_PUBLIC status=0 sf=7 cr=1 bytes=32 hex=a7521376306455fd80e8d1448f3a0e0c7cd0d17974112bf73c9268c3759fea36",
+      "txDiag": "TX_DIAG irq=0008000a elapsed_us=53439 gpio=1",
+      "passed": false,
+      "packets": []
+    },
+    {
+      "sf": 9,
+      "cr": 4,
+      "length": 8,
+      "expectedHex": "d864bc97bd052149",
+      "lines": [
+        "RXCAPTURE 0 0 652 8016988 501066 7 0 647 0 352 130796 0",
+        "RXPACKEND FAIL"
+      ],
+      "ready": "RXPACK READY",
+      "tx": "TX_PUBLIC status=0 sf=9 cr=4 bytes=8 hex=d864bc97bd052149",
+      "txDiag": "TX_DIAG irq=0008000a elapsed_us=114282 gpio=1",
+      "passed": false,
+      "packets": []
+    },
+    {
+      "sf": 8,
+      "cr": 4,
+      "length": 32,
+      "expectedHex": "1147348a2f050f8d99a95593c01105cefacf86695e49d50916ea13ce8dcaa182",
+      "lines": [
+        "RXCAPTURE 0 0 652 8017002 501067 7 0 646 0 344 132999 0",
+        "RXPACKEND FAIL"
+      ],
+      "ready": "RXPACK READY",
+      "tx": "TX_PUBLIC status=0 sf=8 cr=4 bytes=32 hex=1147348a2f050f8d99a95593c01105cefacf86695e49d50916ea13ce8dcaa182",
+      "txDiag": "TX_DIAG irq=0008000a elapsed_us=130432 gpio=1",
+      "passed": false,
+      "packets": []
+    },
+    {
+      "sf": 7,
+      "cr": 1,
+      "length": 8,
+      "expectedHex": "03ed40f684a4878d",
+      "lines": [
+        "RXCAPTURE 0 0 652 8017057 501070 7 0 645 0 336 139268 0",
+        "RXPACKEND FAIL"
+      ],
+      "ready": "RXPACK READY",
+      "tx": "TX_PUBLIC status=0 sf=7 cr=1 bytes=8 hex=03ed40f684a4878d",
+      "txDiag": "TX_DIAG irq=0008000a elapsed_us=30282 gpio=1",
+      "passed": false,
+      "packets": []
+    },
+    {
+      "sf": 8,
+      "cr": 1,
+      "length": 32,
+      "expectedHex": "e0c65e27a4a8222b07b743d4c1f1b28ea1f27d47434a75a4903511a1d1bcd84e",
+      "lines": [
+        "RXCAPTURE 0 0 652 8016923 501062 7 0 646 0 333 134096 0",
+        "RXPACKEND FAIL"
+      ],
+      "ready": "RXPACK READY",
+      "tx": "TX_PUBLIC status=0 sf=8 cr=1 bytes=32 hex=e0c65e27a4a8222b07b743d4c1f1b28ea1f27d47434a75a4903511a1d1bcd84e",
+      "txDiag": "TX_DIAG irq=0008000a elapsed_us=96426 gpio=1",
+      "passed": false,
+      "packets": []
+    },
+    {
+      "sf": 8,
+      "cr": 4,
+      "length": 8,
+      "expectedHex": "c0ba5ed9ce8f99ac",
+      "lines": [
+        "RXCAPTURE 0 0 652 8017053 501070 7 0 646 0 332 144319 0",
+        "RXPACKEND FAIL"
+      ],
+      "ready": "RXPACK READY",
+      "tx": "TX_PUBLIC status=0 sf=8 cr=4 bytes=8 hex=c0ba5ed9ce8f99ac",
+      "txDiag": "TX_DIAG irq=0008000a elapsed_us=69262 gpio=1",
+      "passed": false,
+      "packets": []
+    }
+  ],
+  "completed": true,
+  "finishedUtc": "2026-10-07T01:53:45.948475+00:00"
+}

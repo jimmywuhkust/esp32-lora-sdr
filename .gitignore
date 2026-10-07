@@ -5,6 +5,8 @@ __pycache__/
 .DS_Store
 *.log
 .env
+examples/NativeDuplex/components/
+examples/NativeDuplex/sdkconfig*
 evaluation/data/*/
 !evaluation/data/research/
 

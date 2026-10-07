@@ -14,25 +14,25 @@ void IRAM_ATTR packetInterrupt() { packetPending=true; }
 // Optional bench build: one explicit command, fixed initialized -12 dBm HF
 // setting, no automatic beacons. The default companion remains RX-only.
 void transmitCommand(const String& command) {
-    unsigned sf,cr;char hex[65],extra;
-    if(sscanf(command.c_str(),"TX %u %u %64s %c",&sf,&cr,hex,&extra)!=3||sf<7||sf>9||cr<1||cr>4){Serial.println("ERR TX");return;}
+    unsigned sf,cr;char hex[511],extra;
+    if(sscanf(command.c_str(),"TX %u %u %510s %c",&sf,&cr,hex,&extra)!=3||sf<7||sf>12||cr<1||cr>4){Serial.println("ERR TX");return;}
     unsigned n=strlen(hex)/2;
-    if(strlen(hex)%2||n<1||n>32){Serial.println("ERR TX length");return;}
+    if(strlen(hex)%2||n<1||n>255){Serial.println("ERR TX length");return;}
     for(unsigned k=0;k<strlen(hex);k++)if(!isxdigit(static_cast<unsigned char>(hex[k]))){Serial.println("ERR TX hex");return;}
     if(!ready){Serial.println("ERR TX not_ready");return;}
-    uint8_t data[32];
+    uint8_t data[255];
     for(unsigned k=0;k<n;k++){unsigned value;sscanf(hex+k*2,"%2x",&value);data[k]=value;}
     int16_t status=radio.standby();packetPending=false;
     if(status==0)status=radio.setSpreadingFactor(sf);
     if(status==0)status=radio.setCodingRate(4+cr);
     // Reject long profiles before keying RF. getTimeOnAir is in microseconds.
-    if(status==0&&radio.getTimeOnAir(n)>250000) {
+    if(status==0&&radio.getTimeOnAir(n)>825000) {
         Serial.println("ERR TX airtime");
         ready=radio.startReceive()==0;return;
     }
     uint32_t before=micros(),flags=0;
     if(status==0)status=radio.startTransmit(data,n);
-    while(status==0&&micros()-before<300000) {
+    while(status==0&&micros()-before<900000) {
         flags=radio.getIrqFlags();
         if(flags&(RADIOLIB_LR2021_IRQ_TX_DONE|RADIOLIB_LR2021_IRQ_TIMEOUT))break;
         delay(1);
@@ -44,12 +44,18 @@ void transmitCommand(const String& command) {
     for(unsigned k=0;k<n;k++)Serial.printf("%02x",data[k]);Serial.println();
     Serial.printf("TX_DIAG irq=%08lx elapsed_us=%lu gpio=%d\n",flags,micros()-before,digitalRead(14));
     packetPending=false;
-    int16_t receiveStatus=radio.startReceive();ready=receiveStatus==0;
+    // TX programs its payload length. Restore the explicit RX maximum so a
+    // short transmission does not silently prevent a longer next reception.
+    int16_t receiveStatus=radio.explicitHeader();
+    if(receiveStatus==0)receiveStatus=radio.startReceive();ready=receiveStatus==0;
     if(!ready)Serial.printf("RX_STOP error=%d\n",receiveStatus);
 }
 #endif
 
 void setup() {
+    // A 255-byte payload is 510 hex characters plus command fields. Native
+    // USB's small default RX queue can truncate a pasted long command.
+    Serial.setRxBufferSize(1024);
     Serial.begin(115200);delay(1200);
     radioSPI.begin(9,11,10,8);
     // LR2021 DIO9 is wired to ESP32 GPIO14 on this verified board.
@@ -72,6 +78,20 @@ void loop() {
         if(command.startsWith("TX ")){transmitCommand(command);return;}
 #endif
         if(command=="INFO")Serial.printf("LR2021_PUBLIC status=%d ready=%d irq=%08lx gpio=%d\n",startupStatus,ready,radio.getIrqFlags(),digitalRead(14));
+        else if(command=="CAPS") {
+#ifdef LR2021_ENABLE_MANUAL_TX
+            Serial.println("LR2021_CAPS RX TX MAX_TX_BYTES=255 MAX_TX_US=825000");
+#else
+            Serial.println("LR2021_CAPS RX");
+#endif
+        }
+        else if(command.startsWith("CRC ")) {
+            unsigned enabled;char extra;
+            if(sscanf(command.c_str(),"CRC %u %c",&enabled,&extra)!=1||enabled>1){Serial.println("ERR CRC");return;}
+            int16_t status=radio.standby();if(status==0)status=radio.setCRC(enabled?2:0);
+            packetPending=false;if(status==0)status=radio.startReceive();ready=status==0;
+            Serial.printf("CRC %u status=%d\n",enabled,status);
+        }
         else if(command.startsWith("FREQ ")||command.startsWith("PRE ")||command.startsWith("SYNC ")||command.startsWith("INV ")) {
             char key[5],extra;unsigned value;
             if(sscanf(command.c_str(),"%4s %u %c",key,&value,&extra)!=2||
@@ -101,7 +121,7 @@ void loop() {
         }
         else if(command.startsWith("SF ")) {
             unsigned sf;char extra;
-            if(sscanf(command.c_str(),"SF %u %c",&sf,&extra)!=1||sf<7||sf>9){Serial.println("ERR SF");return;}
+            if(sscanf(command.c_str(),"SF %u %c",&sf,&extra)!=1||sf<7||sf>12){Serial.println("ERR SF");return;}
             int16_t status=radio.standby();
             if(status==0)status=radio.setSpreadingFactor(sf);
             packetPending=false;

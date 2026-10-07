@@ -1,5 +1,10 @@
 # Hardware test report — 7 October 2026
 
+**New: [full on-device RX/TX measurements](native-report.md).** The report
+below retains the earlier Arduino TX and separate PC-IQ decoder experiments.
+The native PlatformIO component now decodes complete CRC packets on ESP32;
+stock Arduino full RX still returns `Unsupported`.
+
 Updated through the final receiver IRQ audit on 7 October, Hong Kong time. This is a measured engineering report, not a
 claim of universal compatibility or a peer-reviewed paper. Subsequent research
 results must be appended with their own firmware hashes and denominators.

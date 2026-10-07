@@ -1,5 +1,8 @@
 # First packet, step by step
 
+This page covers **stock Arduino transmission**. For full RX and TX on the
+ESP32, start with [the native PlatformIO guide](native-guide.md).
+
 ## Hardware and software
 
 - Seeed XIAO ESP32-S3 with its 2.4 GHz antenna attached, USB data cable.

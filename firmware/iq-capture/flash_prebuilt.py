@@ -4,7 +4,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parent
 def main():
     parser=argparse.ArgumentParser()
-    parser.add_argument('--variant',choices=['default','psram'],default='default')
+    parser.add_argument('--variant',choices=['default','psram','native'],default='default')
     parser.add_argument('--port',help='XIAO native USB serial port, e.g. COM3')
     parser.add_argument('--check-only',action='store_true')
     args=parser.parse_args()

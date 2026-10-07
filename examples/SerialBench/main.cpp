@@ -74,7 +74,7 @@ void loop() {
         if(config.analogGainCode)
             Serial.printf("TXEND NATIVE %s %u %u %.3f a=%u,%u b=%u,%u\n",errorName(error),result.updates,result.lateUpdates,result.packet.airtimeMs,result.analogBefore1,result.analogBefore3,result.analogAfter1,result.analogAfter3);
         else
-            Serial.printf("TXEND NATIVE %s %u %u %.3f buffer=%08x copy=%u\n",errorName(error),result.updates,result.lateUpdates,result.packet.airtimeMs,result.sourceAddress,result.maxCopyCycles);
+            Serial.printf("TXEND NATIVE %s %u %u %.3f buffer=%08x copy=%u tone=%08x adc=%08x gain=%u,%u\n",errorName(error),result.updates,result.lateUpdates,result.packet.airtimeMs,result.sourceAddress,result.maxCopyCycles,result.basebandControl,result.adcControl,result.keyedGain1,result.keyedGain3);
         Serial.flush();
     }
 }

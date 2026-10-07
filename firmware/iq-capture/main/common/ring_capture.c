@@ -250,6 +250,14 @@ static uint8_t txq[TXQ_SIZE];
 static uint8_t txq[TXQ_SIZE];
 #endif
 static uint32_t txq_head, txq_tail; /* free-running byte counters */
+static uint8_t *memory_sink;
+static unsigned memory_capacity, memory_size;
+static bool memory_overflow;
+void ring_capture_memory_sink(uint8_t *buffer,unsigned capacity) {
+    memory_sink=buffer;memory_capacity=capacity;memory_size=0;memory_overflow=false;
+}
+unsigned ring_capture_memory_size(void){return memory_size;}
+bool ring_capture_memory_overflow(void){return memory_overflow;}
 _Static_assert((TXQ_SIZE & (TXQ_SIZE - 1u)) == 0, "queue size");
 
 RING_HOT static bool txq_push(const void *data, size_t n) {
@@ -270,7 +278,13 @@ RING_HOT static void txq_pump(void) {
     uint32_t off = txq_tail % TXQ_SIZE, n = TXQ_SIZE - off;
     if (n > used) n = used;
     if (n > 64) n = 64;
-    int written = ring_write(txq + off,n);
+    int written;
+    if(memory_sink) {
+        if(n<=memory_capacity-memory_size) {
+            memcpy(memory_sink+memory_size,txq+off,n);memory_size+=n;
+        } else memory_overflow=true;
+        written=n;
+    } else written=ring_write(txq + off,n);
     if (written > 0) txq_tail += (uint32_t)written;
 }
 
@@ -757,7 +771,7 @@ static bool fstage_init(fstage_t *s, uint32_t D, uint32_t L, uint32_t shift, uin
     return true;
 }
 static void fstage_free(fstage_t *s) { free(s->h); free(s->wi); free(s->wq); s->h = s->wi = s->wq = NULL; }
-static void fstage_reset(fstage_t *s, uint64_t start) {
+IRAM_ATTR static void fstage_reset(fstage_t *s, uint64_t start) {
     memset(s->wi, 0, 2u * s->L); memset(s->wq, 0, 2u * s->L);
     s->n = s->L; s->base = start - s->L; s->next_end = start + s->D - 1u;
 }
@@ -823,7 +837,7 @@ IRAM_ATTR static void fir_feed(const uint32_t *p, uint32_t a, uint32_t m) {
         a += take; m -= take;
     }
 }
-static void fir_reset(uint64_t index) {
+IRAM_ATTR static void fir_reset(uint64_t index) {
     fstage_reset(&fs1, index); if (!fir_single) fstage_reset(&fs2, index / 8u);
     if (st.cfg->mode==RING_MODE_LORA) lora_chirp_gap();
 }
@@ -1448,7 +1462,9 @@ RING_HOT void ring_capture_run(const ring_config_t *cfg, ring_result_t *r) {
             if (!iqs.out) { fail(r, RING_FAIL_ARG, 3); return; }
         }
         iqs_cost = 8000u;
-        if (!fir_setup(d,lora?2048u:FIR_CHUNK)) { fir_free(); fail(r, RING_FAIL_ARG, 4); return; }
+        // Native packet capture can use the LoRa FIR batch/tap profile. USB
+        // streaming keeps its existing filter and timing configuration.
+        if (!fir_setup(d,(lora||memory_sink)?2048u:FIR_CHUNK)) { fir_free(); fail(r, RING_FAIL_ARG, 4); return; }
         if (lora && (cfg->rate!=6 || d!=64 || !lora_chirp_setup(cfg->lora_sf, false, lora_output, fft_buf, hbuf))) {
             fir_free(); fail(r, RING_FAIL_ARG, 5); return;
         }

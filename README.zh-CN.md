@@ -1,11 +1,42 @@
 # ESP32 LoRa SDR
 
-**让 ESP32-S3 自带的 2.4 GHz 射频电路发出完整 LoRa 包。发射端不用外接 LoRa 芯片。**
+**让 ESP32-S3 用自带的 2.4 GHz 射频，发送和解码完整 LoRa 包。**
+
+采集、同步、解调、纠错、完整载荷和 CRC 都在 ESP32 上运行，电脑只显示结果。
+完整双向库使用随附的 **PlatformIO / ESP-IDF 组件**；普通 Arduino 2.0.17
+目前仍只支持发射，`receive()` 会明确返回 `Unsupported`。
 
 接收端使用独立 LR2021，必须收到完整 payload、CRC 通过、逐字节相同，才算成功。
 这是一项实验性实现，已经在 Seeed XIAO ESP32-S3 上做真实无线验证。
 
 [英文主页](README.md) · [上手步骤](docs/quick-start.md) · [实测报告](docs/test-report.md) · [API](docs/api.md)
+
+## 现在可以直接调用的接口
+
+```cpp
+#include <LoRaRadio.h>
+lora_sdr::LoRaRadio radio;
+// 在应用中检查每个调用返回的 Error：
+radio.begin(2440.125);              // MHz
+radio.setSpreadingFactor(7);
+radio.setBandwidth(203.125);        // kHz
+radio.setCodingRate(8);             // 4/8
+radio.setTransmitPowerPercent(75);  // 幅度百分比，还不是校准后的 dBm
+radio.send("Hello from ESP32!");
+lora_sdr::RxPacket packet;
+auto status = radio.receive(packet, 500);
+// 返回 Ok 后，packet.payload / packet.length 是完整的 CRC 有效载荷。
+```
+
+完整收发入门见 [中文步骤](docs/native-guide.zh-CN.md) 和
+[英文步骤](docs/native-guide.md)。最新原生收包矩阵27/31，覆盖SF7–12，高SF只有少量短包；发射以 SF7
+作为已证明的档位，高 SF 发射仍不可靠。接口能设置参数不等于每个射频档位都已通过。
+接收是有限窗口、半双工，采集后需要处理时间，期间会漏掉新到的信号。
+[原生中文测试报告](docs/native-report.zh-CN.md) 单独保存了新测试、失败和处理延迟。
+
+## 早期 Arduino 发射与电脑 IQ 解码记录
+
+下面保留原来的批次，不能把其电脑解码结果当成新原生库的结果。
 
 当前已验证的基准：2440.125 MHz，带宽 203.125 kHz，SF7，CR4/8，
 前导码 16，显式包头，payload CRC，sync `0x12`。同一组 26 个载荷

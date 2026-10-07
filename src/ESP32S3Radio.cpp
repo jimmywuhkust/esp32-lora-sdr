@@ -1,10 +1,20 @@
 #include "ESP32S3Radio.h"
-#if defined(ARDUINO_ARCH_ESP32)
+#if defined(ARDUINO_ARCH_ESP32) || defined(ESP_PLATFORM)
 #include "sdkconfig.h"
 #endif
-#if defined(ARDUINO_ARCH_ESP32) && defined(CONFIG_IDF_TARGET_ESP32S3)
+#if (defined(ARDUINO_ARCH_ESP32) || defined(ESP_PLATFORM)) && defined(CONFIG_IDF_TARGET_ESP32S3)
+#if defined(ARDUINO_ARCH_ESP32)
 #include <Arduino.h>
 #include <WiFi.h>
+#include "hal/cpu_hal.h"
+#include "driver/periph_ctrl.h"
+#else
+#include "esp_cpu.h"
+#include "esp_private/esp_clk.h"
+#include "esp_private/periph_ctrl.h"
+#define cpu_hal_get_cycle_count esp_cpu_get_cycle_count
+extern "C" int lora_sdr_platform_begin(void);
+#endif
 #include <math.h>
 #include "esp_wifi.h"
 #include "esp_event.h"
@@ -12,12 +22,10 @@
 #include "esp_rom_sys.h"
 #include "esp_phy_init.h"
 #include "esp_heap_caps.h"
-#include "hal/cpu_hal.h"
 #include "heap_memory_layout.h"
 #include "soc/soc.h"
 #include "soc/system_reg.h"
 #include "soc/syscon_reg.h"
-#include "driver/periph_ctrl.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 extern "C" {
@@ -30,11 +38,14 @@ void stop_tx_tone(unsigned);
 void txcal_debuge_mode(void);
 void txcal_work_mode(void);
 void rom_pbus_xpd_tx_off(void);
+void rom_pbus_xpd_rx_off(void);
 void rom_set_txclk_en(unsigned);
 void rom_set_rxclk_en(unsigned);
 extern char _bss_end[],_data_end[],_iram_end[];
 }
+#if defined(ARDUINO_ARCH_ESP32)
 SOC_RESERVE_MEMORY_REGION(0x3fcd0000,0x3fce0000,s3_dac_bank);
+#endif
 namespace lora_sdr {
 static bool pbusWrite(unsigned block,unsigned index,unsigned value) {
     unsigned fields=((value&511u)<<6)|((block&15u)<<2)|((index&3u)<<15);
@@ -53,6 +64,12 @@ static bool restoreAnalogGain(TxResult& result,uint32_t control) {
 }
 static unsigned dacCopyCycles;
 static bool dacTimedOut;
+static void freeDacSource(uint32_t* ring) {
+#if defined(ESP_PLATFORM) && !defined(ARDUINO_ARCH_ESP32)
+    if(reinterpret_cast<uintptr_t>(ring)==0x3fcb0000u)return;
+#endif
+    heap_caps_free(ring);
+}
 static void IRAM_ATTR __attribute__((optimize("O3"))) copyDac(uint32_t *destination,
                       const uint32_t *ring,unsigned offset,unsigned length,unsigned ringLength) {
     unsigned copied=0;
@@ -155,9 +172,15 @@ static unsigned IRAM_ATTR play(const uint32_t* words,unsigned count,unsigned per
 }
 Error ESP32S3Radio::begin() {
     if(ready_)return Error::Ok;
+#if defined(ARDUINO_ARCH_ESP32)
     if(getCpuFrequencyMhz()!=240)return Error::Unsupported;
+#else
+    if(esp_clk_cpu_freq()!=240000000)return Error::Unsupported;
+    if(lora_sdr_platform_begin()!=0)return Error::NotReady;
+#endif
     if(reinterpret_cast<uintptr_t>(_bss_end)>0x3fcd0000u||reinterpret_cast<uintptr_t>(_data_end)>0x3fcd0000u||
        reinterpret_cast<uintptr_t>(_iram_end)>0x403c0000u)return Error::Unsupported;
+#if defined(ARDUINO_ARCH_ESP32)
     esp_err_t event=esp_event_loop_create_default();
     if(event!=ESP_OK&&event!=ESP_ERR_INVALID_STATE)return Error::NotReady;
     if(esp_netif_init()!=ESP_OK)return Error::NotReady;
@@ -168,6 +191,7 @@ Error ESP32S3Radio::begin() {
     if(esp_wifi_set_storage(WIFI_STORAGE_RAM)!=ESP_OK||esp_wifi_set_mode(WIFI_MODE_NULL)!=ESP_OK||
        esp_wifi_start()!=ESP_OK||esp_wifi_set_ps(WIFI_PS_NONE)!=ESP_OK||
        esp_wifi_set_promiscuous(true)!=ESP_OK||esp_wifi_set_channel(1,WIFI_SECOND_CHAN_NONE)!=ESP_OK)return Error::NotReady;
+#endif
     periph_module_enable(PERIPH_WIFI_MODULE);
     // The SRAM playback engine requires MAC clock bit6 even when no Wi-Fi
     // connection or Wi-Fi stack is running. This gate is outside the public
@@ -188,6 +212,11 @@ Error ESP32S3Radio::transmit(const uint8_t* data,size_t length,const Config& c,T
     uint16_t symbols[1024];
     Error status=Encoder::encode(data,length,c,symbols,1024,result.packet);
     if(status!=Error::Ok)return status;
+#if defined(ESP_PLATFORM) && !defined(ARDUINO_ARCH_ESP32)
+    // Restore the SDK channel state before entering the TX test mode.
+    if(esp_wifi_set_channel(1,WIFI_SECOND_CHAN_NONE)!=ESP_OK)return Error::NotReady;
+    rom_pbus_xpd_rx_off();
+#endif
     if(c.transport==Transport::DacWindows) {
         if(c.dacAmplitude<1||c.dacAmplitude>200||c.dacWindowSamples<1000||
            c.dacWindowSamples>16380||result.packet.airtimeMs>1000)return Error::Unsupported;
@@ -197,7 +226,18 @@ Error ESP32S3Radio::transmit(const uint8_t* data,size_t length,const Config& c,T
         if(downLength>c.dacWindowSamples)downLength=c.dacWindowSamples;
         bool compact=ringLength>25206;
         unsigned ringBytes=(ringLength+downLength)*(compact?1:4),lookupOffset=(ringBytes+3)&~3u;
-        uint32_t *ring=static_cast<uint32_t*>(heap_caps_malloc(lookupOffset+(compact?1024:0),MALLOC_CAP_INTERNAL|MALLOC_CAP_8BIT));
+        uint32_t *ring;
+#if defined(ESP_PLATFORM) && !defined(ARDUINO_ARCH_ESP32)
+        // Half-duplex: receive is stopped. Reuse reserved RF banks 0 and 1
+        // as the waveform source; bank 2 alone belongs to the DAC engine.
+        // This keeps the proven SF7 32-bit waveform without a 125 KiB heap
+        // allocation in a firmware that also reserves the three RX banks.
+        if(lookupOffset+(compact?1024u:0u)>0x20000u)return Error::NoMemory;
+        REG_CLR_BIT(0x600c101c,3u);
+        ring=reinterpret_cast<uint32_t*>(0x3fcb0000u);
+#else
+        ring=static_cast<uint32_t*>(heap_caps_malloc(lookupOffset+(compact?1024:0),MALLOC_CAP_INTERNAL|MALLOC_CAP_8BIT));
+#endif
         if(!ring)return Error::NoMemory;
         result.sourceAddress=reinterpret_cast<uintptr_t>(ring);
         uint32_t *lookup=compact?reinterpret_cast<uint32_t*>(reinterpret_cast<uint8_t*>(ring)+lookupOffset):nullptr;
@@ -237,7 +277,7 @@ Error ESP32S3Radio::transmit(const uint8_t* data,size_t length,const Config& c,T
             valid=valid&&result.analogAfter1==c.analogGainCode&&result.analogAfter3==c.analogGainCode;
             if(!valid) {
                 restoreAnalogGain(result,pbusControl);
-                stop_tx_tone(1);txcal_work_mode();rom_pbus_xpd_tx_off();heap_caps_free(ring);return Error::NotReady;
+                stop_tx_tone(1);txcal_work_mode();rom_pbus_xpd_tx_off();freeDacSource(ring);return Error::NotReady;
             }
         }
         rom_set_txclk_en(1);
@@ -245,13 +285,15 @@ Error ESP32S3Radio::transmit(const uint8_t* data,size_t length,const Config& c,T
         int64_t frequency=static_cast<int64_t>(c.frequencyHz)+c.frequencyCorrectionHz;
         unsigned khz=static_cast<unsigned>(frequency/1000);set_rf_freq_offset(0,khz/1000,khz%1000);
         uint32_t owner=REG_READ(0x600c101c),saved=REG_READ(0x60033d64),tone=REG_READ(0x60006040);
+        result.basebandControl=tone;result.adcControl=REG_READ(0x60033d5c);
+        result.keyedGain1=rom_pbus_rd(5,1);result.keyedGain3=rom_pbus_rd(5,3);
         REG_WRITE(0x600c101c,(owner&~15u)|4u);REG_WRITE(0x60006040,tone&~(1u<<18));
         result.lateUpdates=playDac(ring,down,lookup,symbols,result.packet.symbolCount,&c,ringLength,downLength);
         result.maxCopyCycles=dacCopyCycles;
         result.updates=c.preambleSymbols+5+result.packet.symbolCount;
         REG_WRITE(0x60033d64,saved&~0x80000000u);REG_WRITE(0x600c101c,owner);REG_WRITE(0x60006040,tone);
         bool restored=!c.analogGainCode||restoreAnalogGain(result,pbusControl);
-        stop_tx_tone(1);txcal_work_mode();rom_pbus_xpd_tx_off();heap_caps_free(ring);
+        stop_tx_tone(1);txcal_work_mode();rom_pbus_xpd_tx_off();freeDacSource(ring);
         if(!restored)return Error::NotReady;
         return dacTimedOut?Error::PlaybackTimeout:Error::Ok;
     }

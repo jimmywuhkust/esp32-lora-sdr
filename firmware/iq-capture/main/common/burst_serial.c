@@ -22,7 +22,7 @@
 #define CONFIG_ESP_SDR_UART_BAUD 2000000
 #endif
 
-#define COMMAND_SIZE 128
+#define COMMAND_SIZE 600
 static burst_serial_port_t active_port = BURST_SERIAL_USB;
 static unsigned next_port;
 static unsigned uart_baud = CONFIG_ESP_SDR_UART_BAUD;

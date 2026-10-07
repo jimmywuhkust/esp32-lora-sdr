@@ -1,7 +1,7 @@
 {
   "name": "ESP32 LoRa SDR",
-  "version": "0.1.0",
-  "description": "Experimental LoRa PHY and ESP32-S3 SDR interoperability research",
+  "version": "0.2.0",
+  "description": "ESP32-S3 LoRa transmission and native finite-window reception; full RX needs the supplied ESP-IDF component",
   "license": "GPL-3.0-only",
   "frameworks": ["arduino"],
   "platforms": ["espressif32"],

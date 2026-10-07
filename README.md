@@ -2,12 +2,13 @@
 
 # ESP32 LoRa SDR
 
-**Send a complete 2.4 GHz LoRa packet using the RF already inside an ESP32-S3.**
-The sender needs no external LoRa transceiver. An independent LR2021 receives
-the bytes and checks the packet CRC.
+**Send and decode complete 2.4 GHz LoRa packets on an ESP32-S3 using its own RF.**
+Capture, packet decoding, CRC and transmission run on the ESP32. The ESP32
+needs no external LoRa transceiver and no PC packet decoder. An independent
+LR2021 provides the other radio and verifies transmitted packets.
 
-[English quick start](docs/quick-start.md) · [中文说明](README.zh-CN.md) ·
-[Measured results](docs/test-report.md) · [API](docs/api.md) · [Prior art](docs/prior-art.md)
+[Native RX/TX guide](docs/native-guide.md) · [中文说明](README.zh-CN.md) ·
+[Native measurements](docs/native-report.md) · [API](docs/api.md) · [Prior art](docs/prior-art.md)
 
 This is an **experimental radio library**, tested on a Seeed XIAO ESP32-S3.
 It uses undocumented RF registers and SDK PHY routines. The measured bench
@@ -18,6 +19,9 @@ Read the capability table before choosing other settings.
 
 | Capability | Evidence / limit |
 |---|---|
+| ESP32 native full-packet RX | Latest fresh RF: **27/31**, SF7–12; short packets strongest, long-packet failures retained. Four real negative checks correctly rejected. All header/FEC/dewhitening/CRC runs on-device. [Raw attempts and timing](docs/native-report.md) |
+| Both directions in one firmware | Alternating trial: native RX 12/12, strict LR2021 reception 10/12; two rejected transmissions retained. No firmware switch or radio reset between directions |
+| Convenient library interface | `LoRaRadio`: frequency, SF, CR, bandwidth, preamble, sync and relative TX level setters; `send()` / `receive()` |
 | XIAO → LR2021 complete packet | Independent hardware CRC and exact-byte comparison |
 | On-device coding and transmission | Arduino / PlatformIO; the PC supplies payload bytes, not an I/Q waveform |
 | SF7, four coding rates, 1–255 bytes | Final strict IRQ matrix: **224/240 accepted, 240/240 exact payloads**. Sixteen ambiguous header-error events rejected. Earlier API-based public matrix 239/240; [criteria and raw evidence](docs/test-report.md#final-receiver-irq-audit-stricter-hardware-evidence) |
@@ -27,22 +31,51 @@ Read the capability table before choosing other settings.
 | Channel, preamble, sync and IQ polarity | 142/144 fresh 32-byte CRC packets across 48 settings; both failures retained. Three channels, four preambles, sync0x12/0x34 and both matched polarities |
 | SF8 / SF9 transmission | Windowed DAC has failed; PLL has delivered some exact CRC packets but only 1/10 SF8 and 4/10 SF9 in small diagnostic runs. Unreliable and experimental |
 | Analog level control | Optional raw PBUS codes; a constant-DAC seven-code study delivered 70/70. Codes are nonmonotonic and uncalibrated; see the report |
-| Receive on XIAO | Public standalone IQ capture + **PC** full decoder: **104/108** live packets, SF7/8/9, four CRs, lengths1/8/32. [Capture source, live script and real recordings](host/README.md) included. Native Arduino packet RX is not implemented |
+| Packaging | Stock Arduino core 2.0.17: TX only. PlatformIO **ESP-IDF component**: native RX/TX using the supplied PSRAM/core configuration |
 | Calibrated TX power, distance or sensitivity | Not measured; raw gain and amplitude are not dBm |
 
 The measurements are from one stationary indoor board pair. Failed tests,
 resets and mismatched packets stay in the report.
 
-The reverse path requires the separate ESP-IDF capture application on XIAO,
-plus a PC decoder. It does not run inside the Arduino transmitter sketch.
-The default capture matrix retained99.18–100% of IQ within500ms windows;
-USB-frame drops are explicit. There is no continuous4MS/s USB claim.
+Native RX captures finite windows at 250 kcomplex samples/s, then decodes on
+the ESP32. It has blind periods while decoding, especially at higher SFs.
+It is half-duplex and does not promise continuous reception. Native RF RX
+bandwidth is currently 203.125 kHz; SF7 is the demonstrated DAC TX profile.
+The earlier [PC-IQ measurements](docs/test-report.md) remain separate
+historical evidence.
 
-![Two separately measured hardware datasets](docs/assets/public-receiver-results.svg)
+![Native receive capabilities and processing latency](docs/assets/native-reception.svg)
 
 ![Native XIAO transmission and independent LR2021 reception, including Chinese UTF-8 and exact bytes](docs/assets/final-live-proof.png)
 
-## Your first packet
+## Simple native RX/TX API
+
+```cpp
+#include <LoRaRadio.h>
+lora_sdr::LoRaRadio radio;
+// In your application, checking each returned Error:
+radio.begin(2440.125);              // MHz
+radio.setSpreadingFactor(7);
+radio.setBandwidth(203.125);        // kHz
+radio.setCodingRate(8);             // 4/8
+radio.setTransmitPowerPercent(75);  // relative amplitude, not calibrated dBm
+radio.send("Hello from XIAO!");
+lora_sdr::RxPacket packet;
+auto status = radio.receive(packet, 500);
+// On Ok: packet.payload, packet.length and packet.crcOk are ready to use.
+```
+
+```sh
+python examples/NativeDuplex/setup_deps.py
+pio run -d examples/NativeDuplex -e xiao-native
+pio run -d examples/NativeDuplex -e xiao-native -t upload --upload-port YOUR_PORT
+```
+
+The native example receives by default. The explicitly selected `xiao-echo`
+example receives and replies on the ESP32 itself. Follow the
+[full native guide](docs/native-guide.md) for setup and current boundaries.
+
+## Stock Arduino TX
 
 Use [SendOnce](examples/SendOnce/SendOnce.ino) or the USB
 [SerialBench](examples/SerialBench/main.cpp). No sketch in this project sends
@@ -86,7 +119,9 @@ not a calibration value for every ESP32.
 
 The PHY encoder creates the header, whitening, payload CRC, Hamming coding,
 diagonal interleaving and Gray-mapped symbols. The S3 backend keys its internal
-2.4 GHz RF chain and plays I/Q windows from RF SRAM at 40 MS/s.
+2.4 GHz RF chain and plays I/Q windows from RF SRAM at 40 MS/s. Native RX
+keeps IQ in PSRAM and runs a C++ demodulator and packet decoder on the ESP32;
+expected payload bytes are never inputs to that decoder.
 
 The current DAC waveform includes silent gaps between symbol windows. For the
 default SF7 profile, 15,000 of about 25,206 samples are played per full up-chirp
@@ -111,4 +146,6 @@ was reused and what was measured here.
 GPL-3.0-only. See [LICENSE](LICENSE) and [third-party notices](THIRD_PARTY.md).
 Use RF settings permitted for your location and connected hardware.
 
-The optional PSRAM queue retained all output IQ in a completed 36-window block (34 full CRC packets), but longer batches still aborted at ring edges. [Actual IQ, failures and retention figures](docs/test-report.md#final-finite-window-capture-validation).
+Full native RX needs the supplied PlatformIO/ESP-IDF configuration on the
+verified S3 with OPI PSRAM. Stock Arduino full RX, reliable long-packet RX / higher-SF TX,
+calibrated power, sensitivity and distance remain unfinished.

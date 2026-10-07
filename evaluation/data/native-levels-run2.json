@@ -1,0 +1,554 @@
+{
+  "startedUtc": "2026-10-07T02:24:55.075451+00:00",
+  "seed": 202610071042,
+  "retries": 0,
+  "powerUnit": "uncalibrated DAC amplitude percent; not dBm",
+  "pcDecoder": false,
+  "cases": [
+    {
+      "percent": 10,
+      "dacAmplitude": 20,
+      "expectedHex": "98c6a77bf3ed13171285119b7b1058418b1a23dbb7403eeb054d5bb5b87c1e58",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=32 rssi=-79.5 snr=3.0 hex=98c6a77bf3ed13171285119b7b1058418b1a23dbb7403eeb054d5bb5b87c1e58",
+        "RX_IRQ 00040370"
+      ],
+      "passed": false,
+      "exactBytes": true,
+      "rssi": -79.5,
+      "snr": 3.0
+    },
+    {
+      "percent": 75,
+      "dacAmplitude": 150,
+      "expectedHex": "660e1f1df78f79a0d82eea3a49a2a900144051fbea6dd641e599d260e72daccb",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-61.5 snr=6.0 hex=660e1f1df78f79a0d82eea3a49a2a900144051fbea6dd641e599d260e72daccb",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -61.5,
+      "snr": 6.0
+    },
+    {
+      "percent": 25,
+      "dacAmplitude": 50,
+      "expectedHex": "12329979e6e425033900b90c8b3ed24c91edfe0f4783b12127bc241dd392a8e9",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-72.5 snr=4.2 hex=12329979e6e425033900b90c8b3ed24c91edfe0f4783b12127bc241dd392a8e9",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -72.5,
+      "snr": 4.2
+    },
+    {
+      "percent": 1,
+      "dacAmplitude": 2,
+      "expectedHex": "929969ee38cbf84e817d418d2cb225e788ff0b34dfa705ea30237150c42366a3",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=-7 header=0 crc_present=1 crc_ok=0 bytes=32 rssi=-91.5 snr=-6.8 hex=92996dee38c1f87e217d418d2cb2252b806f0834ffa705ea30237150c42326a3",
+        "RX_IRQ 00440170"
+      ],
+      "passed": false,
+      "exactBytes": false,
+      "rssi": -91.5,
+      "snr": -6.8
+    },
+    {
+      "percent": 5,
+      "dacAmplitude": 10,
+      "expectedHex": "ec3ef0514808fb7ecd34865d35f11a24813431ab1c0532ddf6beb9ea6fffb405",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-84.5 snr=0.0 hex=ec3ef0514808fb7ecd34865d35f11a24813431ab1c0532ddf6beb9ea6fffb405",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -84.5,
+      "snr": 0.0
+    },
+    {
+      "percent": 50,
+      "dacAmplitude": 100,
+      "expectedHex": "bc385feaee436d6c583eacc7ba097539622a90642af5b52a49f2f9654feb8ce3",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=4.5 hex=bc385feaee436d6c583eacc7ba097539622a90642af5b52a49f2f9654feb8ce3",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -65.5,
+      "snr": 4.5
+    },
+    {
+      "percent": 1,
+      "dacAmplitude": 2,
+      "expectedHex": "7db2f124f6b53f1cb16c22687d71c859d5a36cf83cea7c951f55e66d43921b7e",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=-7 header=0 crc_present=1 crc_ok=0 bytes=32 rssi=-91.5 snr=-7.2 hex=7db2f114f5b53f1cb46c22687d71c859d5a36cf83ce37f951f56e66d43a21b7e",
+        "RX_IRQ 00440170"
+      ],
+      "passed": false,
+      "exactBytes": false,
+      "rssi": -91.5,
+      "snr": -7.2
+    },
+    {
+      "percent": 100,
+      "dacAmplitude": 200,
+      "expectedHex": "01a899541a1c3f6dd7bb46c2f3722188567cd14676934719e799aada99c6ef0f",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-59.5 snr=4.5 hex=01a899541a1c3f6dd7bb46c2f3722188567cd14676934719e799aada99c6ef0f",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -59.5,
+      "snr": 4.5
+    },
+    {
+      "percent": 75,
+      "dacAmplitude": 150,
+      "expectedHex": "f3bb1e4cde7c74688f3bc095eb7afdb5bced27e0f3adb96e92454a6b6aaf716e",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=3.2 hex=f3bb1e4cde7c74688f3bc095eb7afdb5bced27e0f3adb96e92454a6b6aaf716e",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -62.5,
+      "snr": 3.2
+    },
+    {
+      "percent": 5,
+      "dacAmplitude": 10,
+      "expectedHex": "bf735ce5ef96d1c088917cfa7d0b188b27e68e95715deb6cb8f1e8b0da64738f",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-84.5 snr=2.0 hex=bf735ce5ef96d1c088917cfa7d0b188b27e68e95715deb6cb8f1e8b0da64738f",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -84.5,
+      "snr": 2.0
+    },
+    {
+      "percent": 25,
+      "dacAmplitude": 50,
+      "expectedHex": "ff7bb36887db6b785380b0416a3d0002a6c0fd012c68e9ac8347ed6e5386c802",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-72.5 snr=3.0 hex=ff7bb36887db6b785380b0416a3d0002a6c0fd012c68e9ac8347ed6e5386c802",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -72.5,
+      "snr": 3.0
+    },
+    {
+      "percent": 2,
+      "dacAmplitude": 4,
+      "expectedHex": "25a898dcd6f8fce235bfa77cf0adb91130e8d4adce950d6548c454400b06650b",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=-7 header=0 crc_present=1 crc_ok=0 bytes=32 rssi=-90.5 snr=-2.8 hex=25a898dcd6f8fce235bfa77cf0adb91130e8d4a1ce950d6548c454400b06650b",
+        "RX_IRQ 00440170"
+      ],
+      "passed": false,
+      "exactBytes": false,
+      "rssi": -90.5,
+      "snr": -2.8
+    },
+    {
+      "percent": 5,
+      "dacAmplitude": 10,
+      "expectedHex": "73848a63e5032a18c3f2dc481cecc2a5c9e9de7d9d5355f52fd78cbe4a14b5e7",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-84.5 snr=2.8 hex=73848a63e5032a18c3f2dc481cecc2a5c9e9de7d9d5355f52fd78cbe4a14b5e7",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -84.5,
+      "snr": 2.8
+    },
+    {
+      "percent": 25,
+      "dacAmplitude": 50,
+      "expectedHex": "3a1d4a936abe0f708535f2a9219261762c9f91286a856dddfb8cc8d77314840d",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-72.5 snr=4.8 hex=3a1d4a936abe0f708535f2a9219261762c9f91286a856dddfb8cc8d77314840d",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -72.5,
+      "snr": 4.8
+    },
+    {
+      "percent": 10,
+      "dacAmplitude": 20,
+      "expectedHex": "6a2aa329124a121393739157dc2b6a5ccbcd6af308b90415822a911686069151",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 2 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=-7 header=0 crc_present=1 crc_ok=0 bytes=32 rssi=-79.5 snr=2.8 hex=6a2aa329124a121393738157dc696f5ccbcd6af308b90415822a911686069151",
+        "RX_IRQ 00440170"
+      ],
+      "passed": false,
+      "exactBytes": false,
+      "rssi": -79.5,
+      "snr": 2.8
+    },
+    {
+      "percent": 100,
+      "dacAmplitude": 200,
+      "expectedHex": "f5d4902fd09f33c075cf1bfe52db288467fd032e1e0442ec831c3b5ce5d1cf36",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-59.5 snr=1.5 hex=f5d4902fd09f33c075cf1bfe52db288467fd032e1e0442ec831c3b5ce5d1cf36",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -59.5,
+      "snr": 1.5
+    },
+    {
+      "percent": 100,
+      "dacAmplitude": 200,
+      "expectedHex": "1355ae60c7884fca083786baf421dfbd038d2280b37388c3dcc252ae81adea13",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-59.5 snr=4.0 hex=1355ae60c7884fca083786baf421dfbd038d2280b37388c3dcc252ae81adea13",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -59.5,
+      "snr": 4.0
+    },
+    {
+      "percent": 50,
+      "dacAmplitude": 100,
+      "expectedHex": "0f6cef45684f455154e74c4ab7ecdc7f0f27aee8fd6457f2fca5c35f723857f9",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=32 rssi=-65.5 snr=2.2 hex=0f6cef45684f455154e74c4ab7ecdc7f0f27aee8fd6457f2fca5c35f723857f9",
+        "RX_IRQ 00040370"
+      ],
+      "passed": false,
+      "exactBytes": true,
+      "rssi": -65.5,
+      "snr": 2.2
+    },
+    {
+      "percent": 2,
+      "dacAmplitude": 4,
+      "expectedHex": "5a696e3d33aa8297fffe6bdfe781a543d8aedb4dc14b6132c7bae95bb235392f",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=-7 header=0 crc_present=1 crc_ok=0 bytes=32 rssi=-89.5 snr=-4.5 hex=5a69663d33aa8297fffe6bdde781a543d8aedb4dc14b6132c7bae95bb235392f",
+        "RX_IRQ 00440170"
+      ],
+      "passed": false,
+      "exactBytes": false,
+      "rssi": -89.5,
+      "snr": -4.5
+    },
+    {
+      "percent": 1,
+      "dacAmplitude": 2,
+      "expectedHex": "b06a21c13d42fa6ef67285f9dc69a0c4e98bcf4015a849ebe1adf711f022ab1b",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=-7 header=0 crc_present=1 crc_ok=0 bytes=32 rssi=-91.5 snr=-8.0 hex=b06a21c13dc2fa4ef67285f9dc69a0c4e98bcf4015a849ebf1adf711f0222b1b",
+        "RX_IRQ 00440170"
+      ],
+      "passed": false,
+      "exactBytes": false,
+      "rssi": -91.5,
+      "snr": -8.0
+    },
+    {
+      "percent": 5,
+      "dacAmplitude": 10,
+      "expectedHex": "d1767ae8bf8ae18d5c24cf16eaf2976e58ffbdd94788a25ff230808f48228317",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=-7 header=0 crc_present=1 crc_ok=0 bytes=32 rssi=-84.5 snr=2.2 hex=d1767ae8bf8ae18d5c24cf16eaf2976e58ffddd94788a25ff230808f48228317",
+        "RX_IRQ 00440170"
+      ],
+      "passed": false,
+      "exactBytes": false,
+      "rssi": -84.5,
+      "snr": 2.2
+    },
+    {
+      "percent": 1,
+      "dacAmplitude": 2,
+      "expectedHex": "2c073dd882d3df31a2c732ec3e021fe1b337ac92106c756fe3604aed5ff4cb9f",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=-7 header=0 crc_present=1 crc_ok=0 bytes=32 rssi=-90.5 snr=-7.5 hex=2c073dd882d3df31a2c772ec3e021fe7b337ac98106c756fe36349ed5f32cb9f",
+        "RX_IRQ 00440170"
+      ],
+      "passed": false,
+      "exactBytes": false,
+      "rssi": -90.5,
+      "snr": -7.5
+    },
+    {
+      "percent": 25,
+      "dacAmplitude": 50,
+      "expectedHex": "6d043a215dd1063b708a29b82ad4c4a264f5230560abf790e17eb5366d45632d",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-72.5 snr=3.5 hex=6d043a215dd1063b708a29b82ad4c4a264f5230560abf790e17eb5366d45632d",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -72.5,
+      "snr": 3.5
+    },
+    {
+      "percent": 10,
+      "dacAmplitude": 20,
+      "expectedHex": "62053c123c94bd1d66e52a04dfc542154431765fd4d1723fe9e176319e04313f",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-80.5 snr=2.8 hex=62053c123c94bd1d66e52a04dfc542154431765fd4d1723fe9e176319e04313f",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -80.5,
+      "snr": 2.8
+    },
+    {
+      "percent": 75,
+      "dacAmplitude": 150,
+      "expectedHex": "d490b2785791a2e553c3856d9e88e674d80fcc9e0d926192a1cb3102ecf6f1b2",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-62.5 snr=3.5 hex=d490b2785791a2e553c3856d9e88e674d80fcc9e0d926192a1cb3102ecf6f1b2",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -62.5,
+      "snr": 3.5
+    },
+    {
+      "percent": 2,
+      "dacAmplitude": 4,
+      "expectedHex": "c4ede0ea3a237f106fc4420bf518c8ca63ac289aeceb91815c6639952fcec9ff",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=-7 header=0 crc_present=1 crc_ok=0 bytes=32 rssi=-89.5 snr=-3.5 hex=c4ede0ea3a237f106fc44a0bf518c8ca63ac289aeceb91815c6639952fcec9ff",
+        "RX_IRQ 00440170"
+      ],
+      "passed": false,
+      "exactBytes": false,
+      "rssi": -89.5,
+      "snr": -3.5
+    },
+    {
+      "percent": 2,
+      "dacAmplitude": 4,
+      "expectedHex": "713cce161de4d5252d9e0561db989eb18c6716578ef8fe422bf455c77df0ee8d",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=-7 header=0 crc_present=1 crc_ok=0 bytes=32 rssi=-89.5 snr=-3.2 hex=713cce164de4d5252d9e0561db989eb1886716578ef8fe422bf455c77df6ee8d",
+        "RX_IRQ 00440170"
+      ],
+      "passed": false,
+      "exactBytes": false,
+      "rssi": -89.5,
+      "snr": -3.2
+    },
+    {
+      "percent": 50,
+      "dacAmplitude": 100,
+      "expectedHex": "e3ba38341dfe395896c6f7d24403065bf5565d864ad5c45672858a5e15129011",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=6.0 hex=e3ba38341dfe395896c6f7d24403065bf5565d864ad5c45672858a5e15129011",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -65.5,
+      "snr": 6.0
+    },
+    {
+      "percent": 100,
+      "dacAmplitude": 200,
+      "expectedHex": "63896b7236620748bd0bfde0aa4d7c928f12ce99c01c654e07ff8b68eab7c047",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-59.5 snr=4.5 hex=63896b7236620748bd0bfde0aa4d7c928f12ce99c01c654e07ff8b68eab7c047",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -59.5,
+      "snr": 4.5
+    },
+    {
+      "percent": 10,
+      "dacAmplitude": 20,
+      "expectedHex": "9481452a7bcf46da4e924d0da89de2364301bc7de79f59f6320c591001c70987",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-80.5 snr=4.8 hex=9481452a7bcf46da4e924d0da89de2364301bc7de79f59f6320c591001c70987",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -80.5,
+      "snr": 4.8
+    },
+    {
+      "percent": 50,
+      "dacAmplitude": 100,
+      "expectedHex": "906e5469cd423d14f7ba779659ea1f7cf71e86539e4119292bc76f6ed194483f",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-65.5 snr=3.2 hex=906e5469cd423d14f7ba779659ea1f7cf71e86539e4119292bc76f6ed194483f",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -65.5,
+      "snr": 3.2
+    },
+    {
+      "percent": 75,
+      "dacAmplitude": 150,
+      "expectedHex": "7910f091b2f6c33341ec0b7aaf3a60890508e492c53e7c74e89031fd631250a7",
+      "xiao": [
+        "TXSTART NATIVE",
+        "TXEND NATIVE ok 79 0 49.310 buffer=3fcb0000 copy=40186 tone=20062400 adc=00000000 gain=119,119"
+      ],
+      "lr2021": [
+        "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=32 rssi=-61.5 snr=0.8 hex=7910f091b2f6c33341ec0b7aaf3a60890508e492c53e7c74e89031fd631250a7",
+        "RX_IRQ 00040170"
+      ],
+      "passed": true,
+      "exactBytes": true,
+      "rssi": -61.5,
+      "snr": 0.8
+    }
+  ],
+  "finishedUtc": "2026-10-07T02:25:22.073096+00:00"
+}

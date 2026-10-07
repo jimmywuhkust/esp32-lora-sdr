@@ -1,0 +1,84 @@
+# ESP32 自己收发完整 LoRa 包：原生实测报告
+
+2026 年 10 月 7 日。完整方法、原始记录和固件版本见
+[英文报告](native-report.md)，入门见[中文步骤](native-guide.zh-CN.md)。
+
+**电脑不解包。** XIAO 上的 C++ 库完成采集、同步、解调、包头、纠错、
+去白化和 payload CRC。`receive()` 返回完整字节，`send()` 在同一块 ESP32
+上编码并通过自带 2.4 GHz 射频发送。独立 LR2021 是另一端的收发器。
+
+## 当前测到的结果
+
+| 测试 | 结果与证据 |
+|---|---|
+| 第一版 16-bit 原生采集 | 0/12，采集连续性失败；记录保留 |
+| 4-bit 原生整包解码 | SF7/8/9、CR4/5 与 4/8、8/32 字节：12/12 |
+| 真正库接口 `receive()` | 同一配置网格：12/12；其中一次仅保留连续窗口前缀，整包仍完整 |
+| 同一固件交替收发 | 原生接收12/12，XIAO 发给 LR2021 严格验收10/12；两次失败保留 |
+| 最新 8-bit I/Q 参数矩阵 | **27/31 完整包**；SF7 16/20，SF8 4/4，SF9 4/4，SF10/11/12各1/1 |
+| 最新真实 RF 拒收测试 | 无测试发射、没有 payload CRC、错误 sync、截断窗口：**4/4 正确拒收** |
+| 发射强度随机测试 | 8档×4次：20/32严格通过，最低1%、2%各0/4；这不是校准功率或灵敏度测量 |
+
+最新矩阵：[完整原始 JSON](../evaluation/data/native-rx-eight-bit.json)。
+每个参数组合仅一次，不能当成该组合可靠性的估计。SF10–12各只有一个
+8字节、CR4/5的测试包。SF7 的1/8/32字节全部通过，80字节3/4，255字节1/4。
+失败是80字节CR4/5，以及255字节CR4/6、4/7、4/8；35次窗口均报告无采集
+丢弃且帧连续，具体射频/解调原因尚未解决。**先使用短包。**
+
+![真实接收参数与板上处理延迟](assets/native-reception.svg)
+
+## 它是否真的能脱离电脑解包？
+
+`NativeDuplex/xiao-echo` 是独立 PlatformIO 应用：收到 CRC 正确的包后，
+在板上取收到的字节，直接调用库回发 `ACK:` 加这些字节。测试程序只读取
+XIAO 的日志，**对 XIAO 的串口写入为零**。LR2021 已接收到字节完全一致、
+硬件 CRC 和严格 IRQ 验收通过的 ACK。电脑既没有上传 I/Q，也没有给解码器
+提示期待的 payload。
+
+连续测试仍有丢包和混合包头错误 IRQ，不能把一次成功写成稳定100%。
+早期独立应用的0/8失败、IRAM修改单独失败、调整FIR批处理后的首次1/1，
+以及后续每轮原始输出均保留在英文报告中。日志缺行与真正 RF 失败分别说明，
+不修改旧轮次统计，也不把存在错误 IRQ 的相同字节强行记为成功。
+
+## 库怎么用
+
+```cpp
+#include <LoRaRadio.h>
+lora_sdr::LoRaRadio radio;
+// 在程序里检查每个调用返回的 Error：
+radio.begin(2440.125);             // MHz
+radio.setSpreadingFactor(7);
+radio.setBandwidth(203.125);       // kHz
+radio.setCodingRate(8);            // 4/8
+radio.setTransmitPowerPercent(75); // 相对 DAC 幅度，不是 dBm
+radio.send("Hello from ESP32!");
+lora_sdr::RxPacket packet;
+auto result = radio.receive(packet, 500);
+```
+
+完整双向目前使用随仓库提供的 **PlatformIO ESP-IDF component** 和 PSRAM/
+核心配置。普通 Arduino core2.0.17 例程已有这个简洁发送 API，但完整接收仍
+返回 `Unsupported`。这点没有隐藏，也没有把电脑解码包装成 Arduino 接收。
+
+## 采样、功率和未完成的部分
+
+最新原生采集从内部16 Mcomplex samples/s混频和64倍降采样，保留250 kcomplex
+samples/s、8-bit I与8-bit Q到PSRAM。窗口50–900ms，随后板上解码；因此存在
+接收盲区。SF7短包约一秒处理，最新SF10/11/12分别约6.0/10.9/20.9秒，加上
+900ms采集。**没有声称全天连续采样、4 MS/s USB流或全双工。**
+
+![相对 DAC 发射强度与 LR2021 实测](assets/native-relative-levels.svg)
+
+相对强度1/2/5/10/25/50/75/100%各4次，分别0/0/3/2/4/3/4/4次严格通过。
+接收器报告RSSI约−91.5至−59.5dBm。每档次数很少，图中有Wilson区间；不能
+把这当成校准发射dBm、距离或接收灵敏度。没有收到的包不编造RSSI。
+
+高SF发射仍不可靠：SF8/9实验有失败，SF10–12发送返回 `Unsupported`。
+所以“降低功率收不到、提高发射SF后恢复”的实验仍**未完成**。高SF原生接收
+成功不能替代这个实验。连续接收、Wi-Fi/BLE共存、LoRaWAN、Multi-SF优势和
+普通Arduino完整接收也没有宣称完成。
+
+仓库包含源代码、公开LR2021 companion、英文/中文入门、原始成功与失败、
+SVG/PNG/PDF图表及编译/真实录制I/Q回归检查。不存在“世界首个”的宣传；
+[已有工作调研](prior-art.md)明确标出了来源。生成的固件带哈希、源码哈希和
+依赖锁定，没有上传私有 AeroLink 源码、设备NVS读回或真实GNSS数据。
