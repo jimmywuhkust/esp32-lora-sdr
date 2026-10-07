@@ -81,11 +81,13 @@ pio run -d examples/ArduinoDuplex -e xiao-arduino-rx -t upload --upload-port YOU
 | 操作 | 已测范围与边界 |
 |---|---|
 | Arduino ↔ LR2021 | 两块 ESP32 分别收发，四条方向 **16/16**：SF7，CR4/5、4/8，8／32 字节。 |
-| ESP32 ↔ ESP32 | 主机调度的单包 **6/8**，四个 CR4/8 样本全通过；交换发起角色的自主 ping/pong 也成功，独立会话次数见报告。 |
+| ESP32 ↔ ESP32 | 主机调度的单包 **6/8**，四个 CR4/8 样本全通过；交换发起角色的两轮自主对传各 **3/4** 个独立往返，每请求／回复的 8 个 RF 副本单独计数。 |
 | Arduino 发射 | SF7、CR4/5–4/8、1–255 字节，严格 CRC＋逐字节 **18/20**；四种 CR 的 255 字节全部通过，漏包保留。 |
 | Arduino 接收 | 203.125 kHz，SF7–12 各一个新 8 字节包，**6/6**；四项负例拒收。这是短包 smoke。 |
 | 无电脑指令 Arduino echo | 板上收到 **8/8**；LR2021 严格收到完整 ACK **8/8**，没有 ESP32 串口指令。 |
 | 参数 | 频率、SF、CR、带宽、前导码、sync、相对发射幅度和频偏修正；[支持范围](docs/native-guide.zh-CN.md)。 |
+
+![六条 RF 方向与自主 Arduino ping/pong](docs/assets/arduino-duplex.svg)
 
 上述是固定室内三板的不同批次，不能合并成可靠率或距离保证。
 [Arduino 报告](docs/arduino-report.zh-CN.md) 保留完整载荷、失败、IRQ/CRC 判据、

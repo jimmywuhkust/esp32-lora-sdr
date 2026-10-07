@@ -106,6 +106,31 @@ by the independent strict LR2021 gate. Inputs span CR4/5–4/8 and 8/32 bytes.
 The fixture writes zero bytes to the ESP32. It explicitly rearms LR2021 RX
 after its own TX. [Both complete console streams](../evaluation/data/arduino-echo-final.json).
 
+The final autonomous **A initiates → B** session completed **3/4** full
+CRC-valid, byte-exact round trips. B decoded all four correct requests;
+LR2021 independently accepted all four unique requests and all four unique
+replies. A missed the first reply train. The observer logged 32 request and
+32 reply transmissions, all 64 with zero late segments. Actual DAC windows
+were 13,500–13,600 samples. Successful replies used hard, soft and CRC-aided
+soft paths; expected bytes were checked only in the initiator's application.
+[Unedited session](../evaluation/data/arduino-ping-pong-final-ab.json).
+
+The final **B initiates → A** session also completed **3/4** full round trips.
+A decoded all four correct requests; LR2021 accepted every unique request
+and reply. B missed the fourth reply train. All 64 observed transmissions
+(32 requests, 32 replies) had zero late segments.
+[Unedited reverse-role session](../evaluation/data/arduino-ping-pong-final-ba.json).
+The eight responder captures across these two sessions had zero capture
+status, drops and abandoned units. Both sessions used zero ESP32 serial writes.
+
+![Measured RF links and autonomous pair sessions](assets/arduino-duplex.svg)
+
+The earlier/final bars use separate payload sets and firmware. This is a
+descriptive engineering comparison, not a controlled ablation or statistical
+reliability estimate. Recreate SVG, PNG and PDF with
+`python evaluation/plot_arduino.py`; every plotted numerator and denominator
+comes from the included raw JSON. [Exportable PDF](assets/arduino-duplex.pdf).
+
 ## Why standalone Arduino transmission initially failed
 
 The original fixed 15,000-sample DAC playback window left about 255 μs to

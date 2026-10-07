@@ -92,11 +92,13 @@ ESP32-S3 with core 2.0.17, and open
 | Operation | Verified scope and current limit |
 |---|---|
 | Arduino ↔ LR2021 | Both ESP32s transmit and receive: **16/16** cases across four directed links, SF7, CR4/5 and 4/8, 8/32 bytes. |
-| ESP32 ↔ ESP32 | **6/8** host-scheduled single-packet cases; all four CR4/8 cases passed. Autonomous ping/pong also succeeds in both role assignments; see the report's separate session counts. |
+| ESP32 ↔ ESP32 | **6/8** host-scheduled single-packet cases; all four CR4/8 cases passed. Separate autonomous sessions: **3/4** unique round trips in each role assignment, with eight explicitly counted RF copies per request/reply. |
 | Arduino transmit | SF7, CR4/5–4/8, 1–255 bytes: **18/20** strict CRC + exact bytes; all four 255-byte cases passed. Misses retained. |
 | Arduino receive | 203.125 kHz, SF7–12: **6/6** fresh 8-byte packets; four negative checks rejected. This is a short-packet smoke test. |
 | Standalone Arduino echo | **8/8** MCU receptions and **8/8** independent LR2021 CRC-valid exact ACKs; zero ESP32 serial commands. |
 | Parameters | Frequency, SF, CR, bandwidth, preamble, sync, relative amplitude and frequency correction; see [supported ranges](docs/native-guide.md#the-api-your-application-calls). |
+
+![Six RF links and autonomous Arduino ping/pong](docs/assets/arduino-duplex.svg)
 
 These are separate measurements from one stationary indoor three-radio bench,
 not a reliability or range guarantee. Raw payloads, failures, IRQ/CRC gates,

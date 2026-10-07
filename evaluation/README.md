@@ -45,6 +45,9 @@ The included final datasets are `arduino-three-radios-final.json`,
 `arduino-tx-final.json`, `arduino-rx-smoke-final.json` and
 `arduino-echo-final.json`. Intermediate, unsuccessful and interrupted runs
 are retained separately. Counts from different builds are not pooled.
+`arduino-ping-pong-final-ab.json` and `arduino-ping-pong-final-ba.json`
+contain the two final autonomous role assignments. Regenerate their figures
+with `python evaluation/plot_arduino.py` (SVG, PNG and PDF).
 
 For full on-device RX/TX, first follow the [native guide](../docs/native-guide.md).
 From the repository root, with both serial monitors closed:

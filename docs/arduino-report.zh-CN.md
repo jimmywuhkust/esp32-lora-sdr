@@ -65,6 +65,25 @@ SF12 解包耗时 **18.93 秒**。无 RF、无 payload CRC、错 sync、截断�
 主机向 ESP32 写零字节；LR2021 自己发射后明确重启 RX。
 [全部双端日志](../evaluation/data/arduino-echo-final.json)。
 
+最终固件的 **A 发起 → B** 自主对传完成 **3/4** 个完整 CRC／字节一致往返。
+B 收到四个正确请求，LR2021 独立严格收到四种请求、四种回复；A 漏掉第一轮
+回复。观察到 32＋32 个 RF 副本，64 次发射的迟到段全部为零，窗口实际为
+13,500–13,600 样本。回复成功包含 hard、soft 和 CRC-aided soft 路径，预期
+字节只在 initiator 应用里比较，没有输入接收解码器。
+[全部原始会话](../evaluation/data/arduino-ping-pong-final-ab.json)。
+
+最终 **B 发起 → A** 也完成 **3/4** 个完整往返。A 收到四个正确请求，LR2021
+严格收到每种请求和回复；B 漏掉第四轮回复。32＋32 个 RF 副本全部迟到段为零。
+[反向角色会话](../evaluation/data/arduino-ping-pong-final-ba.json)。两轮共八个
+responder 采集窗口的 status、drops、abandoned 都为零，两轮向 ESP32 写入的
+串口字节都为零。
+
+![六条 RF 方向与自主对传](assets/arduino-duplex.svg)
+
+不同版本用了不同 payload，这只是工程对照，不是受控消融或统计可靠率估计。
+运行 `python evaluation/plot_arduino.py` 可从原始 JSON 重建 SVG、PNG、PDF，
+所有分子和分母均来自实测。[可导出 PDF](assets/arduino-duplex.pdf)。
+
 ## 自主对传和必须保留的失败
 
 请求为 20 字节，包含 `PING`、随机 session、序号及随机数据。responder
