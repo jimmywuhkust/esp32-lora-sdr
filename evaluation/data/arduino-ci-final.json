@@ -1,0 +1,40 @@
+{
+  "id": 37595107294,
+  "head_sha": "16781d880a85b76a2c0a7f885fbd09971e59587c",
+  "status": "completed",
+  "conclusion": "success",
+  "html_url": "https://github.com/jimmywuhkust/esp32-lora-sdr/actions/runs/37595107294",
+  "created_at": "2026-10-07T08:38:26Z",
+  "updated_at": "2026-10-07T08:49:41Z",
+  "jobs": [
+    {
+      "name": "arduino-duplex",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-07T08:38:29Z",
+      "completed_at": "2026-10-07T08:49:41Z"
+    },
+    {
+      "name": "arduino",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-07T08:38:29Z",
+      "completed_at": "2026-10-07T08:41:10Z"
+    },
+    {
+      "name": "native-platformio",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-07T08:38:28Z",
+      "completed_at": "2026-10-07T08:44:24Z"
+    },
+    {
+      "name": "recorded-iq",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-07T08:38:28Z",
+      "completed_at": "2026-10-07T08:38:52Z"
+    }
+  ],
+  "scope": "Compilation and saved-IQ/software regressions; no live RF in CI. Later report-only commits keep this tested source unchanged."
+}

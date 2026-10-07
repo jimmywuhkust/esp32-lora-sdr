@@ -212,6 +212,13 @@ checkout with CRLF normalized to LF before a build manifest is recorded.
 This demonstrates source identity, not identical cross-machine binaries.
 CI compilation and fixture replay are separate from live hardware evidence.
 
+GitHub [run 37595107294](https://github.com/jimmywuhkust/esp32-lora-sdr/actions/runs/37595107294)
+**passed all four jobs** for source commit
+`16781d880a85b76a2c0a7f885fbd09971e59587c`: five Arduino duplex profiles,
+three native profiles, stock Arduino/public LR2021 builds, and recorded-IQ
+regressions. Later commits update measurements/reports only.
+[CI result and timestamps](../evaluation/data/arduino-ci-final.json).
+
 The final source fingerprint is
 `ee15d804513597eec83b887fd944680db1f1f8a48c35192a912aad2b1cd077ec`.
 [The build manifest](../evaluation/data/arduino-build-final.json) contains all

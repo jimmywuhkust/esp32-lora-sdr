@@ -134,6 +134,12 @@ C++ 测试通过 144 项 codec round trip、截断检查、24 项损坏 CRC 负�
 CRLF/LF 后记录指纹。编译 manifest 包含 bootloader、partition 和 application
 哈希；它证明本次构建身份，不保证跨电脑逐字节相同的 binary。
 
+GitHub [CI 37595107294](https://github.com/jimmywuhkust/esp32-lora-sdr/actions/runs/37595107294)
+对源码 commit `16781d880a85b76a2c0a7f885fbd09971e59587c` 的 **四个 job
+全部通过**：五个 Arduino duplex profile、三个 native profile、stock Arduino／
+公开 LR2021 编译和录波回归。后续 commit 只改测试数据／报告，不改被测源码。
+[CI 结果与时间](../evaluation/data/arduino-ci-final.json)。CI 不代替真实射频测试。
+
 最终源码指纹为 `ee15d804513597eec83b887fd944680db1f1f8a48c35192a912aad2b1cd077ec`。
 [构建 manifest](../evaluation/data/arduino-build-final.json) 含 52 个完整源码哈希
 及五个 profile 的完整 image 哈希。bench application 为 655120 字节，SHA-256
