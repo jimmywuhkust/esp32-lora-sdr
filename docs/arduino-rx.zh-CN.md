@@ -47,8 +47,9 @@ pio run -d examples/ArduinoDuplex -e xiao-arduino-ping -t upload --upload-port I
 initiator 开机等待 10 秒，然后尝试四个 20 字节请求，包含随机 session、
 序号和随机数据。responder 完整解包并通过 CRC 后，将 `PING` 改成 `PONG`
 返回；initiator 要求整个返回包与请求内容匹配且 CRC 通过。为覆盖采集/解包的
-盲区，请求发送 8 个副本，间隔 350 ms。responder 解包后等待 4.5 秒，再发送
-8 个回复副本，间隔 350 ms。initiator 以 500 ms 窗口监听，最多等待 18 秒，
+盲区，请求发送 8 个副本，两次调用之间等待 350 ms；每次发射后可选 USB 日志
+另外等待 200 ms，实际间隔还包含波形生成和 airtime。responder 解包后等待
+6.5 秒，再用相同延迟发送 8 个回复副本。initiator 以 500 ms 窗口监听，最多等待 18 秒，
 下一请求之前等待 5.5 秒。副本是同一包的独立 RF 发射，分别记录；库本身不自动
 重试。四个独立请求后停止发射，
 再次启动需要给 initiator 重新上电。两端仅接 USB 电源即可运行，日志可选。

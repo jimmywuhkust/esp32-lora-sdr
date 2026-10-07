@@ -9,11 +9,13 @@ using namespace lora_sdr;
 LoRaRadio radio;
 bool ready=false;
 Error beginStatus=Error::NotReady;
-static void logTransmit(Error status) {
+static void __attribute__((unused)) logTransmit(Error status) {
+    delay(200); // allow optional USB logging to settle after RF test mode
     const auto& tx=radio.lastTransmit();
-    Serial.printf("ARDUINO_TX status=%s updates=%u late=%u build_us=%u copy=%u buffer=%08x tone=%08x gain=%u,%u\n",
+    Serial.printf("ARDUINO_TX status=%s updates=%u late=%u build_us=%u copy=%u buffer=%08x tone=%08x gain=%u,%u clock=%08x,%08x window=%u preflight=%u\n",
         errorName(status),tx.updates,tx.lateUpdates,tx.waveformBuildUs,tx.maxCopyCycles,
-        unsigned(tx.sourceAddress),unsigned(tx.basebandControl),tx.keyedGain1,tx.keyedGain3);
+        unsigned(tx.sourceAddress),unsigned(tx.basebandControl),tx.keyedGain1,tx.keyedGain3,
+        unsigned(tx.playbackClockBefore),unsigned(tx.playbackClockEnabled),tx.playbackWindowSamples,tx.preflightCopyCycles);
     Serial.flush();
 }
 // Three RF banks are reserved before the scheduler starts. Keep the Arduino
@@ -79,7 +81,7 @@ void loop() {
            !memcmp(reply.payload,expected,sizeof(expected))) {
             Serial.printf("PING_RX crc_ok=1 bytes=%u hex=",unsigned(reply.length));
             for(size_t i=0;i<reply.length;i++)Serial.printf("%02x",reply.payload[i]);
-            Serial.printf(" soft=%u\n",unsigned(reply.softDecoded));Serial.flush();
+            Serial.printf(" soft=%u crc_aided=%u\n",unsigned(reply.softDecoded),unsigned(reply.crcAided));Serial.flush();
             matched=true;break;
         }
         delay(10);
@@ -100,16 +102,16 @@ void loop() {
         Serial.println();
         Serial.flush();
         const auto& rx=radio.lastReceive();
-        Serial.printf("ARDUINO_CAPTURE samples=%u status=%u drops=%u abandoned=%u soft=%u decode_us=%llu\n",
+        Serial.printf("ARDUINO_CAPTURE samples=%u status=%u drops=%u abandoned=%u soft=%u crc_aided=%u decode_us=%llu\n",
             rx.captureSamples,rx.captureStatus,rx.captureDrops,rx.captureAbandoned,
-            unsigned(packet.softDecoded),static_cast<unsigned long long>(rx.decodeUs));
+            unsigned(packet.softDecoded),unsigned(packet.crcAided),static_cast<unsigned long long>(rx.decodeUs));
         Serial.flush();
 #ifdef LORA_SDR_PONG_DEMO
         if(packet.length==20 && !memcmp(packet.payload,"PING",4)) {
             uint8_t reply[20];memcpy(reply,packet.payload,20);memcpy(reply,"PONG",4);
             // Wait until the request train ends, then send eight explicit
             // response copies across the initiator's receive/decode windows.
-            delay(4500);
+            delay(6500);
             for(unsigned attempt=0;attempt<8;attempt++) {
                 if(attempt)delay(350);
                 status=radio.transmit(reply,sizeof(reply));

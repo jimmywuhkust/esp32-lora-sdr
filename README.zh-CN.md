@@ -31,7 +31,7 @@ LoRaSettings settings;
 settings.frequencyMHz = 2440.125;
 settings.bandwidthKHz = 203.125;
 settings.spreadingFactor = 7;
-settings.codingRate = 5;              // 4/5，可选 5、6、7、8
+settings.codingRate = 8;              // 4/8，可选 5、6、7、8
 settings.transmitPowerPercent = 75;   // 相对幅度，尚未校准为 dBm
 
 // 放在自己的应用函数内：
@@ -80,16 +80,18 @@ pio run -d examples/ArduinoDuplex -e xiao-arduino-rx -t upload --upload-port YOU
 
 | 操作 | 已测范围与边界 |
 |---|---|
-| 原生发射 | SF7、CR4/5–4/8、1–255 字节。最新20档实测严格 CRC＋逐字节通过 **19/20**，20/20 字节一致；拒收样本保留。 |
-| 原生接收 | 203.125 kHz、SF7–12，完整 CRC 包 **27/31**；SF10–12 各只有一次短包验证，长包更不可靠。4项负例正确拒收。 |
-| 无电脑指令收包回复 | ESP32 收到 **8/8**；独立 LR2021 严格接收完整 ACK 为 **5/8**。 |
+| Arduino ↔ LR2021 | 两块 ESP32 分别收发，四条方向 **16/16**：SF7，CR4/5、4/8，8／32 字节。 |
+| ESP32 ↔ ESP32 | 主机调度的单包 **6/8**，四个 CR4/8 样本全通过；交换发起角色的自主 ping/pong 也成功，独立会话次数见报告。 |
+| Arduino 发射 | SF7、CR4/5–4/8、1–255 字节，严格 CRC＋逐字节 **18/20**；四种 CR 的 255 字节全部通过，漏包保留。 |
+| Arduino 接收 | 203.125 kHz，SF7–12 各一个新 8 字节包，**6/6**；四项负例拒收。这是短包 smoke。 |
+| 无电脑指令 Arduino echo | 板上收到 **8/8**；LR2021 严格收到完整 ACK **8/8**，没有 ESP32 串口指令。 |
 | 参数 | 频率、SF、CR、带宽、前导码、sync、相对发射幅度和频偏修正；[支持范围](docs/native-guide.zh-CN.md)。 |
 
-![原生发射编码率与长度矩阵](docs/assets/native-transmission.svg)
-
-上述是一个固定室内板对的不同批次，不能合并成可靠率或距离保证。
-[原生报告](docs/native-report.zh-CN.md) 保留完整载荷、失败、IRQ/CRC 判据、
-固件哈希和图表。[早期报告](docs/test-report.zh-CN.md) 另存 Arduino 发射及电脑 IQ
+上述是固定室内三板的不同批次，不能合并成可靠率或距离保证。
+[Arduino 报告](docs/arduino-report.zh-CN.md) 保留完整载荷、失败、IRQ/CRC 判据、
+固件哈希和图表。中间版本曾输出一个 CRC 有效但字节错误的包，自主发起端
+拒绝了对应回复；需要更强完整性的应用应另加 checksum 或认证封装。
+[旧原生报告](docs/native-report.zh-CN.md) 和 [早期报告](docs/test-report.zh-CN.md) 另存 Arduino 发射及电脑 IQ
 解码实验，不能当作原生收包结果。
 
 接收是 50–900 ms 有限采集窗口，250 kcomplex samples/s，随后在 ESP32 内处理。

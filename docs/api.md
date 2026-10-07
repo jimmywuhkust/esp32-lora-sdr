@@ -105,9 +105,25 @@ payload lengths up to 250 bytes; the later public receiver verified 255-byte
 packets, including all forty full-length trials in its matrix.
 
 `TxResult` records coding metadata, update count, late updates, source buffer
-address and maximum copy cycles. The watchdog is serviced between symbol
-windows. A DAC engine timeout returns `PlaybackTimeout` and stops playback.
+address, waveform build time and maximum copy cycles. Native SF7 DAC playback
+measures three copy operations before RF and reduces the played window when
+the requested window would leave insufficient copy time. The symbol period
+stays fixed; `playbackWindowSamples` and `preflightCopyCycles` report the
+actual choice. `Config.dacWindowSamples` is the requested ceiling.
+Native/component profiles disable watchdogs and mask interrupts through the
+bounded playback; stock Arduino services interrupts between window groups.
+A DAC engine timeout returns `PlaybackTimeout` and stops playback.
 Late counters are diagnostic evidence, not a receiver acknowledgment.
+
+SF7 RX tries bounded fractional reference offsets, then soft FEC using FFT
+bit confidence. `RxPacket.softDecoded` identifies that fallback. If needed,
+it tries the second-best valid FEC word at up to six weak payload positions
+(at most 63 alternatives), keeping the received CRC and last two payload
+bytes fixed. Only one unique complete CRC-valid candidate is accepted;
+`crcAided` identifies this list step. Expected application bytes are never
+input to the decoder. CRC is an error detector, not authentication; multiple
+hypotheses increase the chance of an undetected error. The RF measurements
+and retained negative tests define the current evidence.
 
 For explicit analog gain, `TxResult` also records both keyed defaults and
 both programmed readbacks, and `analogGainRestored`. The backend verifies

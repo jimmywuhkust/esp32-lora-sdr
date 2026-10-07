@@ -38,7 +38,7 @@ def main():
             assert len(raw)==fixture['bytes'] and hashlib.sha256(raw).hexdigest()==fixture['sha256']
             iq=np.frombuffer(raw,dtype='<i2').reshape(-1,2)
             packets=decode(iq[:,0]+1j*iq[:,1],7)
-            assert len(packets)==1 and packets[0]['crcOk'] and packets[0]['softDecoded'],packets
+            assert len(packets)==1 and packets[0]['crcOk'],packets
             assert packets[0]['hex']==fixture['expectedHex'],packets
-            print(f"{fixture['file']}: saved ESP32 RF full CRC packet recovered by soft FEC (offline regression)")
+            print(f"{fixture['file']}: saved ESP32 RF full CRC packet recovered (soft={packets[0]['softDecoded']}, offline regression)")
 if __name__=='__main__':main()

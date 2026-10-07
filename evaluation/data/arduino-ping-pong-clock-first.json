@@ -1,0 +1,900 @@
+{
+  "startedUtc": "2026-10-07T07:33:08.832900+00:00",
+  "esp32SerialWrites": 0,
+  "pcDecoder": false,
+  "hostIqUploaded": false,
+  "finished": true,
+  "lines": [
+    {
+      "board": "LR2021",
+      "text": "FREQ 2440125 status=0"
+    },
+    {
+      "board": "LR2021",
+      "text": "BW 203125 status=0"
+    },
+    {
+      "board": "LR2021",
+      "text": "PRE 16 status=0"
+    },
+    {
+      "board": "LR2021",
+      "text": "SYNC 18 status=0"
+    },
+    {
+      "board": "LR2021",
+      "text": "INV 0 status=0"
+    },
+    {
+      "board": "LR2021",
+      "text": "CRC 1 status=0"
+    },
+    {
+      "board": "LR2021",
+      "text": "SF 7 status=0"
+    },
+    {
+      "board": "ping",
+      "text": "\u001b[0;32mI (106) esp_image: segment 1: paddr=0001e5b0 vaddr=3fc981ARDUINO_START cpu=240 core=0 psram=8386307 heap=95775",
+      "elapsedSeconds": 0.739
+    },
+    {
+      "board": "pong",
+      "text": "\u001b[0;32mI (106) esp_image: segment 1: paddr=0001e508 vaddr=3fc981LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 0.748
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_BEGIN status=ok heap=51399 largest=19456 core1=1",
+      "elapsedSeconds": 0.813
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 2.272
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 3.825
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 5.42
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 6.835
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 8.405
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 9.965
+    },
+    {
+      "board": "ping",
+      "text": "PING_SEND seq=0 hex=50494e478982e06800000000a6b21aed12560421",
+      "elapsedSeconds": 10.735
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79189 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 11.04
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=0 copy=0 status=ok",
+      "elapsedSeconds": 11.159
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 11.527
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79041 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 11.765
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=0 copy=1 status=ok",
+      "elapsedSeconds": 11.883
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79149 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 12.387
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=0 copy=2 status=ok",
+      "elapsedSeconds": 12.502
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 13.051
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79184 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 13.113
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=0 copy=3 status=ok",
+      "elapsedSeconds": 13.233
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79182 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 13.763
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=0 copy=4 status=ok",
+      "elapsedSeconds": 13.889
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 14.448
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79142 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 14.502
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=0 copy=5 status=ok",
+      "elapsedSeconds": 14.622
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79185 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 15.137
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=0 copy=6 status=ok",
+      "elapsedSeconds": 15.255
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79182 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 15.918
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=0 copy=7 status=ok",
+      "elapsedSeconds": 16.022
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 16.024
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 17.604
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 19.015
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 20.59
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 22.162
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 23.579
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 25.154
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 26.739
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 28.141
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 29.729
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 31.305
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 32.711
+    },
+    {
+      "board": "ping",
+      "text": "PING_RESULT seq=0 tx=ok crc_exact_pong=0",
+      "elapsedSeconds": 34.103
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 34.285
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 35.838
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 37.291
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 38.842
+    },
+    {
+      "board": "ping",
+      "text": "PING_SEND seq=1 hex=50494e478982e068010000005893330005a66a77",
+      "elapsedSeconds": 39.629
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79217 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 39.934
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=1 copy=0 status=ok",
+      "elapsedSeconds": 40.038
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 40.403
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=0 crc_ok=0 bytes=132 rssi=-112.5 snr=-12.8 hex=b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2",
+      "elapsedSeconds": 40.422
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040370",
+      "elapsedSeconds": 40.541
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79171 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 40.726
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=1 copy=1 status=ok",
+      "elapsedSeconds": 40.846
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=78957 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 41.349
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=1 copy=2 status=ok",
+      "elapsedSeconds": 41.469
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 41.844
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79148 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 42.093
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=1 copy=3 status=ok",
+      "elapsedSeconds": 42.213
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79176 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 42.701
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=1 copy=4 status=ok",
+      "elapsedSeconds": 42.821
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 43.364
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79030 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 43.416
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=1 copy=5 status=ok",
+      "elapsedSeconds": 43.536
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79148 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 44.038
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=1 copy=6 status=ok",
+      "elapsedSeconds": 44.157
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79170 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 44.829
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=1 copy=7 status=ok",
+      "elapsedSeconds": 44.948
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 44.949
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 46.53
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 47.935
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 49.532
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 50.976
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 52.564
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 54.141
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 55.574
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 57.159
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 58.584
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 60.158
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 61.705
+    },
+    {
+      "board": "ping",
+      "text": "PING_RESULT seq=1 tx=ok crc_exact_pong=0",
+      "elapsedSeconds": 63.043
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 63.223
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 64.782
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 66.196
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 67.779
+    },
+    {
+      "board": "ping",
+      "text": "PING_SEND seq=2 hex=50494e478982e0680200000087dcc32d1d617f56",
+      "elapsedSeconds": 68.57
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79217 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 68.875
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=2 copy=0 status=ok",
+      "elapsedSeconds": 68.995
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 69.361
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79184 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 69.592
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=2 copy=1 status=ok",
+      "elapsedSeconds": 69.711
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79073 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 70.199
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=2 copy=2 status=ok",
+      "elapsedSeconds": 70.32
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 70.853
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79172 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 70.913
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=2 copy=3 status=ok",
+      "elapsedSeconds": 71.034
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79191 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 71.541
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=2 copy=4 status=ok",
+      "elapsedSeconds": 71.653
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79174 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 72.323
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 72.324
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=2 copy=5 status=ok",
+      "elapsedSeconds": 72.381
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79143 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 73.035
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=2 copy=6 status=ok",
+      "elapsedSeconds": 73.157
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79186 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 73.644
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=2 copy=7 status=ok",
+      "elapsedSeconds": 73.762
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 73.93
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 75.33
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 76.919
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 78.485
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 79.892
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 81.479
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 83.052
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 84.46
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 86.059
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 87.632
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 89.053
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 90.632
+    },
+    {
+      "board": "ping",
+      "text": "PING_RESULT seq=2 tx=ok crc_exact_pong=0",
+      "elapsedSeconds": 91.826
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 92.182
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 93.597
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 95.176
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 96.751
+    },
+    {
+      "board": "ping",
+      "text": "PING_SEND seq=3 hex=50494e478982e0680300000004e3efd38030af78",
+      "elapsedSeconds": 97.356
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79235 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 97.671
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=3 copy=0 status=ok",
+      "elapsedSeconds": 97.794
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 98.158
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79165 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 98.4
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=3 copy=1 status=ok",
+      "elapsedSeconds": 98.519
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79058 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 99.051
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=3 copy=2 status=ok",
+      "elapsedSeconds": 99.175
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 99.716
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79131 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 99.779
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=3 copy=3 status=ok",
+      "elapsedSeconds": 99.905
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79198 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 100.422
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=3 copy=4 status=ok",
+      "elapsedSeconds": 100.534
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79170 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 101.205
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 101.205
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=3 copy=5 status=ok",
+      "elapsedSeconds": 101.265
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79124 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 101.911
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=3 copy=6 status=ok",
+      "elapsedSeconds": 102.036
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=81 build_us=79172 copy=72324 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf",
+      "elapsedSeconds": 102.526
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=3 copy=7 status=ok",
+      "elapsedSeconds": 102.646
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 102.828
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 104.253
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 105.827
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 107.403
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 108.814
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 110.385
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 111.958
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 113.376
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 114.968
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 116.543
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 117.954
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 119.515
+    },
+    {
+      "board": "ping",
+      "text": "PING_RESULT seq=3 tx=ok crc_exact_pong=0",
+      "elapsedSeconds": 120.831
+    },
+    {
+      "board": "ping",
+      "text": "PING_FINISHED attempts=4 accepted=0",
+      "elapsedSeconds": 120.952
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 120.99
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 122.556
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 124.13
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 125.554
+    }
+  ],
+  "requests": [
+    {
+      "sequence": 0,
+      "hex": "50494e478982e06800000000a6b21aed12560421",
+      "responderCrcExact": false,
+      "independentRequestCrcExact": false,
+      "independentReplyCrcExact": false
+    },
+    {
+      "sequence": 1,
+      "hex": "50494e478982e068010000005893330005a66a77",
+      "responderCrcExact": false,
+      "independentRequestCrcExact": false,
+      "independentReplyCrcExact": false
+    },
+    {
+      "sequence": 2,
+      "hex": "50494e478982e0680200000087dcc32d1d617f56",
+      "responderCrcExact": false,
+      "independentRequestCrcExact": false,
+      "independentReplyCrcExact": false
+    },
+    {
+      "sequence": 3,
+      "hex": "50494e478982e0680300000004e3efd38030af78",
+      "responderCrcExact": false,
+      "independentRequestCrcExact": false,
+      "independentReplyCrcExact": false
+    }
+  ],
+  "results": [
+    {
+      "sequence": 0,
+      "tx": "ok",
+      "crcExactPong": false
+    },
+    {
+      "sequence": 1,
+      "tx": "ok",
+      "crcExactPong": false
+    },
+    {
+      "sequence": 2,
+      "tx": "ok",
+      "crcExactPong": false
+    },
+    {
+      "sequence": 3,
+      "tx": "ok",
+      "crcExactPong": false
+    }
+  ],
+  "pingImage": {
+    "bytes": 617456,
+    "sha256": "678ff1e76725bc349b76e04594d2d6e01cdd5d65028a12993fd53e05ef2f4dfd"
+  },
+  "pongImage": {
+    "bytes": 616448,
+    "sha256": "dd221d54b43e8d759198e337abcef5db30b7f877c7caab5136105b90749eef67"
+  },
+  "requestCopiesObserved": 32,
+  "replyCopiesObserved": 0,
+  "finishedUtc": "2026-10-07T07:35:14.947676+00:00"
+}

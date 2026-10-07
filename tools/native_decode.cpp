@@ -7,7 +7,7 @@ using namespace lora_sdr;
 static void packet(const RxPacket& p,void*) {
     printf("{\"bytes\":%zu,\"sf\":%u,\"cr\":%u,\"crcOk\":true,\"hex\":\"",p.length,p.spreadingFactor,p.codingRate);
     for(size_t i=0;i<p.length;i++)printf("%02x",p.payload[i]);
-    printf("\",\"crc\":\"%04x\",\"sampleIndex\":%llu,\"cfoHz\":%.2f,\"softDecoded\":%s}\n",p.crc,(unsigned long long)p.sampleIndex,p.frequencyOffsetHz,p.softDecoded?"true":"false");
+    printf("\",\"crc\":\"%04x\",\"sampleIndex\":%llu,\"cfoHz\":%.2f,\"softDecoded\":%s,\"crcAided\":%s}\n",p.crc,(unsigned long long)p.sampleIndex,p.frequencyOffsetHz,p.softDecoded?"true":"false",p.crcAided?"true":"false");
 }
 int main(int argc,char** argv) {
     Config c;
@@ -71,6 +71,8 @@ int main(int argc,char** argv) {
             Encoder::encode(a,32,c,sa,1100,ia);Encoder::encode(b,32,c,sb,1100,ib);
             memcpy(sa+8,sb+8,(4+cr)*sizeof(uint16_t));
             std::vector<float> weights(ia.symbolCount*7);
+            uint16_t clean[1100];PacketInfo ic;
+            Encoder::encode(a,32,c,clean,1100,ic);
             for(size_t j=8;j<ia.symbolCount;j++) {
                 unsigned gray=(sa[j]-1)&127;gray^=gray>>1;
                 for(unsigned bit=0;bit<7;bit++)weights[j*7+bit]=(gray&(1u<<bit))?1.f:-1.f;
@@ -79,6 +81,21 @@ int main(int argc,char** argv) {
                 puts("FAIL soft accepted wrong CRC");return 1;
             }
             softNegative++;
+            // One incorrectly favored, weak FEC word; its independently
+            // received original CRC must resolve the ambiguity on-device.
+            for(size_t j=8;j<ia.symbolCount;j++) {
+                unsigned ga=(sa[j]-1)&127;ga^=ga>>1;
+                // sa already contains the wrong first block. Re-encode a
+                // to obtain independent original bit confidence there.
+                unsigned original=(clean[j]-1)&127;original^=original>>1;
+                for(unsigned bit=0;bit<7;bit++) {
+                    bool weak=(ga^original)&(1u<<bit);
+                    weights[j*7+bit]=((ga&(1u<<bit))?1.f:-1.f)*(weak?.05f:1.f);
+                }
+            }
+            if(!PacketDecoder::decodeSoft(sa,ia.symbolCount,weights.data(),c,p)||!p.crcAided||memcmp(a,p.payload,32)) {
+                puts("FAIL bounded ambiguous-word recovery");return 1;
+            }
         }
         printf("PASS %u packet codec round trips; truncation rejected; %u CRC negatives rejected; %u soft recovery cases; %u soft CRC negatives\n",tests,negative,soft,softNegative);return 0;
     }

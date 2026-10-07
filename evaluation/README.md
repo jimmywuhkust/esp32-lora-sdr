@@ -25,6 +25,27 @@ To test the Arduino echo application against the LR2021, use
 Read [the Arduino report](../docs/arduino-report.md) for successes, misses,
 firmware identities, explicit RF repeats and finite-window limitations.
 
+For a short SF7–12 RX check with the same four rejection gates:
+
+```sh
+python evaluation/verify_native_rx.py --profile smoke --xiao ESP32_PORT --lr2021 LR_PORT --image BENCH_BIN --lr-image LR_BIN --output NEW_SMOKE_JSON
+python evaluation/verify_native_tx.py --xiao ESP32_PORT --lr2021 LR_PORT --image BENCH_BIN --lr-image LR_BIN --output NEW_TX_JSON
+```
+
+The TX fixture checks the raw LR2021 IRQ and entire payload. Both fixtures
+use the serial-bench application, with encoding/decoding on the ESP32.
+For Windows ASCII staging builds, record all five images and refuse source
+mismatches with:
+
+```sh
+python evaluation/record_arduino_build.py --staging STAGED_REPOSITORY --output NEW_BUILD_JSON
+```
+
+The included final datasets are `arduino-three-radios-final.json`,
+`arduino-tx-final.json`, `arduino-rx-smoke-final.json` and
+`arduino-echo-final.json`. Intermediate, unsuccessful and interrupted runs
+are retained separately. Counts from different builds are not pooled.
+
 For full on-device RX/TX, first follow the [native guide](../docs/native-guide.md).
 From the repository root, with both serial monitors closed:
 

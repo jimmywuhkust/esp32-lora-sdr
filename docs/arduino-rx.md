@@ -53,9 +53,11 @@ The initiator waits 10 seconds, then attempts four 20-byte requests with a
 random session token, sequence and random bytes. The responder replaces
 `PING` with `PONG` only after full CRC-valid reception. The initiator accepts
 only a CRC-valid reply matching the entire request token and sequence.
-The initiator sends eight explicit copies of each request, 350 ms apart.
-After decoding a request, the responder waits 4.5 s, then sends eight copies
-of its reply, also 350 ms apart. These bounded trains cover receive/decode
+The initiator sends eight explicit copies of each request, with a 350 ms
+idle delay between calls. Optional USB diagnostics add 200 ms after each
+transmission, in addition to waveform generation and airtime.
+After decoding a request, the responder waits 6.5 s, then sends eight copies
+of its reply with the same delays. These bounded trains cover receive/decode
 blind intervals; they are separate RF transmissions of one unique packet.
 The initiator listens in 500 ms windows for up to 18 s and waits 5.5 s before
 the next request. Every copy is logged; the library does not retry silently.
@@ -81,7 +83,7 @@ void setup() {
   settings.frequencyMHz = 2440.125;
   settings.bandwidthKHz = 203.125;
   settings.spreadingFactor = 7;
-  settings.codingRate = 5;             // TX coding rate 4/5
+  settings.codingRate = 8;             // TX coding rate 4/8; preferred for SDR peers
   settings.transmitPowerPercent = 75;  // relative amplitude, not dBm
   ready = radio.begin(settings) == Error::Ok;
 }

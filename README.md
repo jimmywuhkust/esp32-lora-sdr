@@ -34,7 +34,7 @@ LoRaSettings settings;
 settings.frequencyMHz = 2440.125;
 settings.bandwidthKHz = 203.125;
 settings.spreadingFactor = 7;
-settings.codingRate = 5;              // 4/5; choose 5, 6, 7 or 8
+settings.codingRate = 8;              // 4/8; choose 5, 6, 7 or 8
 settings.transmitPowerPercent = 75;   // relative amplitude, not dBm
 
 // Inside your application:
@@ -91,17 +91,21 @@ ESP32-S3 with core 2.0.17, and open
 
 | Operation | Verified scope and current limit |
 |---|---|
-| Native transmit | SF7, CR4/5–4/8, 1–255 bytes. Latest 20-setting RF check: **19/20 strict CRC + exact bytes**, 20/20 exact bytes. The rejected attempt is retained. |
-| Native receive | 203.125 kHz, SF7–12: **27/31** fresh CRC-valid packets; SF10–12 have only one short trial each. Long packets are less reliable. Four negative checks rejected. |
-| Standalone receive and reply | ESP32 received **8/8** without host commands; independent LR2021 accepted **5/8** exact CRC-valid ACKs. |
+| Arduino ↔ LR2021 | Both ESP32s transmit and receive: **16/16** cases across four directed links, SF7, CR4/5 and 4/8, 8/32 bytes. |
+| ESP32 ↔ ESP32 | **6/8** host-scheduled single-packet cases; all four CR4/8 cases passed. Autonomous ping/pong also succeeds in both role assignments; see the report's separate session counts. |
+| Arduino transmit | SF7, CR4/5–4/8, 1–255 bytes: **18/20** strict CRC + exact bytes; all four 255-byte cases passed. Misses retained. |
+| Arduino receive | 203.125 kHz, SF7–12: **6/6** fresh 8-byte packets; four negative checks rejected. This is a short-packet smoke test. |
+| Standalone Arduino echo | **8/8** MCU receptions and **8/8** independent LR2021 CRC-valid exact ACKs; zero ESP32 serial commands. |
 | Parameters | Frequency, SF, CR, bandwidth, preamble, sync, relative amplitude and frequency correction; see [supported ranges](docs/native-guide.md#the-api-your-application-calls). |
 
-![Native transmitter: four coding rates and five payload lengths](docs/assets/native-transmission.svg)
-
-These are separate measurements from one stationary indoor board pair,
+These are separate measurements from one stationary indoor three-radio bench,
 not a reliability or range guarantee. Raw payloads, failures, IRQ/CRC gates,
-firmware hashes and figures are in the [native report](docs/native-report.md).
-Earlier Arduino/PC-IQ investigations remain in the
+firmware hashes and figures are in the [Arduino report](docs/arduino-report.md).
+One intermediate MCU output passed CRC but differed from the transmitted
+payload; the autonomous initiator rejected its reply. Applications needing
+stronger integrity should add an application checksum or authenticated framing.
+Earlier native SDK results are in the [native report](docs/native-report.md),
+and Arduino/PC-IQ investigations remain in the
 [historical report](docs/test-report.md).
 
 Reception captures finite 50–900 ms windows at 250 kcomplex samples/s, then

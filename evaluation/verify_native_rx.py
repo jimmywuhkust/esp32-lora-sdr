@@ -19,6 +19,8 @@ def main():
     p.add_argument('--lr2021', default='COM4')
     p.add_argument('--output', type=pathlib.Path, required=True)
     p.add_argument('--seed', type=int, default=202610071107)
+    p.add_argument('--profile', choices=('full','smoke'), default='full',
+                   help='smoke: one 8-byte packet at each SF7-12, plus all four rejection checks')
     p.add_argument('--image', type=pathlib.Path,
                    default=pathlib.Path(__file__).resolve().parents[1] /
                    'firmware/iq-capture/prebuilt/native/application.bin')
@@ -30,7 +32,10 @@ def main():
         p.error('output must be new; retain failed trials')
     rng = random.Random(a.seed)
     report = dict(startedUtc=datetime.now(timezone.utc).isoformat(), seed=a.seed,
-                  retries=0, pcDecoder=False, cases=[], completed=False)
+                  retries=0, pcDecoder=False, profile=a.profile, cases=[], completed=False)
+    def save():
+        a.output.parent.mkdir(parents=True, exist_ok=True)
+        a.output.write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')
     if a.image.exists():
         raw = a.image.read_bytes()
         report['xiaoImage'] = dict(bytes=len(raw), sha256=hashlib.sha256(raw).hexdigest())
@@ -56,6 +61,8 @@ def main():
         settings = [(7, cr, n, 500) for cr in (1, 2, 3, 4) for n in (1, 8, 32, 80, 255)]
         settings += [(sf, cr, n, 500) for sf in (8, 9) for cr in (1, 4) for n in (8, 32)]
         settings += [(sf, 1, 8, 900) for sf in (10, 11, 12)]
+        if a.profile == 'smoke':
+            settings = [(sf, 4 if sf==7 else 1, 8, 500 if sf<10 else 900) for sf in range(7,13)]
         rng.shuffle(settings)
         tests = [dict(kind='packet', sf=sf, cr=cr, length=n, windowMs=ms)
                  for sf, cr, n, ms in settings]
@@ -65,6 +72,7 @@ def main():
                       ('wrong-sync', 32, 500), ('truncated-window', 255, 100))]
         for case in tests:
             report['incompleteCase'] = case
+            save()
             kind = case['kind']
             data = rng.randbytes(case['length'])
             case['expectedHex'] = data.hex()
@@ -102,6 +110,7 @@ def main():
                 if case['expectAccept'] else not packets)
             report['cases'].append(case)
             del report['incompleteCase']
+            save()
             print(len(report['cases']), kind, case['sf'], case['cr'], case['length'],
                   case['passed'], case.get('decode'), flush=True)
             if kind == 'no-payload-crc':
@@ -116,8 +125,7 @@ def main():
         x.close()
         r.close()
         report['finishedUtc'] = datetime.now(timezone.utc).isoformat()
-        a.output.parent.mkdir(parents=True, exist_ok=True)
-        a.output.write_text(json.dumps(report, indent=2), encoding='utf-8')
+        save()
 
 
 if __name__ == '__main__':

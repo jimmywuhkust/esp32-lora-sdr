@@ -126,8 +126,9 @@ bool decodeIQ(const int16_t* iq,size_t count,const Config& c,PacketCallback call
     Complex* work=static_cast<Complex*>(malloc(fftLength*sizeof(Complex)));
     Complex* up=static_cast<Complex*>(malloc(n*sizeof(Complex)));
     uint16_t* rawBins=static_cast<uint16_t*>(malloc(1100*sizeof(uint16_t)));
+    uint16_t* symbols=static_cast<uint16_t*>(malloc(1100*sizeof(uint16_t)));
     float* confidence=c.spreadingFactor==7?static_cast<float*>(malloc(1100*7*sizeof(float))):nullptr;
-    if(!filtered||!signal||!work||!up||!rawBins){free(filtered);free(signal);free(work);free(up);free(rawBins);free(confidence);return false;}
+    if(!filtered||!signal||!work||!up||!rawBins||!symbols){free(filtered);free(signal);free(work);free(up);free(rawBins);free(symbols);free(confidence);return false;}
     Complex state[5][2]={};
     for(size_t i=0;i<count;i++){
         Complex x={float(iq[2*i]),float(iq[2*i+1])};
@@ -172,7 +173,7 @@ bool decodeIQ(const int16_t* iq,size_t count,const Config& c,PacketCallback call
             if(start<cursor||start<0||static_cast<size_t>(start)+8*n>samples){cursor=std::max(cursor+int(n),detected+int(n));continue;}
             // Retain FFT bins until drift compensation. Rounding a symbol
             // first discards the fractional peak needed by long packets.
-            uint16_t symbols[1100];bool complete=true;
+            bool complete=true;
             for(unsigned j=0;j<8;j++){
                 auto p=rx.dechirp(start+j*n);rawBins[j]=p.bin;
                 symbols[j]=rx.symbol(p.bin,ref);
@@ -193,21 +194,34 @@ bool decodeIQ(const int16_t* iq,size_t count,const Config& c,PacketCallback call
                 if(confidence)rx.bitConfidence(ref,(j+2)*float(rx.chips)*offset/c.frequencyHz,confidence+j*7);
             }
             // Keep fractional CFO/SFO correction until nearest-integer rounding.
-            // A second, quantized-peak hypothesis preserves the earlier path
-            // for distorted folded peaks. Both must pass the entire CRC; the
+            // A quantized-peak hypothesis preserves the earlier path
+            // for distorted folded peaks. Every path must pass the entire CRC; the
             // receiver receives no expected bytes or payload-specific hint.
             bool ldro=(rx.chips*1000ull>c.bandwidthHz*16ull),decoded=false;
-            if(complete)for(unsigned variant=0;variant<2&&!decoded;variant++){
+            // A gated transmitter can bias a preamble's folded peak by a
+            // few interpolated FFT bins. Test bounded fractional reference
+            // offsets; header and complete payload CRC still select a result.
+            static const float referenceOffsets[6]={.125f,-.125f,.25f,-.25f,.375f,-.375f};
+            if(complete)for(unsigned variant=0;variant<8&&!decoded;variant++){
                 double binOffset=0,last=1;
                 for(size_t j=0;j<total;j++){
-                    double raw=variant?rx.symbol(rawBins[j],ref):rx.symbolValue(rawBins[j],ref);
+                    double raw=variant==1?rx.symbol(rawBins[j],ref):rx.symbolValue(rawBins[j],ref);
+                    if(variant>=2)raw+=referenceOffsets[variant-2];
                     double v=fmod(raw-(j+2)*double(rx.chips)*offset/c.frequencyHz+rx.chips,rx.chips);
                     if(ldro){double delta=fmod(v-last+rx.chips,4);binOffset-=delta<2?delta:delta-4;last=v;v=fmod(v+binOffset+rx.chips,rx.chips);}
                     symbols[j]=static_cast<unsigned>(lround(v))%rx.chips;
                 }
                 decoded=PacketDecoder::decode(symbols,total,c,packet);
             }
-            if(complete&&!decoded&&confidence)decoded=PacketDecoder::decodeSoft(symbols,total,confidence,c,packet);
+            if(complete&&!decoded&&confidence) {
+                // Confidence was measured at the original reference. Restore
+                // its hard decisions rather than using the final offset trial.
+                for(size_t j=0;j<total;j++) {
+                    double v=fmod(rx.symbolValue(rawBins[j],ref)-(j+2)*double(rx.chips)*offset/c.frequencyHz+rx.chips,rx.chips);
+                    symbols[j]=static_cast<unsigned>(lround(v))%rx.chips;
+                }
+                decoded=PacketDecoder::decodeSoft(symbols,total,confidence,c,packet);
+            }
             if(decoded){
                 packet.frequencyOffsetHz=offset;packet.sampleIndex=firstSample+(start*8ull+6)/13;
                 bool duplicate=false;
@@ -225,6 +239,6 @@ bool decodeIQ(const int16_t* iq,size_t count,const Config& c,PacketCallback call
             cursor=start+total*n;
         }
     }
-    free(signal);free(work);free(up);free(rawBins);free(confidence);return true;
+    free(signal);free(work);free(up);free(rawBins);free(symbols);free(confidence);return true;
 }
 }

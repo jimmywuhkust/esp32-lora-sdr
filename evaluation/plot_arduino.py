@@ -40,6 +40,6 @@ def main():
     fig.text(.06,.04,'2440.125 MHz · BW 203.125 kHz · SF7 · stationary indoor bench · small, separate datasets',fontsize=9,color='#425166')
     fig.subplots_adjust(left=.06,right=.98,top=.77,bottom=.28,wspace=.28)
     target=ROOT/'docs/assets';target.mkdir(exist_ok=True)
-    for suffix in ('svg','png'):fig.savefig(target/f'arduino-duplex.{suffix}',dpi=180,facecolor='white')
+    for suffix in ('svg','png','pdf'):fig.savefig(target/f'arduino-duplex.{suffix}',dpi=180,facecolor='white')
     plt.close(fig)
 if __name__=='__main__':main()

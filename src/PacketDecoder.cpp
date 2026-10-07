@@ -75,6 +75,8 @@ bool PacketDecoder::decodeSoft(const uint16_t* s,size_t count,const float* confi
     if(!confidence||c.spreadingFactor!=7||count<8||!header(s,c,p)||!p.crcPresent||count<symbolCount(p,c))return false;
     uint8_t n[540]={};unsigned corrected=0;
     block(s,5,8,true,n,corrected);unsigned columns=4+p.codingRate,at=5;
+    struct Alternative {unsigned index;uint8_t value;float gap;bool oldChanged,newChanged;};
+    Alternative alternatives[6];unsigned alternativeCount=0;
     for(size_t i=8;i+columns<=symbolCount(p,c);i+=columns) {
         float weights[7][8]={};unsigned hard[7]={};
         for(unsigned col=0;col<columns;col++) {
@@ -86,20 +88,56 @@ bool PacketDecoder::decodeSoft(const uint16_t* s,size_t count,const float* confi
             }
         }
         for(unsigned row=0;row<7;row++) {
-            float best=-1000;unsigned choice=0;
+            float best=-1000,second=-1000;unsigned choice=0,runner=0;
             for(unsigned value=0;value<16;value++) {
                 unsigned encoded=code(value,p.codingRate);float score=0;
                 for(unsigned bit=0;bit<columns;bit++)score+=(encoded&(1u<<bit))?weights[row][bit]:-weights[row][bit];
-                if(score>best){best=score;choice=value;}
+                if(score>best){second=best;runner=choice;best=score;choice=value;}
+                else if(score>second){second=score;runner=value;}
             }
             n[at+row]=choice;
 #ifdef LORA_SDR_DIAGNOSTIC_TRACE
             printf("SOFT row=%u at=%u cr=%u hard=%u choice=%u encoded=%u score=%f\n",row,at,p.codingRate,hard[row],choice,code(choice,p.codingRate),best);
 #endif
             if(code(choice,p.codingRate)!=hard[row])corrected++;
+            // Bounded Chase list for genuinely ambiguous payload words.
+            // Keep the received CRC and the last two payload bytes fixed:
+            // LoRa XORs those bytes directly into its CRC. Never solve for a
+            // checksum or use expected application bytes as a decoding hint.
+            unsigned index=at+row,end=5+2*(p.length>2?p.length-2:0);
+            if(index>=5&&index<end&&best-second<.75f) {
+                Alternative a={index,uint8_t(runner),best-second,
+                    code(choice,p.codingRate)!=hard[row],code(runner,p.codingRate)!=hard[row]};
+                unsigned insert=0;
+                while(insert<alternativeCount&&alternatives[insert].gap<=a.gap)insert++;
+                if(insert<6) {
+                    unsigned last=std::min(5u,alternativeCount);
+                    for(unsigned k=last;k>insert;k--)alternatives[k]=alternatives[k-1];
+                    alternatives[insert]=a;if(alternativeCount<6)alternativeCount++;
+                }
+            }
         }
         at+=7;
     }
-    bool valid=finish(n,corrected,p);p.softDecoded=valid;return valid;
+    if(finish(n,corrected,p)){p.softDecoded=true;return true;}
+    if(!alternativeCount)return false;
+    uint8_t original[6];for(unsigned k=0;k<alternativeCount;k++)original[k]=n[alternatives[k].index];
+    RxPacket accepted;unsigned valid=0;
+    // At most 63 alternatives; accept only one complete CRC-valid payload.
+    for(unsigned mask=1;mask<(1u<<alternativeCount);mask++) {
+        unsigned changed=corrected;
+        for(unsigned k=0;k<alternativeCount;k++) {
+            const auto& a=alternatives[k];bool replace=mask&(1u<<k);
+            n[a.index]=replace?a.value:original[k];
+            if(replace){changed-=a.oldChanged;changed+=a.newChanged;}
+        }
+        RxPacket candidate=p;
+        if(finish(n,changed,candidate)) {
+            if(++valid>1)return false;
+            accepted=candidate;
+        }
+    }
+    if(valid==1){p=accepted;p.softDecoded=true;p.crcAided=true;return true;}
+    return false;
 }
 }

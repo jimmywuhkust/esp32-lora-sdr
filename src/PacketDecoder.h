@@ -10,6 +10,7 @@ struct RxPacket {
     unsigned correctedCodewords=0;
     bool crcPresent=false, crcOk=false;
     bool softDecoded=false;
+    bool crcAided=false;
     float frequencyOffsetHz=0;
     uint64_t sampleIndex=0;
 };

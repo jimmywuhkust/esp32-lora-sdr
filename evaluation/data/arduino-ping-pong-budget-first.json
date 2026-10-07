@@ -1,0 +1,1385 @@
+{
+  "startedUtc": "2026-10-07T07:42:59.456523+00:00",
+  "esp32SerialWrites": 0,
+  "pcDecoder": false,
+  "hostIqUploaded": false,
+  "finished": true,
+  "lines": [
+    {
+      "board": "LR2021",
+      "text": "FREQ 2440125 status=0"
+    },
+    {
+      "board": "LR2021",
+      "text": "BW 203125 status=0"
+    },
+    {
+      "board": "LR2021",
+      "text": "PRE 16 status=0"
+    },
+    {
+      "board": "LR2021",
+      "text": "SYNC 18 status=0"
+    },
+    {
+      "board": "LR2021",
+      "text": "INV 0 status=0"
+    },
+    {
+      "board": "LR2021",
+      "text": "CRC 1 status=0"
+    },
+    {
+      "board": "LR2021",
+      "text": "SF 7 status=0"
+    },
+    {
+      "board": "ping",
+      "text": "\u001b[0;32mI (196) esp_image: segment 3: paddr=00091250 vaddr=3fc99cARDUINO_START cpu=240 core=0 psram=8386307 heap=95599",
+      "elapsedSeconds": 0.002
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_BEGIN status=ok heap=51223 largest=19456 core1=1",
+      "elapsedSeconds": 0.123
+    },
+    {
+      "board": "pong",
+      "text": "\u001b[0;32mI (106) esp_image: segment 1: paddr=0001e528 vaddr=3fc982LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 0.517
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 2.115
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 3.682
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 5.078
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 6.657
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 8.229
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 9.647
+    },
+    {
+      "board": "ping",
+      "text": "PING_SEND seq=0 hex=50494e47b1096b1a00000000903e486e7ac25738",
+      "elapsedSeconds": 10.065
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=20 rssi=-62.5 snr=7.5 hex=50494e47b1096b1a00000000903e486e7ac25738",
+      "elapsedSeconds": 10.126
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040370",
+      "elapsedSeconds": 10.247
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80712 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 10.416
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=0 copy=0 status=ok",
+      "elapsedSeconds": 10.538
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-61.5 snr=3.5 hex=50494e47b1096b1a00000000903e486e7ac25738",
+      "elapsedSeconds": 10.785
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 10.902
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80752 copy=64030 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13600 preflight=67723",
+      "elapsedSeconds": 11.085
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=0 copy=1 status=ok",
+      "elapsedSeconds": 11.204
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=7.0 hex=50494e47b1096b1a00000000903e486e7ac25738",
+      "elapsedSeconds": 11.474
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 11.587
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80742 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 11.772
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=0 copy=2 status=ok",
+      "elapsedSeconds": 11.891
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=7.0 hex=50494e47b1096b1a00000000903e486e7ac25738",
+      "elapsedSeconds": 12.163
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 12.286
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80599 copy=64030 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13600 preflight=67723",
+      "elapsedSeconds": 12.471
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=0 copy=3 status=ok",
+      "elapsedSeconds": 12.592
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=7.8 hex=50494e47b1096b1a00000000903e486e7ac25738",
+      "elapsedSeconds": 12.852
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 12.976
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80742 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 13.163
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 13.164
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=0 copy=4 status=ok",
+      "elapsedSeconds": 13.223
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=7.8 hex=50494e47b1096b1a00000000903e486e7ac25738",
+      "elapsedSeconds": 13.654
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 13.775
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80742 copy=64030 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13600 preflight=67723",
+      "elapsedSeconds": 13.778
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=0 copy=5 status=ok",
+      "elapsedSeconds": 13.897
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=7.0 hex=50494e47b1096b1a00000000903e486e7ac25738",
+      "elapsedSeconds": 14.328
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 14.45
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80740 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 14.453
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=0 copy=6 status=ok",
+      "elapsedSeconds": 14.572
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-60.5 snr=7.8 hex=50494e47b1096b1a00000000903e486e7ac25738",
+      "elapsedSeconds": 15.003
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 15.125
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80704 copy=64030 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13600 preflight=67723",
+      "elapsedSeconds": 15.128
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=0 copy=7 status=ok",
+      "elapsedSeconds": 15.247
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 16.203
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 17.802
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 19.248
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 20.828
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 22.405
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 23.81
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 25.386
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 26.959
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 28.379
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 29.954
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 31.529
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 32.94
+    },
+    {
+      "board": "ping",
+      "text": "PING_RESULT seq=0 tx=ok crc_exact_pong=0",
+      "elapsedSeconds": 33.361
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 34.464
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 36.066
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 37.598
+    },
+    {
+      "board": "ping",
+      "text": "PING_SEND seq=1 hex=50494e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 38.936
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=20 rssi=-62.5 snr=7.5 hex=50494e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 39.007
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 39.072
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040370",
+      "elapsedSeconds": 39.073
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80636 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 39.256
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=1 copy=0 status=ok",
+      "elapsedSeconds": 39.374
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=20 rssi=-62.5 snr=6.0 hex=50494e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 39.799
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040370",
+      "elapsedSeconds": 39.919
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80708 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 39.921
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=1 copy=1 status=ok",
+      "elapsedSeconds": 40.054
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=7.5 hex=50494e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 40.483
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 40.553
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 40.554
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80746 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 40.577
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=1 copy=2 status=ok",
+      "elapsedSeconds": 40.697
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=-7 header=0 crc_present=1 crc_ok=0 bytes=20 rssi=-62.5 snr=1.5 hex=50494e47b1094b1a01001000b104d3e64d32f573",
+      "elapsedSeconds": 41.144
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00440170",
+      "elapsedSeconds": 41.263
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80740 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 41.266
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=1 copy=3 status=ok",
+      "elapsedSeconds": 41.385
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=1.8 hex=50494e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 41.817
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 41.938
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80604 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 41.955
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=1 copy=4 status=ok",
+      "elapsedSeconds": 42.089
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_RX crc_ok=1 bytes=20 sf=7 cr=4 hex=50494e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 42.09
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_CAPTURE samples=125279 status=0 drops=0 abandoned=0 soft=1 decode_us=943466",
+      "elapsedSeconds": 42.211
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=6.8 hex=50494e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 42.563
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 42.684
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80703 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 42.686
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=1 copy=5 status=ok",
+      "elapsedSeconds": 42.805
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=7.2 hex=50494e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 43.216
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 43.337
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80749 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 43.339
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=1 copy=6 status=ok",
+      "elapsedSeconds": 43.459
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=20 rssi=-62.5 snr=6.8 hex=50494e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 43.886
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040370",
+      "elapsedSeconds": 44.006
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80739 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 44.02
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=1 copy=7 status=ok",
+      "elapsedSeconds": 44.141
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-61.5 snr=7.5 hex=504f4e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 48.763
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 48.884
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80818 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=68060",
+      "elapsedSeconds": 48.946
+    },
+    {
+      "board": "pong",
+      "text": "PONG_SEND attempt=0 status=ok hex=504f4e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 49.067
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-61.5 snr=7.2 hex=504f4e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 49.436
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 49.554
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80712 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=68060",
+      "elapsedSeconds": 49.618
+    },
+    {
+      "board": "pong",
+      "text": "PONG_SEND attempt=1 status=ok hex=504f4e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 49.74
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=7.0 hex=504f4e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 50.109
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 50.23
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80786 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=68060",
+      "elapsedSeconds": 50.294
+    },
+    {
+      "board": "pong",
+      "text": "PONG_SEND attempt=2 status=ok hex=504f4e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 50.415
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=7.5 hex=504f4e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 50.782
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 50.901
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80602 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=68060",
+      "elapsedSeconds": 50.968
+    },
+    {
+      "board": "pong",
+      "text": "PONG_SEND attempt=3 status=ok hex=504f4e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 51.085
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-61.5 snr=7.2 hex=504f4e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 51.459
+    },
+    {
+      "board": "ping",
+      "text": "PING_RX crc_ok=1 bytes=20 hex=504f4e47b1096b1a01000000b104d2e64d32f573 soft=1",
+      "elapsedSeconds": 51.46
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 51.524
+    },
+    {
+      "board": "ping",
+      "text": "PING_RESULT seq=1 tx=ok crc_exact_pong=1",
+      "elapsedSeconds": 51.524
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80750 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=68060",
+      "elapsedSeconds": 51.706
+    },
+    {
+      "board": "pong",
+      "text": "PONG_SEND attempt=4 status=ok hex=504f4e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 51.826
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=7.5 hex=504f4e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 52.198
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 52.324
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80747 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=68060",
+      "elapsedSeconds": 52.387
+    },
+    {
+      "board": "pong",
+      "text": "PONG_SEND attempt=5 status=ok hex=504f4e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 52.505
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=5.0 hex=504f4e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 52.871
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 52.989
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80753 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=68060",
+      "elapsedSeconds": 53.052
+    },
+    {
+      "board": "pong",
+      "text": "PONG_SEND attempt=6 status=ok hex=504f4e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 53.174
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-61.5 snr=7.2 hex=504f4e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 53.557
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 53.677
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80712 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=68060",
+      "elapsedSeconds": 53.74
+    },
+    {
+      "board": "pong",
+      "text": "PONG_SEND attempt=7 status=ok hex=504f4e47b1096b1a01000000b104d2e64d32f573",
+      "elapsedSeconds": 53.86
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 53.981
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 55.376
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 56.781
+    },
+    {
+      "board": "ping",
+      "text": "PING_SEND seq=2 hex=50494e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 57.021
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=7.5 hex=50494e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 57.083
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 57.205
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80821 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 57.391
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=2 copy=0 status=ok",
+      "elapsedSeconds": 57.509
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-61.5 snr=7.0 hex=50494e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 57.76
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 57.885
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80749 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 58.071
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=2 copy=1 status=ok",
+      "elapsedSeconds": 58.191
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-61.5 snr=7.5 hex=50494e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 58.449
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 58.569
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80605 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 58.753
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=2 copy=2 status=ok",
+      "elapsedSeconds": 58.871
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=7.2 hex=50494e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 59.138
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 59.251
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80749 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 59.435
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=2 copy=3 status=ok",
+      "elapsedSeconds": 59.555
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-61.5 snr=7.2 hex=50494e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 59.827
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 59.947
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80748 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 60.132
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_RX crc_ok=1 bytes=20 sf=7 cr=4 hex=50494e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 60.169
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=2 copy=4 status=ok",
+      "elapsedSeconds": 60.221
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_CAPTURE samples=125279 status=0 drops=0 abandoned=0 soft=1 decode_us=2824413",
+      "elapsedSeconds": 60.222
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=4.8 hex=50494e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 60.586
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 60.705
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80750 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 60.713
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=2 copy=5 status=ok",
+      "elapsedSeconds": 60.825
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=7.5 hex=50494e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 61.25
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 61.37
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80714 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 61.402
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=2 copy=6 status=ok",
+      "elapsedSeconds": 61.52
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-61.5 snr=7.2 hex=50494e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 61.946
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 62.065
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80746 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 62.089
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=2 copy=7 status=ok",
+      "elapsedSeconds": 62.202
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=20 rssi=-62.5 snr=7.8 hex=504f4e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 66.833
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040370",
+      "elapsedSeconds": 66.952
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80734 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=68060",
+      "elapsedSeconds": 67.016
+    },
+    {
+      "board": "pong",
+      "text": "PONG_SEND attempt=0 status=ok hex=504f4e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 67.135
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=7.8 hex=504f4e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 67.502
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 67.62
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80750 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=68060",
+      "elapsedSeconds": 67.698
+    },
+    {
+      "board": "pong",
+      "text": "PONG_SEND attempt=1 status=ok hex=504f4e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 67.818
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=7.5 hex=504f4e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 68.188
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 68.303
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80597 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=68060",
+      "elapsedSeconds": 68.386
+    },
+    {
+      "board": "pong",
+      "text": "PONG_SEND attempt=2 status=ok hex=504f4e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 68.502
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=7.8 hex=504f4e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 68.877
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 68.999
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80715 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=68060",
+      "elapsedSeconds": 69.076
+    },
+    {
+      "board": "pong",
+      "text": "PONG_SEND attempt=3 status=ok hex=504f4e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 69.196
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=7.5 hex=504f4e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 69.566
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 69.679
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80741 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=68060",
+      "elapsedSeconds": 69.765
+    },
+    {
+      "board": "pong",
+      "text": "PONG_SEND attempt=4 status=ok hex=504f4e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 69.877
+    },
+    {
+      "board": "ping",
+      "text": "PING_RX crc_ok=1 bytes=20 hex=504f4e47b1096b1a020000008b316f3b5a01ae15 soft=1",
+      "elapsedSeconds": 69.97
+    },
+    {
+      "board": "ping",
+      "text": "PING_RESULT seq=2 tx=ok crc_exact_pong=1",
+      "elapsedSeconds": 70.09
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=7.8 hex=504f4e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 70.335
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 70.451
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80750 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=68060",
+      "elapsedSeconds": 70.516
+    },
+    {
+      "board": "pong",
+      "text": "PONG_SEND attempt=5 status=ok hex=504f4e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 70.635
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-62.5 snr=6.5 hex=504f4e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 70.999
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 71.118
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80596 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=68060",
+      "elapsedSeconds": 71.18
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=0 bytes=20 rssi=-62.5 snr=6.2 hex=504f4e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 71.755
+    },
+    {
+      "board": "pong",
+      "text": "PONG_SEND attempt=6 status=ok hex=504f4e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 71.828
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040370",
+      "elapsedSeconds": 71.828
+    },
+    {
+      "board": "pong",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80711 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=68060",
+      "elapsedSeconds": 71.892
+    },
+    {
+      "board": "pong",
+      "text": "PONG_SEND attempt=7 status=ok hex=504f4e47b1096b1a020000008b316f3b5a01ae15",
+      "elapsedSeconds": 72.011
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 72.132
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 73.364
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 74.924
+    },
+    {
+      "board": "ping",
+      "text": "PING_SEND seq=3 hex=50494e47b1096b1a03000000286275749d7be35a",
+      "elapsedSeconds": 75.532
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-61.5 snr=7.5 hex=50494e47b1096b1a03000000286275749d7be35a",
+      "elapsedSeconds": 75.618
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 75.743
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80789 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 75.927
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=3 copy=0 status=ok",
+      "elapsedSeconds": 76.047
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-61.5 snr=7.5 hex=50494e47b1096b1a03000000286275749d7be35a",
+      "elapsedSeconds": 76.307
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 76.406
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 76.469
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80750 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 76.532
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=3 copy=1 status=ok",
+      "elapsedSeconds": 76.651
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-61.5 snr=7.5 hex=50494e47b1096b1a03000000286275749d7be35a",
+      "elapsedSeconds": 77.074
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 77.192
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80599 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 77.195
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=3 copy=2 status=ok",
+      "elapsedSeconds": 77.315
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-61.5 snr=7.5 hex=50494e47b1096b1a03000000286275749d7be35a",
+      "elapsedSeconds": 77.74
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 77.86
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80713 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 77.883
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=3 copy=3 status=ok",
+      "elapsedSeconds": 77.996
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 77.997
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-61.5 snr=7.5 hex=50494e47b1096b1a03000000286275749d7be35a",
+      "elapsedSeconds": 78.376
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 78.49
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80777 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 78.672
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=3 copy=4 status=ok",
+      "elapsedSeconds": 78.793
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-61.5 snr=7.8 hex=50494e47b1096b1a03000000286275749d7be35a",
+      "elapsedSeconds": 79.064
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 79.19
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80748 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 79.376
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=3 copy=5 status=ok",
+      "elapsedSeconds": 79.497
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-61.5 snr=7.5 hex=50494e47b1096b1a03000000286275749d7be35a",
+      "elapsedSeconds": 79.76
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 79.883
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80601 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 80.067
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=3 copy=6 status=ok",
+      "elapsedSeconds": 80.186
+    },
+    {
+      "board": "LR2021",
+      "text": "RX status=0 header=0 crc_present=1 crc_ok=1 bytes=20 rssi=-61.5 snr=7.5 hex=50494e47b1096b1a03000000286275749d7be35a",
+      "elapsedSeconds": 80.441
+    },
+    {
+      "board": "LR2021",
+      "text": "RX_IRQ 00040170",
+      "elapsedSeconds": 80.564
+    },
+    {
+      "board": "ping",
+      "text": "ARDUINO_TX status=ok updates=85 late=0 build_us=80710 copy=63580 buffer=3fcb0000 tone=20062400 gain=63,63 clock=ffffdfdf,ffffdfdf window=13500 preflight=67965",
+      "elapsedSeconds": 80.748
+    },
+    {
+      "board": "ping",
+      "text": "PING_COPY seq=3 copy=7 status=ok",
+      "elapsedSeconds": 80.866
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 81.439
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 83.057
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 84.484
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 86.049
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 87.625
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 89.046
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 90.626
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 92.199
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 93.614
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 95.2
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 96.78
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 98.248
+    },
+    {
+      "board": "ping",
+      "text": "PING_RESULT seq=3 tx=ok crc_exact_pong=0",
+      "elapsedSeconds": 98.862
+    },
+    {
+      "board": "ping",
+      "text": "PING_FINISHED attempts=4 accepted=2",
+      "elapsedSeconds": 98.967
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 99.702
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 101.289
+    },
+    {
+      "board": "pong",
+      "text": "LISTEN arduino sf=7 window=500",
+      "elapsedSeconds": 102.858
+    }
+  ],
+  "requests": [
+    {
+      "sequence": 0,
+      "hex": "50494e47b1096b1a00000000903e486e7ac25738",
+      "responderCrcExact": false,
+      "independentRequestCrcExact": true,
+      "independentReplyCrcExact": false
+    },
+    {
+      "sequence": 1,
+      "hex": "50494e47b1096b1a01000000b104d2e64d32f573",
+      "responderCrcExact": true,
+      "independentRequestCrcExact": true,
+      "independentReplyCrcExact": true
+    },
+    {
+      "sequence": 2,
+      "hex": "50494e47b1096b1a020000008b316f3b5a01ae15",
+      "responderCrcExact": true,
+      "independentRequestCrcExact": true,
+      "independentReplyCrcExact": true
+    },
+    {
+      "sequence": 3,
+      "hex": "50494e47b1096b1a03000000286275749d7be35a",
+      "responderCrcExact": false,
+      "independentRequestCrcExact": true,
+      "independentReplyCrcExact": false
+    }
+  ],
+  "results": [
+    {
+      "sequence": 0,
+      "tx": "ok",
+      "crcExactPong": false
+    },
+    {
+      "sequence": 1,
+      "tx": "ok",
+      "crcExactPong": true
+    },
+    {
+      "sequence": 2,
+      "tx": "ok",
+      "crcExactPong": true
+    },
+    {
+      "sequence": 3,
+      "tx": "ok",
+      "crcExactPong": false
+    }
+  ],
+  "pingImage": {
+    "bytes": 618016,
+    "sha256": "3fdfe0a73f9edabfa4674f01cfd79cedd4a3af08e780a9cc01d6204856fb9a85"
+  },
+  "pongImage": {
+    "bytes": 616992,
+    "sha256": "54a8a84454861c900bca624d13e70018501a23fab53a73d6e5c6077796e64877"
+  },
+  "requestCopiesObserved": 32,
+  "replyCopiesObserved": 16,
+  "finishedUtc": "2026-10-07T07:44:43.973605+00:00"
+}

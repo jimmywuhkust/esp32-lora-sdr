@@ -12,6 +12,7 @@ import re
 import time
 from datetime import datetime, timezone
 from verify_native_levels import openport, line, command
+from verify_three_radios import strict_lr
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 RX = re.compile(r'RX status=0 header=0 crc_present=1 crc_ok=1 bytes=(\d+) rssi=([\d.-]+) snr=([\d.-]+) hex=([0-9a-f]+)$')
@@ -80,7 +81,8 @@ def main():
             exact = [s for s in received if s.startswith('RX ') and s.endswith('hex='+data.hex())]
             accepted = [m for s in exact if (m := RX.fullmatch(s)) and int(m[1]) == n]
             case['exactBytes'] = bool(exact)
-            case['passed'] = any(s.startswith('TXEND NATIVE ok ') for s in case['xiao']) and bool(accepted)
+            case['strictCrcExact'] = strict_lr(received, data)
+            case['passed'] = any(s.startswith('TXEND NATIVE ok ') for s in case['xiao']) and bool(accepted) and case['strictCrcExact']
             report['cases'].append(case)
             print(len(report['cases']), 'CR4/'+str(cr+4), n, case['passed'], flush=True)
             case = None

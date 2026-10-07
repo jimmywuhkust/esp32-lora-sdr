@@ -16,6 +16,7 @@
 extern "C" int lora_sdr_platform_begin(void);
 #endif
 #include <math.h>
+#include <algorithm>
 #include "esp_wifi.h"
 #include "esp_event.h"
 #include "esp_netif.h"
@@ -301,11 +302,43 @@ Error ESP32S3Radio::transmit(const uint8_t* data,size_t length,const Config& c,T
         rom_set_rxclk_en(1);
         int64_t frequency=static_cast<int64_t>(c.frequencyHz)+c.frequencyCorrectionHz;
         unsigned khz=static_cast<unsigned>(frequency/1000);set_rf_freq_offset(0,khz/1000,khz%1000);
+        // The SDK can update peripheral gates after begin(), including while
+        // an Arduino application yields. Acquire the DAC/MAC clock at the
+        // point of use rather than relying on its startup state.
+        result.playbackClockBefore=REG_READ(SYSTEM_WIFI_CLK_EN_REG);
+        periph_module_enable(PERIPH_WIFI_MODULE);
+        REG_SET_BIT(SYSTEM_WIFI_CLK_EN_REG,1u<<6);
+        result.playbackClockEnabled=REG_READ(SYSTEM_WIFI_CLK_EN_REG);
         uint32_t owner=REG_READ(0x600c101c),saved=REG_READ(0x60033d64),tone=REG_READ(0x60006040);
         result.basebandControl=tone;result.adcControl=REG_READ(0x60033d5c);
         result.keyedGain1=rom_pbus_rd(5,1);result.keyedGain3=rom_pbus_rd(5,3);
         REG_WRITE(0x600c101c,(owner&~15u)|4u);REG_WRITE(0x60006040,tone&~(1u<<18));
-        result.lateUpdates=playDac(ring,down,lookup,symbols,result.packet.symbolCount,&c,ringLength,downLength);
+        Config playback=c;
+#if defined(LORA_SDR_NATIVE_BACKEND)
+        // Measure the actual SRAM bus cost before scheduling RF deadlines.
+        // Arduino USB / acquisition context made a 15000-sample copy take
+        // 301 us on this board, exceeding its 255 us idle interval. Choose
+        // a shorter window with 34 us margin instead of drifting every chirp.
+        if(c.spreadingFactor==7) {
+            unsigned measured=0;
+            for(unsigned trial=0;trial<3;trial++) {
+                unsigned irq=portSET_INTERRUPT_MASK_FROM_ISR();
+                uint32_t begun=cpu_hal_get_cycle_count();
+                stageDac(reinterpret_cast<uint32_t*>(0x3fcd0000),ring,lookup,trial*123,
+                         c.dacWindowSamples,ringLength);
+                unsigned elapsed=cpu_hal_get_cycle_count()-begun;
+                portCLEAR_INTERRUPT_MASK_FROM_ISR(irq);
+                if(elapsed>measured)measured=elapsed;
+            }
+            result.preflightCopyCycles=measured;
+            // CPU 240 MHz / DAC 40 MHz = 6 CPU cycles per played sample.
+            uint64_t budget=ringLength*6u>8192?ringLength*6u-8192:0;
+            unsigned safe=budget*c.dacWindowSamples/(measured+6u*c.dacWindowSamples);
+            if(safe<c.dacWindowSamples)playback.dacWindowSamples=std::max(1000u,safe/100*100);
+        }
+#endif
+        result.playbackWindowSamples=playback.dacWindowSamples;
+        result.lateUpdates=playDac(ring,down,lookup,symbols,result.packet.symbolCount,&playback,ringLength,downLength);
         result.maxCopyCycles=dacCopyCycles;
         result.updates=c.preambleSymbols+5+result.packet.symbolCount;
         REG_WRITE(0x60033d64,saved&~0x80000000u);REG_WRITE(0x600c101c,owner);REG_WRITE(0x60006040,tone);

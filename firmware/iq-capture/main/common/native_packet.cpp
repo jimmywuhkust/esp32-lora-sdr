@@ -46,13 +46,13 @@ extern "C" bool native_transmit_hex(unsigned sf,unsigned cr,const char* hex) {
     Error status=nativeRadio.begin(nativeRadio.configuration().frequencyHz/1e6);
     if(status==Error::Ok)status=nativeRadio.send(data,length);
     const TxResult& result=nativeRadio.lastTransmit();
-    char line[240];int n=snprintf(line,sizeof(line),"TXEND NATIVE %s %u %u %.3f buffer=%08x copy=%u tone=%08x adc=%08x gain=%u,%u build_us=%u\n",errorName(status),result.updates,result.lateUpdates,result.packet.airtimeMs,(unsigned)result.sourceAddress,result.maxCopyCycles,(unsigned)result.basebandControl,(unsigned)result.adcControl,result.keyedGain1,result.keyedGain3,(unsigned)result.waveformBuildUs);
+    char line[300];int n=snprintf(line,sizeof(line),"TXEND NATIVE %s %u %u %.3f buffer=%08x copy=%u tone=%08x adc=%08x gain=%u,%u build_us=%u window=%u preflight=%u\n",errorName(status),result.updates,result.lateUpdates,result.packet.airtimeMs,(unsigned)result.sourceAddress,result.maxCopyCycles,(unsigned)result.basebandControl,(unsigned)result.adcControl,result.keyedGain1,result.keyedGain3,(unsigned)result.waveformBuildUs,result.playbackWindowSamples,result.preflightCopyCycles);
     burst_serial_send(line,n);return true;
 }
 static void emit(const RxPacket& p,void*) {
     char hex[511];for(unsigned i=0;i<p.length;i++)sprintf(hex+2*i,"%02x",p.payload[i]);
-    char line[800];int n=snprintf(line,sizeof(line),"RXPACKET {\"hex\":\"%s\",\"bytes\":%u,\"sf\":%u,\"codingRate\":%u,\"crcOk\":true,\"crcHex\":\"%04x\",\"cfoHz\":%.2f,\"sampleIndex\":%" PRIu64 ",\"correctedCodewords\":%u,\"softDecoded\":%s,\"source\":\"ESP32 native decoder\"}\n",
-        hex,(unsigned)p.length,p.spreadingFactor,p.codingRate,p.crc,p.frequencyOffsetHz,p.sampleIndex,p.correctedCodewords,p.softDecoded?"true":"false");
+    char line[800];int n=snprintf(line,sizeof(line),"RXPACKET {\"hex\":\"%s\",\"bytes\":%u,\"sf\":%u,\"codingRate\":%u,\"crcOk\":true,\"crcHex\":\"%04x\",\"cfoHz\":%.2f,\"sampleIndex\":%" PRIu64 ",\"correctedCodewords\":%u,\"softDecoded\":%s,\"crcAided\":%s,\"source\":\"ESP32 native decoder\"}\n",
+        hex,(unsigned)p.length,p.spreadingFactor,p.codingRate,p.crc,p.frequencyOffsetHz,p.sampleIndex,p.correctedCodewords,p.softDecoded?"true":"false",p.crcAided?"true":"false");
     burst_serial_send(line,n);
 }
 extern "C" bool native_decode_iq(const int16_t* iq,unsigned samples,unsigned sf,unsigned sync,uint64_t first) {
